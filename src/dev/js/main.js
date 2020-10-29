@@ -110,5 +110,24 @@ if ($('#map').exists()) {
 
 
 
+let tabsInfo = document.querySelectorAll('.tab__info');
+let tabsContent = document.querySelectorAll('.tab__content');
+
+console.log(tabsContent);
+
+for (let i = 0; i < tabsInfo.length; i++) {
+    tabsInfo[i].onclick = function () {
+        for (let j = 0; j < tabsContent.length; j++) {
+            if (j == i) {
+                console.log('Tabs');
+            }
+        }
+    }
+}
+
+
+
+
+
 
 
