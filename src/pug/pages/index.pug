@@ -1,0 +1,245 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index-page';
+	- var setQuote = 1;
+
+block content
+	.bildboard
+
+		.bildboard__bg
+			.swiper-wrapper
+				.bildboard__item.swiper-slide(style="background-image: url('/img/bildboard.jpg')")
+				.bildboard__item.swiper-slide(style="background-image: url('/img/bildboard.jpg')")
+		.bildboard__slider
+			.swiper-wrapper
+				.swiper-slide
+					.bildboard__container.container
+						.bildboard__inner
+							.bildboard__quote Надоела обыденность?
+							.bildboard__title Попробуйте Наши новинки
+							.bildboard__txt Повседневная практика показывает, что рамки и место обучения кадров позволяет выполнять важные задания по разработке новых предложений. 
+							a(href="javascript:void(0);").btn.btn--big.btn--orange Посмотреть меню
+				.swiper-slide
+					.bildboard__container.container
+						.bildboard__inner
+							.bildboard__quote Надоела обыденность 2?
+							.bildboard__title Попробуйте Наши новинки
+							.bildboard__txt Повседневная практика показывает, что рамки и место обучения кадров позволяет выполнять важные задания по разработке новых предложений. 
+							a(href="javascript:void(0);").btn.btn--big.btn--orange Посмотреть меню
+			.bildboard__pagination
+
+		#scene.elements
+			.elements__item(data-depth="0.05")
+				img(src="./img/elements/el1.png")
+			.elements__item(data-depth="0.1")
+				img(src="./img/elements/el2.png")
+			.elements__item(data-depth="0.1")
+				img(src="./img/elements/el3.png")
+			.elements__item(data-depth="0.05")
+				img(src="./img/elements/el4.png")
+			.elements__item(data-depth="0.2")
+				img(src="./img/elements/el5.png")
+			.elements__item(data-depth="0.1")
+				img(src="./img/elements/el2.png")
+
+	.offer 
+		.offer__container.container
+			.offer__title.title-1 Акции <br> и спецпредложения
+			.offer__slider
+				.offer__grid.swiper-wrapper
+					a(href="javascript:void(0);").swiper-slide.offer__item.offer__item--small(style="background-image: url('/img/index/of1.jpg')")
+						.offer__wrapper
+							.offer__article.title-3 Буррито на завтрак в подарок!
+							.offer__txt Равным образом консультация с широким активом позволяет выполнять важные задания. 
+					a(href="javascript:void(0);").swiper-slide.offer__item.offer__item--middle(style="background-image: url('/img/index/of2.jpg')")
+						.offer__wrapper
+							.offer__article.title-3 Только самые свежие продукты
+							.offer__txt Равным образом консультация с широким активом позволяет выполнять важные задания. 
+					a(href="javascript:void(0);").swiper-slide.offer__item.offer__item--big(style="background-image: url('/img/index/of3.jpg')")
+						.offer__wrapper
+							.offer__article.title-3 Бесплатная доставка от 1500₽
+							.offer__txt Равным образом консультация с широким активом позволяет выполнять важные задания по разработке системы обучения кадров, соответствует насущным потребностям. 
+					a(href="javascript:void(0);").btn.btn--big.btn--white Посмотреть все акции
+
+	.set
+		.set__container.container
+			.set__title.title-2 Комбо-наборы
+			if setQuote == 1
+				.set__quote Идейные соображения высшего порядка, а также консультация с широким активом требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.
+			.set__cover
+				.set__items
+					a(href="javascript:void(0);").set__item
+						.set__pic
+							img(src="" alt="")
+						.set__box
+							.set__top
+								.set__article Комбо-набор 1
+								.set__weight 400г
+							.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+							.set__bottom 
+								.set__price 450 <span>₽</span>
+								.btn.btn--small.btn--orange В корзину
+					a(href="javascript:void(0);").set__item
+						.set__pic
+							img(src="/img/set/set1.jpg" alt="")
+						.set__box
+							.set__top
+								.set__article Комбо-набор 1
+								.set__weight 400г
+							.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+							.set__bottom 
+								.set__price 450 <span>₽</span>
+								.btn.btn--small.btn--orange В корзину
+					a(href="javascript:void(0);").set__item
+						.set__pic
+							img(src="/img/set/set1.jpg" alt="")
+						.set__box
+							.set__top
+								.set__article Комбо-набор 1
+								.set__weight 400г
+							.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+							.set__bottom 
+								.set__price 450 <span>₽</span>
+								.btn.btn--small.btn--orange В корзину
+					a(href="javascript:void(0);").set__item
+						.set__pic
+							img(src="/img/set/set1.jpg" alt="")
+						.set__box
+							.set__top
+								.set__article Комбо-набор 1
+								.set__weight 400г
+							.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+							.set__bottom 
+								.set__price 450 <span>₽</span>
+								.btn.btn--small.btn--orange В корзину
+					a(href="javascript:void(0);").set__item
+						.set__pic
+							img(src="/img/set/set1.jpg" alt="")
+						.set__box
+							.set__top
+								.set__article Комбо-набор 1
+								.set__weight 400г
+							.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+							.set__bottom 
+								.set__price 450 <span>₽</span>
+								.btn.btn--small.btn--orange В корзину
+					a(href="javascript:void(0);").set__item
+						.set__pic
+							img(src="/img/set/set1.jpg" alt="")
+						.set__box
+							.set__top
+								.set__article Комбо-набор 1
+								.set__weight 400г
+							.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+							.set__bottom 
+								.set__price 450 <span>₽</span>
+								.btn.btn--small.btn--orange В корзину
+	.category
+		.category__container.container
+			.category__title.title-3 Популярные категории
+			.category__quote С другой стороны постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание существенных финансовых и административных условий.
+			.category__cover
+				.category__items
+					a(href="javascript:void(0);").category__item.btn.btn--big.btn--white 
+						.btn__ic
+							+svg("ic1")
+						.btn__txt Холодные закуски
+					a(href="javascript:void(0);").category__item.btn.btn--big.btn--white 
+						.btn__ic
+							+svg("ic2")
+						.btn__txt Шаурма на углях
+					a(href="javascript:void(0);").category__item.btn.btn--big.btn--white 
+						.btn__ic
+							+svg("ic3")
+						.btn__txt Маринованное мясо
+					a(href="javascript:void(0);").category__item.btn.btn--big.btn--white 
+						.btn__ic
+							+svg("ic4")
+						.btn__txt Хинкали и пасты
+					
+					a(href="javascript:void(0);").category__item.btn.btn--big.btn--white 
+						.btn__ic
+							+svg("ic5")
+						.btn__txt Садж
+					a(href="javascript:void(0);").category__item.btn.btn--big.btn--white 
+						.btn__ic
+							+svg("ic6")
+						.btn__txt Десерты
+					a(href="javascript:void(0);").category__item.btn.btn--big.btn--white 
+						.btn__ic
+							+svg("ic7")
+						.btn__txt Горячие блюда
+	.comment
+		#scene_comment.elements
+				.elements__item(data-depth="0.09")
+					img(src="./img/elements/el6.png")
+				.elements__item(data-depth="0.3")
+					img(src="./img/elements/el7.png")
+				.elements__item(data-depth="0.1")
+					img(src="./img/elements/el8.png")
+		.comment__container.container
+			.comment__title.title-4 Отзывы <br> наших клиентов
+			.comment__box
+				.comment__slider
+					.swiper-wrapper
+						.comment__item.swiper-slide
+							.comment__cover
+								.comment__top 
+									.comment__pic
+										img(src="/img/comment/cm1.jpg" alt="")
+									.comment__info
+										.comment__name Екатерина Иванова
+										.comment__date 21.05.2020
+								.comment__content Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании соответствующий условий активизации. Товарищи! дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке соответствующий условий активизации. Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности в значительной степени обуславливает создание форм развития. 
+						.comment__item.swiper-slide
+							.comment__cover
+								.comment__top 
+									.comment__pic
+										img(src="/img/comment/cm1.jpg" alt="")
+									.comment__info
+										.comment__name Екатерина Иванова
+										.comment__date 21.05.2020
+								.comment__content Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании соответствующий условий активизации. Товарищи! дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке соответствующий условий активизации. Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности в значительной степени обуславливает создание форм развития. 
+						.comment__item.swiper-slide
+							.comment__cover
+								.comment__top 
+									.comment__pic
+										img(src="/img/comment/cm1.jpg" alt="")
+									.comment__info
+										.comment__name Екатерина Иванова
+										.comment__date 21.05.2020
+								.comment__content Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании соответствующий условий активизации. Товарищи! дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке соответствующий условий активизации. Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности в значительной степени обуславливает создание форм развития. 
+					.comment__bloc
+						.comment__arrow.comment__arrow--prev
+							+svg('arrow')
+						.comment__pagination
+						.comment__arrow.comment__arrow--next
+							+svg('arrow')
+	.map
+		.map__container.container
+			.map__grid
+				.map__left
+					.map__unique
+						#map
+				.map__right
+					.map__unique.map__unique--tab
+						.tab
+							.tab__box
+								.tab__header
+									.tab__info.tab__info--active Забронировать столик
+									.tab__info Заказать услугу
+								.tab__cover
+									.tab__content
+										form.tab__form
+											.tab__group
+												.tab__title Контактные данные
+								//- .tab__content
+								//- 	.tab 1
+								//- .tab__content
+								//- 	.tab 1
+
+
+
+block script

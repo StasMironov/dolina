@@ -1,0 +1,124 @@
+.comment {
+    position: relative;
+    margin-top: 86px;
+
+    &__pic {
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+        border-radius: 35px;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__top {
+        display: flex;
+    }
+
+    &__pic {
+        margin-right: 17px;
+    }
+
+    &__name {
+        font-size: 23px;
+        line-height: 33px;
+        font-weight: 900;
+        letter-spacing: 0.5px;
+    }
+
+    &__date {
+        color: $gray-2;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 6px;
+    }
+
+    &__item {
+        min-height: 353px;
+        padding: 38px 35px 84px 35px;
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: white;
+    }
+
+    &__slider {
+        overflow: hidden;
+        padding: 15px 10px;
+        margin: 0 -10px;
+    }
+
+    &__box {
+        margin-top: 19px;
+    }
+
+    &__info {
+        padding-top: 3px;
+    }
+
+    &__content {
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &__pagination {
+        margin: 0 45px;
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: $orange;
+            opacity: 0.4;
+
+            &:not(:last-child) {
+                margin-right: 18px;
+            }
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+    }
+
+    &__arrow {
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $orange;
+        border-radius: 26px;
+        transition: .4s ease;
+        box-shadow: 2px 4px 7px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+
+        &:hover {
+            background-color: white;
+
+            .b-svg {
+                fill: $orange;
+            }
+        }
+
+        &--next {
+            transform: scale(-1, 1);
+        }
+
+        .b-svg {
+            width: 28px;
+            height: 15px;
+            fill: white;
+            transition: .4s ease;
+        }
+    }
+
+    &__bloc {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 55px;
+    }
+}

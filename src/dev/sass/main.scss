@@ -1,0 +1,164 @@
+@import "./node_modules/breakpoint-sass/stylesheets/_breakpoint.scss";
+@import "./normalize.scss";
+@import "./colors.scss";
+@import "./media.scss";
+@import "./fonts.scss";
+@import "./libs/libs.scss";
+@import "./btn.scss";
+
+* {
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+html {
+  height: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 21.6px;
+
+}
+
+body {
+  font-family: 'HelveticaNeueCyr', sans-serif;
+  color: $black;
+  font-weight: normal;
+  overflow: hidden;
+  background-color: #fff;
+  word-wrap: break-word;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: auto;
+  padding: 0 40px 0px;
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+.bgi {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+a {
+  display: inline;
+  color: inherit;
+  text-decoration: none;
+  transition: linear 0.3s;
+}
+
+.clearfix::after,
+.clearfix::before {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.title-1 {
+  font-size: 45px;
+  line-height: 64px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.title-2 {
+  font-size: 42px;
+  line-height: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+}
+
+.title-3 {
+  font-size: 40px;
+  line-height: 58px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1.6px;
+}
+
+.title-4 {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 52px;
+  letter-spacing: 1.6px;
+}
+
+.title-5 {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: bold;
+}
+
+.b-margin {
+  margin-top: 120px;
+}
+
+.b-link {
+  font-weight: bold;
+  text-decoration: underline;
+  transition: linear 0.3s;
+
+  &:hover {
+    color: #6E5F5B;
+  }
+
+  &:active {
+    color: #A98D7F;
+  }
+}
+
+.b-note {
+  font-style: italic;
+  font-weight: bold;
+
+  &__margin {
+    margin: 40px 0;
+  }
+
+  &__half-margin {
+    margin: 20px 0;
+  }
+}
+
+.b-bold {
+  font-weight: bold;
+}
+
+.b-svg {
+  width: auto;
+  height: auto;
+}
+
+@import "./components/map/tab.scss";
+@import "./components/map/map.scss";
+@import "./components/index/comment.scss";
+@import "./components/index/category.scss";
+@import "./components/index/set.scss";
+@import "./components/bildboard/bildboard.scss";
+@import "./components/elements.scss";
+@import "./components/index/offer.scss";

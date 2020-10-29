@@ -1,0 +1,49 @@
+.category {
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 35px;
+        margin-top: 25px;
+    }
+
+    &__items {
+        margin-top: -25px;
+        margin-left: -35px;
+    }
+
+    &__cover {
+        margin-top: 35px;
+    }
+
+    &__quote {
+        margin-top: 6px;
+        max-width: 626px;
+    }
+
+    .btn {
+        padding: 16px 30px 16px 34px;
+
+        &__ic {
+            width: 38px;
+            height: 38px;
+            margin-right: 14px;
+
+            .b-svg {
+                height: 100%;
+                width: 100%;
+                fill: $orange;
+                transition: .4s;
+            }
+        }
+
+        &__txt {
+            letter-spacing: .4px;
+        }
+
+        &:hover {
+            .b-svg {
+                fill: white;
+            }
+        }
+    }
+}
