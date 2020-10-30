@@ -4,9 +4,26 @@
     cursor: pointer;
     box-shadow: 2px 4px 7px rgba(0, 0, 0, 0.1);
     border-radius: 72px;
+    font-size: 14px;
+    line-height: 14px;
+    width: auto;
+    font-weight: 700;
 
 
+    &--submit {
+        padding: 16px 24px;
+        border: 1.5px solid $orange;
+        box-sizing: border-box;
+        border-radius: 71px;
+        background-color: white;
+        color: $orange;
 
+        &:hover {
+            background-color: $orange;
+            color: white;
+            border-color: $orange;
+        }
+    }
 
     &--big {
         padding: 23px 37px;
@@ -17,8 +34,8 @@
 
     &--small {
         padding: 12px 24px;
-        font-size: 14px;
-        line-height: 14px;
+        font-weight: 500;
+
 
         &:hover {
             background-color: white;
