@@ -35,6 +35,10 @@ body {
   margin: auto;
   padding: 0 40px 0px;
   box-sizing: border-box;
+
+  @media(max-width: 1024px) {
+    padding: 0 30px 0px;
+  }
 }
 
 img {
@@ -90,6 +94,10 @@ input::-ms-clear {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1.6px;
+
+  @media(max-width: 1024px) {
+    font-size: 38px;
+  }
 }
 
 .title-3 {
@@ -154,6 +162,7 @@ input::-ms-clear {
   height: auto;
 }
 
+@import "./components/index/dish.scss";
 @import "./components/map/tab.scss";
 @import "./components/map/map.scss";
 @import "./components/index/comment.scss";

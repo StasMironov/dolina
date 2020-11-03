@@ -7,7 +7,7 @@
     font-size: 14px;
     line-height: 14px;
     width: auto;
-    font-weight: 700;
+    font-weight: 500;
 
 
     &--submit {
@@ -26,7 +26,7 @@
     }
 
     &--big {
-        padding: 23px 37px;
+        padding: 23px 32px;
 
         font-size: 18PX;
         letter-spacing: .7px;
@@ -62,4 +62,11 @@
             color: white;
         }
     }
+
+    &--cart {
+        // box-shadow: none;
+        // border: 1.5px solid $orange;
+        // color: orange;
+    }
+
 }

@@ -7,6 +7,222 @@ const projectFunc = {
     // }
 }
 
+
+
+gsap.set(
+    $('.dish__box').find('.dish__image'),
+    {
+        scale: 0,
+        opacity: 0
+    }
+);
+gsap.set(
+    $('.dish__box:first-child').find('.dish__image'),
+    {
+        scale: 1,
+        opacity: 1
+    }
+);
+
+gsap.set(
+    $('.dish__article'),
+    {
+        y: -30,
+        opacity: 0
+    }
+);
+
+gsap.set(
+    $('.dish__article')[0],
+    {
+        y: 0,
+        opacity: 1
+    }
+);
+
+gsap.set(
+    $('.dish__text--word'),
+    {
+        y: -30,
+        opacity: 0
+    }
+);
+
+gsap.set(
+    $('.dish__text--word')[0],
+    {
+        y: 0,
+        opacity: 1
+    }
+);
+
+gsap.set(
+    $('.dish__price'),
+    {
+        x: -30,
+        opacity: 0
+    }
+);
+
+gsap.set(
+    $('.dish__price')[0],
+    {
+        x: 0,
+        opacity: 1
+    }
+);
+
+gsap.set(
+    $('.dish__box .btn--small'),
+    {
+        x: 30,
+        opacity: 0
+    }
+);
+
+gsap.set(
+    $('.dish__box .btn--small')[0],
+    {
+        x: 0,
+        opacity: 1
+    }
+);
+
+if ($('.dish-slider').exists()) {
+    let dishSlider = new Swiper('.dish-slider', {
+        slidesPerView: 1,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 400,
+        navigation: {
+            nextEl: '.dish__arr--next',
+            prevEl: '.dish__arr--prev',
+        },
+        on: {
+            // slideChangeTransitionStart: function () {
+            //     // console.log(this.activeIndex);
+            //     updatePag('.inner-slider .swiper-menu', this.activeIndex)
+            // },
+            slideChangeTransitionEnd: function () {
+                let timeline = gsap.timeline();
+
+                // console.log($('.dish__image')[this.activeIndex]);
+                let actIndex = this.activeIndex;
+                $('.dish__box').each(function (index) {
+                    if (index != actIndex) {
+                        gsap.set(
+                            $('.dish__image')[index],
+                            {
+                                scale: 0,
+                                opacity: 0
+                            }
+                        );
+
+                        gsap.set(
+                            $('.dish__text--word')[index],
+                            {
+                                y: -30,
+                                opacity: 0
+                            }
+                        );
+
+                        gsap.set(
+                            $('.dish__article')[index],
+                            {
+                                y: -30,
+                                opacity: 0
+                            }
+                        );
+
+                        gsap.set(
+                            $('.dish__price')[index],
+                            {
+                                x: -30,
+                                opacity: 0
+                            }
+                        );
+
+                        gsap.set(
+                            $('.dish__box .btn--small')[index],
+                            {
+                                x: 30,
+                                opacity: 0
+                            }
+                        );
+                    }
+                    else {
+                        let timeline = gsap.timeline();
+                        timeline
+                            .to(
+                                $('.dish__image')[index],
+                                {
+                                    scale: 1,
+                                    opacity: 1,
+                                    duration: 1
+                                }
+                            )
+
+                            .to(
+                                $('.dish__article')[index],
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
+                            )
+
+                            .to(
+                                $('.dish__text--word')[index],
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
+                            )
+
+                            .to(
+                                $('.dish__price')[index],
+                                {
+                                    opacity: 1,
+                                    x: 0,
+                                    duration: 0.3
+                                }
+                            )
+                            .to(
+                                $('.dish__box .btn--small')[index],
+                                {
+                                    x: 0,
+                                    opacity: 1,
+                                    duration: 0.3
+                                },
+                                '-=0.6'
+                            );
+                    }
+                });
+
+
+                // timeline
+                //     .fromTo(
+                //         '.dish__image',
+                //         {
+                //             opacity: 0,
+                //             scale: 0
+                //         },
+                //         {
+                //             scale: 1,
+                //             opacity: 1,
+                //             duration: 1,
+                //             delay: 0.5
+                //         }
+                //     );
+
+            },
+        },
+    });
+}
+
 let scene = document.getElementById('scene');
 let parallaxBildboard = new Parallax(scene, {
     hoverOnly: true,
@@ -16,6 +232,13 @@ let parallaxBildboard = new Parallax(scene, {
 let scene_comment = document.getElementById('scene_comment');
 
 let parallaxComment = new Parallax(scene_comment, {
+    hoverOnly: true,
+    relativeInput: true
+});
+
+//#scene_dish
+let sceneDish = document.getElementById('scene_dish');
+let parallaxDish = new Parallax(sceneDish, {
     hoverOnly: true,
     relativeInput: true
 });
@@ -127,10 +350,9 @@ for (let i = 0; i < tabContent.length; i++) {
     if (i != 0) {
         gsap.set(tabContent[i], {
             autoAlpha: 0,
-            //display: 'none',
+            display: 'none',
         });
     }
-
 }
 
 
@@ -140,18 +362,17 @@ function hideTabContent(a) {
         tabContent[i].classList.add('hide');
         tab[i].classList.remove('tab__info--active');
 
-
         timeline
             .fromTo(
                 tabContent[i],
                 {
                     autoAlpha: 1,
-                    // display: 'bloc',
+                    display: 'bloc',
                     xPercent: 0,
                 },
                 {
                     autoAlpha: 0,
-                    //display: 'none',
+                    display: 'none',
                     ease: 'power2.out',
                     xPercent: +100,
                 }
@@ -171,12 +392,12 @@ function showTabContent(b) {
                 tabContent[b],
                 {
                     autoAlpha: 0,
-                    // display: 'none',
+                    display: 'none',
                     xPercent: +100,
                 },
                 {
                     autoAlpha: 1,
-                    // display: 'block',
+                    display: 'block',
                     xPercent: 0,
                     duration: 1,
                     ease: "back"
@@ -202,46 +423,6 @@ info.addEventListener('click', function (event) {
     }
 });
 
-
-
-
-// for (let i = 0; i < tabsInfo.length; i++) {
-//     gsap.set(
-//         tabsContent[0],
-//         {
-//             xPercent: 0,
-//             opacity: 1
-//         }
-//     );
-
-//     gsap.set(
-//         tabsContent[1],
-//         {
-//             xPercent: +100,
-//             opacity: 0
-//         }
-//     );
-
-//     tabsInfo[i].onclick = function () {
-//         for (let j = 0; j < tabsContent.length; j++) {
-//             if (j == i) {
-//                 console.log(tabsContent[j]);
-//                 timeline
-//                     .from(
-//                         tabsContent[j],
-//                         {
-//                             xPercent: 0,
-//                             opacity: 1,
-//                             duration: 1,
-//                             ease: 'bounce'
-//                         }
-//                     );
-//                 // timeline.play();
-//             }
-
-//         }
-//     }
-// }
 
 
 
