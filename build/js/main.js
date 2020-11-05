@@ -3,9 +3,59 @@ jQuery.fn.exists = function () {
 }
 
 const projectFunc = {
-    // ObjAd: function () {
-    // }
+    objAd: function (element, place) {
+        if ($(element).exists()) {
+            $(element).each(function (index) {
+                let outEl = this;
+                $(place).append(outEl);
+                // $(this).remove();
+            });
+        }
+    },
+
+    objReturn: function (element, place) {
+        if ($(element).exists()) {
+            var t = '';
+            t = $(element).html();
+            return $(element);
+        }
+    }
 }
+
+let tempQuestion = projectFunc.objReturn(".offer__slider .btn");
+let сteatedQuestion = false;
+
+$(window).on('resize load', function () {
+    if ($(this).width() <= 600) {
+        projectFunc.objAd(".offer__slider .btn", "#offer__all");
+        сteatedQuestion = false;
+    }
+});
+
+
+//===========Truncate text=============
+
+function truncateText(bloc, qty) {
+    if (bloc.length > 0) {
+        let txtBloc = document.querySelectorAll(bloc);
+        for (let i = 0; i < txtBloc.length; i++) {
+            trc(txtBloc[i], qty);
+        }
+    }
+}
+
+function trc(txt, qty) {
+    let text = txt.textContent;
+    var sliced = text.slice(0, qty);
+    if (sliced.length < text.length) {
+        sliced += '...';
+    }
+
+    txt.textContent = sliced;
+}
+
+truncateText('.set__content', 60);
+truncateText('.offer__txt', 100);
 
 
 
@@ -88,6 +138,131 @@ gsap.set(
     }
 );
 
+if ($('.offer__slider').exists()) {
+    try {
+
+        const breakpoint = window.matchMedia('(min-width:601px)');
+
+        let mySwiper;
+
+        const breakpointChecker = function () {
+
+            // if larger viewport and multi-row layout needed
+            if (breakpoint.matches === true) {
+
+                // clean up old instances and inline styles when available
+                if (mySwiper !== undefined) mySwiper.destroy(true, true);
+
+                // or/and do nothing
+                return;
+
+                // else if a small viewport and single column layout needed
+            } else if (breakpoint.matches === false) {
+
+                // fire small viewport version of swiper
+                return enableSwiper();
+
+            }
+
+        };
+
+        const enableSwiper = function () {
+
+            mySwiper = new Swiper('.offer__slider', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                pagination: {
+                    el: '.offer__pagination',
+                    clickable: true,
+                },
+                speed: 400,
+
+            });
+
+        };
+
+
+
+        $(window).on('resize load', function () {
+            breakpoint.addListener(breakpointChecker);
+            breakpointChecker();
+        });
+
+
+        // let сteatedQuestion = false;
+
+        // var offerSlider = undefined;
+
+        // function initSwiper() {
+
+        //     var screenWidth = $(window).width();
+
+
+        //     if ((screenWidth <= (600)) && (offerSlider == undefined)) {
+        //         var offerSlider = new Swiper('.offer__slider', {
+        //             slidesPerView: 1,
+        //             spaceBetween: 10,
+        //             pagination: {
+        //                 el: '.offer__pagination',
+        //                 clickable: true,
+        //             },
+        //             speed: 400,
+        //         });
+
+        //         offerSlider.update();
+
+        //         console.log(offerSlider);
+        //     }
+        //     else if ((screenWidth > 600) && (offerSlider != undefined)) {
+
+        //         offerSlider.destroy(true, true);
+        //         offerSlider.update();
+        //         offerSlider = undefined;
+
+        //     }
+        // }
+
+        // initSwiper();
+
+        // $(window).resize(function () {
+        //     initSwiper();
+        // });
+    }
+
+    catch (err) {
+        console.log(err);
+    }
+
+    // $(window).on('resize load', function () {
+    // if ($(this).width() <= 600) {
+    //     projectFunc.objAd(".offer__slider .btn", "#offer__all");
+    //     сteatedQuestion = false;
+    // } else {
+    //     // if (!сteatedQuestion) {
+    //     //     $(tempQuestion).insertAfter('.news-today');
+    //     //     $("#include").children().remove();
+    //     //     сteatedQuestion = true;
+    //     // }
+    // }
+    // });
+
+    // $(window).on('resize load', function () {
+
+    //     var offerSlider = new Swiper('.offer__slider', {
+    //         slidesPerView: 1,
+    //         spaceBetween: 10,
+    //         init: false,
+    //         pagination: {
+    //             el: '.offer__pagination',
+    //             clickable: true,
+    //         },
+    //         speed: 400,
+    //     });
+    // }
+}
+
+
+
 if ($('.dish-slider').exists()) {
     let dishSlider = new Swiper('.dish-slider', {
         slidesPerView: 1,
@@ -101,10 +276,6 @@ if ($('.dish-slider').exists()) {
             prevEl: '.dish__arr--prev',
         },
         on: {
-            // slideChangeTransitionStart: function () {
-            //     // console.log(this.activeIndex);
-            //     updatePag('.inner-slider .swiper-menu', this.activeIndex)
-            // },
             slideChangeTransitionEnd: function () {
                 let timeline = gsap.timeline();
 
@@ -201,23 +372,6 @@ if ($('.dish-slider').exists()) {
                             );
                     }
                 });
-
-
-                // timeline
-                //     .fromTo(
-                //         '.dish__image',
-                //         {
-                //             opacity: 0,
-                //             scale: 0
-                //         },
-                //         {
-                //             scale: 1,
-                //             opacity: 1,
-                //             duration: 1,
-                //             delay: 0.5
-                //         }
-                //     );
-
             },
         },
     });
@@ -228,6 +382,21 @@ let parallaxBildboard = new Parallax(scene, {
     hoverOnly: true,
     relativeInput: true
 });
+
+$(window).on('resize load', function () {
+    if ($(this).width() <= 1024) {
+        parallaxBildboard.destroy();
+    }
+    else {
+        let parallaxBildboard = new Parallax(scene, {
+            hoverOnly: true,
+            relativeInput: true
+        });
+    }
+});
+
+
+
 
 let scene_comment = document.getElementById('scene_comment');
 

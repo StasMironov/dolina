@@ -1,11 +1,23 @@
 .set {
     margin-top: 88px;
 
+    @media(max-width: 1024px) {
+        margin-top: 55px;
+    }
+
+    @media(max-width: 600px) {
+        margin-top: 34px;
+    }
+
     &__cover {
         margin-top: 33px;
 
         @media(max-width: 1024px) {
             margin-top: 30px;
+        }
+
+        @media(max-width: 600px) {
+            margin-top: 49px
         }
     }
 
@@ -18,6 +30,10 @@
         @media(max-width: 1024px) {
             margin-top: -30px;
             margin-left: -30px;
+        }
+
+        @media(max-width: 600px) {
+            margin-left: 0;
         }
     }
 
@@ -40,6 +56,20 @@
             margin-top: 30px;
             min-height: 437px;
         }
+
+        @media(max-width: 600px) {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 0;
+            min-height: 357px;
+        }
+
+
+        &:not(:first-child) {
+            @media(max-width: 600px) {
+                margin-top: 15px;
+            }
+        }
     }
 
     &__top {
@@ -52,7 +82,15 @@
         padding: 18px 20px 26px;
 
         @media(max-width: 1024px) {
-            padding: 20px 30px 26px 30px;
+            padding: 18px 30px 26px;
+        }
+
+        @media(max-width: 640px) {
+            padding: 18px 20px 20px;
+        }
+
+        @media(max-width: 600px) {
+            padding: 17px 15px 20px;
         }
     }
 
@@ -61,18 +99,36 @@
         align-items: center;
         justify-content: space-between;
         margin-top: 30px;
+
+        @media(max-width: 1024px) {
+            margin-top: 25px;
+        }
+
+        @media(max-width: 600px) {
+            margin-top: 15px;
+        }
     }
 
     &__article {
         font-weight: 900;
         font-size: 18px;
         line-height: 26px;
+
+        @media(max-width: 1024px) {
+            font-size: 16px;
+            line-height: 23px;
+            letter-spacing: 0.4px;
+        }
     }
 
     &__content {
         font-size: 14px;
         line-height: 18px;
         margin-top: 8px;
+
+        @media(max-width: 1024px) {
+            line-height: 20px;
+        }
     }
 
     &__weight {
@@ -95,10 +151,13 @@
         margin-top: 6px;
         margin-top: 6px;
         max-width: 720px;
-        font-size: 16px;
 
         @media(max-width: 1024px) {
             margin-top: 1px;
+        }
+
+        @media(max-width: 600px) {
+            margin-top: 6px;
         }
     }
 
@@ -109,6 +168,10 @@
 
         @media(max-width: 1024px) {
             height: 217px;
+        }
+
+        @media(max-width: 600px) {
+            height: 196px;
         }
 
         img {
