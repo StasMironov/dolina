@@ -272,8 +272,12 @@ if ($('.dish-slider').exists()) {
         },
         speed: 400,
         navigation: {
-            nextEl: '.dish__arr--next',
-            prevEl: '.dish__arr--prev',
+            nextEl: '.dish .arr--next',
+            prevEl: '.dish .arr--prev',
+        },
+        pagination: {
+            el: '.dish__pagination',
+            clickable: true,
         },
         on: {
             slideChangeTransitionEnd: function () {

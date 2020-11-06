@@ -199,6 +199,60 @@ input::-ms-clear {
   height: auto;
 }
 
+.swiper-pagination-bullet {
+  background-color: $orange;
+  opacity: .4;
+
+  &:not(:last-child) {
+    margin-right: 18px;
+
+    @media(max-width: 600px) {
+      margin-right: 14px;
+    }
+  }
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.arr {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 26px;
+  transition: .4s ease;
+  box-shadow: 2px 4px 7px rgba(0, 0, 0, .1);
+  cursor: pointer;
+
+  @media(max-width: 600px) {
+    display: none;
+  }
+
+  &:hover {
+    background-color: #ff9f1c;
+
+    .b-svg {
+      fill: white;
+    }
+  }
+
+  .b-svg {
+    width: 28px;
+    height: 15px;
+    fill: #ff9f1c;
+    transition: .4s ease;
+  }
+
+  &--next {
+    transform: scale(-1, 1);
+  }
+}
+
 @import "./components/index/dish.scss";
 @import "./components/map/tab.scss";
 @import "./components/map/map.scss";
