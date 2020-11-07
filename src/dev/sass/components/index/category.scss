@@ -1,16 +1,30 @@
 .category {
     margin-top: 85px;
 
+    @media(max-width: 1024px) {
+        margin-top: 17px;
+    }
+
     &__item {
         display: inline-flex;
         align-items: center;
         margin-left: 35px;
         margin-top: 25px;
+
+        @media(max-width: 1024px) {
+            margin-left: 25px;
+        }
     }
 
     &__items {
+        min-width: 1123px;
         margin-top: -25px;
         margin-left: -35px;
+        padding-bottom: 10px;
+
+        @media(max-width: 1024px) {
+            margin-left: -25px;
+        }
     }
 
     &__cover {
@@ -20,15 +34,30 @@
     &__quote {
         margin-top: 6px;
         max-width: 626px;
+
+        @media(max-width: 1024px) {
+            font-size: 16px;
+            line-height: 21px;
+        }
     }
 
     .btn {
         padding: 16px 30px 16px 34px;
 
+        @media(max-width: 1024px) {
+            padding: 16px 28px 16px 29px;
+        }
+
         &__ic {
             width: 38px;
             height: 38px;
             margin-right: 14px;
+
+            @media(max-width: 1024px) {
+                width: 22px;
+                height: 22px;
+                margin-right: 8px;
+            }
 
             .b-svg {
                 height: 100%;
@@ -48,5 +77,9 @@
                 fill: white;
             }
         }
+    }
+
+    .mCSB_scrollTools .mCSB_draggerContainer {
+        margin-top: 10px;
     }
 }

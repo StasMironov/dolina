@@ -32,6 +32,17 @@ $(window).on('resize load', function () {
     }
 });
 
+$(window).on('resize load', function () {
+    if ($(this).width() <= 1235) {
+        if ($('.category__cover').exists()) {
+            $('.category__cover').mCustomScrollbar({
+                theme: 'minimal-dark',
+                axis: "x"
+            });
+        }
+    }
+});
+
 
 //===========Truncate text=============
 
@@ -56,8 +67,6 @@ function trc(txt, qty) {
 
 truncateText('.set__content', 60);
 truncateText('.offer__txt', 100);
-
-
 
 gsap.set(
     $('.dish__box').find('.dish__image'),
@@ -176,89 +185,19 @@ if ($('.offer__slider').exists()) {
                     clickable: true,
                 },
                 speed: 400,
-
             });
 
         };
-
-
 
         $(window).on('resize load', function () {
             breakpoint.addListener(breakpointChecker);
             breakpointChecker();
         });
-
-
-        // let сteatedQuestion = false;
-
-        // var offerSlider = undefined;
-
-        // function initSwiper() {
-
-        //     var screenWidth = $(window).width();
-
-
-        //     if ((screenWidth <= (600)) && (offerSlider == undefined)) {
-        //         var offerSlider = new Swiper('.offer__slider', {
-        //             slidesPerView: 1,
-        //             spaceBetween: 10,
-        //             pagination: {
-        //                 el: '.offer__pagination',
-        //                 clickable: true,
-        //             },
-        //             speed: 400,
-        //         });
-
-        //         offerSlider.update();
-
-        //         console.log(offerSlider);
-        //     }
-        //     else if ((screenWidth > 600) && (offerSlider != undefined)) {
-
-        //         offerSlider.destroy(true, true);
-        //         offerSlider.update();
-        //         offerSlider = undefined;
-
-        //     }
-        // }
-
-        // initSwiper();
-
-        // $(window).resize(function () {
-        //     initSwiper();
-        // });
     }
 
     catch (err) {
         console.log(err);
     }
-
-    // $(window).on('resize load', function () {
-    // if ($(this).width() <= 600) {
-    //     projectFunc.objAd(".offer__slider .btn", "#offer__all");
-    //     сteatedQuestion = false;
-    // } else {
-    //     // if (!сteatedQuestion) {
-    //     //     $(tempQuestion).insertAfter('.news-today');
-    //     //     $("#include").children().remove();
-    //     //     сteatedQuestion = true;
-    //     // }
-    // }
-    // });
-
-    // $(window).on('resize load', function () {
-
-    //     var offerSlider = new Swiper('.offer__slider', {
-    //         slidesPerView: 1,
-    //         spaceBetween: 10,
-    //         init: false,
-    //         pagination: {
-    //             el: '.offer__pagination',
-    //             clickable: true,
-    //         },
-    //         speed: 400,
-    //     });
-    // }
 }
 
 
@@ -398,8 +337,6 @@ $(window).on('resize load', function () {
         });
     }
 });
-
-
 
 
 let scene_comment = document.getElementById('scene_comment');

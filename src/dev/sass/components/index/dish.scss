@@ -38,7 +38,7 @@
         right: 0;
         z-index: -1;
 
-        @media(max-width: 600px) {
+        @media(max-width: 1023px) {
             display: none;
         }
     }
@@ -93,13 +93,14 @@
 
         &:after,
         &:before {
+            display: inline-block;
             position: absolute;
             content: none;
             width: 100%;
             height: 52px;
             background-repeat: no-repeat;
 
-            @media(max-width: 500px) {
+            @media(max-width: 1023px) {
                 content: '';
             }
         }
@@ -108,13 +109,41 @@
             background-image: url('../img/decor/d3.svg');
             top: 112px;
             right: -142px;
+
+            @media(max-width: 1023px) {
+                top: 123px;
+                right: -291px;
+                height: 95px;
+            }
+
+            @media(max-width: 767px) {
+                right: -205px;
+            }
+
+            @media(max-width: 600px) {
+                top: 122px;
+                right: -72px;
+                height: 95px;
+                z-index: -1;
+                width: 76%;
+                background-size: contain;
+            }
         }
 
         &:before {
-            background-image: url('../img/decor/d4.svg');
-            top: 150px;
-            right: -142px;
+            // background-image: url('../img/decor/d3.png');
+            // top: 150px;
+            // right: -142px;
+            // background-color: red;
+
+            // @media(max-width: 1023px) {
+            //     top: 123px;
+            //     right: -291px;
+            //     height: 95px;
+            // }
         }
+
+
     }
 
     &__left {
@@ -133,6 +162,8 @@
     }
 
     &__right {
+        position: relative;
+
         @media(max-width: 1300px) {
             max-width: 840px;
             width: 100%;
@@ -148,6 +179,25 @@
             margin: 0;
             max-width: 100%;
             margin-top: 24px;
+        }
+
+        &:after {
+            @media(max-width: 1023px) {
+                position: absolute;
+                content: "";
+                height: 177px;
+                background-image: url(../img/decor/d4.svg);
+                top: 179px;
+                right: -298px;
+                width: 100%;
+                z-index: -1;
+            }
+
+            @media(max-width: 767px) {
+                right: -129px;
+                height: 100px;
+                background-repeat: no-repeat;
+            }
         }
     }
 
@@ -230,11 +280,11 @@
         @media(max-width: 1023px) {
             margin: 0;
             min-width: 480px;
-            margin-left: -61px;
-            margin-right: 5px;
+            margin-left: -66px;
+            margin-right: 11px;
         }
 
-        @media(max-width: 768px) {
+        @media(max-width: 767px) {
             margin-left: -150px;
         }
 

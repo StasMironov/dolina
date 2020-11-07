@@ -136,8 +136,9 @@ input::-ms-clear {
   letter-spacing: 1.6px;
 
   @media(max-width: 1024px) {
-    font-size: 28px;
-    line-height: 28px;
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: 1.4px;
   }
 
   @media(max-width: 600px) {
@@ -151,6 +152,10 @@ input::-ms-clear {
   font-size: 36px;
   line-height: 52px;
   letter-spacing: 1.6px;
+
+  @media(max-width: 1024px) {
+    line-height: 50px;
+  }
 }
 
 .title-5 {
