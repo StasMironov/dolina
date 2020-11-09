@@ -1,0 +1,10 @@
+.mf-scroll {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    transition: .2s ease-out;
+    min-height: initial !important;
+    box-shadow: 0 2px 12px rgba(51, 51, 51, .55);
+}

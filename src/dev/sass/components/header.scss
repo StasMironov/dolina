@@ -1,0 +1,89 @@
+.header {
+    min-height: 74px;
+    position: relative;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        max-width: 118px;
+        width: 100%;
+        height: 40px;
+
+        .b-svg {
+            height: 100%;
+            width: 100%;
+            fill: $orange;
+        }
+    }
+
+    &__basket {
+        max-width: 41px;
+        height: 34px;
+        cursor: pointer;
+
+        .b-svg {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__link {
+        font-size: 15px;
+
+        &:hover {
+            color: $orange;
+        }
+
+        &:not(:last-child) {
+            margin-right: 45px;
+        }
+    }
+
+    &__wrapper {
+        padding: 16px 0;
+    }
+
+    &__phono {
+        font-size: 21px;
+        display: block;
+        letter-spacing: -0.1px;
+        text-align: right;
+        color: $orange;
+    }
+
+    &__adres {
+        font-size: 10px;
+    }
+
+    &__phono,
+    &__adres {
+        display: block;
+    }
+
+    &__bloc {
+        display: flex;
+        align-items: center;
+    }
+
+    &__info {
+        margin-right: 30px;
+    }
+
+    &__menu {
+        margin-left: 115px;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        height: auto;
+        width: 100%;
+        z-index: 212;
+        background-color: #fff;
+        min-height: 74px;
+    }
+}

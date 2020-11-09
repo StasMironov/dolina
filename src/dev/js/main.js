@@ -32,6 +32,26 @@ $(window).on('resize load', function () {
     }
 });
 
+if ($('.header__inner').exists) {
+    try {
+        let $window = $(window),
+            $target = $(".header__inner"),
+            $h = $target.offset().top;
+        $window.on('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > $h) {
+                $target.addClass("mf-scroll");
+                return;
+            } else {
+                $target.removeClass("mf-scroll");
+            }
+            return;
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 $(window).on('resize load', function () {
     if ($(this).width() <= 1235) {
         if ($('.category__cover').exists()) {
