@@ -254,9 +254,11 @@ block content
 				.elements__item(data-depth="0.09")
 					img(src="./img/elements/el6.png")
 				.elements__item(data-depth="0.3")
-					img(src="./img/elements/el7.png")
+					img(src="./img/elements/el8.png")
 				.elements__item(data-depth="0.1")
 					img(src="./img/elements/el8.png")
+				.elements__item(data-depth="0.09")
+					img(src="./img/elements/el6.png")
 		.comment__container.container
 			.comment__title.title-4 Отзывы <br> наших клиентов
 			.comment__box
@@ -289,11 +291,17 @@ block content
 										.comment__name Екатерина Иванова
 										.comment__date 21.05.2020
 								.comment__content Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании соответствующий условий активизации. Товарищи! дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке соответствующий условий активизации. Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности в значительной степени обуславливает создание форм развития. 
-					.comment__bloc
-						.comment__arrow.comment__arrow--prev
+					//- .comment__bloc
+					//- 	.comment__arrow.comment__arrow--prev
+					//- 		+svg('arrow')
+					//- 	.comment__pagination
+					//- 	.comment__arrow.comment__arrow--next
+					//- 		+svg('arrow')
+					.arrow
+						.arr.arr--prev
 							+svg('arrow')
-						.comment__pagination
-						.comment__arrow.comment__arrow--next
+						.pagination
+						.arr.arr--next
 							+svg('arrow')
 	.map
 		.map__container.container
@@ -319,27 +327,27 @@ block content
 															.tab__label Имя*
 															input(type="text" required).tab__field
 														.tab__unit
-															.tab__label Имя*
+															.tab__label Фамилия*
 															input(type="text" required).tab__field
 													.tab__warapper
 														.tab__unit
-															.tab__label Имя*
+															.tab__label Адрес электронной почты*
 															input(type="text" required).tab__field
 														.tab__unit
-															.tab__label Имя*
+															.tab__label Контактный телефон
 															input(type="text" required).tab__field
 											.tab__group
 												.tab__title Детали бронирования
 												.tab__bloc
 													.tab__warapper.tab__warapper--detail
 														.tab__unit
-															.tab__label Имя*
+															.tab__label Дата*
 															input(type="text" required).tab__field
 														.tab__unit
-															.tab__label Имя*
+															.tab__label Время*
 															input(type="text" required).tab__field
 														.tab__unit
-															.tab__label Имя*
+															.tab__label Количество персон*
 															input(type="text" required).tab__field
 
 													<label class="tab__checkbox">

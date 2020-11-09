@@ -156,6 +156,11 @@ input::-ms-clear {
   @media(max-width: 1024px) {
     line-height: 50px;
   }
+
+  @media(max-width: 600px) {
+    line-height: 33px;
+    font-size: 25px;
+  }
 }
 
 .title-5 {
@@ -255,6 +260,28 @@ input::-ms-clear {
 
   &--next {
     transform: scale(-1, 1);
+  }
+}
+
+.arrow {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: auto;
+  height: 100%;
+  align-items: center;
+
+  .dish__arr--next.swiper-button-disabled,
+  .dish__arr--prev.swiper-button-disabled {
+    opacity: 0;
+  }
+}
+
+.pagination {
+  margin: 0 35px;
+
+  @media(max-width: 1023px) {
+    display: flex;
   }
 }
 

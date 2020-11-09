@@ -6,11 +6,22 @@
         margin-top: 50px;
     }
 
+    @media(max-width: 600px) {
+        margin-top: 30px;
+    }
+
     &__pic {
         width: 70px;
         height: 70px;
         overflow: hidden;
         border-radius: 35px;
+        margin-right: 17px;
+
+        @media(max-width: 600px) {
+            margin-right: 12px;
+            width: 50px;
+            height: 50px;
+        }
 
         img {
             height: 100%;
@@ -23,15 +34,16 @@
         display: flex;
     }
 
-    &__pic {
-        margin-right: 17px;
-    }
-
     &__name {
         font-size: 23px;
         line-height: 33px;
         font-weight: 900;
         letter-spacing: 0.5px;
+
+        @media(max-width: 600px) {
+            font-size: 16px;
+            line-height: 21px;
+        }
     }
 
     &__date {
@@ -39,6 +51,11 @@
         font-size: 14px;
         line-height: 20px;
         margin-top: 6px;
+
+        @media(max-width: 600px) {
+            font-size: 10px;
+            line-height: 13px;
+        }
     }
 
     &__item {
@@ -46,6 +63,15 @@
         padding: 38px 35px 84px 35px;
         box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
         background-color: white;
+
+        @media(max-width: 768px) {
+            padding: 32px 30px 63px;
+            min-height: initial;
+        }
+
+        @media(max-width: 600px) {
+            padding: 25px 15px 22px;
+        }
     }
 
     &__slider {
@@ -60,15 +86,25 @@
 
     &__info {
         padding-top: 3px;
+
+        @media(max-width: 600px) {
+            padding-top: 7px;
+        }
     }
 
     &__content {
         margin-top: 20px;
         font-size: 14px;
         line-height: 20px;
+
+        @media(max-width: 600px) {
+            font-size: 12px;
+            line-height: 18px;
+            margin-top: 14px;
+        }
     }
 
-    &__pagination {
+    .pagination {
         margin: 0 45px;
 
         .swiper-pagination-bullet {
@@ -87,37 +123,19 @@
         }
     }
 
-    &__arrow {
-        width: 52px;
-        height: 52px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $orange;
-        border-radius: 26px;
-        transition: .4s ease;
-        box-shadow: 2px 4px 7px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
+    .arrow {
+        margin-top: 54px;
 
-        &:hover {
-            background-color: white;
-
-            .b-svg {
-                fill: $orange;
-            }
+        @media(max-width: 1024px) {
+            margin-top: 40px;
         }
 
-        &--next {
-            transform: scale(-1, 1);
-        }
-
-        .b-svg {
-            width: 28px;
-            height: 15px;
-            fill: white;
-            transition: .4s ease;
+        @media(max-width: 600px) {
+            margin-top: 30px;
         }
     }
+
+
 
     &__bloc {
         display: flex;

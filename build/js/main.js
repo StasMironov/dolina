@@ -69,79 +69,69 @@ truncateText('.set__content', 60);
 truncateText('.offer__txt', 100);
 
 gsap.set(
-    $('.dish__box').find('.dish__image'),
-    {
+    $('.dish__box').find('.dish__image'), {
         scale: 0,
         opacity: 0
     }
 );
 gsap.set(
-    $('.dish__box:first-child').find('.dish__image'),
-    {
+    $('.dish__box:first-child').find('.dish__image'), {
         scale: 1,
         opacity: 1
     }
 );
 
 gsap.set(
-    $('.dish__article'),
-    {
+    $('.dish__article'), {
         y: -30,
         opacity: 0
     }
 );
 
 gsap.set(
-    $('.dish__article')[0],
-    {
+    $('.dish__article')[0], {
         y: 0,
         opacity: 1
     }
 );
 
 gsap.set(
-    $('.dish__text--word'),
-    {
+    $('.dish__text--word'), {
         y: -30,
         opacity: 0
     }
 );
 
 gsap.set(
-    $('.dish__text--word')[0],
-    {
+    $('.dish__text--word')[0], {
         y: 0,
         opacity: 1
     }
 );
 
 gsap.set(
-    $('.dish__price'),
-    {
+    $('.dish__price'), {
         x: -30,
         opacity: 0
     }
 );
 
 gsap.set(
-    $('.dish__price')[0],
-    {
+    $('.dish__price')[0], {
         x: 0,
         opacity: 1
     }
 );
 
 gsap.set(
-    $('.dish__box .btn--small'),
-    {
+    $('.dish__box .btn--small'), {
         x: 30,
         opacity: 0
     }
 );
 
 gsap.set(
-    $('.dish__box .btn--small')[0],
-    {
+    $('.dish__box .btn--small')[0], {
         x: 0,
         opacity: 1
     }
@@ -193,9 +183,7 @@ if ($('.offer__slider').exists()) {
             breakpoint.addListener(breakpointChecker);
             breakpointChecker();
         });
-    }
-
-    catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }
@@ -227,51 +215,44 @@ if ($('.dish-slider').exists()) {
                 $('.dish__box').each(function (index) {
                     if (index != actIndex) {
                         gsap.set(
-                            $('.dish__image')[index],
-                            {
+                            $('.dish__image')[index], {
                                 scale: 0,
                                 opacity: 0
                             }
                         );
 
                         gsap.set(
-                            $('.dish__text--word')[index],
-                            {
+                            $('.dish__text--word')[index], {
                                 y: -30,
                                 opacity: 0
                             }
                         );
 
                         gsap.set(
-                            $('.dish__article')[index],
-                            {
+                            $('.dish__article')[index], {
                                 y: -30,
                                 opacity: 0
                             }
                         );
 
                         gsap.set(
-                            $('.dish__price')[index],
-                            {
+                            $('.dish__price')[index], {
                                 x: -30,
                                 opacity: 0
                             }
                         );
 
                         gsap.set(
-                            $('.dish__box .btn--small')[index],
-                            {
+                            $('.dish__box .btn--small')[index], {
                                 x: 30,
                                 opacity: 0
                             }
                         );
-                    }
-                    else {
+                    } else {
                         let timeline = gsap.timeline();
                         timeline
                             .to(
-                                $('.dish__image')[index],
-                                {
+                                $('.dish__image')[index], {
                                     scale: 1,
                                     opacity: 1,
                                     duration: 1
@@ -279,8 +260,7 @@ if ($('.dish-slider').exists()) {
                             )
 
                             .to(
-                                $('.dish__article')[index],
-                                {
+                                $('.dish__article')[index], {
                                     opacity: 1,
                                     y: 0,
                                     duration: 0.3
@@ -288,8 +268,7 @@ if ($('.dish-slider').exists()) {
                             )
 
                             .to(
-                                $('.dish__text--word')[index],
-                                {
+                                $('.dish__text--word')[index], {
                                     opacity: 1,
                                     y: 0,
                                     duration: 0.3
@@ -297,16 +276,14 @@ if ($('.dish-slider').exists()) {
                             )
 
                             .to(
-                                $('.dish__price')[index],
-                                {
+                                $('.dish__price')[index], {
                                     opacity: 1,
                                     x: 0,
                                     duration: 0.3
                                 }
                             )
                             .to(
-                                $('.dish__box .btn--small')[index],
-                                {
+                                $('.dish__box .btn--small')[index], {
                                     x: 0,
                                     opacity: 1,
                                     duration: 0.3
@@ -329,8 +306,7 @@ let parallaxBildboard = new Parallax(scene, {
 $(window).on('resize load', function () {
     if ($(this).width() <= 1024) {
         parallaxBildboard.destroy();
-    }
-    else {
+    } else {
         let parallaxBildboard = new Parallax(scene, {
             hoverOnly: true,
             relativeInput: true
@@ -388,28 +364,44 @@ if ($('.comment__slider').exists()) {
         spaceBetween: 40,
         // touchRatio: false,
         pagination: {
-            el: '.comment__pagination',
+            el: '.comment .pagination',
             clickable: true,
         },
         speed: 400,
         navigation: {
-            nextEl: '.comment__arrow.comment__arrow--next',
-            prevEl: '.comment__arrow.comment__arrow--prev',
+            nextEl: '.comment .arr--next',
+            prevEl: '.comment .arr--prev',
+        },
+        autoHeight: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20
+            },
+            769: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            1280: {
+                slidesPerView: 2,
+                spaceBetween: 40
+            }
         }
     });
 }
 
 if ($('#map').exists()) {
     ymaps.ready(init);
+
     function init() {
         // Создание карты.
         var myMap = new ymaps.Map("map", {
-            // Координаты центра карты.
-            // Порядок по умолчанию: «широта, долгота».
-            center: [57.098137, 65.613029],
-            zoom: 17,
-            controls: []
-        }),
+                // Координаты центра карты.
+                // Порядок по умолчанию: «широта, долгота».
+                center: [57.098137, 65.613029],
+                zoom: 17,
+                controls: []
+            }),
             myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
                 // hintContent: 'Собственный значок метки',
                 // balloonContent: 'Это красивая метка'
@@ -474,13 +466,11 @@ function hideTabContent(a) {
 
         timeline
             .fromTo(
-                tabContent[i],
-                {
+                tabContent[i], {
                     autoAlpha: 1,
                     display: 'bloc',
                     xPercent: 0,
-                },
-                {
+                }, {
                     autoAlpha: 0,
                     display: 'none',
                     ease: 'power2.out',
@@ -499,13 +489,11 @@ function showTabContent(b) {
         tab[b].classList.add('tab__info--active');
         timeline
             .fromTo(
-                tabContent[b],
-                {
+                tabContent[b], {
                     autoAlpha: 0,
                     display: 'none',
                     xPercent: +100,
-                },
-                {
+                }, {
                     autoAlpha: 1,
                     display: 'block',
                     xPercent: 0,
@@ -532,11 +520,3 @@ info.addEventListener('click', function (event) {
         }
     }
 });
-
-
-
-
-
-
-
-
