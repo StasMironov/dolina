@@ -1,17 +1,16 @@
-.overlay-menu {
+.overlay-basket {
     position: fixed;
     bottom: 0;
     left: 0;
     top: 0;
     right: 0;
     overflow: auto;
-    opacity: 1;
-    transition: .2s .1s linear;
-    background: rgba(0, 0, 0, .5);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
     zoom: 1;
     z-index: 700;
     visibility: hidden;
+    overflow: hidden !important;
 
     &--show {
         opacity: 1;

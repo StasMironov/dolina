@@ -14,7 +14,7 @@
 html {
   height: 100%;
   min-width: 320px;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   font-size: 16px;
   line-height: 21.6px;
 
@@ -31,6 +31,7 @@ body {
   overflow: hidden;
   background-color: #fff;
   word-wrap: break-word;
+  overflow-x: hidden !important;
 
 
 }
@@ -285,6 +286,58 @@ input::-ms-clear {
   }
 }
 
+.quantity {
+  display: flex;
+  align-items: center;
+  max-width: 90px;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid $gray-4;
+  padding: 10px 16px;
+  height: 33px;
+  border-radius: 15px;
+
+  &__field {
+    padding: 0;
+    min-width: 39px;
+    max-width: 39px;
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+    text-align: center;
+    color: $orange;
+    pointer-events: none;
+  }
+
+  button {
+    display: block;
+    width: 10px;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+
+    .b-svg {
+      height: 10px;
+      width: 10px;
+      display: block;
+      fill: orange;
+      transition: .2s ease;
+    }
+
+    &:hover {
+      .b-svg {
+        fill: $black;
+      }
+    }
+  }
+}
+
+.locked {
+  overflow: hidden !important;
+  height: 100%;
+}
+
 @import "./components/index/dish.scss";
 @import "./components/map/tab.scss";
 @import "./components/map/map.scss";
@@ -297,3 +350,4 @@ input::-ms-clear {
 @import "./components/header.scss";
 @import "./components/helper.scss";
 @import "./components/overlay.scss";
+@import "./components/popup.scss";
