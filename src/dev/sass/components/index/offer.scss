@@ -1,6 +1,14 @@
 .offer {
     margin-top: 85px;
 
+    @media(max-width: 1024px) {
+        margin-top: 52px;
+    }
+
+    @media(max-width: 600px) {
+        margin-top: 39px;
+    }
+
     &__txt {
         @media(max-width: 600px) {
             margin-top: 14px;
@@ -61,14 +69,17 @@
         font-weight: normal;
 
         @media(max-width: 1024px) {
+            font-size: 28px;
             line-height: 28px;
             margin-bottom: 9px;
         }
 
         @media(max-width: 600px) {
             letter-spacing: 1.3px;
-            max-width: 276px;
+            max-width: 330px;
             margin: 0 auto;
+            font-size: 25px;
+            line-height: 27px;
         }
 
     }

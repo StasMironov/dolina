@@ -40,6 +40,10 @@
 
         &:not(:last-child) {
             margin-right: 45px;
+
+            @media(max-width: 1235px) {
+                margin-right: 45px;
+            }
         }
     }
 

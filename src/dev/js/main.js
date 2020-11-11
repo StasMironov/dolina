@@ -94,7 +94,8 @@ function showBasket() {
             {
                 scale: 1,
                 ease: "power2.out",
-                stagger: 0.4
+                stagger: 0.4,
+                autoAlpha: 1
             }
         )
         .to(
@@ -113,6 +114,13 @@ function showBasket() {
                 autoAlpha: 1,
                 xPercent: 0
             }
+        )
+        .to(
+            '.popup-basket .btn',
+            {
+                autoAlpha: 1,
+                duration: 0.3
+            }
         );
     $('html').addClass('locked');
     document.body.style.overflow = 'hidden';
@@ -122,6 +130,12 @@ function showBasket() {
 }
 
 function hideBasket() {
+
+    gsap.set(
+        ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'],
+        { autoAlpha: 0 }
+    );
+
     gsap.set(
         ['.popup-basket__icon', '.popup-basket__title'],
         {
@@ -378,6 +392,7 @@ if ($('.dish-slider').exists()) {
     let dishSlider = new Swiper('.dish-slider', {
         slidesPerView: 1,
         effect: 'fade',
+        loop: true,
         fadeEffect: {
             crossFade: true
         },
@@ -542,6 +557,7 @@ if ($('.comment__slider').exists()) {
     let commentSlider = new Swiper('.comment__slider', {
         slidesPerView: 2,
         spaceBetween: 40,
+        loop: true,
         // touchRatio: false,
         pagination: {
             el: '.comment .pagination',

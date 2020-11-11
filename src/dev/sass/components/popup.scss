@@ -5,7 +5,7 @@
     right: 0;
     opacity: 0;
     //visibility: hidden;
-    // width: 61vw;
+    width: 100%;
     max-width: 576px;
     min-height: 100vh;
     padding: 25px 44px 45px 42px;
@@ -94,15 +94,35 @@
     }
 
     &__hide {
-        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 48px;
         height: 48px;
         position: absolute;
         background-color: white;
         border-radius: 50%;
-        cursor: pointer;
         left: -68px;
         top: 12px;
+        cursor: pointer;
+
+        &:hover .close {
+            transform: rotateX(180deg) rotateY(180deg);
+        }
+
+        &:hover .close:before,
+        &:hover .close:after {
+            background-color: $orange;
+        }
+    }
+
+    .close {
+        width: 25px;
+        height: 25px;
+        position: relative;
+
+        transition: .4s ease-out;
+        transform-origin: center;
 
         &:after,
         &:before {
@@ -133,6 +153,8 @@
         height: 17px;
         margin-left: auto;
         cursor: pointer;
+        transform: rotate(-90deg);
+        transition: .4s ease-out;
 
         &:after,
         &:before {
@@ -146,6 +168,7 @@
             bottom: 0;
             top: 0;
             margin: auto;
+            transition: .4s ease-out;
         }
 
         &:after {
@@ -154,6 +177,15 @@
 
         &:before {
             transform: rotate(-45deg);
+        }
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+
+        &:hover:before,
+        &:hover:after {
+            background-color: $orange;
         }
     }
 
@@ -191,5 +223,12 @@
 
     .quantity {
         margin-top: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 32px;
+        padding: 25px 32px;
     }
 }

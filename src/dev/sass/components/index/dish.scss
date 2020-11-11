@@ -6,6 +6,10 @@
         margin-top: 24px;
     }
 
+    @media(max-width: 600px) {
+        margin-top: 34px;
+    }
+
     &__title {
         @media(max-width: 1023px) {
             font-size: 36px;

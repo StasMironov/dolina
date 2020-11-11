@@ -198,4 +198,14 @@
             }
         }
     }
+
+    .btn--big {
+        display: none;
+        width: 100%;
+        margin-top: 20px;
+
+        @media(max-width: 600px) {
+            display: block;
+        }
+    }
 }

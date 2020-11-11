@@ -106,8 +106,8 @@ input::-ms-clear {
 
   @media(max-width: 600px) {
     font-size: 29px;
-    line-height: 26px;
-    letter-spacing: 1.6px;
+    line-height: 34px;
+    letter-spacing: 0px;
   }
 }
 
@@ -335,8 +335,10 @@ input::-ms-clear {
 
 .locked {
   overflow: hidden !important;
-  height: 100%;
+  padding: 0 calc(17px - (100vw - 100%)) 0 0;
 }
+
+
 
 @import "./components/index/dish.scss";
 @import "./components/map/tab.scss";
