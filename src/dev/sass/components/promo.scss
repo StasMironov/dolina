@@ -1,0 +1,36 @@
+.promo {
+    position: relative;
+    padding-right: 117px;
+    height: 46px;
+    margin-top: 27px;
+
+    &__field {
+        height: 46px;
+        border: 1px solid $gray-5;
+        border-radius: 30px;
+        padding-left: 23px;
+        padding-right: 117px;
+        width: 100%;
+        position: absolute;
+        color: $gray-5;
+        font-size: 14px;
+        letter-spacing: 0.4px;
+    }
+
+    &__btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        min-width: 117px;
+        background-color: white;
+        padding: 16px 23px 16px 19px;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        border: 1px solid $orange;
+        color: $orange;
+    }
+}

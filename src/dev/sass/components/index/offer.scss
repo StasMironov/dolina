@@ -10,6 +10,8 @@
     }
 
     &__txt {
+        font-weight: 500;
+
         @media(max-width: 600px) {
             margin-top: 14px;
         }
@@ -66,7 +68,7 @@
         margin-bottom: 15px;
         max-width: 415px;
         text-transform: initial;
-        font-weight: normal;
+        font-weight: 700;
 
         @media(max-width: 1024px) {
             font-size: 28px;

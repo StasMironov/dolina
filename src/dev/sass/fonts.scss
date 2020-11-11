@@ -1,4 +1,15 @@
 @font-face {
+    font-family: 'HelveticaNeueCyr-Roman';
+    src: url('../fonts/HelveticaNeueCyr-Roman.eot');
+    src: local('HelveticaNeueCyr-Roman'),
+        url('../fonts/Helvetica/HelveticaNeueCyr-Roman.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Helvetica/HelveticaNeueCyr-Roman.woff') format('woff'),
+        url('../fonts/Helvetica/HelveticaNeueCyr-Roman.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'HelveticaNeueCyr';
     src: url('../fonts/Helvetica/');
     src: local('HelveticaNeueCyr-Medium'),
@@ -6,6 +17,17 @@
         url('../fonts/Helvetica/HelveticaNeueCyr-Medium.woff') format('woff'),
         url('../fonts/Helvetica/HelveticaNeueCyr-Medium.ttf') format('truetype');
     font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueCyr';
+    src: url('../fonts/HelveticaNeueCyr-Bold.eot');
+    src: local('HelveticaNeueCyr-Bold'),
+        url('../fonts/Helvetica/HelveticaNeueCyr-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Helvetica/HelveticaNeueCyr-Bold.woff') format('woff'),
+        url('../fonts/Helvetica/HelveticaNeueCyr-Bold.ttf') format('truetype');
+    font-weight: 700;
     font-style: normal;
 }
 

@@ -6,11 +6,85 @@ block variables
 	- var setQuote = 1;
 
 block content
-	.basket
-		.basket__container
+	.basket.mf-margin
+		.basket__container.container
 			.basket__title.title-1 Корзина
 			.basket__quote Идейные соображения высшего порядка, а также сложившаяся структура организации требуют от нас анализа модели развития.
-			.basket__items
-
-
+			.basket__cover
+				.basket__items
+					.basket__item
+						.basket__pic
+							img(src="./img/basket/pic.jpg" alt="")
+						.basket__wrapper
+							.basket__info
+								.basket__top
+									.basket__article Хачапури по-мегрельски
+									.basket__weight 450г
+								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
+							.basket__box
+								include ../modules/quantity
+								.basket__price 450 <span>₽</span>
+								.basket__close
+					.basket__item
+						.basket__pic
+							img(src="./img/basket/pic.jpg" alt="")
+						.basket__wrapper
+							.basket__info
+								.basket__top
+									.basket__article Хачапури по-мегрельски
+									.basket__weight 450г
+								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
+							.basket__box
+								include ../modules/quantity
+								.basket__price 450 <span>₽</span>
+								.basket__close
+					.basket__item
+						.basket__pic
+							img(src="./img/basket/pic.jpg" alt="")
+						.basket__wrapper
+							.basket__info
+								.basket__top
+									.basket__article Хачапури по-мегрельски
+									.basket__weight 450г
+								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
+							.basket__box
+								include ../modules/quantity
+								.basket__price 450 <span>₽</span>
+								.basket__close
+					.basket__item
+						.basket__pic
+							img(src="./img/basket/pic.jpg" alt="")
+						.basket__wrapper
+							.basket__info
+								.basket__top
+									.basket__article Хачапури по-мегрельски
+									.basket__weight 450г
+								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
+							.basket__box
+								include ../modules/quantity
+								.basket__price 450 <span>₽</span>
+								.basket__close
+					.basket__item
+						.basket__pic
+							img(src="./img/basket/pic.jpg" alt="")
+						.basket__wrapper
+							.basket__info
+								.basket__top
+									.basket__article Хачапури по-мегрельски
+									.basket__weight 450г
+								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
+							.basket__box
+								include ../modules/quantity
+								.basket__price 450 <span>₽</span>
+								.basket__close
+			.basket__bloc
+				.basket__right
+					.basket__heading Промокод
+					.promo
+						input(type="text" placeholder="Введите промокод" required).promo__field
+						a(href="javascript:void(0);").promo__btn Применить
+				.basket__left
+					.basket__sum Общая сумма заказа: <span class="sum">2250</span> <span>₽</span>
+					a(href="javascript:void(0);").btn.btn--big.btn--orange Оформить заказ
+				
 block script
