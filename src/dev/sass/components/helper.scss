@@ -11,4 +11,12 @@
 
 .mf-margin {
     margin-top: 52px;
+
+    @media(max-width: 1024px) {
+        margin-top: 40px;
+    }
+
+    @media(max-width: 600px) {
+        margin-top: 20px;
+    }
 }

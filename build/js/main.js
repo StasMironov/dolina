@@ -2,8 +2,6 @@ jQuery.fn.exists = function () {
     return $(this).length;
 }
 
-
-
 const projectFunc = {
     objAd: function (element, place) {
         if ($(element).exists()) {
@@ -21,33 +19,153 @@ const projectFunc = {
             t = $(element).html();
             return $(element);
         }
+    },
+
+    hideBasket: function () {
+        gsap.set(
+            ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'],
+            { autoAlpha: 0 }
+        );
+
+        gsap.set(
+            ['.popup-basket__icon', '.popup-basket__title'],
+            {
+                scale: 0
+            }
+        );
+
+        gsap.set(
+            '.popup-basket__item',
+            {
+                autoAlpha: 0,
+                y: -20
+            }
+        );
+
+        gsap.set(
+            '.popup-basket__text',
+            {
+                autoAlpha: 0,
+                xPercent: -20
+            }
+        );
+
+        gsap.set(
+            '.popup-basket__sum',
+            {
+                autoAlpha: 0,
+                xPercent: 20
+            }
+        );
+
+        gsap.set(
+            '.popup-basket__hide',
+            {
+                autoAlpha: 0,
+            }
+        )
+
+        gsap.to(
+            '.popup-basket',
+            {
+                xPercent: 120,
+                duration: 0.5, ease: "power2.out"
+            }
+        );
+        gsap.to(
+            '.overlay-basket',
+            {
+                autoAlpha: 0
+            }
+        );
+
+        $('html').removeClass('locked');
+        document.body.style.overflow = 'auto';
+        parallaxBildboard.enable();
+    },
+
+    showBasket: function () {
+        let timeline = gsap.timeline();
+        timeline
+            .fromTo(
+                '.overlay-basket',
+                {
+                    autoAlpha: 0
+                },
+                {
+                    autoAlpha: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                },
+                '+=0.3'
+            )
+
+            .fromTo(
+                '.popup-basket',
+                {
+                    xPercent: 120, autoAlpha: 1,
+                },
+                {
+                    xPercent: 0, duration: 0.6, ease: "power2.out"
+                }
+            )
+            .to(
+                '.popup-basket__hide',
+                {
+                    autoAlpha: 1,
+                }
+            )
+            .to(
+                ['.popup-basket__icon', '.popup-basket__title'],
+                {
+                    scale: 1,
+                    ease: "power2.out",
+                    stagger: 0.4,
+                    autoAlpha: 1
+                }
+            )
+            .to(
+                '.popup-basket__item',
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    stagger: 0.3,
+                    // duration: 0.3,
+                    ease: "power2.out",
+                }
+            )
+            .to(
+                ['.popup-basket__sum', '.popup-basket__text'],
+                {
+                    autoAlpha: 1,
+                    xPercent: 0
+                }
+            )
+            .to(
+                '.popup-basket .btn',
+                {
+                    autoAlpha: 1,
+                    duration: 0.3
+                }
+            );
+        $('html').addClass('locked');
+        document.body.style.overflow = 'hidden';
     }
+
+
 }
 
-let scene = document.getElementById('scene');
-let parallaxBildboard = new Parallax(scene, {
-    hoverOnly: true,
-    relativeInput: true
-});
-
-let tempQuestion = projectFunc.objReturn(".offer__slider .btn");
-let сteatedQuestion = false;
-
-$(window).on('resize load', function () {
-    if ($(this).width() <= 600) {
-        projectFunc.objAd(".offer__slider .btn", "#offer__all");
-        сteatedQuestion = false;
-    }
-});
 
 if ($('.js-basket').exists()) {
     try {
-        const basketBtn = document.querySelector('.js-basket');
-        hideBasket();
 
+        const basketBtn = document.querySelector('.js-basket');
+
+        projectFunc.hideBasket;
         basketBtn.addEventListener('mouseenter', function () {
+
             if ($('.overlay-basket').exists()) {
-                showBasket();
+                projectFunc.showBasket();
             }
         });
     }
@@ -55,6 +173,47 @@ if ($('.js-basket').exists()) {
         console.log(err);
     }
 }
+
+
+if ($('#scene').exists()) {
+    try {
+        let scene = document.getElementById('scene');
+        let parallaxBildboard = new Parallax(scene, {
+            hoverOnly: true,
+            relativeInput: true
+        });
+
+
+        $(window).on('resize load', function () {
+            if ($(this).width() <= 1024) {
+                parallaxBildboard.destroy();
+            } else {
+                let parallaxBildboard = new Parallax(scene, {
+                    hoverOnly: true,
+                    relativeInput: true
+                });
+            }
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+
+if ($('.offer__slider .btn').exists()) {
+    let tempQuestion = projectFunc.objReturn(".offer__slider .btn");
+    let сteatedQuestion = false;
+
+    $(window).on('resize load', function () {
+        if ($(this).width() <= 600) {
+            projectFunc.objAd(".offer__slider .btn", "#offer__all");
+            сteatedQuestion = false;
+        }
+    });
+}
+
+
 
 function showBasket() {
     let timeline = gsap.timeline();
@@ -80,7 +239,6 @@ function showBasket() {
             {
                 xPercent: 0, duration: 0.6, ease: "power2.out"
             }
-
         )
         .to(
             '.popup-basket__hide',
@@ -88,7 +246,6 @@ function showBasket() {
                 autoAlpha: 1,
             }
         )
-
         .to(
             ['.popup-basket__icon', '.popup-basket__title'],
             {
@@ -124,13 +281,9 @@ function showBasket() {
         );
     $('html').addClass('locked');
     document.body.style.overflow = 'hidden';
-    // parallaxBildboard.destroy();
-    // console.log(1);
-
 }
 
 function hideBasket() {
-
     gsap.set(
         ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'],
         { autoAlpha: 0 }
@@ -498,31 +651,25 @@ if ($('.dish-slider').exists()) {
 
 
 
-$(window).on('resize load', function () {
-    if ($(this).width() <= 1024) {
-        parallaxBildboard.destroy();
-    } else {
-        let parallaxBildboard = new Parallax(scene, {
-            hoverOnly: true,
-            relativeInput: true
-        });
-    }
-});
 
 
-let scene_comment = document.getElementById('scene_comment');
+if ($('#scene_comment').exists()) {
+    let scene_comment = document.getElementById('scene_comment');
 
-let parallaxComment = new Parallax(scene_comment, {
-    hoverOnly: true,
-    relativeInput: true
-});
+    let parallaxComment = new Parallax(scene_comment, {
+        hoverOnly: true,
+        relativeInput: true
+    });
+}
 
-//#scene_dish
-let sceneDish = document.getElementById('scene_dish');
-let parallaxDish = new Parallax(sceneDish, {
-    hoverOnly: true,
-    relativeInput: true
-});
+
+if ($('#scene_comment').exists()) {
+    let sceneDish = document.getElementById('scene_dish');
+    let parallaxDish = new Parallax(sceneDish, {
+        hoverOnly: true,
+        relativeInput: true
+    });
+}
 
 if ($('.bildboard__slider').exists()) {
     let bildboardContent = new Swiper('.bildboard__slider', {
@@ -551,7 +698,31 @@ if ($('.bildboard__slider').exists()) {
     bildboardBg.controller.control = bildboardContent;
 }
 
-//.comment__slider
+//.advice__slider
+
+if ($('.advice__slider').exists()) {
+    try {
+        let adviceSlider = new Swiper('.advice__slider', {
+            slidesPerView: 3,
+            spaceBetween: 40,
+            // touchRatio: false,
+            pagination: {
+                el: '.advice__slider .pagination',
+                clickable: true,
+            },
+            speed: 400,
+            navigation: {
+                nextEl: '.advice__slider .arr--next',
+                prevEl: '.advice__slider .arr--prev',
+            },
+            autoHeight: true,
+
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 
 if ($('.comment__slider').exists()) {
     let commentSlider = new Swiper('.comment__slider', {
@@ -630,89 +801,90 @@ if ($('#map').exists()) {
 }
 
 
+if ($('.tab__info').exists()) {
+    let tabsInfo = document.querySelectorAll('.tab__info');
+    let tabsContent = document.querySelectorAll('.tab__content');
 
-let tabsInfo = document.querySelectorAll('.tab__info');
-let tabsContent = document.querySelectorAll('.tab__content');
-
-const timeline = gsap.timeline();
-
-
-let tab = document.querySelectorAll('.tab__info'),
-    info = document.querySelector('.tab__header'),
-    tabContent = document.querySelectorAll('.tab__content');
-
-tab[0].classList.add('tab__info--active');
-
-for (let i = 0; i < tabContent.length; i++) {
-
-    if (i != 0) {
-        gsap.set(tabContent[i], {
-            autoAlpha: 0,
-            display: 'none',
-        });
-    }
-}
+    const timeline = gsap.timeline();
 
 
-function hideTabContent(a) {
-    for (let i = a; i < tabContent.length; i++) {
-        tabContent[i].classList.remove('show');
-        tabContent[i].classList.add('hide');
-        tab[i].classList.remove('tab__info--active');
+    let tab = document.querySelectorAll('.tab__info'),
+        info = document.querySelector('.tab__header'),
+        tabContent = document.querySelectorAll('.tab__content');
 
-        timeline
-            .fromTo(
-                tabContent[i], {
-                autoAlpha: 1,
-                display: 'bloc',
-                xPercent: 0,
-            }, {
+    tab[0].classList.add('tab__info--active');
+
+    for (let i = 0; i < tabContent.length; i++) {
+
+        if (i != 0) {
+            gsap.set(tabContent[i], {
                 autoAlpha: 0,
                 display: 'none',
-                ease: 'power2.out',
-                xPercent: +100,
-            }
-            )
-    }
-}
-
-hideTabContent(1);
-
-function showTabContent(b) {
-    if (tabContent[b].classList.contains('hide')) {
-        tabContent[b].classList.remove('hide');
-        tabContent[b].classList.add('show');
-        tab[b].classList.add('tab__info--active');
-        timeline
-            .fromTo(
-                tabContent[b], {
-                autoAlpha: 0,
-                display: 'none',
-                xPercent: +100,
-            }, {
-                autoAlpha: 1,
-                display: 'block',
-                xPercent: 0,
-                duration: 1,
-                ease: "back"
-            }
-            )
-    }
-
-
-}
-
-info.addEventListener('click', function (event) {
-
-    let target = event.target;
-    if (target && target.classList.contains('tab__info')) {
-        for (let i = 0; i < tab.length; i++) {
-            tab[i].classList.remove('tab__info--active');
-            if (target == tab[i]) {
-                hideTabContent(0);
-                showTabContent(i);
-                break;
-            }
+            });
         }
     }
-});
+
+
+    function hideTabContent(a) {
+        for (let i = a; i < tabContent.length; i++) {
+            tabContent[i].classList.remove('show');
+            tabContent[i].classList.add('hide');
+            tab[i].classList.remove('tab__info--active');
+
+            timeline
+                .fromTo(
+                    tabContent[i], {
+                    autoAlpha: 1,
+                    display: 'bloc',
+                    xPercent: 0,
+                }, {
+                    autoAlpha: 0,
+                    display: 'none',
+                    ease: 'power2.out',
+                    xPercent: +100,
+                }
+                )
+        }
+    }
+
+    hideTabContent(1);
+
+    function showTabContent(b) {
+        if (tabContent[b].classList.contains('hide')) {
+            tabContent[b].classList.remove('hide');
+            tabContent[b].classList.add('show');
+            tab[b].classList.add('tab__info--active');
+            timeline
+                .fromTo(
+                    tabContent[b], {
+                    autoAlpha: 0,
+                    display: 'none',
+                    xPercent: +100,
+                }, {
+                    autoAlpha: 1,
+                    display: 'block',
+                    xPercent: 0,
+                    duration: 1,
+                    ease: "back"
+                }
+                )
+        }
+    }
+
+    info.addEventListener('click', function (event) {
+
+        let target = event.target;
+        if (target && target.classList.contains('tab__info')) {
+            for (let i = 0; i < tab.length; i++) {
+                tab[i].classList.remove('tab__info--active');
+                if (target == tab[i]) {
+                    hideTabContent(0);
+                    showTabContent(i);
+                    break;
+                }
+            }
+        }
+    });
+}
+
+

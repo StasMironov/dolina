@@ -338,7 +338,7 @@ input::-ms-clear {
   padding: 0 calc(17px - (100vw - 100%)) 0 0;
 }
 
-
+@import "./components/basket/advice.scss";
 @import "./components/basket/basket.scss";
 @import "./components/index/dish.scss";
 @import "./components/map/tab.scss";

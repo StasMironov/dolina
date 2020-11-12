@@ -4,6 +4,10 @@
     height: 46px;
     margin-top: 27px;
 
+    @media(max-width: 1024px) {
+        margin-top: 20px;
+    }
+
     &__field {
         height: 46px;
         border: 1px solid $gray-5;
