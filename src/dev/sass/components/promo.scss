@@ -8,6 +8,24 @@
         margin-top: 20px;
     }
 
+    @media(max-width: 690px) {
+        margin-top: 15px;
+    }
+
+    @media(max-width: 600px) {
+        margin-top: 17px;
+        height: 42px;
+    }
+
+    &:hover .promo__field {
+        border-color: $black;
+    }
+
+    &:hover .promo__btn {
+        background-color: #ff9f1c;
+        color: white;
+    }
+
     &__field {
         height: 46px;
         border: 1px solid $gray-5;
@@ -16,9 +34,18 @@
         padding-right: 117px;
         width: 100%;
         position: absolute;
-        color: $gray-5;
+        color: black;
         font-size: 14px;
         letter-spacing: 0.4px;
+
+        transition: .4s ease;
+        caret-color: $orange;
+
+        @media(max-width: 600px) {
+            height: 42px;
+        }
+
+
     }
 
     &__btn {
@@ -36,5 +63,9 @@
         border-bottom-right-radius: 30px;
         border: 1px solid $orange;
         color: $orange;
+
+        @media(max-width: 600px) {
+            padding: 12px 23px 12px 19px;
+        }
     }
 }

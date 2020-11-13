@@ -1,0 +1,11 @@
+.order {
+    &__title {
+        letter-spacing: 1.7px;
+    }
+
+    &__quote {
+        max-width: 700px;
+        margin-top: 8px;
+        letter-spacing: -0.1px;
+    }
+}

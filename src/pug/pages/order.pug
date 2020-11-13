@@ -1,0 +1,96 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index-page';
+	- var setQuote = 1;
+
+block content
+	.order.mf-margin
+		.order__container.container 
+			.order__title.title-1 Оформление заказа
+			.order__quote Идейные соображения высшего порядка, а также сложившаяся структура организации играет важную роль в формировании систем массового участия.
+	.order-form
+		.order-form__container.container
+			.order-form__bloc
+				.order-form__wrapper
+					<div class="order-form__delivery">
+						<input id="radio-1" type="radio" name="radio" value="1" checked>
+						<label for="radio-1">Доставка</label>
+					</div>
+					<div class="order-form__delivery">
+						<input id="radio-2" type="radio" name="radio" value="2">
+						<label for="radio-2">Самовывоз</label>
+					</div>
+				.order-form__text *При заказе на 1500₽ осуществляется бесплатная доставка
+			.order-form__grid
+				.order-form__left
+					.order-form__module
+						.order-form__article Контактные данные
+						.order-form__cover
+							.order-form__group
+								.order-form__box
+									.order-form__label Имя*
+									input(type="text").order-form__field
+								.order-form__box
+									.order-form__label Фамилия*
+									input(type="text").order-form__field
+							.order-form__group
+								.order-form__box
+									.order-form__label Адрес электронной почты*
+									input(type="text").order-form__field
+								.order-form__box
+									.order-form__label Контактный телефон*
+									input(type="text").order-form__field
+					.order-form__module.order-form__module--detail
+						.order-form__article Детали бронирования
+						.order-form__cover
+							.order-form__group
+								.order-form__box.order-form__box--long
+									.order-form__label Адрес*
+									input(type="text").order-form__field
+							.order-form__group
+								.order-form__box
+									.order-form__label Подъезд*
+									input(type="text").order-form__field
+								.order-form__box
+									.order-form__label Квартира*
+									input(type="text").order-form__field
+								.order-form__box
+									.order-form__label Этаж
+									input(type="text").order-form__field
+							.order-form__group
+								.order-form__box.order-form__box--long
+									.order-form__label Комментарий к заказу
+									input(type="text").order-form__field
+				.order-form__right
+					.order-form__unit.order-form__unit--heading
+						.order-form__title Ваш заказ:
+					.order-form__unit.order-form__unit--list
+						.order-form__item
+							.order-form__name Хачапури по-мегрельски
+							.order-form__qty 1 шт.
+							.order-form__price 450 ₽
+						.order-form__item
+							.order-form__name Хачапури по-мегрельски
+							.order-form__qty 1 шт.
+							.order-form__price 450 ₽
+						.order-form__item
+							.order-form__name Хачапури по-мегрельски
+							.order-form__qty 1 шт.
+							.order-form__price 450 ₽
+						.order-form__item
+							.order-form__name Хачапури по-мегрельски
+							.order-form__qty 1 шт.
+							.order-form__price 450 ₽
+						.order-form__item
+							.order-form__name Доставка
+							.order-form__qty 1 шт.
+							.order-form__price 250 ₽
+					.order-form__unit.order-form__unit--sum 
+						.order-form__txt Общая сумма заказа:
+						.order-form__sum 1800 ₽
+						
+	
+				
+block script

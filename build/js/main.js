@@ -700,6 +700,7 @@ if ($('.bildboard__slider').exists()) {
 
 //.advice__slider
 
+
 if ($('.advice__slider').exists()) {
     try {
         let adviceSlider = new Swiper('.advice__slider', {
@@ -715,8 +716,38 @@ if ($('.advice__slider').exists()) {
                 nextEl: '.advice__slider .arr--next',
                 prevEl: '.advice__slider .arr--prev',
             },
-            autoHeight: true,
+            // autoHeight: true,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                601: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                769: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                },
+                1025: {
+                    slidesPerView: 3,
+                    spaceBetween: 40
+                },
+                1280: {
+                    slidesPerView: 3,
+                    spaceBetween: 40
+                }
+            }
 
+        });
+
+        $(window).on('resize load', function () {
+            if ($(this).width() <= 600) {
+                truncateText('.advice__content', 60);
+            } else {
+                truncateText('.advice__content', 200);
+            }
         });
     }
     catch (err) {

@@ -385,6 +385,7 @@
         display: inline-block;
         color: $orange;
         padding-bottom: 5px;
+        transition: .4s ease;
 
         &:after {
             position: absolute;
@@ -396,6 +397,15 @@
             left: 0;
             right: 0;
             margin: auto;
+            transition: .4s ease;
+        }
+
+        &:hover {
+            color: $black;
+
+            &:after {
+                background-color: $black;
+            }
         }
     }
 
