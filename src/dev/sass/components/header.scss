@@ -91,5 +91,6 @@
         width: 100%;
         background-color: #fff;
         min-height: 74px;
+        padding: 0 calc(17px - (100vw - 100%)) 0 0;
     }
 }

@@ -2,6 +2,8 @@ jQuery.fn.exists = function () {
     return $(this).length;
 }
 
+let timeline = gsap.timeline();
+
 const projectFunc = {
     objAd: function (element, place) {
         if ($(element).exists()) {
@@ -22,77 +24,70 @@ const projectFunc = {
     },
 
     hideBasket: function () {
+        timeline.clear();
         gsap.set(
-            ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'],
-            { autoAlpha: 0 }
+            ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
+                autoAlpha: 0,
+            }
         );
 
         gsap.set(
-            ['.popup-basket__icon', '.popup-basket__title'],
-            {
+            ['.popup-basket__icon', '.popup-basket__title'], {
                 scale: 0
             }
         );
 
         gsap.set(
-            '.popup-basket__item',
-            {
+            '.popup-basket__item', {
                 autoAlpha: 0,
                 y: -20
             }
         );
 
         gsap.set(
-            '.popup-basket__text',
-            {
+            '.popup-basket__text', {
                 autoAlpha: 0,
                 xPercent: -20
             }
         );
 
         gsap.set(
-            '.popup-basket__sum',
-            {
+            '.popup-basket__sum', {
                 autoAlpha: 0,
                 xPercent: 20
             }
         );
 
         gsap.set(
-            '.popup-basket__hide',
-            {
+            '.popup-basket__hide', {
                 autoAlpha: 0,
             }
         )
 
         gsap.to(
-            '.popup-basket',
-            {
+            '.popup-basket', {
                 xPercent: 120,
-                duration: 0.5, ease: "power2.out"
+                duration: 0.5,
+                ease: "power2.out"
             }
         );
         gsap.to(
-            '.overlay-basket',
-            {
+            '.overlay-basket', {
                 autoAlpha: 0
             }
         );
 
         $('html').removeClass('locked');
         document.body.style.overflow = 'auto';
-        parallaxBildboard.enable();
+        // parallaxBildboard.enable();
     },
 
     showBasket: function () {
-        let timeline = gsap.timeline();
         timeline
             .fromTo(
-                '.overlay-basket',
-                {
+                '.overlay-basket', {
                     autoAlpha: 0
-                },
-                {
+                }, {
                     autoAlpha: 1,
                     duration: 0.3,
                     ease: 'power2.out'
@@ -101,23 +96,22 @@ const projectFunc = {
             )
 
             .fromTo(
-                '.popup-basket',
-                {
-                    xPercent: 120, autoAlpha: 1,
-                },
-                {
-                    xPercent: 0, duration: 0.6, ease: "power2.out"
+                '.popup-basket', {
+                    xPercent: 120,
+                    autoAlpha: 1,
+                }, {
+                    xPercent: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
                 }
             )
             .to(
-                '.popup-basket__hide',
-                {
+                '.popup-basket__hide', {
                     autoAlpha: 1,
                 }
             )
             .to(
-                ['.popup-basket__icon', '.popup-basket__title'],
-                {
+                ['.popup-basket__icon', '.popup-basket__title'], {
                     scale: 1,
                     ease: "power2.out",
                     stagger: 0.4,
@@ -125,8 +119,7 @@ const projectFunc = {
                 }
             )
             .to(
-                '.popup-basket__item',
-                {
+                '.popup-basket__item', {
                     autoAlpha: 1,
                     y: 0,
                     stagger: 0.3,
@@ -135,15 +128,13 @@ const projectFunc = {
                 }
             )
             .to(
-                ['.popup-basket__sum', '.popup-basket__text'],
-                {
+                ['.popup-basket__sum', '.popup-basket__text'], {
                     autoAlpha: 1,
                     xPercent: 0
                 }
             )
             .to(
-                '.popup-basket .btn',
-                {
+                '.popup-basket .btn', {
                     autoAlpha: 1,
                     duration: 0.3
                 }
@@ -160,16 +151,19 @@ if ($('.js-basket').exists()) {
     try {
 
         const basketBtn = document.querySelector('.js-basket');
+        projectFunc.hideBasket();
 
-        projectFunc.hideBasket;
         basketBtn.addEventListener('mouseenter', function () {
+
+            if ($('.header__inner').hasClass('mf-scroll')) {
+                $('.header__inner').addClass('locked');
+            }
 
             if ($('.overlay-basket').exists()) {
                 projectFunc.showBasket();
             }
         });
-    }
-    catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }
@@ -194,8 +188,7 @@ if ($('#scene').exists()) {
                 });
             }
         });
-    }
-    catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }
@@ -219,11 +212,9 @@ function showBasket() {
     let timeline = gsap.timeline();
     timeline
         .fromTo(
-            '.overlay-basket',
-            {
+            '.overlay-basket', {
                 autoAlpha: 0
-            },
-            {
+            }, {
                 autoAlpha: 1,
                 duration: 0.3,
                 ease: 'power2.out'
@@ -232,23 +223,22 @@ function showBasket() {
         )
 
         .fromTo(
-            '.popup-basket',
-            {
-                xPercent: 120, autoAlpha: 1,
-            },
-            {
-                xPercent: 0, duration: 0.6, ease: "power2.out"
+            '.popup-basket', {
+                xPercent: 120,
+                autoAlpha: 1,
+            }, {
+                xPercent: 0,
+                duration: 0.6,
+                ease: "power2.out"
             }
         )
         .to(
-            '.popup-basket__hide',
-            {
+            '.popup-basket__hide', {
                 autoAlpha: 1,
             }
         )
         .to(
-            ['.popup-basket__icon', '.popup-basket__title'],
-            {
+            ['.popup-basket__icon', '.popup-basket__title'], {
                 scale: 1,
                 ease: "power2.out",
                 stagger: 0.4,
@@ -256,8 +246,7 @@ function showBasket() {
             }
         )
         .to(
-            '.popup-basket__item',
-            {
+            '.popup-basket__item', {
                 autoAlpha: 1,
                 y: 0,
                 stagger: 0.3,
@@ -266,15 +255,13 @@ function showBasket() {
             }
         )
         .to(
-            ['.popup-basket__sum', '.popup-basket__text'],
-            {
+            ['.popup-basket__sum', '.popup-basket__text'], {
                 autoAlpha: 1,
                 xPercent: 0
             }
         )
         .to(
-            '.popup-basket .btn',
-            {
+            '.popup-basket .btn', {
                 autoAlpha: 1,
                 duration: 0.3
             }
@@ -283,74 +270,69 @@ function showBasket() {
     document.body.style.overflow = 'hidden';
 }
 
-function hideBasket() {
-    gsap.set(
-        ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'],
-        { autoAlpha: 0 }
-    );
+// function hideBasket() {
+//     gsap.set(
+//         ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
+//             autoAlpha: 0
+//         }
+//     );
 
-    gsap.set(
-        ['.popup-basket__icon', '.popup-basket__title'],
-        {
-            scale: 0
-        }
-    );
+//     gsap.set(
+//         ['.popup-basket__icon', '.popup-basket__title'], {
+//             scale: 0
+//         }
+//     );
 
-    gsap.set(
-        '.popup-basket__item',
-        {
-            autoAlpha: 0,
-            y: -20
-        }
-    );
+//     gsap.set(
+//         '.popup-basket__item', {
+//             autoAlpha: 0,
+//             y: -20
+//         }
+//     );
 
-    gsap.set(
-        '.popup-basket__text',
-        {
-            autoAlpha: 0,
-            xPercent: -20
-        }
-    );
+//     gsap.set(
+//         '.popup-basket__text', {
+//             autoAlpha: 0,
+//             xPercent: -20
+//         }
+//     );
 
-    gsap.set(
-        '.popup-basket__sum',
-        {
-            autoAlpha: 0,
-            xPercent: 20
-        }
-    );
+//     gsap.set(
+//         '.popup-basket__sum', {
+//             autoAlpha: 0,
+//             xPercent: 20
+//         }
+//     );
 
-    gsap.set(
-        '.popup-basket__hide',
-        {
-            autoAlpha: 0,
-        }
-    )
+//     gsap.set(
+//         '.popup-basket__hide', {
+//             autoAlpha: 0,
+//         }
+//     )
 
-    gsap.to(
-        '.popup-basket',
-        {
-            xPercent: 120,
-            duration: 0.5, ease: "power2.out"
-        }
-    );
-    gsap.to(
-        '.overlay-basket',
-        {
-            autoAlpha: 0
-        }
-    );
+//     gsap.to(
+//         '.popup-basket', {
+//             xPercent: 120,
+//             duration: 0.5,
+//             ease: "power2.out"
+//         }
+//     );
+//     gsap.to(
+//         '.overlay-basket', {
+//             autoAlpha: 0
+//         }
+//     );
 
-    $('html').removeClass('locked');
-    document.body.style.overflow = 'auto';
-    parallaxBildboard.enable();
-}
+//     $('html').removeClass('locked');
+//     document.body.style.overflow = 'auto';
+//     parallaxBildboard.enable();
+// }
 
 if ($('.overlay-basket').exists()) {
     $('.overlay-basket').click(function (e) {
         console.log(e.target.className.indexOf('overlay-basket'));
         if (e.target.className.indexOf('overlay-basket') != -1) {
-            hideBasket();
+            projectFunc.hideBasket();
             $('html').css('overflow', 'auto');
         }
     });
@@ -359,7 +341,7 @@ if ($('.overlay-basket').exists()) {
 
 if ($('.popup-basket__hide').exists()) {
     $('.popup-basket__hide').on('click', function () {
-        hideBasket();
+        projectFunc.hideBasket();
     });
 }
 
@@ -375,6 +357,7 @@ if ($('.header__inner').exists) {
                 return;
             } else {
                 $target.removeClass("mf-scroll");
+                $target.removeClass('locked');
             }
             return;
         });
@@ -421,71 +404,71 @@ truncateText('.offer__txt', 100);
 
 gsap.set(
     $('.dish__box').find('.dish__image'), {
-    scale: 0,
-    opacity: 0
-}
+        scale: 0,
+        opacity: 0
+    }
 );
 gsap.set(
     $('.dish__box:first-child').find('.dish__image'), {
-    scale: 1,
-    opacity: 1
-}
+        scale: 1,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__article'), {
-    y: -30,
-    opacity: 0
-}
+        y: -30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__article')[0], {
-    y: 0,
-    opacity: 1
-}
+        y: 0,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__text--word'), {
-    y: -30,
-    opacity: 0
-}
+        y: -30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__text--word')[0], {
-    y: 0,
-    opacity: 1
-}
+        y: 0,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__price'), {
-    x: -30,
-    opacity: 0
-}
+        x: -30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__price')[0], {
-    x: 0,
-    opacity: 1
-}
+        x: 0,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__box .btn--small'), {
-    x: 30,
-    opacity: 0
-}
+        x: 30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__box .btn--small')[0], {
-    x: 0,
-    opacity: 1
-}
+        x: 0,
+        opacity: 1
+    }
 );
 
 if ($('.offer__slider').exists()) {
@@ -568,78 +551,78 @@ if ($('.dish-slider').exists()) {
                     if (index != actIndex) {
                         gsap.set(
                             $('.dish__image')[index], {
-                            scale: 0,
-                            opacity: 0
-                        }
+                                scale: 0,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__text--word')[index], {
-                            y: -30,
-                            opacity: 0
-                        }
+                                y: -30,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__article')[index], {
-                            y: -30,
-                            opacity: 0
-                        }
+                                y: -30,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__price')[index], {
-                            x: -30,
-                            opacity: 0
-                        }
+                                x: -30,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__box .btn--small')[index], {
-                            x: 30,
-                            opacity: 0
-                        }
+                                x: 30,
+                                opacity: 0
+                            }
                         );
                     } else {
                         let timeline = gsap.timeline();
                         timeline
                             .to(
                                 $('.dish__image')[index], {
-                                scale: 1,
-                                opacity: 1,
-                                duration: 1
-                            }
+                                    scale: 1,
+                                    opacity: 1,
+                                    duration: 1
+                                }
                             )
 
                             .to(
                                 $('.dish__article')[index], {
-                                opacity: 1,
-                                y: 0,
-                                duration: 0.3
-                            }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
                             )
 
                             .to(
                                 $('.dish__text--word')[index], {
-                                opacity: 1,
-                                y: 0,
-                                duration: 0.3
-                            }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
                             )
 
                             .to(
                                 $('.dish__price')[index], {
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.3
-                            }
+                                    opacity: 1,
+                                    x: 0,
+                                    duration: 0.3
+                                }
                             )
                             .to(
                                 $('.dish__box .btn--small')[index], {
-                                x: 0,
-                                opacity: 1,
-                                duration: 0.3
-                            },
+                                    x: 0,
+                                    opacity: 1,
+                                    duration: 0.3
+                                },
                                 '-=0.6'
                             );
                     }
@@ -749,8 +732,7 @@ if ($('.advice__slider').exists()) {
                 truncateText('.advice__content', 200);
             }
         });
-    }
-    catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }
@@ -794,12 +776,12 @@ if ($('#map').exists()) {
     function init() {
         // Создание карты.
         var myMap = new ymaps.Map("map", {
-            // Координаты центра карты.
-            // Порядок по умолчанию: «широта, долгота».
-            center: [57.098137, 65.613029],
-            zoom: 17,
-            controls: []
-        }),
+                // Координаты центра карты.
+                // Порядок по умолчанию: «широта, долгота».
+                center: [57.098137, 65.613029],
+                zoom: 17,
+                controls: []
+            }),
             myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
                 // hintContent: 'Собственный значок метки',
                 // balloonContent: 'Это красивая метка'
@@ -865,15 +847,15 @@ if ($('.tab__info').exists()) {
             timeline
                 .fromTo(
                     tabContent[i], {
-                    autoAlpha: 1,
-                    display: 'bloc',
-                    xPercent: 0,
-                }, {
-                    autoAlpha: 0,
-                    display: 'none',
-                    ease: 'power2.out',
-                    xPercent: +100,
-                }
+                        autoAlpha: 1,
+                        display: 'bloc',
+                        xPercent: 0,
+                    }, {
+                        autoAlpha: 0,
+                        display: 'none',
+                        ease: 'power2.out',
+                        xPercent: +100,
+                    }
                 )
         }
     }
@@ -888,16 +870,16 @@ if ($('.tab__info').exists()) {
             timeline
                 .fromTo(
                     tabContent[b], {
-                    autoAlpha: 0,
-                    display: 'none',
-                    xPercent: +100,
-                }, {
-                    autoAlpha: 1,
-                    display: 'block',
-                    xPercent: 0,
-                    duration: 1,
-                    ease: "back"
-                }
+                        autoAlpha: 0,
+                        display: 'none',
+                        xPercent: +100,
+                    }, {
+                        autoAlpha: 1,
+                        display: 'block',
+                        xPercent: 0,
+                        duration: 1,
+                        ease: "back"
+                    }
                 )
         }
     }
@@ -917,5 +899,3 @@ if ($('.tab__info').exists()) {
         }
     });
 }
-
-
