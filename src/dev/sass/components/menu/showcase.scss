@@ -1,15 +1,36 @@
 .showcase {
     &__wrapper {
         display: flex;
+        justify-content: space-between;
     }
 
     &__left {
         max-width: 239px;
         width: 100%;
+        margin-right: 40px;
+        padding-top: 93px;
     }
 
     &__right {
         max-width: 1001px;
         width: 100%;
+
+        .set {
+            margin-top: 0;
+
+            &__title {
+                text-align: center;
+                font-size: 42px;
+                line-height: 61px
+            }
+
+            &__container {
+                padding: 0;
+            }
+
+            &__pic {
+                height: 200px;
+            }
+        }
     }
 }
