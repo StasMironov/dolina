@@ -1,11 +1,28 @@
 .order {
     &__title {
         letter-spacing: 1.7px;
+
+        @media(max-width: 600px) {
+            letter-spacing: 1px;
+        }
     }
 
     &__quote {
         max-width: 700px;
         margin-top: 8px;
         letter-spacing: -0.1px;
+
+        @media(max-width: 1024px) {
+            font-size: 16px;
+            line-height: 21px;
+            margin-top: 3px;
+            max-width: 660px;
+        }
+
+        @media(max-width: 600px) {
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 7px;
+        }
     }
 }

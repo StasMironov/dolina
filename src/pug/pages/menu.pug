@@ -1,0 +1,28 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index-page';
+	- var setQuote = 0;
+	- var setTitle = 'Пицца';
+	- var setHeader = 'title-1';
+
+block content
+	.showcase.mf-margin
+		.showcase__container.container
+			.showcase__wrapper
+				.showcase__left
+					.menu
+						.menu__items
+							a(href="javascript:void(0);").menu__item
+								.menu__pic
+									+svg('union')
+								.menu__txt Хит продаж
+				.showcase__right
+					include ../modules/set
+
+		
+						
+	
+				
+block script

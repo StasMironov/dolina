@@ -1,0 +1,15 @@
+.showcase {
+    &__wrapper {
+        display: flex;
+    }
+
+    &__left {
+        max-width: 239px;
+        width: 100%;
+    }
+
+    &__right {
+        max-width: 1001px;
+        width: 100%;
+    }
+}
