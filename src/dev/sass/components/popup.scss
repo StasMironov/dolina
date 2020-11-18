@@ -232,3 +232,29 @@
         padding: 25px 32px;
     }
 }
+
+.popup-card {
+    background-color: #fff;
+    position: absolute;
+    // transition: .4s .1s linear;
+    right: 0;
+    //  opacity: 0;
+    //visibility: hidden;
+    width: 100%;
+    max-width: 857px;
+    min-height: 454px;
+    padding: 60px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    &__right {
+        max-width: 334px;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

@@ -17,3 +17,18 @@
         visibility: visible
     }
 }
+
+.overlay-card {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    overflow: auto;
+    //opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
+    zoom: 1;
+    z-index: 700;
+    // visibility: hidden;
+    overflow: hidden !important;
+}

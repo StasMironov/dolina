@@ -13,13 +13,223 @@ block content
 			.showcase__wrapper
 				.showcase__left
 					.menu
-						.menu__items
-							a(href="javascript:void(0);").menu__item
-								.menu__pic
-									+svg('union')
-								.menu__txt Хит продаж
+						.menu__btn
+							.menu__word Меню
+							i
+						.menu__cover.mf-show
+							.menu__items
+								a(href="javascript:void(0);").menu__item.menu__item--active
+									.menu__pic
+										+svg('union')
+									.menu__txt Хит продаж
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('heart')
+									.menu__txt Комбо
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('rupor')
+									.menu__txt Акции
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('meat')
+									.menu__txt Шашлыки
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('hleb')
+									.menu__txt Выпечка
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('pica')
+									.menu__txt Пицца
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('shaurma')
+									.menu__txt Шаурма на углях
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('ic1')
+									.menu__txt Холодные закуски
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('salat')
+									.menu__txt Салаты
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('soup')
+									.menu__txt Супы
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('ic4')
+									.menu__txt Хинкали и пасты
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('ic5')
+									.menu__txt Садж
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('ic7')
+									.menu__txt Горячие блюда
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('sous')
+									.menu__txt Соусы
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('garnir')
+									.menu__txt Гарниры
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('ic6')
+									.menu__txt Десерты
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('napitok')
+									.menu__txt Напитки
+								a(href="javascript:void(0);").menu__item
+									.menu__pic
+										+svg('ic3')
+									.menu__txt Маринованное мясо
 				.showcase__right
-					include ../modules/set
+					.set
+						.set__container.container
+							div(class="set__title " + setHeader) #{setTitle}
+							if setQuote == 1
+								.set__quote Идейные соображения высшего порядка, а также консультация с широким активом требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.
+							.set__cover
+								.set__items
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
+									a(href="javascript:void(0);").set__item
+										.set__pic
+											img(src="/img/set/set1.jpg" alt="")
+										.set__box
+											.set__top
+												.set__article Комбо-набор 1
+												.set__weight 400г
+											.set__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+											.set__bottom 
+												.set__price 450 <span>₽</span>
+												.btn.btn--small.btn--orange В корзину
 
 		
 						
