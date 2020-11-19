@@ -454,6 +454,7 @@
             object-fit: cover;
             border-radius: 5px;
             overflow: hidden;
+            transform: scale(1) !important;
 
             &:before {
                 position: absolute;
