@@ -23,58 +23,102 @@ const projectFunc = {
         }
     },
 
+    showCard: function (element) {
+        let popupEl = '';
+        $('.popup-card').each(function (popup) {
+            if (popup == element) {
+                popupEl = $(this);
+            }
+        });
+        timeline
+            .fromTo(
+                '.overlay-card', {
+                    autoAlpha: 0
+                }, {
+                    autoAlpha: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                },
+                '+=0.3'
+            )
+            .to(
+                popupEl, {
+                    scale: 1,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                }
+            )
+    },
+
+    hideCard: function () {
+        timeline.clear();
+        gsap.to(
+            '.popup-card', {
+                scale: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
+        );
+        gsap.to(
+            '.overlay-card', {
+                autoAlpha: 0,
+                delay: 0.5
+            }
+        );
+    },
+
     hideBasket: function () {
         timeline.clear();
         gsap.set(
             ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
-            autoAlpha: 0,
-        }
+                autoAlpha: 0,
+            }
         );
 
         gsap.set(
             ['.popup-basket__icon', '.popup-basket__title'], {
-            scale: 0
-        }
+                scale: 0
+            }
         );
 
         gsap.set(
             '.popup-basket__item', {
-            autoAlpha: 0,
-            y: -20
-        }
+                autoAlpha: 0,
+                y: -20
+            }
         );
 
         gsap.set(
             '.popup-basket__text', {
-            autoAlpha: 0,
-            xPercent: -20
-        }
+                autoAlpha: 0,
+                xPercent: -20
+            }
         );
 
         gsap.set(
             '.popup-basket__sum', {
-            autoAlpha: 0,
-            xPercent: 20
-        }
+                autoAlpha: 0,
+                xPercent: 20
+            }
         );
 
         gsap.set(
             '.popup-basket__hide', {
-            autoAlpha: 0,
-        }
+                autoAlpha: 0,
+            }
         )
 
         gsap.to(
             '.popup-basket', {
-            xPercent: 120,
-            duration: 0.5,
-            ease: "power2.out"
-        }
+                xPercent: 120,
+                duration: 0.5,
+                ease: "power2.out"
+            }
         );
         gsap.to(
             '.overlay-basket', {
-            autoAlpha: 0
-        }
+                autoAlpha: 0
+            }
         );
 
         $('html').removeClass('locked');
@@ -86,58 +130,58 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                autoAlpha: 0
-            }, {
-                autoAlpha: 1,
-                duration: 0.3,
-                ease: 'power2.out'
-            },
+                    autoAlpha: 0
+                }, {
+                    autoAlpha: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                xPercent: 120,
-                autoAlpha: 1,
-            }, {
-                xPercent: 0,
-                duration: 0.6,
-                ease: "power2.out"
-            }
+                    xPercent: 120,
+                    autoAlpha: 1,
+                }, {
+                    xPercent: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
+                }
             )
             .to(
                 '.popup-basket__hide', {
-                autoAlpha: 1,
-            }
+                    autoAlpha: 1,
+                }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                scale: 1,
-                ease: "power2.out",
-                stagger: 0.4,
-                autoAlpha: 1
-            }
+                    scale: 1,
+                    ease: "power2.out",
+                    stagger: 0.4,
+                    autoAlpha: 1
+                }
             )
             .to(
                 '.popup-basket__item', {
-                autoAlpha: 1,
-                y: 0,
-                stagger: 0.3,
-                // duration: 0.3,
-                ease: "power2.out",
-            }
+                    autoAlpha: 1,
+                    y: 0,
+                    stagger: 0.3,
+                    // duration: 0.3,
+                    ease: "power2.out",
+                }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                autoAlpha: 1,
-                xPercent: 0
-            }
+                    autoAlpha: 1,
+                    xPercent: 0
+                }
             )
             .to(
                 '.popup-basket .btn', {
-                autoAlpha: 1,
-                duration: 0.3
-            }
+                    autoAlpha: 1,
+                    duration: 0.3
+                }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
@@ -147,13 +191,9 @@ const projectFunc = {
 }
 
 
-
-
-
 function showMenu(heightEl) {
     gsap.to(
-        '.menu__cover',
-        {
+        '.menu__cover', {
             autoAlpha: 1,
             height: heightEl + 20,
             ease: "power1.out",
@@ -163,8 +203,7 @@ function showMenu(heightEl) {
 
 
     gsap.to(
-        '.menu__btn i',
-        {
+        '.menu__btn i', {
             scaleY: -1,
             duration: 0.5
         }
@@ -175,8 +214,7 @@ function hideMenu() {
     const timeline = gsap.timeline();
 
     gsap.to(
-        '.menu__cover',
-        {
+        '.menu__cover', {
             autoAlpha: 0,
             height: 0,
             ease: "power1.out",
@@ -185,9 +223,9 @@ function hideMenu() {
     );
 
     gsap.to(
-        '.menu__btn i',
-        {
-            scaleX: 1, scaleY: 1,
+        '.menu__btn i', {
+            scaleX: 1,
+            scaleY: 1,
             ease: "power1.out",
             duration: 0.5
         }
@@ -219,11 +257,29 @@ function setHeight(elem) {
             }
             return heightSet;
 
-        }
-        catch (err) {
+        } catch (err) {
             console.log(err);
         }
     }
+}
+
+if ($('.popup-card__close').exists()) {
+    $('.popup-card__close').on('click', function (event) {
+        event.stopPropagation();
+        projectFunc.hideCard();
+    });
+}
+
+if ($('.set__item').exists()) {
+    $('.set__item').each(function (index) {
+        $(this).on('click', function (event) {
+            let target = event.target;
+
+            if (!target.classList.contains('btn')) {
+                projectFunc.showCard(index);
+            }
+        })
+    })
 }
 
 if ($('.menu__btn').exists()) {
@@ -233,15 +289,13 @@ if ($('.menu__btn').exists()) {
             if ($(this).hasClass('mf-show')) {
                 let heightEl = setHeight('.menu__item');
                 showMenu(heightEl);
-            }
-            else {
+            } else {
                 hideMenu();
             }
         });
 
 
-    }
-    catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }
@@ -251,8 +305,7 @@ if ($('.menu').exists()) {
         if ($(this).width() > 900) {
             let heightEl = setHeight('.menu__item');
             showMenu(heightEl);
-        }
-        else {
+        } else {
             hideMenu();
         }
     });
@@ -324,58 +377,58 @@ function showBasket() {
     timeline
         .fromTo(
             '.overlay-basket', {
-            autoAlpha: 0
-        }, {
-            autoAlpha: 1,
-            duration: 0.3,
-            ease: 'power2.out'
-        },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
             '+=0.3'
         )
 
         .fromTo(
             '.popup-basket', {
-            xPercent: 120,
-            autoAlpha: 1,
-        }, {
-            xPercent: 0,
-            duration: 0.6,
-            ease: "power2.out"
-        }
+                xPercent: 120,
+                autoAlpha: 1,
+            }, {
+                xPercent: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            }
         )
         .to(
             '.popup-basket__hide', {
-            autoAlpha: 1,
-        }
+                autoAlpha: 1,
+            }
         )
         .to(
             ['.popup-basket__icon', '.popup-basket__title'], {
-            scale: 1,
-            ease: "power2.out",
-            stagger: 0.4,
-            autoAlpha: 1
-        }
+                scale: 1,
+                ease: "power2.out",
+                stagger: 0.4,
+                autoAlpha: 1
+            }
         )
         .to(
             '.popup-basket__item', {
-            autoAlpha: 1,
-            y: 0,
-            stagger: 0.3,
-            // duration: 0.3,
-            ease: "power2.out",
-        }
+                autoAlpha: 1,
+                y: 0,
+                stagger: 0.3,
+                // duration: 0.3,
+                ease: "power2.out",
+            }
         )
         .to(
             ['.popup-basket__sum', '.popup-basket__text'], {
-            autoAlpha: 1,
-            xPercent: 0
-        }
+                autoAlpha: 1,
+                xPercent: 0
+            }
         )
         .to(
             '.popup-basket .btn', {
-            autoAlpha: 1,
-            duration: 0.3
-        }
+                autoAlpha: 1,
+                duration: 0.3
+            }
         );
     $('html').addClass('locked');
     document.body.style.overflow = 'hidden';
@@ -441,9 +494,17 @@ function showBasket() {
 
 if ($('.overlay-basket').exists()) {
     $('.overlay-basket').click(function (e) {
-        console.log(e.target.className.indexOf('overlay-basket'));
         if (e.target.className.indexOf('overlay-basket') != -1) {
             projectFunc.hideBasket();
+            $('html').css('overflow', 'auto');
+        }
+    });
+}
+
+if ($('.overlay-card').exists()) {
+    $('.overlay-card').click(function (e) {
+        if (e.target.className.indexOf('overlay-card') != -1) {
+            projectFunc.hideCard();
             $('html').css('overflow', 'auto');
         }
     });
@@ -517,79 +578,78 @@ truncateText('.offer__txt', 100);
 $(window).on('resize load', function () {
     if ($(this).width() <= 600) {
         truncateText('.set__content', 50);
-    }
-    else {
+    } else {
         truncateText('.set__content', 300);
     }
 });
 
 gsap.set(
     $('.dish__box').find('.dish__image'), {
-    scale: 0,
-    opacity: 0
-}
+        scale: 0,
+        opacity: 0
+    }
 );
 gsap.set(
     $('.dish__box:first-child').find('.dish__image'), {
-    scale: 1,
-    opacity: 1
-}
+        scale: 1,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__article'), {
-    y: -30,
-    opacity: 0
-}
+        y: -30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__article')[0], {
-    y: 0,
-    opacity: 1
-}
+        y: 0,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__text--word'), {
-    y: -30,
-    opacity: 0
-}
+        y: -30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__text--word')[0], {
-    y: 0,
-    opacity: 1
-}
+        y: 0,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__price'), {
-    x: -30,
-    opacity: 0
-}
+        x: -30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__price')[0], {
-    x: 0,
-    opacity: 1
-}
+        x: 0,
+        opacity: 1
+    }
 );
 
 gsap.set(
     $('.dish__box .btn--small'), {
-    x: 30,
-    opacity: 0
-}
+        x: 30,
+        opacity: 0
+    }
 );
 
 gsap.set(
     $('.dish__box .btn--small')[0], {
-    x: 0,
-    opacity: 1
-}
+        x: 0,
+        opacity: 1
+    }
 );
 
 if ($('.offer__slider').exists()) {
@@ -672,78 +732,78 @@ if ($('.dish-slider').exists()) {
                     if (index != actIndex) {
                         gsap.set(
                             $('.dish__image')[index], {
-                            scale: 0,
-                            opacity: 0
-                        }
+                                scale: 0,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__text--word')[index], {
-                            y: -30,
-                            opacity: 0
-                        }
+                                y: -30,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__article')[index], {
-                            y: -30,
-                            opacity: 0
-                        }
+                                y: -30,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__price')[index], {
-                            x: -30,
-                            opacity: 0
-                        }
+                                x: -30,
+                                opacity: 0
+                            }
                         );
 
                         gsap.set(
                             $('.dish__box .btn--small')[index], {
-                            x: 30,
-                            opacity: 0
-                        }
+                                x: 30,
+                                opacity: 0
+                            }
                         );
                     } else {
                         let timeline = gsap.timeline();
                         timeline
                             .to(
                                 $('.dish__image')[index], {
-                                scale: 1,
-                                opacity: 1,
-                                duration: 1
-                            }
+                                    scale: 1,
+                                    opacity: 1,
+                                    duration: 1
+                                }
                             )
 
                             .to(
                                 $('.dish__article')[index], {
-                                opacity: 1,
-                                y: 0,
-                                duration: 0.3
-                            }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
                             )
 
                             .to(
                                 $('.dish__text--word')[index], {
-                                opacity: 1,
-                                y: 0,
-                                duration: 0.3
-                            }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
                             )
 
                             .to(
                                 $('.dish__price')[index], {
-                                opacity: 1,
-                                x: 0,
-                                duration: 0.3
-                            }
+                                    opacity: 1,
+                                    x: 0,
+                                    duration: 0.3
+                                }
                             )
                             .to(
                                 $('.dish__box .btn--small')[index], {
-                                x: 0,
-                                opacity: 1,
-                                duration: 0.3
-                            },
+                                    x: 0,
+                                    opacity: 1,
+                                    duration: 0.3
+                                },
                                 '-=0.6'
                             );
                     }
@@ -897,12 +957,12 @@ if ($('#map').exists()) {
     function init() {
         // Создание карты.
         var myMap = new ymaps.Map("map", {
-            // Координаты центра карты.
-            // Порядок по умолчанию: «широта, долгота».
-            center: [57.098137, 65.613029],
-            zoom: 17,
-            controls: []
-        }),
+                // Координаты центра карты.
+                // Порядок по умолчанию: «широта, долгота».
+                center: [57.098137, 65.613029],
+                zoom: 17,
+                controls: []
+            }),
             myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
                 // hintContent: 'Собственный значок метки',
                 // balloonContent: 'Это красивая метка'
@@ -968,15 +1028,15 @@ if ($('.tab__info').exists()) {
             timeline
                 .fromTo(
                     tabContent[i], {
-                    autoAlpha: 1,
-                    display: 'bloc',
-                    xPercent: 0,
-                }, {
-                    autoAlpha: 0,
-                    display: 'none',
-                    ease: 'power2.out',
-                    xPercent: +100,
-                }
+                        autoAlpha: 1,
+                        display: 'bloc',
+                        xPercent: 0,
+                    }, {
+                        autoAlpha: 0,
+                        display: 'none',
+                        ease: 'power2.out',
+                        xPercent: +100,
+                    }
                 )
         }
     }
@@ -991,16 +1051,16 @@ if ($('.tab__info').exists()) {
             timeline
                 .fromTo(
                     tabContent[b], {
-                    autoAlpha: 0,
-                    display: 'none',
-                    xPercent: +100,
-                }, {
-                    autoAlpha: 1,
-                    display: 'block',
-                    xPercent: 0,
-                    duration: 1,
-                    ease: "back"
-                }
+                        autoAlpha: 0,
+                        display: 'none',
+                        xPercent: +100,
+                    }, {
+                        autoAlpha: 1,
+                        display: 'block',
+                        xPercent: 0,
+                        duration: 1,
+                        ease: "back"
+                    }
                 )
         }
     }
