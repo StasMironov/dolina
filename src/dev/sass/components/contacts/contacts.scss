@@ -1,0 +1,120 @@
+.contacts {
+    position: relative;
+    margin-top: 162px;
+
+    @media(max-width: 1024px) {
+        margin-top: 37px;
+    }
+
+    &__wrapper {
+        display: flex;
+
+        @media(max-width: 1024px) {
+            margin-top: 45px
+        }
+    }
+
+    &__title {
+        letter-spacing: 1.7px;
+    }
+
+    &__quote {
+        margin-top: 6px;
+        letter-spacing: -0.1px;
+
+        @media(max-width: 1024px) {
+            font-size: 16px;
+            margin-top: 3px;
+        }
+    }
+
+    &__blocs {
+        margin-top: 95px;
+
+        @media(max-width: 1024px) {
+            margin-top: 35px;
+        }
+    }
+
+    &__left {
+        max-width: 430px;
+        width: 100%;
+        margin-right: 90px;
+
+        @media(max-width: 1024px) {
+            max-width: 178px;
+            width: 100%;
+            margin-right: 50px;
+        }
+    }
+
+    &__right {
+        max-width: 756px;
+        width: 100%;
+        min-height: 586px;
+        z-index: -1;
+        margin-top: -152px;
+
+        @media(max-width: 1024px) {
+            margin-top: 0;
+        }
+    }
+
+    &__article {
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: 900;
+        color: $orange;
+
+        @media(max-width: 1024px) {
+            letter-spacing: 0.3px;
+            font-size: 18px;
+        }
+    }
+
+    &__item {
+        &:not(:first-child) {
+            @media(max-width: 920px) {
+                margin-top: 37px;
+            }
+        }
+    }
+
+    &__items {
+        display: flex;
+        justify-content: space-between;
+
+        @media(max-width: 920px) {
+            flex-direction: column;
+        }
+
+        &:nth-child(2) {
+            margin-top: 55px;
+
+            @media(max-width: 920px) {
+                margin-top: 35px;
+            }
+        }
+    }
+
+    &__par {
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    &__info {
+        margin-top: 9px;
+    }
+
+    .map {
+        height: 100%;
+        margin-top: initial;
+
+        #map {
+            width: calc(100% + 555px);
+            right: -564px;
+            left: 0;
+        }
+    }
+
+}

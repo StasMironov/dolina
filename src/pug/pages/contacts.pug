@@ -1,0 +1,53 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index-page';
+
+block content
+	.contacts
+		.contacts__container.container
+			.contacts__header
+						.contacts__title.title-1 Контакты
+						.contacts__quote Идейные соображения высшего порядка.
+			.contacts__wrapper
+				.contacts__left
+					.contacts__blocs
+						.contacts__items
+							.contacts__item
+								.contacts__article Адрес заведения:
+								.contacts__info
+									.contacts__par г. Тюмень, 
+									.contacts__par ул. Вишневая 1
+							.contacts__item
+								.contacts__article Время работы:
+								.contacts__info
+									.contacts__par Вс-Чт: 10:00-23:00
+									.contacts__par Пт-Сб: 10:00-24:00 
+						.contacts__items
+							.contacts__item
+								.contacts__article Телефоны:
+								.contacts__info
+									.contacts__par +7 (958) 758-85-78
+									.contacts__par +7 (958) 758-85-78
+									.contacts__par +7 (958) 758-85-78
+						.contacts__items
+				.contacts__right
+					.map
+						.map__unique
+							#map
+						
+		#scene_contacts.elements
+			.elements__item(data-depth="0.01")
+				img(src="./img/elements/el15.png")
+			.elements__item(data-depth="0.07")
+				img(src="./img/elements/el16.png")
+			.elements__item(data-depth="0.02")
+				img(src="./img/elements/el17.png")
+			.elements__item(data-depth="0.07")
+				img(src="./img/elements/el18.png")
+			.elements__item(data-depth="0.04")
+				img(src="./img/elements/el18.png")
+			
+				
+block script

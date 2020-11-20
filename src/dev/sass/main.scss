@@ -338,6 +338,8 @@ input::-ms-clear {
   padding: 0 calc(17px - (100vw - 100%)) 0 0;
 }
 
+
+@import "./components/contacts/contacts.scss";
 @import "./components/menu/menu.scss";
 @import "./components/menu/showcase.scss";
 @import "./components/order/order-form.scss";

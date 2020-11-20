@@ -224,6 +224,56 @@
     }
 }
 
+#scene_contacts {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+    height: calc(100% + 101px);
+    top: -101px;
+    display: none;
+
+    .elements__item {
+        position: absolute !important;
+        display: inline-block !important;
+
+        &:nth-child(1) {
+            top: -57px !important;
+            left: 219px !important;
+        }
+
+        &:nth-child(2) {
+            left: 630px !important;
+            top: 60px !important;
+        }
+
+        &:nth-child(3) {
+            left: 131px !important;
+            top: auto !important;
+            bottom: 144px !important;
+        }
+
+        &:nth-child(4) {
+            left: -53px !important;
+            top: 209px !important;
+            width: 146px;
+            right: auto;
+        }
+
+        &:nth-child(5) {
+            left: 727px !important;
+            top: 532px !important;
+            width: 138px !important;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
 #scene_dish {
     position: absolute;
     top: 0;
