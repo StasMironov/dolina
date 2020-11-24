@@ -241,26 +241,61 @@ function setHeight(elem) {
                 heightSet += $(this).outerHeight();
             });
 
-
-
-            // if larger viewport and multi-row layout needed
-            // if (breakpoint.matches === true) {
-            //     return heightSet;
-            // } else {
-            //     heightSet = heightSet / 2;
-            //     return heightSet;
-            // }
-
-
-            if ($(this).width() > 600) {
+            if ($(this).width() > 900) {
+                heightSet = heightSet - 20;
+            }
+            else {
                 heightSet = heightSet / 2;
             }
-            return heightSet;
 
+            return heightSet;
         } catch (err) {
             console.log(err);
         }
     }
+}
+
+const parallaxTL = gsap.timeline({
+    ease: 'none',
+    scrollTrigger: {
+        trigger: '.bsg-parallax',
+        start: 'top bottom',
+        scrub: true
+    }
+});
+
+
+parallaxTL
+    .from('.content-wrapper',
+        {
+            duration: 1,
+            autoAlpha: 0
+        }
+    )
+    .from('.bcg', {
+        duration: 1,
+        y: '-30'
+    });
+
+
+if ($('.about-slider').exists()) {
+    let swiperAbout = new Swiper('.about-slider', {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        loop: true,
+        speed: 500,
+        autoplay: {
+            delay: 5000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'progressbar',
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 }
 
 if ($('.popup-card__close').exists()) {
@@ -304,6 +339,7 @@ if ($('.menu').exists()) {
     $(window).on('resize load', function () {
         if ($(this).width() > 900) {
             let heightEl = setHeight('.menu__item');
+            console.log(heightEl);
             showMenu(heightEl);
         } else {
             hideMenu();

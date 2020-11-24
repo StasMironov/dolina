@@ -339,6 +339,9 @@ input::-ms-clear {
 }
 
 
+@import "./components/about/about-advantage.scss";
+@import "./components/slider/slider.scss";
+@import "./components/about/about.scss";
 @import "./components/contacts/contacts.scss";
 @import "./components/menu/menu.scss";
 @import "./components/menu/showcase.scss";

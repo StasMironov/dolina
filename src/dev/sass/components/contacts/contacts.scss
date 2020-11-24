@@ -1,6 +1,7 @@
 .contacts {
     position: relative;
     margin-top: 162px;
+    padding: 0 calc(17px - (100vw - 100%)) 0 0;
 
     @media(max-width: 1024px) {
         margin-top: 37px;
@@ -12,10 +13,21 @@
         @media(max-width: 1024px) {
             margin-top: 45px
         }
+
+        @media(max-width: 920px) {}
+
+        @media(max-width: 600px) {
+            margin-top: 18px;
+            flex-direction: column;
+        }
     }
 
     &__title {
         letter-spacing: 1.7px;
+
+        @media(max-width: 600px) {
+            letter-spacing: 1.3px;
+        }
     }
 
     &__quote {
@@ -26,6 +38,16 @@
             font-size: 16px;
             margin-top: 3px;
         }
+
+        @media(max-width: 920px) {
+            font-size: 16px;
+            margin-top: 3px;
+        }
+
+        @media(max-width: 600px) {
+            font-size: 14px;
+            margin-top: 6px;
+        }
     }
 
     &__blocs {
@@ -33,6 +55,10 @@
 
         @media(max-width: 1024px) {
             margin-top: 35px;
+        }
+
+        @media(max-width: 920px) {
+            margin-top: 0;
         }
     }
 
@@ -42,21 +68,43 @@
         margin-right: 90px;
 
         @media(max-width: 1024px) {
-            max-width: 178px;
+            max-width: 365px;
             width: 100%;
-            margin-right: 50px;
+            margin-right: 30px;
+        }
+
+        @media(max-width: 920px) {
+            max-width: 197px;
+            width: 100%;
+            margin-right: 30px;
+            padding-top: 35px;
+        }
+
+        @media(max-width:600px) {
+            max-width: 100%;
+            margin-right: 0;
+            padding-top: 0;
         }
     }
 
     &__right {
         max-width: 756px;
         width: 100%;
-        min-height: 586px;
+        height: 586px;
         z-index: -1;
         margin-top: -152px;
 
         @media(max-width: 1024px) {
             margin-top: 0;
+        }
+
+        @media(max-width: 920px) {
+            height: 586px;
+        }
+
+        @media(max-width: 600px) {
+            margin-top: 38px;
+            height: 357px;
         }
     }
 
@@ -70,12 +118,21 @@
             letter-spacing: 0.3px;
             font-size: 18px;
         }
+
+        @media(max-width: 600px) {
+            font-size: 16px;
+            line-height: 23px;
+        }
     }
 
     &__item {
         &:not(:first-child) {
             @media(max-width: 920px) {
                 margin-top: 37px;
+            }
+
+            @media(max-width: 600px) {
+                margin-top: 18px;
             }
         }
     }
@@ -88,11 +145,27 @@
             flex-direction: column;
         }
 
+        &:nth-child(1) {
+            .contacts__item {
+                &:first-child {
+                    & .contacts__par {
+                        @media(max-width:600px) {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+
         &:nth-child(2) {
             margin-top: 55px;
 
             @media(max-width: 920px) {
                 margin-top: 35px;
+            }
+
+            @media(max-width: 600px) {
+                margin-top: 19px;
             }
         }
     }
@@ -100,10 +173,21 @@
     &__par {
         font-size: 16px;
         line-height: 30px;
+
+        @media(max-width: 600px) {
+            font-size: 15px;
+            line-height: 23px;
+        }
     }
 
     &__info {
         margin-top: 9px;
+
+        @media(max-width:600px) {
+            margin-top: 5px;
+        }
+
+
     }
 
     .map {
