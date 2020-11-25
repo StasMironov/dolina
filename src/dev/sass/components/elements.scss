@@ -146,7 +146,6 @@
     }
 }
 
-
 #scene_comment {
     position: absolute;
     top: 0;
@@ -428,10 +427,6 @@
     height: 100%;
     z-index: -1;
 
-    @media(max-width: 1024px) {
-        //display: none;
-    }
-
     .elements__item {
         position: absolute !important;
         display: inline-block !important;
@@ -591,4 +586,38 @@
         }
     }
 
+}
+
+#scene_about {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+
+    .elements__item {
+        position: absolute !important;
+        display: inline-block !important;
+
+        &:nth-child(1) {
+            top: 44px !important;
+            left: 765px !important;
+        }
+
+        &:nth-child(2) {
+            top: -44px !important;
+            right: 342px !important;
+            left: auto !important;
+        }
+
+        &:nth-child(3) {
+            right: 652px !important;
+            bottom: -67px !important;
+            left: auto !important;
+            top: auto !important;
+        }
+    }
 }

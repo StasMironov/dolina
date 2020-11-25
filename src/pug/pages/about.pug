@@ -31,9 +31,33 @@ block content
 	.about-advantage
 		.bcg-parallax
 			.bcg
-				.content-wrapper
-					.container
-						h2 Section
-
-				
+			.content-wrapper
+				.container
+					.about-advantage__title.title-2 Наши преимущества
+					.about-advantage__items
+						.about-advantage__item
+							.about-advantage__pic 
+								+svg('ch')
+							.about-advantage__box
+								.about-advantage__article Качество блюд
+								.about-advantage__text Разнообразный и богатый опыт постоянное обеспечение нашей деятельности.
+						.about-advantage__item
+							.about-advantage__pic 
+								+svg('order')
+							.about-advantage__box
+								.about-advantage__article Вежливый персонал
+								.about-advantage__text Разнообразный и богатый опыт постоянное обеспечение нашей деятельности.
+						.about-advantage__item
+							.about-advantage__pic 
+								+svg('faster')
+							.about-advantage__box
+								.about-advantage__article Быстрый сервис
+								.about-advantage__text Разнообразный и богатый опыт постоянное обеспечение нашей деятельности.
+		#scene_about.elements
+			.elements__item(data-depth="0.02")
+				img(src="./img/elements/el19.png")
+			.elements__item(data-depth="0.03")
+				img(src="./img/elements/el20.png")
+			.elements__item(data-depth="0.02")
+				img(src="./img/elements/el21.png")
 block script
