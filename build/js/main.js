@@ -2,6 +2,8 @@ jQuery.fn.exists = function () {
     return $(this).length;
 }
 
+gsap.registerPlugin(ScrollTrigger);
+
 let timeline = gsap.timeline();
 
 const projectFunc = {
@@ -10,7 +12,6 @@ const projectFunc = {
             $(element).each(function (index) {
                 let outEl = this;
                 $(place).append(outEl);
-                // $(this).remove();
             });
         }
     },
@@ -33,20 +34,20 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-card', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
             .to(
                 popupEl, {
-                    scale: 1,
-                    duration: 0.8,
-                    ease: 'power2.out'
-                }
+                scale: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
             )
     },
 
@@ -54,16 +55,16 @@ const projectFunc = {
         timeline.clear();
         gsap.to(
             '.popup-card', {
-                scale: 0,
-                duration: 0.8,
-                ease: 'power2.out'
-            }
+            scale: 0,
+            duration: 0.8,
+            ease: 'power2.out'
+        }
         );
         gsap.to(
             '.overlay-card', {
-                autoAlpha: 0,
-                delay: 0.5
-            }
+            autoAlpha: 0,
+            delay: 0.5
+        }
         );
     },
 
@@ -71,54 +72,54 @@ const projectFunc = {
         timeline.clear();
         gsap.set(
             ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
-                autoAlpha: 0,
-            }
+            autoAlpha: 0,
+        }
         );
 
         gsap.set(
             ['.popup-basket__icon', '.popup-basket__title'], {
-                scale: 0
-            }
+            scale: 0
+        }
         );
 
         gsap.set(
             '.popup-basket__item', {
-                autoAlpha: 0,
-                y: -20
-            }
+            autoAlpha: 0,
+            y: -20
+        }
         );
 
         gsap.set(
             '.popup-basket__text', {
-                autoAlpha: 0,
-                xPercent: -20
-            }
+            autoAlpha: 0,
+            xPercent: -20
+        }
         );
 
         gsap.set(
             '.popup-basket__sum', {
-                autoAlpha: 0,
-                xPercent: 20
-            }
+            autoAlpha: 0,
+            xPercent: 20
+        }
         );
 
         gsap.set(
             '.popup-basket__hide', {
-                autoAlpha: 0,
-            }
+            autoAlpha: 0,
+        }
         )
 
         gsap.to(
             '.popup-basket', {
-                xPercent: 120,
-                duration: 0.5,
-                ease: "power2.out"
-            }
+            xPercent: 120,
+            duration: 0.5,
+            ease: "power2.out"
+        }
         );
         gsap.to(
             '.overlay-basket', {
-                autoAlpha: 0
-            }
+            autoAlpha: 0
+        }
         );
 
         $('html').removeClass('locked');
@@ -130,58 +131,58 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                    xPercent: 120,
-                    autoAlpha: 1,
-                }, {
-                    xPercent: 0,
-                    duration: 0.6,
-                    ease: "power2.out"
-                }
+                xPercent: 120,
+                autoAlpha: 1,
+            }, {
+                xPercent: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            }
             )
             .to(
                 '.popup-basket__hide', {
-                    autoAlpha: 1,
-                }
+                autoAlpha: 1,
+            }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                    scale: 1,
-                    ease: "power2.out",
-                    stagger: 0.4,
-                    autoAlpha: 1
-                }
+                scale: 1,
+                ease: "power2.out",
+                stagger: 0.4,
+                autoAlpha: 1
+            }
             )
             .to(
                 '.popup-basket__item', {
-                    autoAlpha: 1,
-                    y: 0,
-                    stagger: 0.3,
-                    // duration: 0.3,
-                    ease: "power2.out",
-                }
+                autoAlpha: 1,
+                y: 0,
+                stagger: 0.3,
+                // duration: 0.3,
+                ease: "power2.out",
+            }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                    autoAlpha: 1,
-                    xPercent: 0
-                }
+                autoAlpha: 1,
+                xPercent: 0
+            }
             )
             .to(
                 '.popup-basket .btn', {
-                    autoAlpha: 1,
-                    duration: 0.3
-                }
+                autoAlpha: 1,
+                duration: 0.3
+            }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
@@ -194,19 +195,19 @@ const projectFunc = {
 function showMenu(heightEl) {
     gsap.to(
         '.menu__cover', {
-            autoAlpha: 1,
-            height: heightEl + 20,
-            ease: "power1.out",
-            duration: 0.5
-        }
+        autoAlpha: 1,
+        height: heightEl + 20,
+        ease: "power1.out",
+        duration: 0.5
+    }
     );
 
 
     gsap.to(
         '.menu__btn i', {
-            scaleY: -1,
-            duration: 0.5
-        }
+        scaleY: -1,
+        duration: 0.5
+    }
     );
 }
 
@@ -215,20 +216,20 @@ function hideMenu() {
 
     gsap.to(
         '.menu__cover', {
-            autoAlpha: 0,
-            height: 0,
-            ease: "power1.out",
-            duration: 0.5
-        }
+        autoAlpha: 0,
+        height: 0,
+        ease: "power1.out",
+        duration: 0.5
+    }
     );
 
     gsap.to(
         '.menu__btn i', {
-            scaleX: 1,
-            scaleY: 1,
-            ease: "power1.out",
-            duration: 0.5
-        }
+        scaleX: 1,
+        scaleY: 1,
+        ease: "power1.out",
+        duration: 0.5
+    }
     );
 }
 
@@ -254,9 +255,6 @@ function setHeight(elem) {
     }
 }
 
-
-
-
 if ($('.about-slider').exists()) {
     let swiperAbout = new Swiper('.about-slider', {
         slidesPerView: 2,
@@ -274,6 +272,28 @@ if ($('.about-slider').exists()) {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+        breakpoints: {
+            320: {
+                slidesPerView: 2.2,
+                spaceBetween: 15
+            },
+            501: {
+                slidesPerView: 3.4,
+                spaceBetween: 30
+            },
+            841: {
+                slidesPerView: 1.2,
+                spaceBetween: 30
+            },
+            1025: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            1280: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            }
+        }
     });
 }
 
@@ -400,75 +420,83 @@ if ($('#scene').exists()) {
 
 if ($('.offer__slider .btn').exists()) {
     let tempQuestion = projectFunc.objReturn(".offer__slider .btn");
-    let сteatedQuestion = false;
 
     $(window).on('resize load', function () {
         if ($(this).width() <= 600) {
             projectFunc.objAd(".offer__slider .btn", "#offer__all");
-            сteatedQuestion = false;
         }
     });
 }
 
+if ($('.about__left .btn').exists()) {
+    let tempBtn = projectFunc.objReturn(".about__left .btn");
 
+    $(window).on('resize load', function () {
+        if ($(this).width() <= 840) {
+            projectFunc.objAd(".about__left .btn", ".about__include");
+        } else {
+            projectFunc.objAd(tempBtn, " .about__basic");
+        }
+    });
+}
 
 function showBasket() {
     let timeline = gsap.timeline();
     timeline
         .fromTo(
             '.overlay-basket', {
-                autoAlpha: 0
-            }, {
-                autoAlpha: 1,
-                duration: 0.3,
-                ease: 'power2.out'
-            },
+            autoAlpha: 0
+        }, {
+            autoAlpha: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+        },
             '+=0.3'
         )
 
         .fromTo(
             '.popup-basket', {
-                xPercent: 120,
-                autoAlpha: 1,
-            }, {
-                xPercent: 0,
-                duration: 0.6,
-                ease: "power2.out"
-            }
+            xPercent: 120,
+            autoAlpha: 1,
+        }, {
+            xPercent: 0,
+            duration: 0.6,
+            ease: "power2.out"
+        }
         )
         .to(
             '.popup-basket__hide', {
-                autoAlpha: 1,
-            }
+            autoAlpha: 1,
+        }
         )
         .to(
             ['.popup-basket__icon', '.popup-basket__title'], {
-                scale: 1,
-                ease: "power2.out",
-                stagger: 0.4,
-                autoAlpha: 1
-            }
+            scale: 1,
+            ease: "power2.out",
+            stagger: 0.4,
+            autoAlpha: 1
+        }
         )
         .to(
             '.popup-basket__item', {
-                autoAlpha: 1,
-                y: 0,
-                stagger: 0.3,
-                // duration: 0.3,
-                ease: "power2.out",
-            }
+            autoAlpha: 1,
+            y: 0,
+            stagger: 0.3,
+            // duration: 0.3,
+            ease: "power2.out",
+        }
         )
         .to(
             ['.popup-basket__sum', '.popup-basket__text'], {
-                autoAlpha: 1,
-                xPercent: 0
-            }
+            autoAlpha: 1,
+            xPercent: 0
+        }
         )
         .to(
             '.popup-basket .btn', {
-                autoAlpha: 1,
-                duration: 0.3
-            }
+            autoAlpha: 1,
+            duration: 0.3
+        }
         );
     $('html').addClass('locked');
     document.body.style.overflow = 'hidden';
@@ -625,71 +653,71 @@ $(window).on('resize load', function () {
 
 gsap.set(
     $('.dish__box').find('.dish__image'), {
-        scale: 0,
-        opacity: 0
-    }
+    scale: 0,
+    opacity: 0
+}
 );
 gsap.set(
     $('.dish__box:first-child').find('.dish__image'), {
-        scale: 1,
-        opacity: 1
-    }
+    scale: 1,
+    opacity: 1
+}
 );
 
 gsap.set(
     $('.dish__article'), {
-        y: -30,
-        opacity: 0
-    }
+    y: -30,
+    opacity: 0
+}
 );
 
 gsap.set(
     $('.dish__article')[0], {
-        y: 0,
-        opacity: 1
-    }
+    y: 0,
+    opacity: 1
+}
 );
 
 gsap.set(
     $('.dish__text--word'), {
-        y: -30,
-        opacity: 0
-    }
+    y: -30,
+    opacity: 0
+}
 );
 
 gsap.set(
     $('.dish__text--word')[0], {
-        y: 0,
-        opacity: 1
-    }
+    y: 0,
+    opacity: 1
+}
 );
 
 gsap.set(
     $('.dish__price'), {
-        x: -30,
-        opacity: 0
-    }
+    x: -30,
+    opacity: 0
+}
 );
 
 gsap.set(
     $('.dish__price')[0], {
-        x: 0,
-        opacity: 1
-    }
+    x: 0,
+    opacity: 1
+}
 );
 
 gsap.set(
     $('.dish__box .btn--small'), {
-        x: 30,
-        opacity: 0
-    }
+    x: 30,
+    opacity: 0
+}
 );
 
 gsap.set(
     $('.dish__box .btn--small')[0], {
-        x: 0,
-        opacity: 1
-    }
+    x: 0,
+    opacity: 1
+}
 );
 
 if ($('.offer__slider').exists()) {
@@ -772,78 +800,78 @@ if ($('.dish-slider').exists()) {
                     if (index != actIndex) {
                         gsap.set(
                             $('.dish__image')[index], {
-                                scale: 0,
-                                opacity: 0
-                            }
+                            scale: 0,
+                            opacity: 0
+                        }
                         );
 
                         gsap.set(
                             $('.dish__text--word')[index], {
-                                y: -30,
-                                opacity: 0
-                            }
+                            y: -30,
+                            opacity: 0
+                        }
                         );
 
                         gsap.set(
                             $('.dish__article')[index], {
-                                y: -30,
-                                opacity: 0
-                            }
+                            y: -30,
+                            opacity: 0
+                        }
                         );
 
                         gsap.set(
                             $('.dish__price')[index], {
-                                x: -30,
-                                opacity: 0
-                            }
+                            x: -30,
+                            opacity: 0
+                        }
                         );
 
                         gsap.set(
                             $('.dish__box .btn--small')[index], {
-                                x: 30,
-                                opacity: 0
-                            }
+                            x: 30,
+                            opacity: 0
+                        }
                         );
                     } else {
                         let timeline = gsap.timeline();
                         timeline
                             .to(
                                 $('.dish__image')[index], {
-                                    scale: 1,
-                                    opacity: 1,
-                                    duration: 1
-                                }
+                                scale: 1,
+                                opacity: 1,
+                                duration: 1
+                            }
                             )
 
                             .to(
                                 $('.dish__article')[index], {
-                                    opacity: 1,
-                                    y: 0,
-                                    duration: 0.3
-                                }
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.3
+                            }
                             )
 
                             .to(
                                 $('.dish__text--word')[index], {
-                                    opacity: 1,
-                                    y: 0,
-                                    duration: 0.3
-                                }
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.3
+                            }
                             )
 
                             .to(
                                 $('.dish__price')[index], {
-                                    opacity: 1,
-                                    x: 0,
-                                    duration: 0.3
-                                }
+                                opacity: 1,
+                                x: 0,
+                                duration: 0.3
+                            }
                             )
                             .to(
                                 $('.dish__box .btn--small')[index], {
-                                    x: 0,
-                                    opacity: 1,
-                                    duration: 0.3
-                                },
+                                x: 0,
+                                opacity: 1,
+                                duration: 0.3
+                            },
                                 '-=0.6'
                             );
                     }
@@ -867,7 +895,7 @@ if ($('#scene_comment').exists()) {
 }
 
 
-if ($('#scene_comment').exists()) {
+if ($('#scene_dish').exists()) {
     let sceneDish = document.getElementById('scene_dish');
     let parallaxDish = new Parallax(sceneDish, {
         hoverOnly: true,
@@ -997,12 +1025,12 @@ if ($('#map').exists()) {
     function init() {
         // Создание карты.
         var myMap = new ymaps.Map("map", {
-                // Координаты центра карты.
-                // Порядок по умолчанию: «широта, долгота».
-                center: [57.098137, 65.613029],
-                zoom: 17,
-                controls: []
-            }),
+            // Координаты центра карты.
+            // Порядок по умолчанию: «широта, долгота».
+            center: [57.098137, 65.613029],
+            zoom: 17,
+            controls: []
+        }),
             myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
                 // Необходимо указать данный тип макета.
                 iconLayout: 'default#image',
@@ -1037,7 +1065,6 @@ if ($('.tab__info').exists()) {
 
     const timeline = gsap.timeline();
 
-
     let tab = document.querySelectorAll('.tab__info'),
         info = document.querySelector('.tab__header'),
         tabContent = document.querySelectorAll('.tab__content');
@@ -1045,7 +1072,6 @@ if ($('.tab__info').exists()) {
     tab[0].classList.add('tab__info--active');
 
     for (let i = 0; i < tabContent.length; i++) {
-
         if (i != 0) {
             gsap.set(tabContent[i], {
                 autoAlpha: 0,
@@ -1053,7 +1079,6 @@ if ($('.tab__info').exists()) {
             });
         }
     }
-
 
     function hideTabContent(a) {
         for (let i = a; i < tabContent.length; i++) {
@@ -1064,15 +1089,15 @@ if ($('.tab__info').exists()) {
             timeline
                 .fromTo(
                     tabContent[i], {
-                        autoAlpha: 1,
-                        display: 'bloc',
-                        xPercent: 0,
-                    }, {
-                        autoAlpha: 0,
-                        display: 'none',
-                        ease: 'power2.out',
-                        xPercent: +100,
-                    }
+                    autoAlpha: 1,
+                    display: 'bloc',
+                    xPercent: 0,
+                }, {
+                    autoAlpha: 0,
+                    display: 'none',
+                    ease: 'power2.out',
+                    xPercent: +100,
+                }
                 )
         }
     }
@@ -1087,16 +1112,16 @@ if ($('.tab__info').exists()) {
             timeline
                 .fromTo(
                     tabContent[b], {
-                        autoAlpha: 0,
-                        display: 'none',
-                        xPercent: +100,
-                    }, {
-                        autoAlpha: 1,
-                        display: 'block',
-                        xPercent: 0,
-                        duration: 1,
-                        ease: "back"
-                    }
+                    autoAlpha: 0,
+                    display: 'none',
+                    xPercent: +100,
+                }, {
+                    autoAlpha: 1,
+                    display: 'block',
+                    xPercent: 0,
+                    duration: 1,
+                    ease: "back"
+                }
                 )
         }
     }
@@ -1117,31 +1142,101 @@ if ($('.tab__info').exists()) {
     });
 }
 
-gsap.registerPlugin(ScrollTrigger);
 
-const parallaxTL = gsap.timeline({
-    scrollTrigger: {
-        trigger: '.bsg-parallax',
-        start: 'top',
-        end: 'bottom-=76%',
-        scrub: true,
+if ($('.js-tab-btn').extend()) {
+    $('.js-tab-btn').on('click', function () {
+        $('.tab__case').toggleClass('tab__case--active');
+    });
+}
+
+if ($('.about-service__link').exists()) {
+    $('.about-service__link').each(function () {
+        $(this).on('click', function () {
+            var el = $(this);
+            var dest = el.attr('href'); // получаем направление
+            if (dest !== undefined && dest !== '') { // проверяем существование
+                $('html').animate({
+                    scrollTop: $(dest).offset().top // прокручиваем страницу к требуемому элементу
+                }, 500 // скорость прокрутки
+                );
+            }
+            return false;
+        });
+    });
+}
+
+if ($('.about-service__link').exists()) {
+    try {
+        $('.about-service__link').each(function () {
+            $(this).on('click', function () {
+                const dataLink = $(this).data('val');
+
+                if ($('.tab__item input').exists()) {
+                    const textBtn = document.querySelector('.tab__text');
+                    $('.tab__item input').each(function () {
+                        const dataLabel = $(this).data('val');
+                        if (dataLabel == dataLink) {
+                            let tab = document.querySelectorAll('.tab__info');
+                            hideTabContent(0);
+                            showTabContent(1);
+                            $(this).attr("checked", "checked");
+                            textBtn.textContent = $(this).siblings('label')[0].textContent;
+                        }
+                    });
+                }
+            })
+        });
     }
-});
+    catch (err) {
+        console.log(err);
+    }
+}
 
-parallaxTL
-    .from('.bcg', {
-        duration: 2,
-        y: '-70',
+if ($('.tab__item label').exists()) {
+    const lablEl = document.querySelectorAll('.tab__item label');
+    const textBtn = document.querySelector('.tab__text');
+
+    lablEl.forEach(function (element) {
+        element.addEventListener('click', function () {
+            textBtn.textContent = this.textContent;
+            $('.tab__case').toggleClass('tab__case--active');
+        });
     })
-    .from('.content-wrapper', {
-        autoAlpha: 0,
-        duration: 2,
-    })
-    .from(
-        '.about-advantage__item', {
-            duration: 2,
-            autoAlpha: 0,
-            stagger: 1,
-            x: '-30'
-        }
-    )
+}
+
+if ($('.js-bcg-parallax').exists()) {
+    try {
+        const parallaxTL = gsap.timeline({
+            defaults: { ease: "power1.out" },
+            scrollTrigger: {
+                trigger: '.js-bcg-parallax',
+                start: 'top-=130%',
+                end: 'bottom-=110%',
+                scrub: true,
+                markers: true
+            }
+        });
+
+        parallaxTL
+            .from('.js-bcg', {
+                duration: 2,
+                y: '-100',
+            })
+            .from('.js-content-wrapper', {
+                autoAlpha: 0,
+                duration: 2,
+            })
+            .from(
+                '.about-advantage__item', {
+                duration: 2,
+                autoAlpha: 0,
+                stagger: 1,
+                x: '-30'
+            }
+            );
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+

@@ -1,0 +1,103 @@
+.about-service {
+    margin-top: 78px;
+
+    &__quote {
+        letter-spacing: -0.1px;
+        max-width: 820px;
+        margin-top: 8px;
+    }
+
+    &__cover {
+        margin-top: 37px;
+    }
+
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -40px;
+        margin-top: -40px;
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: calc(50% - 40px);
+        margin-left: 40px;
+        margin-top: 40px;
+        border-radius: 5px;
+        padding: 67px 65px;
+        min-height: 360px;
+        text-align: center;
+        color: white;
+        z-index: 1;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        transition: .5s ease;
+
+
+        &:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+            opacity: .4;
+            z-index: -1;
+            transition: .5s ease;
+        }
+
+        &:hover {
+            background-size: 110% 110%;
+
+            &:after {
+                opacity: .7;
+            }
+        }
+    }
+
+    &__article {
+        font-size: 30px;
+        font-weight: 900;
+        line-height: 40px;
+        letter-spacing: 1.6px;
+    }
+
+    &__info {
+        margin-top: 10px;
+        font-weight: 550;
+        letter-spacing: 0px;
+    }
+
+    &__link {
+        position: relative;
+        align-self: center;
+        margin-top: auto;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 700;
+        padding-bottom: 2px;
+
+        &:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 1.5px;
+            bottom: 0;
+            background-color: white;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transition: .4s ease;
+        }
+
+        &:hover:after {
+            width: 0%;
+        }
+    }
+}

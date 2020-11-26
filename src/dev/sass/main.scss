@@ -32,8 +32,10 @@ body {
   background-color: #fff;
   word-wrap: break-word;
   overflow-x: hidden !important;
+}
 
-
+.b-page {
+  overflow: hidden;
 }
 
 .container {
@@ -338,10 +340,8 @@ input::-ms-clear {
   padding: 0 calc(17px - (100vw - 100%)) 0 0;
 }
 
-body {
-  height: 3000px;
-}
 
+@import "./components/about/about-service.scss";
 @import "./components/about/about-advantage.scss";
 @import "./components/slider/slider.scss";
 @import "./components/about/about.scss";

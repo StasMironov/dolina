@@ -16,6 +16,8 @@ block content
 						.about__item Разнообразный и богатый опыт консультация с широким активом требуют определения и уточнения форм развития.
 						.about__item С другой стороны сложившаяся структура организации требуют от нас анализа дальнейших направлений развития. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение позиций, занимаемых участниками в отношении поставленных задач.
 						.about__item Товарищи! сложившаяся структура организации способствует подготовки и реализации системы обучения кадров, соответствует насущным потребностям. Значимость этих проблем настолько очевидна, что консультация с широким активом требуют от нас анализа направлений прогрессивного развития.
+					.about__basic
+						a(href="javascript:void(0);").btn.btn--orange.btn--big Посмотреть галерею
 				.about__right
 					.about__unique
 						.about-slider
@@ -27,11 +29,11 @@ block content
 								.swiper-slide
 									img(src="./img/slider/slide1.jpg" alt="")
 						<div class="swiper-pagination"></div>
-			a(href="javascript:void(0);").btn.btn--orange.btn--big Посмотреть галерею
+				.about__include
 	.about-advantage
-		.bcg-parallax
-			.bcg
-			.content-wrapper
+		.bcg-parallax.js-bcg-parallax
+			.bcg.js-bcg
+			.content-wrapper.js-content-wrapper
 				.container
 					.about-advantage__title.title-2 Наши преимущества
 					.about-advantage__items
@@ -60,4 +62,28 @@ block content
 				img(src="./img/elements/el20.png")
 			.elements__item(data-depth="0.02")
 				img(src="./img/elements/el21.png")
+	.about-service
+		.about-service__container.container
+			.about-service__title.title-3 Услуги ресторана
+			.about-service__quote Приводите друзей и детей, учитесь готовить, заказывайте разнообразные сладости и выездные банкеты с полным или частичным обслуживанием. Таким образом укрепление и развитие структуры способствует подготовки и реализации модели развития.
+			.about-service__cover
+				.about-service__items
+					.about-service__item(style="background-image: url(./img/service/s1.jpg)")
+						.about-service__article Проведение свадеб
+						.about-service__info Приглашаем Вас отпраздновать свадьбу в совершенно новых и уютных залах ресторана ВосточнаяДолина. Мы готовы взять на себя организацию Вашего торжества под ключ! За 11 лет работы у нас богатый опыт и более 3000 свадебных торжеств!
+						a(href="#goTab" data-val="wed").about-service__link Заказать услугу
+					.about-service__item(style="background-image: url(./img/service/s2.jpg)")
+						.about-service__article Проведение банкетов
+						.about-service__info Приглашаем Вас отпраздновать свадьбу в совершенно новых и уютных залах ресторана ВосточнаяДолина. Мы готовы взять на себя организацию Вашего торжества под ключ! За 11 лет работы у нас богатый опыт и более 3000 свадебных торжеств!
+						a(href="#goTab" data-val="banket").about-service__link Заказать услугу
+					.about-service__item(style="background-image: url(./img/service/s3.jpg)")
+						.about-service__article Проведение юбилеев
+						.about-service__info Приглашаем Вас отпраздновать свадьбу в совершенно новых и уютных залах ресторана ВосточнаяДолина. Мы готовы взять на себя организацию Вашего торжества под ключ! За 11 лет работы у нас богатый опыт и более 3000 свадебных торжеств!
+						a(href="#goTab" data-val="jubilee").about-service__link Заказать услугу
+					.about-service__item(style="background-image: url(./img/service/s4.jpg)")
+						.about-service__article Проведение корпоративов
+						.about-service__info Приглашаем Вас отпраздновать свадьбу в совершенно новых и уютных залах ресторана ВосточнаяДолина. Мы готовы взять на себя организацию Вашего торжества под ключ! За 11 лет работы у нас богатый опыт и более 3000 свадебных торжеств!
+						a(href="#goTab" data-val="corporative").about-service__link Заказать услугу
+	include ../modules/comment
+	include ../modules/map
 block script

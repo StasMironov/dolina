@@ -2,6 +2,14 @@
     overflow: hidden;
     height: 608px;
 
+    @media(max-width: 1235px) {
+        height: 530px;
+    }
+
+    @media(max-width: 1024px) {
+        height: 100%;
+    }
+
     .swiper-slide {
         overflow: hidden;
 

@@ -1,0 +1,112 @@
+.map
+    .map__container.container
+        .map__grid
+            .map__left
+                .map__unique
+                    #map
+            .map__right
+                .map__unique.map__unique--tab
+                    .tab#goTab
+                        .tab__box
+                            .tab__header
+                                .tab__info Забронировать столик
+                                .tab__info Заказать услугу
+                            .tab__cover
+                                .tab__content.show
+                                    form.tab__form
+                                        .tab__group
+                                            .tab__title Контактные данные
+                                            .tab__bloc
+                                                .tab__wrapper
+                                                    .tab__unit
+                                                        .tab__label Имя*
+                                                        input(type="text" name="name" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Фамилия*
+                                                        input(type="text" name="secondname" required).tab__field
+                                                .tab__wrapper
+                                                    .tab__unit
+                                                        .tab__label Адрес электронной почты*
+                                                        input(type="text" name="email" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Контактный телефон
+                                                        input(type="text" name="phone" required).tab__field
+                                        .tab__group
+                                            .tab__title.tab__title--small Детали бронирования
+                                            .tab__bloc
+                                                .tab__wrapper.tab__wrapper--detail
+                                                    .tab__unit
+                                                        .tab__label Дата*
+                                                        input(type="text" name="date" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Время*
+                                                        input(type="text" name="time" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Количество персон*
+                                                        input(type="text" name="qty"  required).tab__field
+
+                                                <label class="tab__checkbox">
+                                                    <input type="checkbox" checked>
+                                                    <span class="tab__word">Я согласен на обработку персональных данных</span>
+                                                </label>
+
+                                                button(type="submit").btn.btn--submit Забронировать
+                                
+                                .tab__content
+                                   form.tab__form
+                                        .tab__group
+                                            .tab__title Контактные данные
+                                            .tab__bloc
+                                                .tab__wrapper
+                                                    .tab__unit
+                                                        .tab__label Имя*
+                                                        input(type="text" name="name" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Вид услуги*
+                                                        .tab__case
+                                                            .tab__wrp.js-tab-btn
+                                                                .tab__text Проведение свадеб
+                                                                .tab__img
+                                                                    <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M3.5 4L0.468911 0.25L6.53109 0.25L3.5 4Z" fill="#2F2C2C"/>
+                                                                    </svg>
+                                                            .tab__select
+                                                                .tab__item
+                                                                    <input id="service1" type="radio" name="service" data-val="wed" value="Проведение свадеб" checked>    
+                                                                    <label for="service1">Проведение свадеб</label>
+                                                                .tab__item
+                                                                    <input id="service2" type="radio" name="service" data-val="banket" value="Проведение банкетов">    
+                                                                    <label for="service2">Проведение банкетов</label>
+                                                                .tab__item
+                                                                    <input id="service3" type="radio" name="service" data-val="jubilee" value="Проведение юбилеев">    
+                                                                    <label for="service3">Проведение юбилеев</label>
+                                                                .tab__item
+                                                                    <input id="service4" type="radio" name="service" data-val="corporative" value="Проведение корпоративов">    
+                                                                    <label for="service4">Проведение корпоративов</label>
+                                                .tab__wrapper
+                                                    .tab__unit
+                                                        .tab__label Адрес электронной почты*
+                                                        input(type="text" name="email" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Контактный телефон
+                                                        input(type="text" name="phone" required).tab__field
+                                        .tab__group
+                                            .tab__title.tab__title--small Детали бронирования
+                                            .tab__bloc
+                                                .tab__wrapper.tab__wrapper--detail
+                                                    .tab__unit
+                                                        .tab__label Дата*
+                                                        input(type="text" name="date" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Время*
+                                                        input(type="text" name="time" required).tab__field
+                                                    .tab__unit
+                                                        .tab__label Количество персон*
+                                                        input(type="text" name="qty" required).tab__field
+
+                                                <label class="tab__checkbox">
+                                                    <input type="checkbox" checked>
+                                                    <span class="tab__word">Я согласен на обработку персональных данных</span>
+                                                </label>
+
+                                                button(type="submit").btn.btn--submit Забронировать

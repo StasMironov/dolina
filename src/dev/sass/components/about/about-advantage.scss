@@ -1,5 +1,6 @@
 .about-advantage {
     position: relative;
+    margin-top: 89px;
 
     &__title {
         text-align: left;
@@ -56,6 +57,10 @@
         position: relative;
         overflow: hidden;
 
+        @media(max-width: 1300px) {
+            padding: 60px 0 70px;
+        }
+
         &:after {
             position: absolute;
             content: "";
@@ -68,7 +73,6 @@
             margin: auto;
             z-index: 2;
             background-repeat: no-repeat;
-            background-size: 84% 100%;
         }
 
         &:before {
@@ -97,6 +101,11 @@
         top: 0;
         z-index: 1;
         background-size: 75% 75%;
+
+        @media(max-width: 1300px) {
+            height: 115%;
+            background-size: cover;
+        }
     }
 
     .content-wrapper {
