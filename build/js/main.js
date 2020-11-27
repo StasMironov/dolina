@@ -1019,44 +1019,92 @@ if ($('.comment__slider').exists()) {
     });
 }
 
-if ($('#map').exists()) {
-    ymaps.ready(init);
 
-    function init() {
-        // Создание карты.
-        var myMap = new ymaps.Map("map", {
-            // Координаты центра карты.
-            // Порядок по умолчанию: «широта, долгота».
-            center: [57.098137, 65.613029],
-            zoom: 17,
-            controls: []
-        }),
-            myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
-                // Необходимо указать данный тип макета.
-                iconLayout: 'default#image',
-                // Своё изображение иконки метки.
-                iconImageHref: '/img/icon/marker.png',
-                // Размеры метки.
-                iconImageSize: [90, 90],
-                // Смещение левого верхнего угла иконки относительно
-                // её "ножки" (точки привязки).
-                iconImageOffset: [-5, -38],
-                openBalloonOnClick: false,
-                hasHint: false,
-                hasBalloon: false,
-                cursor: 'INHERIT'
+$(window).on('load', function () {
+    if ($('#map').exists()) {
+        ymaps.ready(init);
 
-            });
+        function init() {
+
+            // Создание карты.
+            var myMap = new ymaps.Map("map", {
+                // Координаты центра карты.
+                // Порядок по умолчанию: «широта, долгота».
+                center: [57.098137, 65.613029],
+                zoom: 17,
+                controls: []
+            }),
+                myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
+                    // Необходимо указать данный тип макета.
+                    iconLayout: 'default#image',
+                    // Своё изображение иконки метки.
+                    iconImageHref: '/img/icon/marker.png',
+                    // Размеры метки.
+                    iconImageSize: [90, 90],
+                    // Смещение левого верхнего угла иконки относительно
+                    // её "ножки" (точки привязки).
+                    iconImageOffset: [-5, -38],
+                    openBalloonOnClick: false,
+                    hasHint: false,
+                    hasBalloon: false,
+                    cursor: 'INHERIT'
+
+                });
 
 
-        myMap.geoObjects.add(myPlacemark);
-        myMap.behaviors.disable('scrollZoom');
-        myMap.behaviors.disable('drag');
+            myMap.geoObjects.add(myPlacemark);
+            myMap.behaviors.disable('scrollZoom');
+            //myMap.behaviors.disable('drag');
 
-        var position = myMap.getGlobalPixelCenter();
-        myMap.setGlobalPixelCenter([position[0] + 200, position[1]]);
+            var position = myMap.getGlobalPixelCenter();
+            myMap.setGlobalPixelCenter([position[0] + 400, position[1]]);
+
+            if (($(this).width() > 880 && $(this).width() <= 1024)) {
+                myMap.setGlobalPixelCenter([position[0] + 300, position[1]]);
+                myMap.container.fitToViewport();
+            }
+            else if ($(this).width() > 768 && $(this).width() <= 880) {
+                myMap.setGlobalPixelCenter([position[0] + 200, position[1]]);
+                myMap.container.fitToViewport();
+            }
+            else if ($(this).width() > 600 && $(this).width() <= 768) {
+                myMap.setGlobalPixelCenter([position[0] + 100, position[1]]);
+                myMap.container.fitToViewport();
+            }
+            else if ($(this).width() > 500 && $(this).width() <= 600) {
+                myMap.setGlobalPixelCenter([position[0] + 230, position[1]]);
+                myMap.container.fitToViewport();
+            }
+            else if ($(this).width() > 400 && $(this).width() <= 500) {
+                myMap.setGlobalPixelCenter([position[0] + 290, position[1] - 140]);
+                myMap.container.fitToViewport();
+            }
+            else if ($(this).width() > 319 && $(this).width() <= 400) {
+                myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 140]);
+                myMap.container.fitToViewport();
+            }
+            // else if ($(this).width() <= 600) {
+            //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]]);
+            //     myMap.container.fitToViewport();
+            // }
+            // else if ($(this).width() <= 600) {
+            //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]]);
+            //     myMap.container.fitToViewport();
+            // }
+            // else if ($(this).width() == 500) {
+            //     alert(1);
+            //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]] + 200);
+            //     myMap.container.fitToViewport();
+            // }
+            // else {
+            //     myMap.setGlobalPixelCenter([position[0] + 400, position[1]]);
+            //     myMap.container.fitToViewport();
+            // }
+        }
     }
-}
+});
+
+
 
 
 if ($('.tab__info').exists()) {
@@ -1182,6 +1230,9 @@ if ($('.about-service__link').exists()) {
                             $(this).attr("checked", "checked");
                             textBtn.textContent = $(this).siblings('label')[0].textContent;
                         }
+                        else {
+                            $(this).removeAttr("checked", "checked");
+                        }
                     });
                 }
             })
@@ -1206,34 +1257,62 @@ if ($('.tab__item label').exists()) {
 
 if ($('.js-bcg-parallax').exists()) {
     try {
-        const parallaxTL = gsap.timeline({
-            defaults: { ease: "power1.out" },
+        var parallaxTL = new TimelineMax({
             scrollTrigger: {
                 trigger: '.js-bcg-parallax',
-                start: 'top-=130%',
-                end: 'bottom-=110%',
+                start: 'top bottom',
+                end: 'bottom-=130%',
                 scrub: true,
                 markers: true
             }
         });
+        // const parallaxTL = gsap.TimelineMax({
+        //     scrollTrigger: {
+        //         trigger: '.js-bcg-parallax',
+        //         start: 'top bottom',
+        //         end: 'bottom-=110%',
+        //         scrub: true,
+        //         markers: true
+        //     }
+        // });
 
         parallaxTL
-            .from('.js-bcg', {
-                duration: 2,
-                y: '-100',
-            })
-            .from('.js-content-wrapper', {
+            .set('.js-bcg',
+                {
+                    y: '-220',
+                }
+            )
+            .set('.js-content-wrapper', {
                 autoAlpha: 0,
-                duration: 2,
             })
-            .from(
-                '.about-advantage__item', {
-                duration: 2,
+            .set('.about-advantage__item', {
                 autoAlpha: 0,
-                stagger: 1,
                 x: '-30'
-            }
-            );
+            })
+            .to('.js-bcg', 35, {
+                y: 0
+            })
+            .to('.js-content-wrapper', 8, {
+                autoAlpha: 1,
+            })
+            .to('.about-advantage__item', 8, {
+                x: 0,
+                autoAlpha: 1,
+                stagger: 5,
+            });
+        // .from('.js-content-wrapper', {
+        //     delay: 15,
+        //     autoAlpha: 0,
+        // })
+        ;
+        // .from(
+        //         '.about-advantage__item', {
+        //         // duration: 10,
+        //         autoAlpha: 0,
+        //         // stagger: 5,
+        //         x: '-30'
+        //     }
+        //     );
     }
     catch (err) {
         console.log(err);
