@@ -1,6 +1,7 @@
 .header {
     min-height: 74px;
     position: relative;
+    z-index: 1;
 
     &__wrapper {
         display: flex;

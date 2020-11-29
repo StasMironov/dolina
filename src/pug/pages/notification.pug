@@ -1,0 +1,21 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index-page';
+
+block content
+	.notification
+		.notification__items
+			.notification__item(style="background-image: url(img/404/1.png)")
+			.notification__item(style="background-image: url(img/404/2.png)")
+			.notification__item
+			.notification__item
+			.notification__item
+		.notification__container.container
+			.notification__title 404
+			.notification__txt Извините, такой страницы не существует
+	
+			
+				
+block script
