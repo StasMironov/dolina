@@ -6,7 +6,18 @@ include ../mixins
                 .header__logo
                     +svg('logo')
                 .header__menu
-                    a(href="javascript:void(0);").header__link МЕНЮ
+                    .header__box
+                        .header__btn
+                            .header__txt МЕНЮ
+                            .header__ic
+                                <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.5 4L0.468911 0.25L6.53109 0.25L3.5 4Z" fill="#2F2C2C"></path>
+                                </svg>
+                        .header__list
+                            a(href="javascript:void(0);").header__ref Хит продаж
+                            a(href="javascript:void(0);").header__ref Хит продаж
+                            a(href="javascript:void(0);").header__ref Хит продаж
+                    a(href="javascript:void(0);").header__link.header__link--menu МЕНЮ
                     a(href="javascript:void(0);").header__link БРОНЬ
                     a(href="javascript:void(0);").header__link О НАС
                     a(href="javascript:void(0);").header__link ГАЛЕРЕЯ
@@ -17,4 +28,7 @@ include ../mixins
                         a(href="javascript:void(0);").header__adres Вс-Чт: 10:00-23:00, Пт-Сб: 10:00-24:00
                     .header__basket.js-basket
                         +svg('basket')
-    
+                .burger
+                    span
+                    span
+                    span

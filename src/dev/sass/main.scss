@@ -340,7 +340,7 @@ input::-ms-clear {
   padding: 0 calc(17px - (100vw - 100%)) 0 0;
 }
 
-
+@import "./components/burger.scss";
 @import "./components/404/notification.scss";
 @import "./components/gallery/gallery.scss";
 @import "./components/about/about-service.scss";
