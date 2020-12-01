@@ -6,18 +6,7 @@ include ../mixins
                 .header__logo
                     +svg('logo')
                 .header__menu
-                    .header__box
-                        .header__btn
-                            .header__txt МЕНЮ
-                            .header__ic
-                                <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.5 4L0.468911 0.25L6.53109 0.25L3.5 4Z" fill="#2F2C2C"></path>
-                                </svg>
-                        .header__list
-                            a(href="javascript:void(0);").header__ref Хит продаж
-                            a(href="javascript:void(0);").header__ref Хит продаж
-                            a(href="javascript:void(0);").header__ref Хит продаж
-                    a(href="javascript:void(0);").header__link.header__link--menu МЕНЮ
+                    a(href="javascript:void(0);").header__link МЕНЮ
                     a(href="javascript:void(0);").header__link БРОНЬ
                     a(href="javascript:void(0);").header__link О НАС
                     a(href="javascript:void(0);").header__link ГАЛЕРЕЯ
@@ -32,3 +21,33 @@ include ../mixins
                     span
                     span
                     span
+    .header__menu--tablet
+        .header__cover
+            .header__box
+                .header__btn.header__item.js-list
+                    .header__txt МЕНЮ
+                    .header__ic
+                        <svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.5 4L0.468911 0.25L6.53109 0.25L3.5 4Z" fill="#2F2C2C"></path>
+                        </svg>
+                .header__list
+                    .header__in
+                        a(href="javascript:void(0);").header__ref Хит продаж
+                        a(href="javascript:void(0);").header__ref Комбо
+                        a(href="javascript:void(0);").header__ref Акции
+                        a(href="javascript:void(0);").header__ref Хит продаж
+                        a(href="javascript:void(0);").header__ref Комбо
+                        a(href="javascript:void(0);").header__ref Акции
+                        a(href="javascript:void(0);").header__ref Хит продаж
+                        a(href="javascript:void(0);").header__ref Комбо
+                        a(href="javascript:void(0);").header__ref Акции
+                        a(href="javascript:void(0);").header__ref Хит продаж
+                        a(href="javascript:void(0);").header__ref Комбо
+                        a(href="javascript:void(0);").header__ref Акции
+                        a(href="javascript:void(0);").header__ref Хит продаж
+                        a(href="javascript:void(0);").header__ref Комбо
+                        a(href="javascript:void(0);").header__ref Акции
+            a(href="javascript:void(0);").header__item БРОНЬ
+            a(href="javascript:void(0);").header__item О НАС
+            a(href="javascript:void(0);").header__item ГАЛЕРЕЯ
+            a(href="javascript:void(0);").header__item КОНТАКТЫ

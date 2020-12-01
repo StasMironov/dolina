@@ -1,2 +1,38 @@
-footer.b-footer
+footer.footer
+    .footer__top
+            .footer__container.container
+                .footer__grid
+                    .footer__bloc
+                        .footer__logo
+                            +svg('logo')
+                        .footer__box
+                            .footer__txt Следите за нами в социальных сетях:
+                            a(href="javascript:void(0);").footer__soc
+                                +svg('inst')
+                    .footer__nav
+                        .footer__items
+                            .footer__item
+                                a(href="javascript:void(0);").footer__unit Меню
+                                a(href="javascript:void(0);").footer__unit Акции
+                            .footer__item
+                                a(href="javascript:void(0);").footer__unit Бронь
+                                a(href="javascript:void(0);").footer__unit О нас
+                            .footer__item
+                                a(href="javascript:void(0);").footer__unit Галерея
+                                a(href="javascript:void(0);").footer__unit Контакты
+                    .footer__info
+                        .footer__module
+                            .footer__article Время работы:
+                            .footer__cover
+                                .footer__par Вс-Чт:10:00-23:00
+                                .footer__par Пт-Сб: 10:00-24:00
+                        .footer__module
+                            .footer__article Доставка, вынос:
+                            .footer__cover
+                                a(href="tel:+7 (958) 758-85-78").footer__par +7 (958) 758-85-78
+                                a(href="tel:+7 (958) 758-85-78").footer__par +7 (958) 758-85-78
+                                a(href="tel:+7 (958) 758-85-78").footer__par +7 (958) 758-85-78
+    .footer__bottom
+       .footer__container.container
+            .footer__grid
     include ../modules/modals

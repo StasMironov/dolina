@@ -4,22 +4,38 @@
     flex-direction: column;
     width: 26px;
     height: 20px;
-    right: -18px;
 
     @media(max-width: 1024px) {
         display: flex;
     }
 
+    @media(max-width: 600px) {
+        width: 23px;
+        height: 18px;
+    }
+
     span {
         position: relative;
-        display: inline-block;
+        display: block;
         width: 100%;
-        height: 2px;
+        border-top: 1px solid $black;
         background-color: $black;
-        border-radius: 3px;
+        border-radius: 20%;
+        transition: .4s ease;
+
+        @media(max-width: 600px) {
+            // height: 1px;
+        }
+
 
         &:nth-child(2) {
-            margin: 7.5px 0;
+            margin: 7.5px auto;
+            left: 0;
+            right: 0;
+
+            @media(max-width: 600px) {
+                margin: 8px auto;
+            }
         }
     }
 
@@ -28,17 +44,24 @@
             &:first-child {
                 transform: rotate(45deg);
                 top: 9px;
+
+                @media(max-width: 600px) {
+                    top: 8px;
+                }
             }
 
             &:last-child {
-                &:last-child {
-                    transform: rotate(-45deg);
-                    top: -9px;
+                transform: rotate(-45deg);
+                top: -9px;
+
+                @media(max-width: 600px) {
+                    top: -10px;
                 }
             }
 
             &:nth-child(2) {
                 width: 0%;
+
             }
         }
     }
