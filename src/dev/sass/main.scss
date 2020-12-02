@@ -366,6 +366,26 @@ input::-ms-clear {
   padding: 0 calc(17px - (100vw - 100%)) 0 0;
 }
 
+.btn-special {
+  max-width: 117px;
+  width: 100%;
+  min-height: 38px;
+
+  .btn {
+    transition: none;
+    transition: background .4s ease;
+  }
+
+  .quantity {
+    display: none;
+    opacity: 0;
+    max-width: 100%;
+    border-radius: 72px;
+    height: 38px;
+  }
+
+}
+
 @import "./components/burger.scss";
 @import "./components/404/notification.scss";
 @import "./components/gallery/gallery.scss";
