@@ -106,21 +106,6 @@
 
     .pagination {
         margin: 0 45px;
-
-        .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
-            background-color: $orange;
-            opacity: 0.4;
-
-            &:not(:last-child) {
-                margin-right: 18px;
-            }
-        }
-
-        .swiper-pagination-bullet-active {
-            opacity: 1;
-        }
     }
 
     .arrow {
@@ -134,8 +119,6 @@
             margin-top: 30px;
         }
     }
-
-
 
     &__bloc {
         display: flex;

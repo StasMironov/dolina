@@ -7,6 +7,10 @@
         height: 1200px;
     }
 
+    @media(max-width: 600px) {
+        margin-top: -48px;
+    }
+
     &__container {
         height: 100%;
     }

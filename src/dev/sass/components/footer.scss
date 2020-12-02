@@ -15,11 +15,23 @@
         @media(max-width: 1024px) {
             margin-right: 8px;
         }
+
+        @media(max-width: 767px) {
+            margin-right: 0;
+        }
     }
 
     &__bottom {
         margin-top: 28px;
         background-color: $gray-6;
+
+        .footer__grid {
+            @media(max-width: 400px) {
+                flex-direction: column;
+                justify-content: normal;
+                align-items: flex-start;
+            }
+        }
 
         .container {
             padding-top: 21px;
@@ -29,11 +41,20 @@
                 padding-top: 13px;
                 padding-bottom: 17px;
             }
+
+            @media(max-width: 500px) {
+                padding-top: 17px;
+                padding-bottom: 17px;
+            }
         }
     }
 
     &__site {
         margin-left: auto;
+
+        @media(max-width: 400px) {
+            margin-left: initial;
+        }
 
         a {
             &:hover {
@@ -43,6 +64,9 @@
     }
 
     &__logo {
+
+
+
         .b-svg {
             fill: $orange;
         }
@@ -62,6 +86,10 @@
         @media(max-width: 1024px) {
             margin-top: 32px;
         }
+
+        @media(max-width: 500px) {
+            margin-top: 21px;
+        }
     }
 
     &__grid {
@@ -78,6 +106,15 @@
         @media(max-width: 1300px) {
             margin-right: 0;
         }
+
+        @media(max-width: 600px) {
+            order: 1;
+            margin-top: -98px;
+        }
+
+        @media(max-width: 500px) {
+            margin-top: auto;
+        }
     }
 
     &__info {
@@ -85,6 +122,19 @@
 
         @media(max-width: 1300px) {
             margin-left: 0;
+        }
+
+        @media(max-width: 600px) {
+            max-width: 215px;
+            width: 100%;
+        }
+
+        @media(max-width: 500px) {
+            display: flex;
+            max-width: 100%;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            margin-top: 26px;
         }
     }
 
@@ -100,6 +150,10 @@
             height: 54px;
         }
 
+        @media(max-width: 600px) {
+            display: none;
+        }
+
         .b-svg {
             height: 100%;
             width: 100%;
@@ -108,6 +162,19 @@
 
     &__top {
         border-top: 2px solid $orange;
+
+        .footer__grid {
+
+            @media(max-width: 600px) {
+                flex-wrap: wrap;
+            }
+
+            @media(max-width: 500px) {
+                flex-direction: column;
+                align-items: normal;
+                justify-content: normal;
+            }
+        }
 
         .footer__container {
             padding-top: 44px;
@@ -120,6 +187,10 @@
 
     &__items {
         display: flex;
+
+        @media(max-width: 500px) {
+            flex-direction: column;
+        }
     }
 
     &__item {
@@ -136,6 +207,16 @@
             @media(max-width:700px) {
                 margin-right: 30px;
             }
+
+            @media(max-width: 500px) {
+                margin-right: 0;
+            }
+        }
+
+        &:not(:first-child) {
+            @media(max-width: 500px) {
+                margin-top: 17px;
+            }
         }
     }
 
@@ -146,6 +227,11 @@
 
         @media(max-width: 1024px) {
             font-size: 14px;
+        }
+
+        @media(max-width: 500px) {
+            display: flex;
+            align-self: flex-start;
         }
 
         &--active {
@@ -168,11 +254,21 @@
     &__article {
         font-size: 14px;
         font-weight: 550;
+
+        @media(max-width: 600px) {
+            font-size: 12px;
+        }
     }
 
     &__par {
         display: block;
         font-size: 12px;
+
+        &:not(:first-child) {
+            @media(max-width: 500px) {
+                margin-top: 3px;
+            }
+        }
     }
 
     &__cover {
@@ -182,11 +278,20 @@
     &__module {
         text-align: right;
 
+        @media(max-width: 500px) {
+            text-align: left;
+        }
+
         &:last-child {
             margin-top: 18px;
 
             @media(max-width: 1024px) {
                 margin-top: 10px;
+            }
+
+            @media(max-width: 500px) {
+                margin-top: 0;
+                margin-right: 42px;
             }
         }
     }

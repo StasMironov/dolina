@@ -88,6 +88,7 @@ const projectFunc = {
             .to(
                 popupEl, {
                 scale: 1,
+                autoAlpha: 1,
                 duration: 0.8,
                 ease: 'power2.out'
             }
@@ -98,15 +99,15 @@ const projectFunc = {
         timeline.clear();
         gsap.to(
             '.popup-card', {
-            scale: 0,
-            duration: 0.8,
+            autoAlpha: 0,
+            duration: 0.2,
             ease: 'power2.out'
         }
         );
         gsap.to(
             '.overlay-card', {
             autoAlpha: 0,
-            delay: 0.5
+            delay: 0.2
         }
         );
     },
@@ -435,7 +436,7 @@ $(document).ready(function () {
             $(this).on('click', function (event) {
                 let target = event.target;
 
-                if (!target.classList.contains('btn')) {
+                if (!target.classList.contains('btn') && !target.classList.contains('quantity')) {
                     projectFunc.showCard(index);
                 }
             })
@@ -1189,19 +1190,19 @@ $(document).ready(function () {
                     myMap.setGlobalPixelCenter([position[0] + 300, position[1]]);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 768 && $(this).width() <= 880) {
-                    myMap.setGlobalPixelCenter([position[0] + 200, position[1]]);
+                    myMap.setGlobalPixelCenter([position[0] + 200, position[1] - 200]);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 600 && $(this).width() <= 768) {
-                    myMap.setGlobalPixelCenter([position[0] + 100, position[1]]);
+                    myMap.setGlobalPixelCenter([position[0] + 200, position[1] - 200]);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 500 && $(this).width() <= 600) {
-                    myMap.setGlobalPixelCenter([position[0] + 230, position[1]]);
+                    myMap.setGlobalPixelCenter([position[0] + 230, position[1] - 200]);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 400 && $(this).width() <= 500) {
-                    myMap.setGlobalPixelCenter([position[0] + 290, position[1] - 140]);
+                    myMap.setGlobalPixelCenter([position[0] + 290, position[1] - 250]);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 319 && $(this).width() <= 400) {
-                    myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 140]);
+                    myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 250]);
                     myMap.container.fitToViewport();
                 }
                 // else if ($(this).width() <= 600) {
@@ -1382,7 +1383,6 @@ $(document).ready(function () {
                     start: 'top bottom',
                     end: 'bottom-=130%',
                     scrub: true,
-                    markers: true
                 }
             });
 
@@ -1426,4 +1426,106 @@ $(document).ready(function () {
         }
     }
 
+    if ($('.popup-card').exists()) {
+        //
+        $('.popup-card').on('click', function (event) {
+            event.stopPropagation();
+        });
+    }
+
+
+
+    if ($('.js-calc').exists()) {
+        let qBtn = '';
+        let num = '';
+
+        function showCalcBtn(element, btnHide) {
+            gsap.to(
+                element,
+                {
+                    autoAlpha: 0,
+                    duration: 0.2,
+                    display: 'none'
+                }
+            );
+            gsap.to(
+                btnHide,
+                {
+                    autoAlpha: 1,
+                    duration: 0.2,
+                    display: 'flex',
+                    delay: 0.2
+                }
+            );
+        }
+
+        function hideCalcBtn(element, btnHide) {
+            console.log(element);
+            gsap.to(
+                btnHide,
+                {
+                    autoAlpha: 0,
+                    duration: 0.2,
+                    display: 'none',
+                }
+            );
+            gsap.to(
+                element,
+                {
+                    autoAlpha: 1,
+                    duration: 0.2,
+                    display: 'block',
+                    delay: 0.2
+                }
+            );
+        }
+
+        $('.js-calc').each(function (index) {
+            $(this).on('click', function () {
+                num = index;
+                qBtn = $(this).next();
+                showCalcBtn($(this), qBtn);
+            });
+        });
+
+        $('.quantity').each(function (index) {
+            let inputEl = $(this).find('input');
+            let btnPlus = $(this).find('.plus');
+            let btnMinus = $(this).find('.minus');
+            let btnBasic = $(this).siblings('.js-calc');
+            let hideBtn = $(this);
+
+            $(this).on('click', function (event) {
+                event.stopPropagation();
+            });
+
+            $(btnPlus).on('click', function () {
+                let maxVal = inputEl.data('max');
+                let inputVal = +$(inputEl).val();
+                let qtyVal = '';
+
+                if (inputVal < maxVal) {
+                    qtyVal = inputVal + 1;
+                    $(inputEl).val(qtyVal);
+                    $(inputEl).attr('val', qtyVal);
+                }
+            });
+
+            $(btnMinus).on('click', function () {
+                let minVal = inputEl.data('min');
+                let inputVal = +$(inputEl).val();
+                let qtyVal = '';
+
+                if (inputVal >= minVal) {
+                    qtyVal = inputVal - 1;
+                    $(inputEl).val(qtyVal);
+                    $(inputEl).attr('val', qtyVal);
+
+                    if ($(inputEl).val() == 0) {
+                        hideCalcBtn(btnBasic, hideBtn);
+                    }
+                }
+            });
+        });
+    }
 });

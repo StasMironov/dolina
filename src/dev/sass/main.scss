@@ -283,8 +283,34 @@ input::-ms-clear {
 .pagination {
   margin: 0 35px;
 
+
+
   @media(max-width: 1023px) {
     display: flex;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: $orange;
+  opacity: 0.4;
+
+  @media(max-width: 600px) {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.swiper-pagination-bullet:not(:last-child) {
+  margin-right: 18px;
+
+  @media(max-width: 600px) {
+    margin-right: 14px;
   }
 }
 

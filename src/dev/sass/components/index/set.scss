@@ -47,6 +47,7 @@
         margin-top: 40px;
         cursor: pointer;
 
+
         &:hover {
             box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
         }
@@ -74,6 +75,25 @@
             @media(max-width: 600px) {
                 margin-top: 15px;
             }
+        }
+
+        .btn-special {
+            max-width: 117px;
+            width: 100%;
+            min-height: 38px;
+
+            .btn {
+                transition: none;
+            }
+
+            .quantity {
+                display: none;
+                opacity: 0;
+                max-width: 100%;
+                border-radius: 72px;
+                height: 38px;
+            }
+
         }
     }
 
