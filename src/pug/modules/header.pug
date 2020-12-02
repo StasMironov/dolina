@@ -3,10 +3,10 @@ include ../mixins
     .header__inner
         .header__container.container
             .header__wrapper
-                .header__logo
+                a(href="javascript:void(0);").header__logo
                     +svg('logo')
                 .header__menu
-                    a(href="javascript:void(0);").header__link МЕНЮ
+                    a(href="javascript:void(0);").header__link.header__link--active МЕНЮ
                     a(href="javascript:void(0);").header__link БРОНЬ
                     a(href="javascript:void(0);").header__link О НАС
                     a(href="javascript:void(0);").header__link ГАЛЕРЕЯ
@@ -32,7 +32,7 @@ include ../mixins
                         </svg>
                 .header__list
                     .header__in
-                        a(href="javascript:void(0);").header__ref Хит продаж
+                        a(href="javascript:void(0);").header__ref.header__ref--active Хит продаж
                         a(href="javascript:void(0);").header__ref Комбо
                         a(href="javascript:void(0);").header__ref Акции
                         a(href="javascript:void(0);").header__ref Хит продаж
@@ -47,7 +47,7 @@ include ../mixins
                         a(href="javascript:void(0);").header__ref Хит продаж
                         a(href="javascript:void(0);").header__ref Комбо
                         a(href="javascript:void(0);").header__ref Акции
-            a(href="javascript:void(0);").header__item БРОНЬ
+            a(href="javascript:void(0);").header__item.header__item--active БРОНЬ
             a(href="javascript:void(0);").header__item О НАС
             a(href="javascript:void(0);").header__item ГАЛЕРЕЯ
             a(href="javascript:void(0);").header__item КОНТАКТЫ

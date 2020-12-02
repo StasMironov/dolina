@@ -3,7 +3,7 @@ footer.footer
             .footer__container.container
                 .footer__grid
                     .footer__bloc
-                        .footer__logo
+                        a(href="javascript:void(0);").footer__logo
                             +svg('logo')
                         .footer__box
                             .footer__txt Следите за нами в социальных сетях:
@@ -12,7 +12,7 @@ footer.footer
                     .footer__nav
                         .footer__items
                             .footer__item
-                                a(href="javascript:void(0);").footer__unit Меню
+                                a(href="javascript:void(0);").footer__unit.footer__unit--active Меню
                                 a(href="javascript:void(0);").footer__unit Акции
                             .footer__item
                                 a(href="javascript:void(0);").footer__unit Бронь
@@ -35,4 +35,7 @@ footer.footer
     .footer__bottom
        .footer__container.container
             .footer__grid
+                .footer__copyright © Восточная Долина 2010-2020
+                .footer__site Сайт разработан компанией <a href="#">Uralmedias</a>
+
     include ../modules/modals

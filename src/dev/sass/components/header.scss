@@ -50,6 +50,10 @@
         font-size: 16px;
         transition: .4s ease;
 
+        &--active {
+            color: $orange;
+        }
+
         &:hover {
             color: $orange;
         }
@@ -156,6 +160,10 @@
             line-height: 18px;
         }
 
+        &--active {
+            color: $orange;
+        }
+
 
         &:not(:first-child) {
             margin-top: 35px;
@@ -180,6 +188,10 @@
             @media(max-width: 768px) {
                 display: none;
             }
+        }
+
+        &--active {
+            color: $orange;
         }
 
         &:hover {
