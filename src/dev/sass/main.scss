@@ -12,7 +12,7 @@
 }
 
 :root {
-  --wScroll: 17px;
+  --wScroll: 0px;
 }
 
 html {
@@ -389,7 +389,74 @@ input::-ms-clear {
     border-radius: 72px;
     height: 38px;
   }
+}
 
+
+.basket-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: $orange;
+  text-align: center;
+  position: fixed;
+  bottom: 40px;
+  right: 58px;
+  transition: .4s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  width: 94px;
+  height: 94px;
+  border-radius: 47px;
+  border: 2.8px solid white;
+  box-sizing: border-box;
+  box-shadow: 2px 4px 7px rgba(0, 0, 0, 0.15);
+
+  @media(max-width: 1024px) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:hover {
+    background-color: white;
+    border-color: $orange;
+
+    .b-svg {
+      fill: $orange;
+    }
+  }
+
+  .b-svg {
+    fill: white;
+    width: 54px;
+    height: 48px;
+    transition: .4s ease;
+  }
+
+  span {
+    min-width: 30px;
+    height: 30px;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 19px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+    top: 26px;
+  }
+}
+
+a {
+  display: inline;
+  color: inherit;
+  text-decoration: none;
+  transition: .4s ease;
 }
 
 @import "./components/burger.scss";

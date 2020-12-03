@@ -1,9 +1,12 @@
 footer.footer
+    a(href="basket.html").basket-btn
+        +svg('basket')
+        span 4
     .footer__top
             .footer__container.container
                 .footer__grid
                     .footer__bloc
-                        a(href="javascript:void(0);").footer__logo
+                        a(href="/").footer__logo
                             +svg('logo')
                         .footer__box
                             .footer__txt Следите за нами в социальных сетях:
@@ -12,14 +15,14 @@ footer.footer
                     .footer__nav
                         .footer__items
                             .footer__item
-                                a(href="javascript:void(0);").footer__unit.footer__unit--active Меню
-                                a(href="javascript:void(0);").footer__unit Акции
+                                a(href="menu.html").footer__unit.footer__unit--active Меню
+                                a(href="menu.html").footer__unit Акции
                             .footer__item
                                 a(href="javascript:void(0);").footer__unit Бронь
-                                a(href="javascript:void(0);").footer__unit О нас
+                                a(href="about.html").footer__unit О нас
                             .footer__item
-                                a(href="javascript:void(0);").footer__unit Галерея
-                                a(href="javascript:void(0);").footer__unit Контакты
+                                a(href="gallery.html").footer__unit Галерея
+                                a(href="contacts.html").footer__unit Контакты
                     .footer__info
                         .footer__module
                             .footer__article Время работы:

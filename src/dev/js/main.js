@@ -282,17 +282,34 @@ $(document).ready(function () {
     }
 
     function setHeight(elem) {
+
         if ($(elem).exists()) {
             if ($(elem).hasClass('menu__item')) {
                 try {
-                    console.log(1);
+
                     let heightSet = 0;
                     $(elem).each(function () {
                         heightSet += $(this).outerHeight();
                     });
 
-                    if ($(this).width() > 600) {
+                    // $(window).on('resize load', function () {
+                    //     // if ($(this).width() > 900) {
+                    //     //     let heightEl = setHeight('.menu__item');
+                    //     //     console.log(heightEl);
+                    //     //     showMenu('.menu__cover', heightEl);
+                    //     // } else {
+                    //     //     hideMenu('.menu__cover');
+                    //     // }
+
+                    //     console.log(1);
+                    // });
+
+                    if ($(this).width() > 600 && $(this).width() <= 900) {
                         heightSet = heightSet / 2;
+                        console.log(600);
+                    } else if ($(this).width() <= 600) {
+                        console.log(10);
+                        heightSet = heightSet - 20;
                     } else {
                         heightSet = heightSet - 20;
                     }
@@ -1527,6 +1544,10 @@ $(document).ready(function () {
             });
         });
 
+
+    }
+
+    if ($('.quantity').exists()) {
         $('.quantity').each(function (index) {
             let inputEl = $(this).find('input');
             let btnPlus = $(this).find('.plus');
@@ -1573,6 +1594,8 @@ $(document).ready(function () {
             });
         });
     }
+
+
 
     if ($('.dish__article').exists()) {
         $('.dish__article').each(function (index) {
