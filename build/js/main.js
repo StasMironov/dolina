@@ -52,11 +52,11 @@ const projectFunc = {
             });
             gsap.to(
                 '.header__menu--tablet', {
-                x: 100,
-                autoAlpha: 0,
-                duration: 0.8,
-                ease: 'power2.out'
-            }
+                    x: 100,
+                    autoAlpha: 0,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                }
             );
 
 
@@ -82,21 +82,21 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-card', {
-                autoAlpha: 0
-            }, {
-                autoAlpha: 1,
-                duration: 0.3,
-                ease: 'power2.out'
-            },
+                    autoAlpha: 0
+                }, {
+                    autoAlpha: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                },
                 '+=0.3'
             )
             .to(
                 popupEl, {
-                scale: 1,
-                autoAlpha: 1,
-                duration: 0.8,
-                ease: 'power2.out'
-            }
+                    scale: 1,
+                    autoAlpha: 1,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                }
             )
     },
 
@@ -104,16 +104,16 @@ const projectFunc = {
         timeline.clear();
         gsap.to(
             '.popup-card', {
-            autoAlpha: 0,
-            duration: 0.2,
-            ease: 'power2.out'
-        }
+                autoAlpha: 0,
+                duration: 0.2,
+                ease: 'power2.out'
+            }
         );
         gsap.to(
             '.overlay-card', {
-            autoAlpha: 0,
-            delay: 0.2
-        }
+                autoAlpha: 0,
+                delay: 0.2
+            }
         );
     },
 
@@ -121,54 +121,54 @@ const projectFunc = {
         timeline.clear();
         gsap.set(
             ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
-            autoAlpha: 0,
-        }
+                autoAlpha: 0,
+            }
         );
 
         gsap.set(
             ['.popup-basket__icon', '.popup-basket__title'], {
-            scale: 0
-        }
+                scale: 0
+            }
         );
 
         gsap.set(
             '.popup-basket__item', {
-            autoAlpha: 0,
-            y: -20
-        }
+                autoAlpha: 0,
+                y: -20
+            }
         );
 
         gsap.set(
             '.popup-basket__text', {
-            autoAlpha: 0,
-            xPercent: -20
-        }
+                autoAlpha: 0,
+                xPercent: -20
+            }
         );
 
         gsap.set(
             '.popup-basket__sum', {
-            autoAlpha: 0,
-            xPercent: 20
-        }
+                autoAlpha: 0,
+                xPercent: 20
+            }
         );
 
         gsap.set(
             '.popup-basket__hide', {
-            autoAlpha: 0,
-        }
+                autoAlpha: 0,
+            }
         )
 
         gsap.to(
             '.popup-basket', {
-            xPercent: 120,
-            duration: 0.5,
-            ease: "power2.out"
-        }
+                xPercent: 120,
+                duration: 0.5,
+                ease: "power2.out"
+            }
         );
         gsap.to(
             '.overlay-basket', {
-            autoAlpha: 0
-        }
+                autoAlpha: 0
+            }
         );
 
         $('html').removeClass('locked');
@@ -180,58 +180,58 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                autoAlpha: 0
-            }, {
-                autoAlpha: 1,
-                duration: 0.3,
-                ease: 'power2.out'
-            },
+                    autoAlpha: 0
+                }, {
+                    autoAlpha: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                xPercent: 120,
-                autoAlpha: 1,
-            }, {
-                xPercent: 0,
-                duration: 0.6,
-                ease: "power2.out"
-            }
+                    xPercent: 120,
+                    autoAlpha: 1,
+                }, {
+                    xPercent: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
+                }
             )
             .to(
                 '.popup-basket__hide', {
-                autoAlpha: 1,
-            }
+                    autoAlpha: 1,
+                }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                scale: 1,
-                ease: "power2.out",
-                stagger: 0.4,
-                autoAlpha: 1
-            }
+                    scale: 1,
+                    ease: "power2.out",
+                    stagger: 0.4,
+                    autoAlpha: 1
+                }
             )
             .to(
                 '.popup-basket__item', {
-                autoAlpha: 1,
-                y: 0,
-                stagger: 0.3,
-                // duration: 0.3,
-                ease: "power2.out",
-            }
+                    autoAlpha: 1,
+                    y: 0,
+                    stagger: 0.3,
+                    // duration: 0.3,
+                    ease: "power2.out",
+                }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                autoAlpha: 1,
-                xPercent: 0
-            }
+                    autoAlpha: 1,
+                    xPercent: 0
+                }
             )
             .to(
                 '.popup-basket .btn', {
-                autoAlpha: 1,
-                duration: 0.3
-            }
+                    autoAlpha: 1,
+                    duration: 0.3
+                }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
@@ -243,19 +243,19 @@ $(document).ready(function () {
     function showMenu(element, heightEl) {
         gsap.to(
             element, {
-            autoAlpha: 1,
-            height: heightEl + 20,
-            ease: "power1.out",
-            duration: 0.5
-        }
+                autoAlpha: 1,
+                height: heightEl + 20,
+                ease: "power1.out",
+                duration: 0.5
+            }
         );
 
 
         gsap.to(
             '.menu__btn i', {
-            scaleY: -1,
-            duration: 0.5
-        }
+                scaleY: -1,
+                duration: 0.5
+            }
         );
     }
 
@@ -264,20 +264,20 @@ $(document).ready(function () {
 
         gsap.to(
             element, {
-            autoAlpha: 0,
-            height: 0,
-            ease: "power1.out",
-            duration: 0.5
-        }
+                autoAlpha: 0,
+                height: 0,
+                ease: "power1.out",
+                duration: 0.5
+            }
         );
 
         gsap.to(
             '.menu__btn i', {
-            scaleX: 1,
-            scaleY: 1,
-            ease: "power1.out",
-            duration: 0.5
-        }
+                scaleX: 1,
+                scaleY: 1,
+                ease: "power1.out",
+                duration: 0.5
+            }
         );
     }
 
@@ -390,9 +390,9 @@ $(document).ready(function () {
 
         gsap.set(
             '.gallery__item', {
-            x: -30,
-            autoAlpha: 0
-        }
+                x: -30,
+                autoAlpha: 0
+            }
         );
 
         parallaxT
@@ -595,58 +595,58 @@ $(document).ready(function () {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                autoAlpha: 0
-            }, {
-                autoAlpha: 1,
-                duration: 0.3,
-                ease: 'power2.out'
-            },
+                    autoAlpha: 0
+                }, {
+                    autoAlpha: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                xPercent: 120,
-                autoAlpha: 1,
-            }, {
-                xPercent: 0,
-                duration: 0.6,
-                ease: "power2.out"
-            }
+                    xPercent: 120,
+                    autoAlpha: 1,
+                }, {
+                    xPercent: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
+                }
             )
             .to(
                 '.popup-basket__hide', {
-                autoAlpha: 1,
-            }
+                    autoAlpha: 1,
+                }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                scale: 1,
-                ease: "power2.out",
-                stagger: 0.4,
-                autoAlpha: 1
-            }
+                    scale: 1,
+                    ease: "power2.out",
+                    stagger: 0.4,
+                    autoAlpha: 1
+                }
             )
             .to(
                 '.popup-basket__item', {
-                autoAlpha: 1,
-                y: 0,
-                stagger: 0.3,
-                // duration: 0.3,
-                ease: "power2.out",
-            }
+                    autoAlpha: 1,
+                    y: 0,
+                    stagger: 0.3,
+                    // duration: 0.3,
+                    ease: "power2.out",
+                }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                autoAlpha: 1,
-                xPercent: 0
-            }
+                    autoAlpha: 1,
+                    xPercent: 0
+                }
             )
             .to(
                 '.popup-basket .btn', {
-                autoAlpha: 1,
-                duration: 0.3
-            }
+                    autoAlpha: 1,
+                    duration: 0.3
+                }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
@@ -836,71 +836,71 @@ $(document).ready(function () {
 
     gsap.set(
         $('.dish__box').find('.dish__image'), {
-        scale: 0,
-        opacity: 0
-    }
+            scale: 0,
+            opacity: 0
+        }
     );
     gsap.set(
         $('.dish__box:first-child').find('.dish__image'), {
-        scale: 1,
-        opacity: 1
-    }
+            scale: 1,
+            opacity: 1
+        }
     );
 
     gsap.set(
         $('.dish__article'), {
-        y: -30,
-        opacity: 0
-    }
+            y: -30,
+            opacity: 0
+        }
     );
 
     gsap.set(
         $('.dish__article')[0], {
-        y: 0,
-        opacity: 1
-    }
+            y: 0,
+            opacity: 1
+        }
     );
 
     gsap.set(
         $('.dish__text--word'), {
-        y: -30,
-        opacity: 0
-    }
+            y: -30,
+            opacity: 0
+        }
     );
 
     gsap.set(
         $('.dish__text--word')[0], {
-        y: 0,
-        opacity: 1
-    }
+            y: 0,
+            opacity: 1
+        }
     );
 
     gsap.set(
         $('.dish__price'), {
-        x: -30,
-        opacity: 0
-    }
+            x: -30,
+            opacity: 0
+        }
     );
 
     gsap.set(
         $('.dish__price')[0], {
-        x: 0,
-        opacity: 1
-    }
+            x: 0,
+            opacity: 1
+        }
     );
 
     gsap.set(
         $('.dish__box .btn--small'), {
-        x: 30,
-        opacity: 0
-    }
+            x: 30,
+            opacity: 0
+        }
     );
 
     gsap.set(
         $('.dish__box .btn--small')[0], {
-        x: 0,
-        opacity: 1
-    }
+            x: 0,
+            opacity: 1
+        }
     );
 
     if ($('.offer__slider').exists()) {
@@ -984,78 +984,78 @@ $(document).ready(function () {
                         if (index != actIndex) {
                             gsap.set(
                                 $('.dish__image')[index], {
-                                scale: 0,
-                                opacity: 0
-                            }
+                                    scale: 0,
+                                    opacity: 0
+                                }
                             );
 
                             gsap.set(
                                 $('.dish__text--word')[index], {
-                                y: -30,
-                                opacity: 0
-                            }
+                                    y: -30,
+                                    opacity: 0
+                                }
                             );
 
                             gsap.set(
                                 $('.dish__article')[index], {
-                                y: -30,
-                                opacity: 0
-                            }
+                                    y: -30,
+                                    opacity: 0
+                                }
                             );
 
                             gsap.set(
                                 $('.dish__price')[index], {
-                                x: -30,
-                                opacity: 0
-                            }
+                                    x: -30,
+                                    opacity: 0
+                                }
                             );
 
                             gsap.set(
                                 $('.dish__info .btn--small')[index], {
-                                x: 30,
-                                opacity: 0
-                            }
+                                    x: 30,
+                                    opacity: 0
+                                }
                             );
                         } else {
                             let timeline = gsap.timeline();
                             timeline
                                 .to(
                                     $('.dish__image')[index], {
-                                    scale: 1,
-                                    opacity: 1,
-                                    duration: 1
-                                }
+                                        scale: 1,
+                                        opacity: 1,
+                                        duration: 1
+                                    }
                                 )
 
                                 .to(
                                     $('.dish__article')[index], {
-                                    opacity: 1,
-                                    y: 0,
-                                    duration: 0.3
-                                }
+                                        opacity: 1,
+                                        y: 0,
+                                        duration: 0.3
+                                    }
                                 )
 
                                 .to(
                                     $('.dish__text--word')[index], {
-                                    opacity: 1,
-                                    y: 0,
-                                    duration: 0.3
-                                }
+                                        opacity: 1,
+                                        y: 0,
+                                        duration: 0.3
+                                    }
                                 )
 
                                 .to(
                                     $('.dish__price')[index], {
-                                    opacity: 1,
-                                    x: 0,
-                                    duration: 0.3
-                                }
+                                        opacity: 1,
+                                        x: 0,
+                                        duration: 0.3
+                                    }
                                 )
                                 .to(
                                     $('.dish__info .btn--small')[index], {
-                                    x: 0,
-                                    opacity: 1,
-                                    duration: 0.3
-                                },
+                                        x: 0,
+                                        opacity: 1,
+                                        duration: 0.3
+                                    },
                                     '-=0.6'
                                 );
                         }
@@ -1208,12 +1208,12 @@ $(document).ready(function () {
 
                 // Создание карты.
                 var myMap = new ymaps.Map("map", {
-                    // Координаты центра карты.
-                    // Порядок по умолчанию: «широта, долгота».
-                    center: [57.098137, 65.613029],
-                    zoom: 17,
-                    controls: []
-                }),
+                        // Координаты центра карты.
+                        // Порядок по умолчанию: «широта, долгота».
+                        center: [57.098137, 65.613029],
+                        zoom: 17,
+                        controls: []
+                    }),
                     myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
                         // Необходимо указать данный тип макета.
                         iconLayout: 'default#image',
@@ -1312,15 +1312,15 @@ $(document).ready(function () {
                 timeline
                     .fromTo(
                         tabContent[i], {
-                        autoAlpha: 1,
-                        display: 'bloc',
-                        xPercent: 0,
-                    }, {
-                        autoAlpha: 0,
-                        display: 'none',
-                        ease: 'power2.out',
-                        xPercent: +100,
-                    }
+                            autoAlpha: 1,
+                            display: 'bloc',
+                            xPercent: 0,
+                        }, {
+                            autoAlpha: 0,
+                            display: 'none',
+                            ease: 'power2.out',
+                            xPercent: +100,
+                        }
                     )
             }
         }
@@ -1335,16 +1335,16 @@ $(document).ready(function () {
                 timeline
                     .fromTo(
                         tabContent[b], {
-                        autoAlpha: 0,
-                        display: 'none',
-                        xPercent: +100,
-                    }, {
-                        autoAlpha: 1,
-                        display: 'block',
-                        xPercent: 0,
-                        duration: 1,
-                        ease: "back"
-                    }
+                            autoAlpha: 0,
+                            display: 'none',
+                            xPercent: +100,
+                        }, {
+                            autoAlpha: 1,
+                            display: 'block',
+                            xPercent: 0,
+                            duration: 1,
+                            ease: "back"
+                        }
                     )
             }
         }
@@ -1379,8 +1379,8 @@ $(document).ready(function () {
                 var dest = el.attr('href'); // получаем направление
                 if (dest !== undefined && dest !== '') { // проверяем существование
                     $('html').animate({
-                        scrollTop: $(dest).offset().top // прокручиваем страницу к требуемому элементу
-                    }, 500 // скорость прокрутки
+                            scrollTop: $(dest).offset().top // прокручиваем страницу к требуемому элементу
+                        }, 500 // скорость прокрутки
                     );
                 }
                 return false;
@@ -1493,36 +1493,36 @@ $(document).ready(function () {
         function showCalcBtn(element, btnHide) {
             gsap.to(
                 element, {
-                autoAlpha: 0,
-                duration: 0.2,
-                display: 'none'
-            }
+                    autoAlpha: 0,
+                    duration: 0.2,
+                    display: 'none'
+                }
             );
             gsap.to(
                 btnHide, {
-                autoAlpha: 1,
-                duration: 0.2,
-                display: 'flex',
-                delay: 0.2
-            }
+                    autoAlpha: 1,
+                    duration: 0.2,
+                    display: 'flex',
+                    delay: 0.2
+                }
             );
         }
 
         function hideCalcBtn(element, btnHide) {
             gsap.to(
                 btnHide, {
-                autoAlpha: 0,
-                duration: 0.2,
-                display: 'none',
-            }
+                    autoAlpha: 0,
+                    duration: 0.2,
+                    display: 'none',
+                }
             );
             gsap.to(
                 element, {
-                autoAlpha: 1,
-                duration: 0.2,
-                display: 'block',
-                delay: 0.2
-            }
+                    autoAlpha: 1,
+                    duration: 0.2,
+                    display: 'block',
+                    delay: 0.2
+                }
             );
         }
 
@@ -1541,9 +1541,33 @@ $(document).ready(function () {
                 num = index;
                 qBtn = $(this).next();
                 showCalcBtn($(this), qBtn);
+
+                if ($(this).parent().hasClass("btn-special")) {
+                    parentBtn = createSource($(this));
+                    jsBtn = $(parentBtn).find('.js-calc');
+                    qtyBtn = $(parentBtn).find('.quantity');
+                    showCalcBtn(jsBtn, qtyBtn);
+                }
+
             });
         });
 
+
+    }
+
+    function createSource(elem) {
+        let parent = '';
+        let popupCard = '';
+        parent = elem.parent();
+
+        while (!$(parent).children('.popup-card').length) {
+            parent = $(parent).parent();
+        }
+
+        popupCard = $(parent).children('.popup-card').find('.btn-special');
+        // console.log(popupCard);
+
+        return popupCard;
 
     }
 
@@ -1554,7 +1578,16 @@ $(document).ready(function () {
             let btnMinus = $(this).find('.minus');
             let btnBasic = $(this).siblings('.js-calc');
             let calcBtn = $(this);
-            let hideBtn = $(this);
+            // let hideBtn = $(this);
+
+            let tempBtn = '';
+
+            // if ($(calcBtn).parent().hasClass("btn-special")) {
+            //     tempBtn = createSource(calcBtn);
+            //     console.log(tempBtn);
+            // }
+
+
 
             $(this).on('click', function (event) {
                 event.stopPropagation();
@@ -1570,6 +1603,19 @@ $(document).ready(function () {
                     $(inputEl).val(qtyVal);
                     $(inputEl).attr('value', qtyVal);
                     projectFunc.addCart();
+
+                    // console.log($(this).parent().parent());
+
+                    if ($(this).parent().parent().hasClass("btn-special")) {
+
+                        parentBtn = createSource($(this));
+                        inputPopup = $(parentBtn).find('input');
+                        $(inputPopup).val($(inputEl).val());
+
+                        // showCalcBtn(jsBtn, qtyBtn);
+                    }
+
+                    //   showCalcBtn($(this), qBtn);
                 }
             });
 
@@ -1588,7 +1634,7 @@ $(document).ready(function () {
                     $(inputEl).attr('value', qtyVal);
 
                     if ($(inputEl).val() == 0 && ($(calcBtn).parent().hasClass("btn-special"))) {
-                        hideCalcBtn(btnBasic, hideBtn);
+                        hideCalcBtn(btnBasic, calcBtn);
                     }
                 }
             });

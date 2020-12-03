@@ -28,20 +28,7 @@
         }
     }
 
-    &__qty {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        background-color: $orange;
-        color: white;
-        border-radius: 15px;
-        top: -7px;
-        right: -3px;
-    }
+
 
     &__top {
         display: flex;
@@ -63,7 +50,8 @@
         margin-top: 38px;
         max-height: calc(100vh - 345px);
 
-        .mCSB_outside+.mCS-minimal-dark.mCSB_scrollTools_vertical, .mCSB_outside+.mCS-minimal.mCSB_scrollTools_vertical {
+        .mCSB_outside+.mCS-minimal-dark.mCSB_scrollTools_vertical,
+        .mCSB_outside+.mCS-minimal.mCSB_scrollTools_vertical {
             right: -25px;
         }
     }
