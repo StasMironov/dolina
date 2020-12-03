@@ -332,6 +332,10 @@
         font-size: 25px;
         line-height: 146%;
 
+        &:hover {
+            color: $orange;
+        }
+
         @media(max-width: 1024px) {
             font-size: 20px;
             line-height: 20px;

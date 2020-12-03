@@ -2,6 +2,7 @@
     position: relative;
     color: $orange;
     height: 100%;
+    padding: 0 calc(17px - (100vw - 100%)) 0 0;
 
     &__title {
         font-size: 170px;
