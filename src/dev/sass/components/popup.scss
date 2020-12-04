@@ -17,15 +17,9 @@
         flex-direction: column;
     }
 
-    &__icon {
-        position: relative;
+    .cart {
         width: 52px;
         height: 44px;
-
-        .b-svg {
-            width: 100%;
-            height: 100%;
-        }
     }
 
 
@@ -104,9 +98,10 @@
         left: -68px;
         top: 12px;
         cursor: pointer;
+        transform: rotate(0deg);
 
         &:hover .close {
-            transform: rotateX(180deg) rotateY(180deg);
+            transform: rotate(90deg);
         }
 
         &:hover .close:before,
@@ -152,7 +147,7 @@
         height: 17px;
         margin-left: auto;
         cursor: pointer;
-        transform: rotate(-90deg);
+        transform: rotate(0deg);
         transition: .4s ease-out;
 
         &:after,

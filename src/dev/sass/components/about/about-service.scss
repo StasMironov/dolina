@@ -82,7 +82,7 @@
         z-index: 1;
         background-size: auto 100%;
         background-repeat: no-repeat;
-        transition: .5s ease;
+        transition: 1s ease;
 
         @media(max-width: 1235px) {
             width: calc(50% - 30px);

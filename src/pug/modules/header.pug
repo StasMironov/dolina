@@ -15,10 +15,16 @@ include ../mixins
                     .header__info
                         a(href="javascript:void(0);").header__phono +7 (958) 758-85-78
                         a(href="javascript:void(0);").header__adres Вс-Чт: 10:00-23:00, Пт-Сб: 10:00-24:00
-                    .header__basket.js-basket
+                    .cart.js-basket
                         +svg('basket')
                         .qty
                             span 1
+                .notice.notice-js
+                    .notice__container
+                        .notice__bloc
+                            .notice__qty +1
+                            .notice__text Комбо-набор 3
+
                         
                 .burger
                     span

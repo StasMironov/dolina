@@ -493,8 +493,14 @@ a {
   border-radius: 15px;
   top: -7px;
   right: -3px;
+  border: 2px solid #ff9f1c;
+  font-weight: 700;
+  transition: .4s ease;
 }
 
+
+@import "./components/notice";
+@import "./components/cart.scss";
 @import "./components/burger.scss";
 @import "./components/404/notification.scss";
 @import "./components/gallery/gallery.scss";

@@ -37,7 +37,44 @@ const projectFunc = {
         }
     },
 
+    showNotice: function () {
+
+        let parentEl = document.querySelector('.notice__container');
+
+        let element = document.createElement('div');
+        element.classList.add('notice__bloc');
+        element.textContent = "Комбо-набор 3";
+
+        parentEl.appendChild(element);
+
+
+
+
+        // timeline
+        //     .to(
+        //         '.notice',
+        //         {
+        //             y: 0,
+        //             autoAlpha: 1,
+        //             duration: 1
+        //         }
+        //     );
+
+        // setTimeout(function () {
+        //     timeline
+        //         .to(
+        //             '.notice',
+        //             {
+        //                 autoAlpha: 0,
+        //                 duration: 1,
+        //                 y: -35
+        //             }
+        //         );
+        // }, 2000);
+    },
+
     addCart: function () {
+        projectFunc.showNotice();
         console.log('Товар добавлен!');
     },
 
@@ -52,14 +89,12 @@ const projectFunc = {
             });
             gsap.to(
                 '.header__menu--tablet', {
-                    x: 100,
-                    autoAlpha: 0,
-                    duration: 0.8,
-                    ease: 'power2.out'
-                }
+                x: 100,
+                autoAlpha: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
             );
-
-
             timelineNav.clear();
         }
     },
@@ -72,9 +107,12 @@ const projectFunc = {
         }
     },
 
-    showCard: function (element) {
+    showCard: function (parent, element) {
+        let card = $(parent).find('.popup-card');
         let popupEl = '';
-        $('.popup-card').each(function (popup) {
+        console.log(1);
+
+        $(card).each(function (popup) {
             if (popup == element) {
                 popupEl = $(this);
             }
@@ -82,38 +120,38 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-card', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
             .to(
                 popupEl, {
-                    scale: 1,
-                    autoAlpha: 1,
-                    duration: 0.8,
-                    ease: 'power2.out'
-                }
-            )
+                scale: 1,
+                autoAlpha: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
+            );
     },
 
     hideCard: function () {
         timeline.clear();
         gsap.to(
             '.popup-card', {
-                autoAlpha: 0,
-                duration: 0.2,
-                ease: 'power2.out'
-            }
+            autoAlpha: 0,
+            duration: 0.2,
+            ease: 'power2.out'
+        }
         );
         gsap.to(
             '.overlay-card', {
-                autoAlpha: 0,
-                delay: 0.2
-            }
+            autoAlpha: 0,
+            delay: 0.2
+        }
         );
     },
 
@@ -121,54 +159,54 @@ const projectFunc = {
         timeline.clear();
         gsap.set(
             ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
-                autoAlpha: 0,
-            }
+            autoAlpha: 0,
+        }
         );
 
         gsap.set(
             ['.popup-basket__icon', '.popup-basket__title'], {
-                scale: 0
-            }
+            scale: 0
+        }
         );
 
         gsap.set(
             '.popup-basket__item', {
-                autoAlpha: 0,
-                y: -20
-            }
+            autoAlpha: 0,
+            y: -20
+        }
         );
 
         gsap.set(
             '.popup-basket__text', {
-                autoAlpha: 0,
-                xPercent: -20
-            }
+            autoAlpha: 0,
+            xPercent: -20
+        }
         );
 
         gsap.set(
             '.popup-basket__sum', {
-                autoAlpha: 0,
-                xPercent: 20
-            }
+            autoAlpha: 0,
+            xPercent: 20
+        }
         );
 
         gsap.set(
             '.popup-basket__hide', {
-                autoAlpha: 0,
-            }
+            autoAlpha: 0,
+        }
         )
 
         gsap.to(
             '.popup-basket', {
-                xPercent: 120,
-                duration: 0.5,
-                ease: "power2.out"
-            }
+            xPercent: 120,
+            duration: 0.5,
+            ease: "power2.out"
+        }
         );
         gsap.to(
             '.overlay-basket', {
-                autoAlpha: 0
-            }
+            autoAlpha: 0
+        }
         );
 
         $('html').removeClass('locked');
@@ -180,58 +218,58 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                    xPercent: 120,
-                    autoAlpha: 1,
-                }, {
-                    xPercent: 0,
-                    duration: 0.6,
-                    ease: "power2.out"
-                }
+                xPercent: 120,
+                autoAlpha: 1,
+            }, {
+                xPercent: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            }
             )
             .to(
                 '.popup-basket__hide', {
-                    autoAlpha: 1,
-                }
+                autoAlpha: 1,
+            }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                    scale: 1,
-                    ease: "power2.out",
-                    stagger: 0.4,
-                    autoAlpha: 1
-                }
+                scale: 1,
+                ease: "power2.out",
+                stagger: 0.4,
+                autoAlpha: 1
+            }
             )
             .to(
                 '.popup-basket__item', {
-                    autoAlpha: 1,
-                    y: 0,
-                    stagger: 0.3,
-                    // duration: 0.3,
-                    ease: "power2.out",
-                }
+                autoAlpha: 1,
+                y: 0,
+                stagger: 0.3,
+                // duration: 0.3,
+                ease: "power2.out",
+            }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                    autoAlpha: 1,
-                    xPercent: 0
-                }
+                autoAlpha: 1,
+                xPercent: 0
+            }
             )
             .to(
                 '.popup-basket .btn', {
-                    autoAlpha: 1,
-                    duration: 0.3
-                }
+                autoAlpha: 1,
+                duration: 0.3
+            }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
@@ -243,19 +281,19 @@ $(document).ready(function () {
     function showMenu(element, heightEl) {
         gsap.to(
             element, {
-                autoAlpha: 1,
-                height: heightEl + 20,
-                ease: "power1.out",
-                duration: 0.5
-            }
+            autoAlpha: 1,
+            height: heightEl + 20,
+            ease: "power1.out",
+            duration: 0.5
+        }
         );
 
 
         gsap.to(
             '.menu__btn i', {
-                scaleY: -1,
-                duration: 0.5
-            }
+            scaleY: -1,
+            duration: 0.5
+        }
         );
     }
 
@@ -264,20 +302,20 @@ $(document).ready(function () {
 
         gsap.to(
             element, {
-                autoAlpha: 0,
-                height: 0,
-                ease: "power1.out",
-                duration: 0.5
-            }
+            autoAlpha: 0,
+            height: 0,
+            ease: "power1.out",
+            duration: 0.5
+        }
         );
 
         gsap.to(
             '.menu__btn i', {
-                scaleX: 1,
-                scaleY: 1,
-                ease: "power1.out",
-                duration: 0.5
-            }
+            scaleX: 1,
+            scaleY: 1,
+            ease: "power1.out",
+            duration: 0.5
+        }
         );
     }
 
@@ -291,18 +329,6 @@ $(document).ready(function () {
                     $(elem).each(function () {
                         heightSet += $(this).outerHeight();
                     });
-
-                    // $(window).on('resize load', function () {
-                    //     // if ($(this).width() > 900) {
-                    //     //     let heightEl = setHeight('.menu__item');
-                    //     //     console.log(heightEl);
-                    //     //     showMenu('.menu__cover', heightEl);
-                    //     // } else {
-                    //     //     hideMenu('.menu__cover');
-                    //     // }
-
-                    //     console.log(1);
-                    // });
 
                     if ($(this).width() > 600 && $(this).width() <= 900) {
                         heightSet = heightSet / 2;
@@ -331,8 +357,6 @@ $(document).ready(function () {
                 }
             }
         }
-
-
     }
 
     if ($('#gallery').exists()) {
@@ -378,6 +402,7 @@ $(document).ready(function () {
     }
 
 
+
     if ($('.gallery__grid').exists()) {
         let parallaxT = new TimelineMax({
             scrollTrigger: {
@@ -390,9 +415,9 @@ $(document).ready(function () {
 
         gsap.set(
             '.gallery__item', {
-                x: -30,
-                autoAlpha: 0
-            }
+            x: -30,
+            autoAlpha: 0
+        }
         );
 
         parallaxT
@@ -458,12 +483,16 @@ $(document).ready(function () {
         $('.set__item').each(function (index) {
             $(this).on('click', function (event) {
                 let target = event.target;
+                // let parent = createSource($(this));
+                console.log(parent);
+
 
                 if (!target.classList.contains('btn') && !target.classList.contains('quantity')) {
-                    projectFunc.showCard(index);
+                    // projectFunc.showCard(parent, index);
+                    projectFunc.showCard('.set__items', index);
                 }
-            })
-        })
+            });
+        });
     }
 
     if ($('.menu__btn').exists()) {
@@ -502,7 +531,7 @@ $(document).ready(function () {
             const basketBtn = document.querySelector('.js-basket');
             projectFunc.hideBasket();
 
-            basketBtn.addEventListener('mouseenter', function () {
+            basketBtn.addEventListener('click', function () {
 
                 if ($('.header__inner').hasClass('mf-scroll')) {
                     $('.header__inner').addClass('locked');
@@ -595,120 +624,66 @@ $(document).ready(function () {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                    xPercent: 120,
-                    autoAlpha: 1,
-                }, {
-                    xPercent: 0,
-                    duration: 0.6,
-                    ease: "power2.out"
-                }
+                xPercent: 120,
+                autoAlpha: 1,
+            }, {
+                xPercent: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            }
             )
             .to(
                 '.popup-basket__hide', {
-                    autoAlpha: 1,
-                }
+                autoAlpha: 1,
+            }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                    scale: 1,
-                    ease: "power2.out",
-                    stagger: 0.4,
-                    autoAlpha: 1
-                }
+                scale: 1,
+                ease: "power2.out",
+                stagger: 0.4,
+                autoAlpha: 1
+            }
             )
             .to(
                 '.popup-basket__item', {
-                    autoAlpha: 1,
-                    y: 0,
-                    stagger: 0.3,
-                    // duration: 0.3,
-                    ease: "power2.out",
-                }
+                autoAlpha: 1,
+                y: 0,
+                stagger: 0.3,
+                // duration: 0.3,
+                ease: "power2.out",
+            }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                    autoAlpha: 1,
-                    xPercent: 0
-                }
+                autoAlpha: 1,
+                xPercent: 0
+            }
             )
             .to(
                 '.popup-basket .btn', {
-                    autoAlpha: 1,
-                    duration: 0.3
-                }
+                autoAlpha: 1,
+                duration: 0.3
+            }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
     }
 
-    // function hideBasket() {
-    //     gsap.set(
-    //         ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
-    //             autoAlpha: 0
-    //         }
-    //     );
-
-    //     gsap.set(
-    //         ['.popup-basket__icon', '.popup-basket__title'], {
-    //             scale: 0
-    //         }
-    //     );
-
-    //     gsap.set(
-    //         '.popup-basket__item', {
-    //             autoAlpha: 0,
-    //             y: -20
-    //         }
-    //     );
-
-    //     gsap.set(
-    //         '.popup-basket__text', {
-    //             autoAlpha: 0,
-    //             xPercent: -20
-    //         }
-    //     );
-
-    //     gsap.set(
-    //         '.popup-basket__sum', {
-    //             autoAlpha: 0,
-    //             xPercent: 20
-    //         }
-    //     );
-
-    //     gsap.set(
-    //         '.popup-basket__hide', {
-    //             autoAlpha: 0,
-    //         }
-    //     )
-
-    //     gsap.to(
-    //         '.popup-basket', {
-    //             xPercent: 120,
-    //             duration: 0.5,
-    //             ease: "power2.out"
-    //         }
-    //     );
-    //     gsap.to(
-    //         '.overlay-basket', {
-    //             autoAlpha: 0
-    //         }
-    //     );
-
-    //     $('html').removeClass('locked');
-    //     document.body.style.overflow = 'auto';
-    //     parallaxBildboard.enable();
-    // }
+    function weightCart() { //счётчик Корзины
+        // let qty
+    }
 
     if ($('.overlay-basket').exists()) {
         try {
@@ -721,7 +696,6 @@ $(document).ready(function () {
         } catch (error) {
             console.log(error);
         }
-
     }
 
     if ($('.overlay-card').exists()) {
@@ -798,9 +772,6 @@ $(document).ready(function () {
     });
 
 
-
-
-
     //===========Truncate text=============
 
     function truncateText(bloc, qty) {
@@ -836,71 +807,71 @@ $(document).ready(function () {
 
     gsap.set(
         $('.dish__box').find('.dish__image'), {
-            scale: 0,
-            opacity: 0
-        }
+        scale: 0,
+        opacity: 0
+    }
     );
     gsap.set(
         $('.dish__box:first-child').find('.dish__image'), {
-            scale: 1,
-            opacity: 1
-        }
+        scale: 1,
+        opacity: 1
+    }
     );
 
     gsap.set(
         $('.dish__article'), {
-            y: -30,
-            opacity: 0
-        }
+        y: -30,
+        opacity: 0
+    }
     );
 
     gsap.set(
         $('.dish__article')[0], {
-            y: 0,
-            opacity: 1
-        }
+        y: 0,
+        opacity: 1
+    }
     );
 
     gsap.set(
         $('.dish__text--word'), {
-            y: -30,
-            opacity: 0
-        }
+        y: -30,
+        opacity: 0
+    }
     );
 
     gsap.set(
         $('.dish__text--word')[0], {
-            y: 0,
-            opacity: 1
-        }
+        y: 0,
+        opacity: 1
+    }
     );
 
     gsap.set(
         $('.dish__price'), {
-            x: -30,
-            opacity: 0
-        }
+        x: -30,
+        opacity: 0
+    }
     );
 
     gsap.set(
         $('.dish__price')[0], {
-            x: 0,
-            opacity: 1
-        }
+        x: 0,
+        opacity: 1
+    }
     );
 
     gsap.set(
         $('.dish__box .btn--small'), {
-            x: 30,
-            opacity: 0
-        }
+        x: 30,
+        opacity: 0
+    }
     );
 
     gsap.set(
         $('.dish__box .btn--small')[0], {
-            x: 0,
-            opacity: 1
-        }
+        x: 0,
+        opacity: 1
+    }
     );
 
     if ($('.offer__slider').exists()) {
@@ -926,9 +897,7 @@ $(document).ready(function () {
 
                     // fire small viewport version of swiper
                     return enableSwiper();
-
                 }
-
             };
 
             const enableSwiper = function () {
@@ -984,78 +953,78 @@ $(document).ready(function () {
                         if (index != actIndex) {
                             gsap.set(
                                 $('.dish__image')[index], {
-                                    scale: 0,
-                                    opacity: 0
-                                }
+                                scale: 0,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
                                 $('.dish__text--word')[index], {
-                                    y: -30,
-                                    opacity: 0
-                                }
+                                y: -30,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
                                 $('.dish__article')[index], {
-                                    y: -30,
-                                    opacity: 0
-                                }
+                                y: -30,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
                                 $('.dish__price')[index], {
-                                    x: -30,
-                                    opacity: 0
-                                }
+                                x: -30,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
                                 $('.dish__info .btn--small')[index], {
-                                    x: 30,
-                                    opacity: 0
-                                }
+                                x: 30,
+                                opacity: 0
+                            }
                             );
                         } else {
                             let timeline = gsap.timeline();
                             timeline
                                 .to(
                                     $('.dish__image')[index], {
-                                        scale: 1,
-                                        opacity: 1,
-                                        duration: 1
-                                    }
+                                    scale: 1,
+                                    opacity: 1,
+                                    duration: 1
+                                }
                                 )
 
                                 .to(
                                     $('.dish__article')[index], {
-                                        opacity: 1,
-                                        y: 0,
-                                        duration: 0.3
-                                    }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
                                 )
 
                                 .to(
                                     $('.dish__text--word')[index], {
-                                        opacity: 1,
-                                        y: 0,
-                                        duration: 0.3
-                                    }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
                                 )
 
                                 .to(
                                     $('.dish__price')[index], {
-                                        opacity: 1,
-                                        x: 0,
-                                        duration: 0.3
-                                    }
+                                    opacity: 1,
+                                    x: 0,
+                                    duration: 0.3
+                                }
                                 )
                                 .to(
                                     $('.dish__info .btn--small')[index], {
-                                        x: 0,
-                                        opacity: 1,
-                                        duration: 0.3
-                                    },
+                                    x: 0,
+                                    opacity: 1,
+                                    duration: 0.3
+                                },
                                     '-=0.6'
                                 );
                         }
@@ -1208,12 +1177,12 @@ $(document).ready(function () {
 
                 // Создание карты.
                 var myMap = new ymaps.Map("map", {
-                        // Координаты центра карты.
-                        // Порядок по умолчанию: «широта, долгота».
-                        center: [57.098137, 65.613029],
-                        zoom: 17,
-                        controls: []
-                    }),
+                    // Координаты центра карты.
+                    // Порядок по умолчанию: «широта, долгота».
+                    center: [57.098137, 65.613029],
+                    zoom: 17,
+                    controls: []
+                }),
                     myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
                         // Необходимо указать данный тип макета.
                         iconLayout: 'default#image',
@@ -1312,15 +1281,15 @@ $(document).ready(function () {
                 timeline
                     .fromTo(
                         tabContent[i], {
-                            autoAlpha: 1,
-                            display: 'bloc',
-                            xPercent: 0,
-                        }, {
-                            autoAlpha: 0,
-                            display: 'none',
-                            ease: 'power2.out',
-                            xPercent: +100,
-                        }
+                        autoAlpha: 1,
+                        display: 'bloc',
+                        xPercent: 0,
+                    }, {
+                        autoAlpha: 0,
+                        display: 'none',
+                        ease: 'power2.out',
+                        xPercent: +100,
+                    }
                     )
             }
         }
@@ -1335,16 +1304,16 @@ $(document).ready(function () {
                 timeline
                     .fromTo(
                         tabContent[b], {
-                            autoAlpha: 0,
-                            display: 'none',
-                            xPercent: +100,
-                        }, {
-                            autoAlpha: 1,
-                            display: 'block',
-                            xPercent: 0,
-                            duration: 1,
-                            ease: "back"
-                        }
+                        autoAlpha: 0,
+                        display: 'none',
+                        xPercent: +100,
+                    }, {
+                        autoAlpha: 1,
+                        display: 'block',
+                        xPercent: 0,
+                        duration: 1,
+                        ease: "back"
+                    }
                     )
             }
         }
@@ -1379,8 +1348,8 @@ $(document).ready(function () {
                 var dest = el.attr('href'); // получаем направление
                 if (dest !== undefined && dest !== '') { // проверяем существование
                     $('html').animate({
-                            scrollTop: $(dest).offset().top // прокручиваем страницу к требуемому элементу
-                        }, 500 // скорость прокрутки
+                        scrollTop: $(dest).offset().top // прокручиваем страницу к требуемому элементу
+                    }, 500 // скорость прокрутки
                     );
                 }
                 return false;
@@ -1486,76 +1455,43 @@ $(document).ready(function () {
         });
     }
 
-    if ($('.js-calc').exists()) {
-        let qBtn = '';
-        let num = '';
-
-        function showCalcBtn(element, btnHide) {
-            gsap.to(
-                element, {
-                    autoAlpha: 0,
-                    duration: 0.2,
-                    display: 'none'
-                }
-            );
-            gsap.to(
-                btnHide, {
-                    autoAlpha: 1,
-                    duration: 0.2,
-                    display: 'flex',
-                    delay: 0.2
-                }
-            );
+    function showCalcBtn(element, btnHide) {
+        gsap.to(
+            element, {
+            autoAlpha: 0,
+            duration: 0.2,
+            display: 'none'
         }
-
-        function hideCalcBtn(element, btnHide) {
-            gsap.to(
-                btnHide, {
-                    autoAlpha: 0,
-                    duration: 0.2,
-                    display: 'none',
-                }
-            );
-            gsap.to(
-                element, {
-                    autoAlpha: 1,
-                    duration: 0.2,
-                    display: 'block',
-                    delay: 0.2
-                }
-            );
+        );
+        gsap.to(
+            btnHide, {
+            autoAlpha: 1,
+            duration: 0.2,
+            display: 'flex',
+            delay: 0.2
         }
-
-        $('.js-calc').each(function (index) {
-            $(this).on('click', function () {
-                let inputEl = $(this).next().find('input');
-
-                if (+$(inputEl).val() == 0) {
-                    qtyVal = +$(inputEl).val() + 1;
-                    $(inputEl).val(qtyVal);
-                    $(inputEl).attr('value', qtyVal);
-                }
-
-                projectFunc.addCart();
-
-                num = index;
-                qBtn = $(this).next();
-                showCalcBtn($(this), qBtn);
-
-                if ($(this).parent().hasClass("btn-special")) {
-                    parentBtn = createSource($(this));
-                    jsBtn = $(parentBtn).find('.js-calc');
-                    qtyBtn = $(parentBtn).find('.quantity');
-                    showCalcBtn(jsBtn, qtyBtn);
-                }
-
-            });
-        });
-
-
+        );
     }
 
-    function createSource(elem) {
+    function hideCalcBtn(element, btnHide) {
+        gsap.to(
+            btnHide, {
+            autoAlpha: 0,
+            duration: 0.2,
+            display: 'none',
+        }
+        );
+        gsap.to(
+            element, {
+            autoAlpha: 1,
+            duration: 0.2,
+            display: 'block',
+            delay: 0.2
+        }
+        );
+    }
+
+    function createSource(elem) { //возвращает родительский элемент с кнопкой сётчика
         let parent = '';
         let popupCard = '';
         parent = elem.parent();
@@ -1565,95 +1501,139 @@ $(document).ready(function () {
         }
 
         popupCard = $(parent).children('.popup-card').find('.btn-special');
-        // console.log(popupCard);
+        //  console.log(parent);
 
-        return popupCard;
-
+        return parent;
     }
 
-    if ($('.quantity').exists()) {
-        $('.quantity').each(function (index) {
-            let inputEl = $(this).find('input');
-            let btnPlus = $(this).find('.plus');
-            let btnMinus = $(this).find('.minus');
-            let btnBasic = $(this).siblings('.js-calc');
-            let calcBtn = $(this);
-            // let hideBtn = $(this);
+    if ($('.js-calc').exists()) {
+        let qBtn = '';
 
-            let tempBtn = '';
+        $('.js-calc').each(function (index) {
+            $(this).on('click', function () {
+                let inputEl = $(this).next().find('input');
+                let calcBtn = $(this).next();
 
-            // if ($(calcBtn).parent().hasClass("btn-special")) {
-            //     tempBtn = createSource(calcBtn);
-            //     console.log(tempBtn);
-            // }
+                console.log(calcBtn);
 
-
-
-            $(this).on('click', function (event) {
-                event.stopPropagation();
-            });
-
-            $(btnPlus).on('click', function () {
-                let maxVal = inputEl.data('max');
-                let inputVal = +$(inputEl).val();
-                let qtyVal = '';
-
-                if (inputVal < maxVal) {
-                    qtyVal = inputVal + 1;
-                    $(inputEl).val(qtyVal);
-                    $(inputEl).attr('value', qtyVal);
-                    projectFunc.addCart();
-
-                    // console.log($(this).parent().parent());
-
-                    if ($(this).parent().parent().hasClass("btn-special")) {
-
-                        parentBtn = createSource($(this));
-                        inputPopup = $(parentBtn).find('input');
-                        $(inputPopup).val($(inputEl).val());
-
-                        // showCalcBtn(jsBtn, qtyBtn);
-                    }
-
-                    //   showCalcBtn($(this), qBtn);
+                if (+$(inputEl).val() == 0) {
+                    // qtyVal = +$(inputEl).val() + 1;
+                    // $(inputEl).val(qtyVal);
+                    // $(inputEl).attr('value', qtyVal);
+                    plusCalc(calcBtn);
                 }
-            });
 
+                projectFunc.addCart();
+                qBtn = $(this).next();
 
+                showCalcBtn($(this), qBtn);
 
-            $(btnMinus).on('click', function () {
-                let minVal = inputEl.data('min');
-                let inputVal = +$(inputEl).val();
-                let qtyVal = '';
-
-                projectFunc.removeCart();
-
-                if (inputVal >= minVal) {
-                    qtyVal = inputVal - 1;
-                    $(inputEl).val(qtyVal);
-                    $(inputEl).attr('value', qtyVal);
-
-                    if ($(inputEl).val() == 0 && ($(calcBtn).parent().hasClass("btn-special"))) {
-                        hideCalcBtn(btnBasic, calcBtn);
-                    }
+                if ($(this).parent().hasClass("btn-special")) {
+                    parentBtn = createSource($(this));
+                    jsBtn = $(parentBtn).find('.js-calc');
+                    qtyBtn = $(parentBtn).find('.quantity');
+                    showCalcBtn(jsBtn, qtyBtn); //Отображаем счётчик в popup
                 }
             });
         });
     }
 
 
+    if ($('.quantity').exists()) {
+        $('.quantity').each(function (index) {
+            let btnPlus = $(this).find('.plus');
+            let btnMinus = $(this).find('.minus');
+            let calcBtn = $(this);
+
+            $(this).on('click', function (event) {
+                event.stopPropagation();
+            });
+
+            $(btnPlus).on('click', function () {
+                plusCalc(calcBtn);
+            });
+
+            $(btnMinus).on('click', function () {
+                minusCalc(calcBtn);
+            });
+        });
+    }
+
+    function bindVal(element) { //.quantity
+        if ($(element).parent().hasClass("btn-special")) {
+            let parentBtn = createSource($(element));
+            let qtyBtn = $(parentBtn).find('.quantity');
+
+            if ($(parentBtn).find('input').length > 0) {
+                let temp = $(parentBtn).find('input');
+                let trigger = 0;
+
+                for (let i = 0; i < temp.length; i++) {
+                    $(temp[i]).val($(element).find('input').val());
+                    $(temp[i]).attr('value', $(element).find('input').val());
+
+                    if (temp[i].value == 0) {
+                        trigger = 1;
+                    }
+                    else {
+                        trigger = 0;
+                    }
+                }
+
+                if (trigger) {
+                    if ($(parentBtn).find('.js-calc').exists()) {
+                        let calcBtn = $(parentBtn).find('.js-calc');
+                        for (let i = 0; i < calcBtn.length; i++) {
+                            hideCalcBtn(calcBtn[i], qtyBtn[i]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function minusCalc(element) {
+        let btnBasic = $(element).siblings('.js-calc');
+        let inputEl = $(element).find('input');
+        let minVal = inputEl.data('min');
+        let inputVal = +$(inputEl).val();
+        let qtyVal = +inputEl.data('min');
+
+        projectFunc.removeCart();
+
+        if (inputVal >= minVal) {
+            qtyVal = inputVal - 1;
+            $(inputEl).val(qtyVal);
+            $(inputEl).attr('value', qtyVal);
+
+            bindVal(element);
+        }
+    }
+
+    function plusCalc(element) {
+        let inputEl = $(element).find('input');
+        let maxVal = inputEl.data('max');
+        let inputVal = +$(inputEl).val();
+        let qtyVal = +inputEl.data('min');
+
+        if (inputVal < maxVal) {
+            qtyVal = inputVal + 1;
+            $(inputEl).val(qtyVal);
+            $(inputEl).attr('value', qtyVal);
+
+            projectFunc.addCart();
+
+            bindVal(element);
+        }
+    }
 
     if ($('.dish__article').exists()) {
         $('.dish__article').each(function (index) {
             $(this).on('click', function (event) {
-                let target = event.target;
-
-                if (!target.classList.contains('btn') && !target.classList.contains('quantity')) {
-                    projectFunc.showCard(index);
-                }
-            })
+                // let parent = createSource($(this));
+                // console.log(parent);
+                projectFunc.showCard('.dish__box', index);
+            });
         })
     }
-
-
 });

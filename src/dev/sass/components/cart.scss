@@ -1,0 +1,26 @@
+.cart {
+    position: relative;
+    max-width: 41px;
+    height: 34px;
+    cursor: pointer;
+
+    .b-svg {
+        height: 100%;
+        width: 100%;
+    }
+
+    .qty {
+        width: 24px;
+        top: 2px;
+        right: -2px;
+        height: 24px;
+        border-radius: 12px;
+        font-size: 11px;
+        line-height: 100%;
+    }
+
+    &:hover .qty {
+        background-color: white;
+        color: $orange;
+    }
+}
