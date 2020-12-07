@@ -49,15 +49,21 @@ block content
 			.offer__title.title-1 Акции <br> и предложения
 			.offer__slider
 				.offer__grid.swiper-wrapper
-					a(href="menu.html").swiper-slide.offer__item.offer__item--small(style="background-image: url('/img/index/of1.jpg')")
+					a(href="menu.html").swiper-slide.offer__item.offer__item--small
+						.offer__img 
+							img(src="/img/index/of1.jpg" alt="")
 						.offer__wrapper
 							.offer__article.title-3 Буррито на завтрак в подарок!
 							.offer__txt Равным образом консультация с широким активом позволяет выполнять важные задания. 
-					a(href="menu.html").swiper-slide.offer__item.offer__item--middle(style="background-image: url('/img/index/of2.jpg')")
+					a(href="menu.html").swiper-slide.offer__item.offer__item--middle
+						.offer__img 
+							img(src="/img/index/of1.jpg" alt="")
 						.offer__wrapper
 							.offer__article.title-3 Только самые свежие продукты
 							.offer__txt Равным образом консультация с широким активом позволяет выполнять важные задания. 
-					a(href="menu.html").swiper-slide.offer__item.offer__item--big(style="background-image: url('/img/index/of3.jpg')")
+					a(href="menu.html").swiper-slide.offer__item.offer__item--big
+						.offer__img 
+							img(src="/img/index/of1.jpg" alt="")
 						.offer__wrapper
 							.offer__article.title-3 Бесплатная доставка от 1500₽
 							.offer__txt Равным образом консультация с широким активом позволяет выполнять важные задания по разработке системы обучения кадров, соответствует насущным потребностям. 
@@ -83,7 +89,9 @@ block content
 									.dish__image
 										img(src="./img/index/dish.png" alt="")
 									.dish__note
-										a(href="javascript:void(0);").dish__article Садж из индейки
+										.dish__top
+											a(href="javascript:void(0);").dish__article Садж из индейки
+											.dish__weight 450г
 										.dish__text.dish__text--word Таким образом начало повседневной работы по формированию позиции позволяет оценить.
 										.dish__info
 											.dish__price 1,301 ₽
@@ -95,7 +103,9 @@ block content
 									.dish__image
 										img(src="./img/index/dish.png" alt="")
 									.dish__note
-										a(href="javascript:void(0);").dish__article Садж из индейки2
+										.dish__top
+											a(href="javascript:void(0);").dish__article Садж из индейки
+											.dish__weight 450г
 										.dish__text.dish__text--word  Таким образом начало повседневной работы по формированию позиции позволяет оценить.
 										.dish__info
 											.dish__price 1,300 ₽
@@ -119,7 +129,7 @@ block content
 			.elements__item(data-depth="0.05")
 				img(src="./img/elements/el11.png")
 			.elements__item(data-depth="0.03")
-				img(src="./img/elements/el10.png")
+				img(src="./img/elements/el22.png")
 			.elements__item(data-depth="0.05")
 				img(src="./img/elements/el10.png")
 			.elements__item(data-depth="0.03")

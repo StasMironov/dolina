@@ -43,8 +43,10 @@
     }
 
     &--small {
-        padding: 12px 24px;
+        padding: 11px 23px;
         font-weight: 500;
+        border: 1px solid $orange;
+
 
 
         &:hover {

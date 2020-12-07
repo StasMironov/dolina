@@ -7,6 +7,23 @@ gsap.registerPlugin(ScrollTrigger);
 let timeline = gsap.timeline();
 let timelineNav = new TimelineMax();
 
+function removeNotice(parent, element) {
+    setTimeout(function () {
+        console.log('Finish timer');
+        gsap.to(
+            element,
+            {
+                autoAlpha: 0,
+                height: 0,
+                duration: 1,
+                onComplete: function () {
+                    parent.removeChild(element);
+                }
+            }
+        );
+    }, 1000);
+}
+
 const projectFunc = {
     objAd: function (element, place) {
         if ($(element).exists()) {
@@ -42,35 +59,48 @@ const projectFunc = {
         let parentEl = document.querySelector('.notice__container');
 
         let element = document.createElement('div');
-        element.classList.add('notice__bloc');
-        element.textContent = "Комбо-набор 3";
-
-        parentEl.appendChild(element);
+        let numBloc = document.createElement('div');
+        let textBloc = document.createElement('div');
 
 
 
+        setTimeout(function () {
+            console.log('Start timer');
+            element.classList.add('notice__bloc');
+            numBloc.classList.add('notice__qty');
+            textBloc.classList.add('notice__text');
 
-        // timeline
-        //     .to(
-        //         '.notice',
-        //         {
-        //             y: 0,
-        //             autoAlpha: 1,
-        //             duration: 1
-        //         }
-        //     );
+            numBloc.textContent = '+1';
+            textBloc.textContent = "Комбо-набор 3";
 
-        // setTimeout(function () {
-        //     timeline
-        //         .to(
-        //             '.notice',
-        //             {
-        //                 autoAlpha: 0,
-        //                 duration: 1,
-        //                 y: -35
-        //             }
-        //         );
-        // }, 2000);
+            element.appendChild(numBloc);
+            element.appendChild(textBloc);
+            parentEl.appendChild(element);
+
+            timeline
+                .to(
+                    element,
+                    {
+                        y: 0,
+                        autoAlpha: 1,
+                        duration: 1
+                    }
+                );
+        });
+
+        setTimeout(function () {
+
+            timeline
+                .to(
+                    element,
+                    {
+                        autoAlpha: 0,
+                        duration: 1,
+                        y: -35,
+                        onComplete: removeNotice(parentEl, element)
+                    }
+                );
+        }, 2000);
     },
 
     addCart: function () {
@@ -407,9 +437,10 @@ $(document).ready(function () {
         let parallaxT = new TimelineMax({
             scrollTrigger: {
                 trigger: '#gallery',
-                start: 'top-=20%',
+                start: 'top-=40%',
                 end: 'bottom-=20% center',
                 scrub: true,
+                markers: true
             }
         });
 

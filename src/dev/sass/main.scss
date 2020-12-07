@@ -302,9 +302,9 @@ input::-ms-clear {
   background-color: $orange;
   opacity: 0.4;
 
-  @media(max-width: 600px) {
-    width: 7px;
-    height: 7px;
+  @media(max-width: 1024px) {
+    width: 8px;
+    height: 8px;
   }
 }
 
@@ -380,6 +380,7 @@ input::-ms-clear {
   .btn {
     transition: none;
     transition: background .4s ease;
+    box-shadow: none;
   }
 
   .quantity {
@@ -450,7 +451,7 @@ input::-ms-clear {
   span {
     min-width: 30px;
     height: 30px;
-    background-color: black;
+    background-color: $black-2;
     border-radius: 15px;
     font-size: 19px;
     color: white;

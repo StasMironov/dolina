@@ -10,6 +10,19 @@
         margin-top: 34px;
     }
 
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__weight {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+        color: $gray-2;
+    }
+
     &__title {
         @media(max-width: 1023px) {
             font-size: 36px;

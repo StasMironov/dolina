@@ -135,6 +135,10 @@
                 top: -9px !important;
                 right: 226px !important;
             }
+
+            img {
+                transform: rotate(-207deg);
+            }
         }
 
         img {
@@ -229,7 +233,6 @@
     left: 0;
     right: 0;
     width: 100%;
-    z-index: -1;
     height: calc(100% + 101px);
     top: -167px;
     // display: none;
@@ -338,7 +341,7 @@
         &:nth-child(4) {
             left: 54px !important;
             top: 200px !important;
-            width: 146px;
+            width: 158px;
             right: auto;
 
             @media(max-width: 1300px) {
@@ -356,10 +359,10 @@
             }
 
             @media(max-width:1024px) {
-                left: 340px !important;
-                top: 110px !important;
-                width: 93px;
                 right: auto;
+                left: 330px !important;
+                top: 101px !important;
+                width: 103px;
             }
 
             @media(max-width:600px) {
@@ -371,7 +374,7 @@
 
             img {
                 @media(max-width:1024px) {
-                    transform: rotate(42deg);
+                    transform: rotate(39deg);
                 }
 
                 @media(max-width:600px) {
@@ -381,19 +384,19 @@
         }
 
         &:nth-child(5) {
-            left: 727px !important;
-            top: 532px !important;
-            width: 138px !important;
+            left: 704px !important;
+            top: 503px !important;
+            width: 171px !important;
 
             @media(max-width: 1300px) {
                 display: none !important;
             }
 
             @media(max-width: 1024px) {
+                left: 563px !important;
+                top: 150px !important;
+                width: 93px !important;
                 display: block !important;
-                left: 568px !important;
-                top: 170px !important;
-                width: 76px !important;
             }
 
             @media(max-width: 600px) {
@@ -403,10 +406,10 @@
             }
 
             img {
-                transform: rotate(45deg);
+                transform: rotate(-6deg);
 
                 @media(max-width: 1024px) {
-                    transform: rotate(-16deg);
+                    transform: rotate(-56deg);
                 }
             }
         }
@@ -474,8 +477,8 @@
         &:nth-child(4) {
             left: auto !important;
             top: -68px !important;
-            width: 145px;
-            height: 137px;
+            width: 174px;
+            height: 174px;
             right: 485px;
 
             @media(max-width: 1023px) {
