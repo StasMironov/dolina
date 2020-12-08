@@ -12,6 +12,7 @@
 
     .swiper-slide {
         overflow: hidden;
+        border-radius: 5px;
 
         &:hover img {
             transform: scale(1.1);

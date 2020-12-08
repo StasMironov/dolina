@@ -15,10 +15,16 @@
             margin-top: 30px;
         }
 
+        @media(max-width: 600px) {
+            margin-top: 15px;
+        }
+
         .btn {
             @media(max-width: 768px) {
                 width: 100%;
             }
+
+
         }
     }
 
@@ -73,6 +79,10 @@
             height: 358px;
             margin-top: 26px;
         }
+
+        @media(max-width: 600px) {
+            height: 160px;
+        }
     }
 
     &__title {
@@ -90,6 +100,11 @@
     &__item {
         font-size: 16px;
         line-height: 22px;
+
+        @media(max-width: 600px) {
+            font-size: 14px;
+            line-height: 22px;
+        }
 
         &:not(:first-child) {
             margin-top: 13px;
@@ -148,5 +163,10 @@
         padding: 23px 26px;
         font-size: 14PX;
         letter-spacing: .7px;
+
+        @media(max-width: 600px) {
+            padding: 17px 26px;
+            font-size: 12PX;
+        }
     }
 }

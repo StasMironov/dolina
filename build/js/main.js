@@ -6,6 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 let timeline = gsap.timeline();
 let timelineNav = new TimelineMax();
+let status = 0;
 
 const projectFunc = {
     objAd: function (element, place) {
@@ -89,11 +90,11 @@ const projectFunc = {
             });
             gsap.to(
                 '.header__menu--tablet', {
-                    x: 100,
-                    autoAlpha: 0,
-                    duration: 0.8,
-                    ease: 'power2.out'
-                }
+                x: 100,
+                autoAlpha: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
             );
             timelineNav.clear();
         }
@@ -120,21 +121,21 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-card', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
             .to(
                 popupEl, {
-                    scale: 1,
-                    autoAlpha: 1,
-                    duration: 0.8,
-                    ease: 'power2.out'
-                }
+                scale: 1,
+                autoAlpha: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
             );
     },
 
@@ -142,16 +143,16 @@ const projectFunc = {
         timeline.clear();
         gsap.to(
             '.popup-card', {
-                autoAlpha: 0,
-                duration: 0.2,
-                ease: 'power2.out'
-            }
+            autoAlpha: 0,
+            duration: 0.2,
+            ease: 'power2.out'
+        }
         );
         gsap.to(
             '.overlay-card', {
-                autoAlpha: 0,
-                delay: 0.2
-            }
+            autoAlpha: 0,
+            delay: 0.2
+        }
         );
     },
 
@@ -159,54 +160,54 @@ const projectFunc = {
         timeline.clear();
         gsap.set(
             ['.popup-basket .btn', '.popup-basket__icon', '.popup-basket__title', '.popup-basket__item', '.popup-basket__text', '.popup-basket__sum', '.popup-basket__hide'], {
-                autoAlpha: 0,
-            }
+            autoAlpha: 0,
+        }
         );
 
         gsap.set(
             ['.popup-basket__icon', '.popup-basket__title'], {
-                scale: 0
-            }
+            scale: 0
+        }
         );
 
         gsap.set(
             '.popup-basket__item', {
-                autoAlpha: 0,
-                y: -20
-            }
+            autoAlpha: 0,
+            y: -20
+        }
         );
 
         gsap.set(
             '.popup-basket__text', {
-                autoAlpha: 0,
-                xPercent: -20
-            }
+            autoAlpha: 0,
+            xPercent: -20
+        }
         );
 
         gsap.set(
             '.popup-basket__sum', {
-                autoAlpha: 0,
-                xPercent: 20
-            }
+            autoAlpha: 0,
+            xPercent: 20
+        }
         );
 
         gsap.set(
             '.popup-basket__hide', {
-                autoAlpha: 0,
-            }
+            autoAlpha: 0,
+        }
         )
 
         gsap.to(
             '.popup-basket', {
-                xPercent: 120,
-                duration: 0.5,
-                ease: "power2.out"
-            }
+            xPercent: 120,
+            duration: 0.5,
+            ease: "power2.out"
+        }
         );
         gsap.to(
             '.overlay-basket', {
-                autoAlpha: 0
-            }
+            autoAlpha: 0
+        }
         );
 
         $('html').removeClass('locked');
@@ -218,58 +219,58 @@ const projectFunc = {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                    xPercent: 120,
-                    autoAlpha: 1,
-                }, {
-                    xPercent: 0,
-                    duration: 0.6,
-                    ease: "power2.out"
-                }
+                xPercent: 120,
+                autoAlpha: 1,
+            }, {
+                xPercent: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            }
             )
             .to(
                 '.popup-basket__hide', {
-                    autoAlpha: 1,
-                }
+                autoAlpha: 1,
+            }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                    scale: 1,
-                    ease: "power2.out",
-                    stagger: 0.4,
-                    autoAlpha: 1
-                }
+                scale: 1,
+                ease: "power2.out",
+                stagger: 0.4,
+                autoAlpha: 1
+            }
             )
             .to(
                 '.popup-basket__item', {
-                    autoAlpha: 1,
-                    y: 0,
-                    stagger: 0.3,
-                    // duration: 0.3,
-                    ease: "power2.out",
-                }
+                autoAlpha: 1,
+                y: 0,
+                stagger: 0.3,
+                // duration: 0.3,
+                ease: "power2.out",
+            }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                    autoAlpha: 1,
-                    xPercent: 0
-                }
+                autoAlpha: 1,
+                xPercent: 0
+            }
             )
             .to(
                 '.popup-basket .btn', {
-                    autoAlpha: 1,
-                    duration: 0.3
-                }
+                autoAlpha: 1,
+                duration: 0.3
+            }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
@@ -278,22 +279,75 @@ const projectFunc = {
 
 $(document).ready(function () {
 
+    if ($('.advice__slider').exists()) {
+        try {
+            let adviceSlider = new Swiper('.advice__slider', {
+                slidesPerView: 3,
+                spaceBetween: 40,
+                // touchRatio: false,
+                pagination: {
+                    el: '.advice__slider .pagination',
+                    clickable: true,
+                },
+                speed: 400,
+                navigation: {
+                    nextEl: '.advice__slider .arr--next',
+                    prevEl: '.advice__slider .arr--prev',
+                },
+                // autoHeight: true,
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    601: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    769: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    },
+                    1025: {
+                        slidesPerView: 3,
+                        spaceBetween: 40
+                    },
+                    1280: {
+                        slidesPerView: 3,
+                        spaceBetween: 40
+                    }
+                }
+
+            });
+
+            $(window).on('resize load', function () {
+                if ($(this).width() <= 600) {
+                    truncateText('.advice__content', 60);
+                } else {
+                    truncateText('.advice__content', 200);
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     function showMenu(element, heightEl) {
         gsap.to(
             element, {
-                autoAlpha: 1,
-                height: heightEl + 20,
-                ease: "power1.out",
-                duration: 0.5
-            }
+            autoAlpha: 1,
+            height: heightEl + 20,
+            ease: "power1.out",
+            duration: 0.5
+        }
         );
 
 
         gsap.to(
             '.menu__btn i', {
-                scaleY: -1,
-                duration: 0.5
-            }
+            scaleY: -1,
+            duration: 0.5
+        }
         );
     }
 
@@ -302,20 +356,20 @@ $(document).ready(function () {
 
         gsap.to(
             element, {
-                autoAlpha: 0,
-                height: 0,
-                ease: "power1.out",
-                duration: 0.5
-            }
+            autoAlpha: 0,
+            height: 0,
+            ease: "power1.out",
+            duration: 0.5
+        }
         );
 
         gsap.to(
             '.menu__btn i', {
-                scaleX: 1,
-                scaleY: 1,
-                ease: "power1.out",
-                duration: 0.5
-            }
+            scaleX: 1,
+            scaleY: 1,
+            ease: "power1.out",
+            duration: 0.5
+        }
         );
     }
 
@@ -385,6 +439,7 @@ $(document).ready(function () {
             } else {
                 projectFunc.hideNav();
                 hideMenu('.header__list');
+                $('.js-list').removeClass('mf-show');
             }
         });
     }
@@ -401,13 +456,11 @@ $(document).ready(function () {
         });
     }
 
-
-
     if ($('.gallery__grid').exists()) {
         let parallaxT = new TimelineMax({
             scrollTrigger: {
                 trigger: '#gallery',
-                start: 'top-=20%',
+                start: 'top-=40%',
                 end: 'bottom-=20% center',
                 scrub: true,
             }
@@ -415,9 +468,9 @@ $(document).ready(function () {
 
         gsap.set(
             '.gallery__item', {
-                x: -30,
-                autoAlpha: 0
-            }
+            x: -30,
+            autoAlpha: 0
+        }
         );
 
         parallaxT
@@ -449,12 +502,12 @@ $(document).ready(function () {
             },
             breakpoints: {
                 320: {
-                    slidesPerView: 2.2,
+                    slidesPerView: 3,
                     spaceBetween: 15
                 },
                 501: {
                     slidesPerView: 3.4,
-                    spaceBetween: 30
+                    spaceBetween: 15
                 },
                 841: {
                     slidesPerView: 1.2,
@@ -515,13 +568,8 @@ $(document).ready(function () {
 
     if ($('.menu').exists()) {
         $(window).on('resize load', function () {
-            if ($(this).width() > 900) {
-                let heightEl = setHeight('.menu__item');
-                console.log(heightEl);
-                showMenu('.menu__cover', heightEl);
-            } else {
-                hideMenu('.menu__cover');
-            }
+            let heightEl = setHeight('.menu__item');
+            showMenu('.menu__cover', heightEl);
         });
     }
 
@@ -531,22 +579,23 @@ $(document).ready(function () {
             const basketBtn = document.querySelector('.js-basket');
             projectFunc.hideBasket();
 
-            basketBtn.addEventListener('click', function () {
+            basketBtn.addEventListener('mouseenter', function () {
+                if (!status) {
+                    if ($('.header__inner').hasClass('mf-scroll')) {
+                        $('.header__inner').addClass('locked');
+                    }
 
-                if ($('.header__inner').hasClass('mf-scroll')) {
-                    $('.header__inner').addClass('locked');
+                    if ($('.overlay-basket').exists()) {
+                        projectFunc.showBasket();
+                        status = 1;
+                    }
                 }
 
-                if ($('.overlay-basket').exists()) {
-                    projectFunc.showBasket();
-                }
             });
         } catch (err) {
             console.log(err);
         }
     }
-
-    //#scene_about
 
     if ($('#scene_about').exists()) {
         try {
@@ -596,7 +645,6 @@ $(document).ready(function () {
         }
     }
 
-
     if ($('.offer__slider .btn').exists()) {
         let tempQuestion = projectFunc.objReturn(".offer__slider .btn");
 
@@ -624,65 +672,61 @@ $(document).ready(function () {
         timeline
             .fromTo(
                 '.overlay-basket', {
-                    autoAlpha: 0
-                }, {
-                    autoAlpha: 1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                },
+                autoAlpha: 0
+            }, {
+                autoAlpha: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            },
                 '+=0.3'
             )
 
             .fromTo(
                 '.popup-basket', {
-                    xPercent: 120,
-                    autoAlpha: 1,
-                }, {
-                    xPercent: 0,
-                    duration: 0.6,
-                    ease: "power2.out"
-                }
+                xPercent: 120,
+                autoAlpha: 1,
+            }, {
+                xPercent: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            }
             )
             .to(
                 '.popup-basket__hide', {
-                    autoAlpha: 1,
-                }
+                autoAlpha: 1,
+            }
             )
             .to(
                 ['.popup-basket__icon', '.popup-basket__title'], {
-                    scale: 1,
-                    ease: "power2.out",
-                    stagger: 0.4,
-                    autoAlpha: 1
-                }
+                scale: 1,
+                ease: "power2.out",
+                stagger: 0.4,
+                autoAlpha: 1
+            }
             )
             .to(
                 '.popup-basket__item', {
-                    autoAlpha: 1,
-                    y: 0,
-                    stagger: 0.3,
-                    // duration: 0.3,
-                    ease: "power2.out",
-                }
+                autoAlpha: 1,
+                y: 0,
+                stagger: 0.3,
+                // duration: 0.3,
+                ease: "power2.out",
+            }
             )
             .to(
                 ['.popup-basket__sum', '.popup-basket__text'], {
-                    autoAlpha: 1,
-                    xPercent: 0
-                }
+                autoAlpha: 1,
+                xPercent: 0
+            }
             )
             .to(
                 '.popup-basket .btn', {
-                    autoAlpha: 1,
-                    duration: 0.3
-                }
+                autoAlpha: 1,
+                duration: 0.3
+            }
             );
         $('html').addClass('locked');
         document.body.style.overflow = 'hidden';
-    }
-
-    function weightCart() { //счётчик Корзины
-        // let qty
     }
 
     if ($('.overlay-basket').exists()) {
@@ -691,6 +735,7 @@ $(document).ready(function () {
                 if (e.target.className.indexOf('overlay-basket') != -1) {
                     projectFunc.hideBasket();
                     $('html').css('overflow', 'auto');
+                    status = 0;
                 }
             });
         } catch (error) {
@@ -707,10 +752,10 @@ $(document).ready(function () {
         });
     }
 
-
     if ($('.popup-basket__hide').exists()) {
         $('.popup-basket__hide').on('click', function () {
             projectFunc.hideBasket();
+            status = 0;
         });
     }
 
@@ -805,74 +850,7 @@ $(document).ready(function () {
         }
     });
 
-    gsap.set(
-        $('.dish__box').find('.dish__image'), {
-            scale: 0,
-            opacity: 0
-        }
-    );
-    gsap.set(
-        $('.dish__box:first-child').find('.dish__image'), {
-            scale: 1,
-            opacity: 1
-        }
-    );
 
-    gsap.set(
-        $('.dish__article'), {
-            y: -30,
-            opacity: 0
-        }
-    );
-
-    gsap.set(
-        $('.dish__article')[0], {
-            y: 0,
-            opacity: 1
-        }
-    );
-
-    gsap.set(
-        $('.dish__text--word'), {
-            y: -30,
-            opacity: 0
-        }
-    );
-
-    gsap.set(
-        $('.dish__text--word')[0], {
-            y: 0,
-            opacity: 1
-        }
-    );
-
-    gsap.set(
-        $('.dish__price'), {
-            x: -30,
-            opacity: 0
-        }
-    );
-
-    gsap.set(
-        $('.dish__price')[0], {
-            x: 0,
-            opacity: 1
-        }
-    );
-
-    gsap.set(
-        $('.dish__box .btn--small'), {
-            x: 30,
-            opacity: 0
-        }
-    );
-
-    gsap.set(
-        $('.dish__box .btn--small')[0], {
-            x: 0,
-            opacity: 1
-        }
-    );
 
     if ($('.offer__slider').exists()) {
         try {
@@ -926,6 +904,75 @@ $(document).ready(function () {
 
 
     if ($('.dish-slider').exists()) {
+        gsap.set(
+            $('.dish__box').find('.dish__image'), {
+            scale: 0,
+            opacity: 0
+        }
+        );
+        gsap.set(
+            $('.dish__box:first-child').find('.dish__image'), {
+            scale: 1,
+            opacity: 1
+        }
+        );
+
+        gsap.set(
+            [$('.dish__article'), $('.dish__weight')], {
+            y: -30,
+            opacity: 0
+        }
+        );
+
+        gsap.set(
+            [$('.dish__article')[0], $('.dish__weight')[0]], {
+            y: 0,
+            opacity: 1
+        }
+        );
+
+        gsap.set(
+            $('.dish__text--word'), {
+            y: -30,
+            opacity: 0
+        }
+        );
+
+        gsap.set(
+            $('.dish__text--word')[0], {
+            y: 0,
+            opacity: 1
+        }
+        );
+
+        gsap.set(
+            $('.dish__price'), {
+            x: -30,
+            opacity: 0
+        }
+        );
+
+        gsap.set(
+            $('.dish__price')[0], {
+            x: 0,
+            opacity: 1
+        }
+        );
+
+        gsap.set(
+            $('.dish__box .btn--small'), {
+            x: 30,
+            opacity: 0
+        }
+        );
+
+        gsap.set(
+            $('.dish__box .btn--small')[0], {
+            x: 0,
+            opacity: 1
+        }
+        );
+
         let dishSlider = new Swiper('.dish-slider', {
             slidesPerView: 1,
             effect: 'fade',
@@ -953,78 +1000,87 @@ $(document).ready(function () {
                         if (index != actIndex) {
                             gsap.set(
                                 $('.dish__image')[index], {
-                                    scale: 0,
-                                    opacity: 0
-                                }
+                                scale: 0,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
                                 $('.dish__text--word')[index], {
-                                    y: -30,
-                                    opacity: 0
-                                }
+                                y: -30,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
-                                $('.dish__article')[index], {
-                                    y: -30,
-                                    opacity: 0
-                                }
+                                [$('.dish__article')[index], $('.dish__weight')[index]], {
+                                y: -30,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
                                 $('.dish__price')[index], {
-                                    x: -30,
-                                    opacity: 0
-                                }
+                                x: -30,
+                                opacity: 0
+                            }
                             );
 
                             gsap.set(
                                 $('.dish__info .btn--small')[index], {
-                                    x: 30,
-                                    opacity: 0
-                                }
+                                x: 30,
+                                opacity: 0
+                            }
                             );
                         } else {
                             let timeline = gsap.timeline();
                             timeline
                                 .to(
                                     $('.dish__image')[index], {
-                                        scale: 1,
-                                        opacity: 1,
-                                        duration: 1
-                                    }
+                                    scale: 1,
+                                    opacity: 1,
+                                    duration: 1
+                                }
                                 )
 
                                 .to(
                                     $('.dish__article')[index], {
-                                        opacity: 1,
-                                        y: 0,
-                                        duration: 0.3
-                                    }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
+                                )
+
+                                .to(
+                                    $('.dish__weight')[index], {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3,
+                                },
+                                    '=0'
                                 )
 
                                 .to(
                                     $('.dish__text--word')[index], {
-                                        opacity: 1,
-                                        y: 0,
-                                        duration: 0.3
-                                    }
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.3
+                                }
                                 )
 
                                 .to(
                                     $('.dish__price')[index], {
-                                        opacity: 1,
-                                        x: 0,
-                                        duration: 0.3
-                                    }
+                                    opacity: 1,
+                                    x: 0,
+                                    duration: 0.3
+                                }
                                 )
                                 .to(
                                     $('.dish__info .btn--small')[index], {
-                                        x: 0,
-                                        opacity: 1,
-                                        duration: 0.3
-                                    },
+                                    x: 0,
+                                    opacity: 1,
+                                    duration: 0.3
+                                },
                                     '-=0.6'
                                 );
                         }
@@ -1082,58 +1138,7 @@ $(document).ready(function () {
     //.advice__slider
 
 
-    if ($('.advice__slider').exists()) {
-        try {
-            let adviceSlider = new Swiper('.advice__slider', {
-                slidesPerView: 3,
-                spaceBetween: 40,
-                // touchRatio: false,
-                pagination: {
-                    el: '.advice__slider .pagination',
-                    clickable: true,
-                },
-                speed: 400,
-                navigation: {
-                    nextEl: '.advice__slider .arr--next',
-                    prevEl: '.advice__slider .arr--prev',
-                },
-                // autoHeight: true,
-                breakpoints: {
-                    320: {
-                        slidesPerView: 1,
-                        spaceBetween: 20
-                    },
-                    601: {
-                        slidesPerView: 2,
-                        spaceBetween: 20
-                    },
-                    769: {
-                        slidesPerView: 3,
-                        spaceBetween: 20
-                    },
-                    1025: {
-                        slidesPerView: 3,
-                        spaceBetween: 40
-                    },
-                    1280: {
-                        slidesPerView: 3,
-                        spaceBetween: 40
-                    }
-                }
 
-            });
-
-            $(window).on('resize load', function () {
-                if ($(this).width() <= 600) {
-                    truncateText('.advice__content', 60);
-                } else {
-                    truncateText('.advice__content', 200);
-                }
-            });
-        } catch (err) {
-            console.log(err);
-        }
-    }
 
     if ($('.comment__slider').exists()) {
         let commentSlider = new Swiper('.comment__slider', {
@@ -1177,12 +1182,12 @@ $(document).ready(function () {
 
                 // Создание карты.
                 var myMap = new ymaps.Map("map", {
-                        // Координаты центра карты.
-                        // Порядок по умолчанию: «широта, долгота».
-                        center: [57.098137, 65.613029],
-                        zoom: 17,
-                        controls: []
-                    }),
+                    // Координаты центра карты.
+                    // Порядок по умолчанию: «широта, долгота».
+                    center: [57.098137, 65.613029],
+                    zoom: 17,
+                    controls: []
+                }),
                     myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
                         // Необходимо указать данный тип макета.
                         iconLayout: 'default#image',
@@ -1278,9 +1283,11 @@ $(document).ready(function () {
                 tabContent[i].classList.add('hide');
                 tab[i].classList.remove('tab__info--active');
 
-                timeline
-                    .fromTo(
-                        tabContent[i], {
+                if ($(window).width() >= 881) {
+                    console.log('200')
+                    timeline
+                        .fromTo(
+                            tabContent[i], {
                             autoAlpha: 1,
                             display: 'bloc',
                             xPercent: 0,
@@ -1290,7 +1297,23 @@ $(document).ready(function () {
                             ease: 'power2.out',
                             xPercent: +100,
                         }
-                    )
+                        )
+                } else {
+                    timeline
+                        .fromTo(
+                            tabContent[i], {
+                            autoAlpha: 1,
+                            display: 'bloc',
+                        }, {
+                            autoAlpha: 0,
+                            display: 'none',
+                            ease: 'power2.out',
+                        }
+                        )
+                }
+
+
+
             }
         }
 
@@ -1301,9 +1324,13 @@ $(document).ready(function () {
                 tabContent[b].classList.remove('hide');
                 tabContent[b].classList.add('show');
                 tab[b].classList.add('tab__info--active');
-                timeline
-                    .fromTo(
-                        tabContent[b], {
+
+
+                if ($(window).width() >= 881) {
+                    console.log('201');
+                    timeline
+                        .fromTo(
+                            tabContent[b], {
                             autoAlpha: 0,
                             display: 'none',
                             xPercent: +100,
@@ -1314,7 +1341,25 @@ $(document).ready(function () {
                             duration: 1,
                             ease: "back"
                         }
-                    )
+                        )
+                } else {
+                    timeline
+                        .fromTo(
+                            tabContent[b], {
+                            autoAlpha: 0,
+                            display: 'none',
+                        }, {
+                            autoAlpha: 1,
+                            display: 'block',
+                            duration: 1,
+                            ease: "back"
+                        }
+                        )
+                }
+
+
+
+
             }
         }
 
@@ -1341,15 +1386,15 @@ $(document).ready(function () {
         });
     }
 
-    if ($('.about-service__link').exists()) {
-        $('.about-service__link').each(function () {
+    if ($('.about-service__item').exists()) {
+        $('.about-service__item').each(function () {
             $(this).on('click', function () {
                 var el = $(this);
                 var dest = el.attr('href'); // получаем направление
                 if (dest !== undefined && dest !== '') { // проверяем существование
                     $('html').animate({
-                            scrollTop: $(dest).offset().top // прокручиваем страницу к требуемому элементу
-                        }, 500 // скорость прокрутки
+                        scrollTop: $(dest).offset().top // прокручиваем страницу к требуемому элементу
+                    }, 500 // скорость прокрутки
                     );
                 }
                 return false;
@@ -1357,9 +1402,25 @@ $(document).ready(function () {
         });
     }
 
-    if ($('.about-service__link').exists()) {
+    if ($('.header__link').exists()) {
+        $('.header__link').each(function () {
+            $(this).on('click', function () {
+                let el = $(this);
+                let dest = el.attr('href');
+                if (dest !== undefined && dest !== '') {
+                    $('html').animate({
+                        scrollTop: $(dest).offset().top
+                    }, 1000
+                    );
+                }
+                return false;
+            });
+        });
+    }
+
+    if ($('.about-service__item').exists()) {
         try {
-            $('.about-service__link').each(function () {
+            $('.about-service__item').each(function () {
                 $(this).on('click', function () {
                     const dataLink = $(this).data('val');
 
@@ -1458,36 +1519,36 @@ $(document).ready(function () {
     function showCalcBtn(element, btnHide) {
         gsap.to(
             element, {
-                autoAlpha: 0,
-                duration: 0.2,
-                display: 'none'
-            }
+            autoAlpha: 0,
+            duration: 0.2,
+            display: 'none'
+        }
         );
         gsap.to(
             btnHide, {
-                autoAlpha: 1,
-                duration: 0.2,
-                display: 'flex',
-                delay: 0.2
-            }
+            autoAlpha: 1,
+            duration: 0.2,
+            display: 'flex',
+            delay: 0.2
+        }
         );
     }
 
     function hideCalcBtn(element, btnHide) {
         gsap.to(
             btnHide, {
-                autoAlpha: 0,
-                duration: 0.2,
-                display: 'none',
-            }
+            autoAlpha: 0,
+            duration: 0.2,
+            display: 'none',
+        }
         );
         gsap.to(
             element, {
-                autoAlpha: 1,
-                duration: 0.2,
-                display: 'block',
-                delay: 0.2
-            }
+            autoAlpha: 1,
+            duration: 0.2,
+            display: 'block',
+            delay: 0.2
+        }
         );
     }
 
@@ -1626,13 +1687,15 @@ $(document).ready(function () {
         }
     }
 
-    if ($('.dish__article').exists()) {
-        $('.dish__article').each(function (index) {
-            $(this).on('click', function (event) {
-                // let parent = createSource($(this));
-                // console.log(parent);
-                projectFunc.showCard('.dish__box', index);
-            });
-        })
-    }
+
+
+    // if ($('.dish__article').exists()) {
+    //     $('.dish__article').each(function (index) {
+    //         $(this).on('click', function (event) {
+    //             // let parent = createSource($(this));
+    //             // console.log(parent);
+    //             projectFunc.showCard('.dish__box', index);
+    //         });
+    //     })
+    // }
 });

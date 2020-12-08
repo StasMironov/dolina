@@ -321,6 +321,9 @@
         z-index: 1;
         border-radius: 5px;
 
+        @media(max-width: 500px) {
+            height: calc(100% + 10px);
+        }
 
         &:after {
             position: absolute;

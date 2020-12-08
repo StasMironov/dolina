@@ -83,6 +83,7 @@
         background-size: auto 100%;
         background-repeat: no-repeat;
         transition: 1s ease;
+        border-radius: 5px;
 
         @media(max-width: 1235px) {
             width: calc(50% - 30px);
@@ -125,6 +126,7 @@
             opacity: .4;
             z-index: -1;
             transition: .5s ease;
+            border-radius: 5px;
         }
 
         &:hover {

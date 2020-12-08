@@ -317,7 +317,7 @@
         }
 
         &:hover {
-            transform: rotate(90deg);
+            transform: translateY(-53px) translateX(4px) rotate(90deg);
         }
 
         &:hover:before,

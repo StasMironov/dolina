@@ -42,6 +42,21 @@ body {
 
 .b-page {
   overflow: hidden;
+  padding-bottom: 376px;
+  position: relative;
+  min-height: 100vh;
+
+  @media(max-width: 1024px) {
+    padding-bottom: 321px;
+  }
+
+  @media(max-width: 600px) {
+    padding-bottom: 311px;
+  }
+
+  @media(max-width: 500px) {
+    padding-bottom: 589px;
+  }
 }
 
 .container {
@@ -425,6 +440,8 @@ input::-ms-clear {
     width: 58px;
     height: 58px;
     border-radius: 29px;
+    right: 15px;
+    bottom: 15px;
   }
 
   &:hover {

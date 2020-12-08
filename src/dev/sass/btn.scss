@@ -19,10 +19,21 @@
         background-color: white;
         color: $orange;
 
+        @media(max-width: 600px) {
+            background-color: $orange;
+            color: white;
+        }
+
         &:hover {
             background-color: $orange;
             color: white;
             border-color: $orange;
+
+            @media(max-width: 600px) {
+                background-color: white;
+                border-color: $orange;
+                color: $orange;
+            }
         }
     }
 

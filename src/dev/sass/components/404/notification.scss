@@ -45,6 +45,16 @@
         align-items: center;
         padding-top: 201px;
         padding-bottom: 290px;
+
+        @media(max-width: 1024px) {
+            padding-top: 153px;
+            padding-bottom: 147px;
+        }
+
+        @media(max-width: 600px) {
+            padding-bottom: 93px;
+            padding-top: 87px;
+        }
     }
 
     &__items {
@@ -76,18 +86,18 @@
 
             @media(max-width: 1024px) {
                 position: absolute;
-                top: -54px;
-                width: 387px;
-                height: 296px;
-                right: 53%;
+                top: -78px;
+                width: 349px;
+                height: 267px;
+                right: 57%;
             }
 
             @media(max-width: 600px) {
-                top: 65px;
+                transform: rotate(12deg);
+                top: -49px;
                 width: 153px;
                 height: 119px;
-                right: 49%;
-                transform: rotate(12deg);
+                right: 51%;
             }
         }
 
@@ -106,20 +116,20 @@
             }
 
             @media(max-width: 1024px) {
-                right: 21.5%;
-                left: 66.5%;
-                top: 121px;
-                width: 325px;
-                height: 348px;
                 background-size: cover;
+                right: 21.5%;
+                left: 65.5%;
+                top: 74px;
+                width: 291px;
+                height: 335px;
             }
 
             @media(max-width: 600px) {
                 transform: rotate(23deg);
-                left: 64.5%;
-                top: 440px;
-                width: 167px;
-                height: 173px;
+                left: 61.5%;
+                top: 325px;
+                width: 153px;
+                height: 171px;
             }
         }
 
@@ -142,8 +152,8 @@
 
             @media(max-width: 1024px) {
                 right: 42.9%;
-                left: 63%;
-                top: 102px;
+                left: 61%;
+                top: 55px;
             }
 
             @media(max-width: 600px) {
@@ -170,8 +180,8 @@
 
             @media(max-width: 1024px) {
                 right: 75.8%;
-                left: 9.6%;
-                top: 345px;
+                left: 7.6%;
+                top: 298px;
                 width: 57px;
                 height: 75px;
             }
@@ -179,10 +189,10 @@
             @media(max-width: 600px) {
                 transform: rotate(67deg);
                 right: 75.8%;
-                left: 39.6%;
-                top: 569px;
                 width: 29px;
                 height: 46px;
+                left: 37.6%;
+                top: 458px;
             }
         }
 
@@ -196,19 +206,19 @@
 
             @media(max-width: 1024px) {
                 right: 49.9%;
-                left: 31.1%;
-                top: 449px;
                 width: 114px;
                 height: 105px;
+                left: 29.1%;
+                top: 400px;
             }
 
             @media(max-width: 600px) {
                 right: 49.9%;
-                left: 13.1%;
-                top: 423px;
                 width: 80px;
                 height: 72px;
                 transform: rotate(26deg);
+                left: 10.1%;
+                top: 309px;
             }
         }
 
@@ -240,8 +250,8 @@
             }
 
             @media(max-width: 600px) {
-                left: 5.8%;
-                top: 520px;
+                left: 2.8%;
+                top: 409px;
                 width: 35px;
                 height: 34px;
             }
@@ -253,6 +263,18 @@
             top: 673px;
             width: 73px;
             height: 54px;
+
+            @media(max-width: 1024px) {
+                left: 33.4%;
+                top: 571px;
+            }
+
+            @media(max-width: 600px) {
+                left: 63.4%;
+                top: 24px;
+                width: 48px;
+                height: 48px;
+            }
         }
 
         &:nth-child(10) {
@@ -285,8 +307,8 @@
             }
 
             @media(max-width: 600px) {
-                left: 72%;
-                top: 400px;
+                left: 48%;
+                top: 391px;
                 width: 34px;
                 height: 33px;
             }
@@ -302,17 +324,17 @@
 
             @media(max-width: 1024px) {
                 left: auto;
-                top: 534px;
+                top: 483px;
                 width: 57px;
                 height: 60px;
-                right: 10%;
+                right: 13%;
             }
 
             @media(max-width: 600px) {
-                top: 511px;
                 width: 21px;
                 height: 22px;
-                right: 39%;
+                top: 292px;
+                right: 20%;
             }
         }
 
