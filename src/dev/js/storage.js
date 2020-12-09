@@ -1,36 +1,30 @@
 (function () {
     let stateChanged = new Event('StateChanged');
-    // let unique = 0;
     let state = {};
+
+
 
     window.storage = new class {
 
-        addItem(data) {
-            // let
-            state[unique] = data;
-            unique++;
-            console.log(state);
+        addItem(id, data) {
+            let setItem = {};
+            setItem['val'] = data.val;
+            state[id] = setItem;
             window.dispatchEvent(stateChanged);
         }
 
+        updateItem(id, data) {
+            state[id].val = data;
+            //console.log(state);
+            window.dispatchEvent(stateChanged);
+        }
 
-        // setItem(id, data) {
-        //     // state[id] = data;
-        //     // window.dispatchEvent(stateChanged);
-        // }
+        showItem() {
+            window.dispatchEvent(stateChanged);
+        }
 
-
-        // removeItem(id) {
-        //     // delete state[id];
-        //     // window.dispatchEvent(stateChanged);
-        // }
-
-
-        // get items() {
-        //     return state;
-        // }
+        get items() {
+            return state;
+        }
     }
-
-
-
 })();

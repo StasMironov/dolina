@@ -33,7 +33,6 @@ const projectFunc = {
   },
   removeNotice: function (parent, element) {
     setTimeout(function () {
-      console.log('Finish timer');
       gsap.to(element, {
         autoAlpha: 0,
         height: 0,
@@ -50,7 +49,6 @@ const projectFunc = {
     let numBloc = document.createElement('div');
     let textBloc = document.createElement('div');
     setTimeout(function () {
-      console.log('Start timer');
       element.classList.add('notice__bloc');
       numBloc.classList.add('notice__qty');
       textBloc.classList.add('notice__text');
@@ -105,7 +103,6 @@ const projectFunc = {
   showCard: function (parent, element) {
     let card = $(parent).find('.popup-card');
     let popupEl = '';
-    console.log(1);
     $(card).each(function (popup) {
       if (popup == element) {
         popupEl = $(this);
@@ -300,9 +297,7 @@ $(document).ready(function () {
 
           if ($(this).width() > 600 && $(this).width() <= 900) {
             heightSet = heightSet / 2;
-            console.log(600);
           } else if ($(this).width() <= 600) {
-            console.log(10);
             heightSet = heightSet - 20;
           } else {
             heightSet = heightSet - 20;
@@ -314,7 +309,6 @@ $(document).ready(function () {
         }
       } else if ($(elem).hasClass('header__in')) {
         try {
-          console.log(2);
           let heightSet = 0;
           $(elem).each(function () {
             heightSet += $(this).outerHeight();
@@ -443,9 +437,11 @@ $(document).ready(function () {
   if ($('.set__item').exists()) {
     $('.set__item').each(function (index) {
       $(this).on('click', function (event) {
-        let target = event.target; // let parent = createSource($(this));
-
-        console.log(parent);
+        let target = event.target; //  let dataItem = $(this).children('.popup-card').data("item");
+        // let inputEl = $(this).children('.popup-card').find('input');
+        //console.log($(inputEl).val());
+        // dataItem.val = $(inputEl).val();
+        // window.storage.addItem(temp, dataItem);
 
         if (!target.classList.contains('btn') && !target.classList.contains('quantity')) {
           // projectFunc.showCard(parent, index);
@@ -694,7 +690,6 @@ $(document).ready(function () {
   $(window).on('resize load', function () {
     let locked = document.querySelector('html');
     locked.style.setProperty('--wScroll', getScrollbarWidth() + 'px');
-    console.log(getScrollbarWidth());
   }); //===========Truncate text=============
 
   function truncateText(bloc, qty) {
@@ -1059,7 +1054,6 @@ $(document).ready(function () {
         tab[i].classList.remove('tab__info--active');
 
         if ($(window).width() >= 881) {
-          console.log('200');
           timeline.fromTo(tabContent[i], {
             autoAlpha: 1,
             display: 'bloc',
@@ -1313,17 +1307,21 @@ $(document).ready(function () {
 
   if ($('.js-calc').exists()) {
     let qBtn = '';
-    $('.js-calc').each(function (index) {
+    $('.js-calc').each(function (index, element) {
       $(this).on('click', function () {
         let inputEl = $(this).next().find('input');
+        let parentBtn = createSource($(this));
         let calcBtn = $(this).next();
-        console.log(calcBtn);
+        let temp = index / 2;
+        let dataItem = $(parentBtn).children('.popup-card').data("item");
+        dataItem.val = $(inputEl).val();
+        window.storage.addItem(temp, dataItem);
 
         if (+$(inputEl).val() == 0) {
           // qtyVal = +$(inputEl).val() + 1;
           // $(inputEl).val(qtyVal);
           // $(inputEl).attr('value', qtyVal);
-          plusCalc(calcBtn);
+          plusCalc(calcBtn, temp);
         }
 
         projectFunc.addCart();
@@ -1349,49 +1347,42 @@ $(document).ready(function () {
         event.stopPropagation();
       });
       $(btnPlus).on('click', function () {
-        plusCalc(calcBtn);
+        plusCalc(calcBtn, index / 2);
       });
       $(btnMinus).on('click', function () {
-        minusCalc(calcBtn);
+        minusCalc(calcBtn, index / 2);
       });
     });
-  }
+  } // function bindVal(element) { //.quantity
+  //     if ($(element).parent().hasClass("btn-special")) {
+  //         let parentBtn = createSource($(element));
+  //         let qtyBtn = $(parentBtn).find('.quantity');
+  //         if ($(parentBtn).find('input').length > 0) {
+  //             let temp = $(parentBtn).find('input');
+  //             let trigger = 0;
+  //             for (let i = 0; i < temp.length; i++) {
+  //                 $(temp[i]).val($(element).find('input').val());
+  //                 $(temp[i]).attr('value', $(element).find('input').val());
+  //                 if (temp[i].value == 0) {
+  //                     trigger = 1;
+  //                 } else {
+  //                     trigger = 0;
+  //                 }
+  //             }
+  //             if (trigger) {
+  //                 if ($(parentBtn).find('.js-calc').exists()) {
+  //                     let calcBtn = $(parentBtn).find('.js-calc');
+  //                     for (let i = 0; i < calcBtn.length; i++) {
+  //                         hideCalcBtn(calcBtn[i], qtyBtn[i]);
+  //                     }
+  //                 }
+  //             }
+  //         }
+  //     }
+  // }
 
-  function bindVal(element) {
-    //.quantity
-    if ($(element).parent().hasClass("btn-special")) {
-      let parentBtn = createSource($(element));
-      let qtyBtn = $(parentBtn).find('.quantity');
 
-      if ($(parentBtn).find('input').length > 0) {
-        let temp = $(parentBtn).find('input');
-        let trigger = 0;
-
-        for (let i = 0; i < temp.length; i++) {
-          $(temp[i]).val($(element).find('input').val());
-          $(temp[i]).attr('value', $(element).find('input').val());
-
-          if (temp[i].value == 0) {
-            trigger = 1;
-          } else {
-            trigger = 0;
-          }
-        }
-
-        if (trigger) {
-          if ($(parentBtn).find('.js-calc').exists()) {
-            let calcBtn = $(parentBtn).find('.js-calc');
-
-            for (let i = 0; i < calcBtn.length; i++) {
-              hideCalcBtn(calcBtn[i], qtyBtn[i]);
-            }
-          }
-        }
-      }
-    }
-  }
-
-  function minusCalc(element) {
+  function minusCalc(element, index) {
     let btnBasic = $(element).siblings('.js-calc');
     let inputEl = $(element).find('input');
     let minVal = inputEl.data('min');
@@ -1403,22 +1394,23 @@ $(document).ready(function () {
       qtyVal = inputVal - 1;
       $(inputEl).val(qtyVal);
       $(inputEl).attr('value', qtyVal);
-      bindVal(element);
+      window.storage.updateItem(index, $(inputEl).val()); //  bindVal(element);
     }
   }
 
-  function plusCalc(element) {
+  function plusCalc(element, index) {
     let inputEl = $(element).find('input');
     let maxVal = inputEl.data('max');
     let inputVal = +$(inputEl).val();
     let qtyVal = +inputEl.data('min');
+    console.log(index);
 
     if (inputVal < maxVal) {
       qtyVal = inputVal + 1;
       $(inputEl).val(qtyVal);
       $(inputEl).attr('value', qtyVal);
-      projectFunc.addCart();
-      bindVal(element);
+      window.storage.updateItem(index, $(inputEl).val());
+      projectFunc.addCart(); //    bindVal(element);
     }
   } // if ($('.dish__article').exists()) {
   //     $('.dish__article').each(function (index) {
@@ -1433,28 +1425,29 @@ $(document).ready(function () {
 });
 
 (function () {
-  let stateChanged = new Event('StateChanged'); // let unique = 0;
-
+  let stateChanged = new Event('StateChanged');
   let state = {};
   window.storage = new class {
-    addItem(data) {
-      // let
-      state[unique] = data;
-      unique++;
-      console.log(state);
+    addItem(id, data) {
+      let setItem = {};
+      setItem['val'] = data.val;
+      state[id] = setItem;
       window.dispatchEvent(stateChanged);
-    } // setItem(id, data) {
-    //     // state[id] = data;
-    //     // window.dispatchEvent(stateChanged);
-    // }
-    // removeItem(id) {
-    //     // delete state[id];
-    //     // window.dispatchEvent(stateChanged);
-    // }
-    // get items() {
-    //     return state;
-    // }
+    }
 
+    updateItem(id, data) {
+      state[id].val = data; //console.log(state);
+
+      window.dispatchEvent(stateChanged);
+    }
+
+    showItem() {
+      window.dispatchEvent(stateChanged);
+    }
+
+    get items() {
+      return state;
+    }
 
   }();
 })();
