@@ -317,7 +317,11 @@
         }
 
         &:hover {
-            transform: translateY(-53px) translateX(4px) rotate(90deg);
+            transform: rotate(90deg);
+
+            @media(max-width: 600px) {
+                transform: translateY(-53px) translateX(4px) rotate(90deg);
+            }
         }
 
         &:hover:before,

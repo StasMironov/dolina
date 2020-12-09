@@ -8,6 +8,8 @@ let timeline = gsap.timeline();
 let timelineNav = new TimelineMax();
 let status = 0;
 
+
+
 const projectFunc = {
     objAd: function (element, place) {
         if ($(element).exists()) {
@@ -38,40 +40,65 @@ const projectFunc = {
         }
     },
 
+    removeNotice: function (parent, element) {
+        setTimeout(function () {
+            console.log('Finish timer');
+            gsap.to(
+                element,
+                {
+                    autoAlpha: 0,
+                    height: 0,
+                    duration: 1,
+                    onComplete: function () {
+                        parent.removeChild(element);
+                    }
+                }
+            );
+        }, 1000);
+    },
+
     showNotice: function () {
-
         let parentEl = document.querySelector('.notice__container');
-
         let element = document.createElement('div');
-        element.classList.add('notice__bloc');
-        element.textContent = "Комбо-набор 3";
+        let numBloc = document.createElement('div');
+        let textBloc = document.createElement('div');
 
-        parentEl.appendChild(element);
+        setTimeout(function () {
+            console.log('Start timer');
+            element.classList.add('notice__bloc');
+            numBloc.classList.add('notice__qty');
+            textBloc.classList.add('notice__text');
 
+            numBloc.textContent = '+1';
+            textBloc.textContent = "Комбо-набор 3";
 
+            element.appendChild(numBloc);
+            element.appendChild(textBloc);
+            parentEl.appendChild(element);
 
+            timeline
+                .to(
+                    element,
+                    {
+                        y: 0,
+                        autoAlpha: 1,
+                        duration: 1
+                    }
+                );
+        });
 
-        // timeline
-        //     .to(
-        //         '.notice',
-        //         {
-        //             y: 0,
-        //             autoAlpha: 1,
-        //             duration: 1
-        //         }
-        //     );
-
-        // setTimeout(function () {
-        //     timeline
-        //         .to(
-        //             '.notice',
-        //             {
-        //                 autoAlpha: 0,
-        //                 duration: 1,
-        //                 y: -35
-        //             }
-        //         );
-        // }, 2000);
+        setTimeout(function () {
+            timeline
+                .to(
+                    element,
+                    {
+                        autoAlpha: 0,
+                        duration: 1,
+                        y: -35,
+                        onComplete: projectFunc.removeNotice(parentEl, element)
+                    }
+                );
+        }, 2000);
     },
 
     addCart: function () {
@@ -481,8 +508,6 @@ $(document).ready(function () {
             });
     }
 
-
-
     if ($('.about-slider').exists()) {
         let swiperAbout = new Swiper('.about-slider', {
             slidesPerView: 2,
@@ -816,7 +841,6 @@ $(document).ready(function () {
         console.log(getScrollbarWidth());
     });
 
-
     //===========Truncate text=============
 
     function truncateText(bloc, qty) {
@@ -841,7 +865,6 @@ $(document).ready(function () {
     //truncateText('.set__content', 60);
     truncateText('.offer__txt', 100);
 
-
     $(window).on('resize load', function () {
         if ($(this).width() <= 600) {
             truncateText('.set__content', 50);
@@ -849,8 +872,6 @@ $(document).ready(function () {
             truncateText('.set__content', 300);
         }
     });
-
-
 
     if ($('.offer__slider').exists()) {
         try {
@@ -900,8 +921,6 @@ $(document).ready(function () {
             console.log(err);
         }
     }
-
-
 
     if ($('.dish-slider').exists()) {
         gsap.set(
@@ -1099,7 +1118,6 @@ $(document).ready(function () {
         });
     }
 
-
     if ($('#scene_dish').exists()) {
         let sceneDish = document.getElementById('scene_dish');
         let parallaxDish = new Parallax(sceneDish, {
@@ -1137,9 +1155,6 @@ $(document).ready(function () {
 
     //.advice__slider
 
-
-
-
     if ($('.comment__slider').exists()) {
         let commentSlider = new Swiper('.comment__slider', {
             slidesPerView: 2,
@@ -1172,7 +1187,6 @@ $(document).ready(function () {
             }
         });
     }
-
 
     $(window).on('load', function () {
         if ($('#map').exists()) {
@@ -1252,9 +1266,6 @@ $(document).ready(function () {
             }
         }
     });
-
-
-
 
     if ($('.tab__info').exists()) {
         let tabsInfo = document.querySelectorAll('.tab__info');
@@ -1378,7 +1389,6 @@ $(document).ready(function () {
             }
         });
     }
-
 
     if ($('.js-tab-btn').extend()) {
         $('.js-tab-btn').on('click', function () {
