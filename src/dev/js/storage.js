@@ -14,7 +14,7 @@
         refresh() {
             window.localStorage.setItem('cart', JSON.stringify(storage));
             window.dispatchEvent(new Event('cartUpdated'));
-            console.log(1);
+            // 
         }
 
 
@@ -110,7 +110,6 @@
     // Реакция на сохранение данных из другого окна.
     // Событие НЕ срабатывает при сохранении из текущего окна.
     window.addEventListener('storage', function () {
-
             storage = JSON.parse(window.localStorage.getItem('cart') || "{}");
             window.dispatchEvent(new Event('cartUpdated'));
         })

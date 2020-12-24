@@ -1669,8 +1669,7 @@ $(document).ready(function () {
      */
     refresh() {
       window.localStorage.setItem('cart', JSON.stringify(storage));
-      window.dispatchEvent(new Event('cartUpdated'));
-      console.log(1);
+      window.dispatchEvent(new Event('cartUpdated')); // 
     }
     /**
      * Устанавливает параметры элемента корзины
