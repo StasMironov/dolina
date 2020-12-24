@@ -13,85 +13,25 @@
             //-         .qty
             //-             span 1
             //-     .popup-basket__title Корзина покупателя
-            .popup-basket__items
-                .popup-basket__item
+            .popup-basket__items.js-cart_list
+                .popup-basket__item.js-cart_list__template(style="display:none")
                     .popup-basket__pic
                         img(src="./img/basket/order.jpg" alt="")
                     .popup-basket__box
-                         .popup-basket__article Шашлык из свиных ребрышек
-                         .popup-basket__weight 450г
-                         .quantity
+                         .popup-basket__article.js_cart-item__name Шашлык из свиных ребрышек
+                         .popup-basket__weight.js_cart-item__weight 450г
+                         .quantity.js_cart-item__quantity
                             button.minus
                                 +svg('icon-minus')
-                            <input type="text" class="quantity__field" name="" value="1" data-step="1" data-id="123" data-min="1" data-max="20">
+                            <input type="text" class="quantity__field js_cart-item__count" name="" value="1" data-step="1" data-id="123" data-min="1" data-max="20">
                             button.plus
                                 +svg('icon-plus')
                     .popup-basket__outcome
-                        .popup-basket__close 
-                        .popup-basket__price 450 <span>₽</span>
-                .popup-basket__item
-                    .popup-basket__pic
-                        img(src="./img/basket/order.jpg" alt="")
-                    .popup-basket__box
-                         .popup-basket__article Шашлык из свиных ребрышек
-                         .popup-basket__weight 450г
-                         .quantity
-                            button.minus
-                                +svg('icon-minus')
-                            <input type="text" class="quantity__field" name="" value="1" data-step="1" data-id="123" data-min="1" data-max="20">
-                            button.plus
-                                +svg('icon-plus')
-                    .popup-basket__outcome
-                        .popup-basket__close 
-                        .popup-basket__price 450 <span>₽</span>
-                .popup-basket__item
-                    .popup-basket__pic
-                        img(src="./img/basket/order.jpg" alt="")
-                    .popup-basket__box
-                         .popup-basket__article Шашлык из свиных ребрышек
-                         .popup-basket__weight 450г
-                         .quantity
-                            button.minus
-                                +svg('icon-minus')
-                            <input type="text" class="quantity__field" name="" value="1" data-step="1" data-id="123" data-min="1" data-max="20">
-                            button.plus
-                                +svg('icon-plus')
-                    .popup-basket__outcome
-                        .popup-basket__close 
-                        .popup-basket__price 450 <span>₽</span>
-                .popup-basket__item
-                    .popup-basket__pic
-                        img(src="./img/basket/order.jpg" alt="")
-                    .popup-basket__box
-                         .popup-basket__article Шашлык из свиных ребрышек
-                         .popup-basket__weight 450г
-                         .quantity
-                            button.minus
-                                +svg('icon-minus')
-                            <input type="text" class="quantity__field" name="" value="1" data-step="1" data-id="123" data-min="1" data-max="20">
-                            button.plus
-                                +svg('icon-plus')
-                    .popup-basket__outcome
-                        .popup-basket__close 
-                        .popup-basket__price 450 <span>₽</span>
-                .popup-basket__item
-                    .popup-basket__pic
-                        img(src="./img/basket/order.jpg" alt="")
-                    .popup-basket__box
-                         .popup-basket__article Шашлык из свиных ребрышек
-                         .popup-basket__weight 450г
-                         .quantity
-                            button.minus
-                                +svg('icon-minus')
-                            <input type="text" class="quantity__field" name="count" value="1" data-step="1" data-id="123" data-min="1" data-max="20">
-                            button.plus
-                                +svg('icon-plus')
-                    .popup-basket__outcome
-                        .popup-basket__close 
-                        .popup-basket__price 450 <span>₽</span>
+                        .popup-basket__close.js_cart-item__remove 
+                        .popup-basket__price.js_cart-item__cost 450 <span>₽</span>
             .popup-basket__bottom
                 .popup-basket__text Общая сумма заказа:
-                .popup-basket__sum 1800 <span>₽</span>
+                .popup-basket__sum <span class="js_cart-total__cost"></span><span class="symbol"> ₽</span>
             a(href="order.html").btn.btn--big.btn--orange Оформить заказ
 
 .overlay-card

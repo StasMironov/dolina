@@ -11,72 +11,20 @@ block content
 			.basket__title.title-1 Корзина
 			.basket__quote Идейные соображения высшего порядка, а также сложившаяся структура организации требуют от нас анализа модели развития.
 			.basket__cover
-				.basket__items
-					.basket__item
+				.basket__items.js-basket_list
+					.basket__item.js-basket_list__template(style="display:none")
 						.basket__pic
 							img(src="./img/basket/pic.jpg" alt="")
 						.basket__wrapper
 							.basket__info
 								.basket__top
-									.basket__article Комбо-набор 1
-									.basket__weight 450г
-								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
+									.basket__article.js_basket-item__name Комбо-набор 1
+									.basket__weight.js_basket-item__weight 450г
+								.basket__text.js_basket-item__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
 							.basket__box
 								include ../modules/quantity
-								.basket__price 450 <span>₽</span>
-								.basket__close
-					.basket__item
-						.basket__pic
-							img(src="./img/basket/pic.jpg" alt="")
-						.basket__wrapper
-							.basket__info
-								.basket__top
-									.basket__article Комбо-набор 1
-									.basket__weight 450г
-								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
-							.basket__box
-								include ../modules/quantity
-								.basket__price 450 <span>₽</span>
-								.basket__close
-					.basket__item
-						.basket__pic
-							img(src="./img/basket/pic.jpg" alt="")
-						.basket__wrapper
-							.basket__info
-								.basket__top
-									.basket__article Комбо-набор 1
-									.basket__weight 450г
-								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
-							.basket__box
-								include ../modules/quantity
-								.basket__price 450 <span>₽</span>
-								.basket__close
-					.basket__item
-						.basket__pic
-							img(src="./img/basket/pic.jpg" alt="")
-						.basket__wrapper
-							.basket__info
-								.basket__top
-									.basket__article Комбо-набор 1
-									.basket__weight 450г
-								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
-							.basket__box
-								include ../modules/quantity
-								.basket__price 450 <span>₽</span>
-								.basket__close
-					.basket__item
-						.basket__pic
-							img(src="./img/basket/pic.jpg" alt="")
-						.basket__wrapper
-							.basket__info
-								.basket__top
-									.basket__article Комбо-набор 1
-									.basket__weight 450г
-								.basket__text Квадратный пирог из дрожжевого теста, с начинкой из сыра сулугуни, сверху присыпается сыром сулугуни
-							.basket__box
-								include ../modules/quantity
-								.basket__price 450 <span>₽</span>
-								.basket__close
+								.basket__price.js_basket-item__cost 450 <span>₽</span>
+								.basket__close.js_cart-item__remove
 			.basket__bloc
 				.basket__right
 					.basket__heading Промокод
@@ -84,57 +32,28 @@ block content
 						input(type="text" placeholder="Введите промокод" required).promo__field
 						a(href="javascript:void(0);").promo__btn Применить
 				.basket__left
-					.basket__sum Общая сумма заказа: <span class="sum">2250</span> <span class="symbol">₽</span>
+					.basket__sum Общая сумма заказа: <span class="sum js_cart-total__cost">2250</span> <span class="symbol">₽</span>
 					a(href="javascript:void(0);").btn.btn--big.btn--orange Оформить заказ
 	.advice
 		.advice__container.container
 			.advice__title.title-2 Рекомендуем к заказу
 			.advice__slider
 				.swiper-wrapper
-					.swiper-slide
+
+
+
+					.swiper-slide.js_cart-item(data-cart-id="11")
 						.advice__pic
-							img(src="./img/set/set1.jpg" alt="")
+							img.js_cart-item__image(src="./img/set/set1.jpg" alt="")
 						.advice__cover
 							.advice__top
-								.advice__article Комбо-набор 1
-								.advice__weight 450г
-							.advice__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
+								.advice__article.js_cart-item__name Комбо-набор 8
+								.advice__weight.js_cart-item__weight 450г
+							.advice__content.js_cart-item__text Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
 							.advice__bottom
-								.advice__price 450 <span>₽</span>
+								.advice__price.js_cart-item__cost 450 <span>₽</span>
 								include ../modules/add-cart
-					.swiper-slide
-						.advice__pic
-							img(src="./img/set/set1.jpg" alt="")
-						.advice__cover
-							.advice__top
-								.advice__article Комбо-набор 1
-								.advice__weight 450г
-							.advice__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
-							.advice__bottom
-								.advice__price 450 <span>₽</span>
-								include ../modules/add-cart
-					.swiper-slide
-							.advice__pic
-								img(src="./img/set/set1.jpg" alt="")
-							.advice__cover
-								.advice__top
-									.advice__article Комбо-набор 1
-									.advice__weight 450г
-								.advice__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
-								.advice__bottom
-									.advice__price 450 <span>₽</span>
-									include ../modules/add-cart
-					.swiper-slide
-						.advice__pic
-							img(src="./img/set/set1.jpg" alt="")
-						.advice__cover
-							.advice__top
-								.advice__article Комбо-набор 1
-								.advice__weight 450г
-							.advice__content Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие
-							.advice__bottom
-								.advice__price 450 <span>₽</span>
-								include ../modules/add-cart
+					
 				
 				.arrow
 					.arr.arr--prev

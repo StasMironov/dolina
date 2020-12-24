@@ -6,6 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 let timeline = gsap.timeline();
 let timelineNav = new TimelineMax();
 let status = 0;
+var lastClick = 0;
 const projectFunc = {
   objAd: function (element, place) {
     if ($(element).exists()) {
@@ -43,7 +44,7 @@ const projectFunc = {
       });
     }, 1000);
   },
-  showNotice: function () {
+  showNotice: function (name, status, count) {
     let parentEl = document.querySelector('.notice__container');
     let element = document.createElement('div');
     let numBloc = document.createElement('div');
@@ -52,8 +53,15 @@ const projectFunc = {
       element.classList.add('notice__bloc');
       numBloc.classList.add('notice__qty');
       textBloc.classList.add('notice__text');
-      numBloc.textContent = '+1';
-      textBloc.textContent = "Комбо-набор 3";
+
+      if (status == 'add') {
+        numBloc.textContent = `+${count}`;
+      } else {
+        numBloc.textContent = `-${count}`;
+      } // numBloc.textContent = '+1';
+
+
+      textBloc.textContent = name;
       element.appendChild(numBloc);
       element.appendChild(textBloc);
       parentEl.appendChild(element);
@@ -206,6 +214,246 @@ const projectFunc = {
   }
 };
 $(document).ready(function () {
+  // отключение предыдущих обработчиков, чтобы не мешали
+  $('.plus, .minus, .js-calc').each((_, e) => {
+    e.parentNode.replaceChild(e.cloneNode(true), e);
+    e.remove();
+  });
+  var count = 0;
+  var lastInterval, firstInterval;
+
+  function processingAction(name, status) {
+    count++;
+
+    if (count === 1) {
+      firstInterval = new Date().getTime() / 1000;
+      projectFunc.showNotice(name, status, count);
+      count = 0;
+    }
+
+    if (count > 1) {
+      lastInterval = new Date().getTime() / 1000;
+
+      if (lastInterval > 2) {
+        console.log(lastInterval - firstInterval);
+
+        if (lastInterval - firstInterval > 5) {
+          projectFunc.showNotice(name, status, count);
+        } else {
+          projectFunc.showNotice(name, status, count);
+        }
+
+        count = 0;
+      }
+    }
+  }
+
+  function initCard(e) {
+    let id = $(e).attr('data-cart-id');
+    if (!id) return;
+    let name = $(e).find('.js_cart-item__name').text();
+    let text = $(e).find('.js_cart-item__text').text();
+    let image = $(e).find('.js_cart-item__image').attr('src');
+    let weight = $(e).find('.js_cart-item__weight').text();
+    let cost = $(e).find('.js_cart-item__cost').text();
+    $(e).find('.js_cart-item__delete').click(() => {
+      //?
+      cart.setItem(id, 0);
+    });
+
+    let addItem = () => {
+      cart.addItem(id, 1, name, image, weight, text, cost);
+    };
+
+    let removeItem = () => {
+      cart.addItem(id, -1);
+    };
+
+    var lastClick = 0;
+    $(e).find('.js_cart-item__inputs').each((_, q) => {
+      $(q).find('.plus, .js-calc').on('click', function () {
+        addItem(); // processingAction(name, 'add'); 
+      });
+      $(q).find('.minus').on('click', function () {
+        removeItem(); // processingAction(name, 'remove');
+      });
+      $(window).on('cartUpdated', () => {
+        let count = cart.getItem(id)['count'];
+        $(q).find('.quantity__field').val(count);
+
+        if (count > 0) {
+          $(q).find('.js-calc').hide();
+          $(q).find('.quantity').css({
+            display: 'flex',
+            opacity: 1,
+            visibility: 'inherit'
+          });
+        } else {
+          $(q).find('.quantity').hide();
+          $(q).find('.js-calc').show();
+        }
+      });
+    });
+    $(e).find('.popup-card').each(function (_, element) {
+      $(element).find('img').attr('src', image);
+      $(element).find('.js_popup-card_title').text(name);
+      $(element).find('.js_popup-card_weight').text(weight);
+      $(element).find('.js_popup-card_content').text(text);
+    });
+  }
+
+  function updateCart(elem, id) {
+    // let img = elem
+    let addItem = () => {
+      cart.addItem(id, 1);
+      console.log(cart.items);
+    };
+
+    let removeItem = () => {
+      cart.addItem(id, -1);
+    };
+
+    let deleteItem = () => {
+      cart.deleteItem(id);
+    };
+
+    $(elem).find('.quantity').each(function (_, q) {
+      $(q).find('.plus').on('click', function () {
+        addItem();
+      });
+      $(q).find('.minus').on('click', removeItem);
+    });
+    $(elem).each(function () {
+      $(this).find('.js_cart-item__remove').on('click', function () {
+        deleteItem();
+        return false;
+      });
+    });
+  }
+
+  $(window).on('cartUpdated', () => {
+    $('.js_cart-total__count').text(cart.total.count);
+    $('.js_cart-total__cost').text(`${cart.total.cost}`);
+  });
+  $('.js_cart-item').each((_, e) => {
+    initCard(e);
+  });
+  $('.js-cart_list').each((_, e) => {
+    $(window).on('cartUpdated', () => {
+      $(e).find('.js-cart_list__item').remove();
+
+      for (id in cart.items) {
+        let template = $(e).find('.js-cart_list__template').clone();
+        $(template).removeClass('js-cart_list__template');
+        $(template).addClass('js-cart_list__item');
+        $(template).attr('data-id', id);
+        $(template).attr('style', '');
+        let img = cart.items[id]['image'],
+            name = cart.items[id]['name'],
+            cost = cart.items[id]['cost'],
+            count = cart.items[id]['count'],
+            weight = cart.items[id]['weight'];
+        $(template).find('img').attr('src', img);
+        $(template).find('.js_cart-item__name').text(name);
+        $(template).find('.js_cart-item__weight').text(weight);
+        $(template).find('.js_cart-item__cost').text(cost);
+        $(template).find('.quantity.js_cart-item__quantity input').val(count);
+        $(e).append($(template));
+        $('.popup-basket__items').mCustomScrollbar('destroy');
+        $('.popup-basket__items').mCustomScrollbar({
+          theme: 'minimal-dark'
+        });
+      }
+
+      $('.js-cart_list__item').each(function (_, q) {
+        let iD = $(this).data('id');
+        updateCart(q, iD);
+      });
+    });
+  });
+  $('.basket__items').each((_, element) => {
+    $(window).on('cartUpdated', () => {
+      $(element).find('.js-basket_list__item').remove();
+
+      for (id in cart.items) {
+        let template = $(element).find('.js-basket_list__template').clone();
+        $(template).removeClass('js-basket_list__template');
+        $(template).addClass('js-basket_list__item');
+        $(template).attr('data-id', id);
+        $(template).attr('style', '');
+        let img = cart.items[id]['image'],
+            name = cart.items[id]['name'],
+            cost = cart.items[id]['cost'],
+            count = cart.items[id]['count'],
+            weight = cart.items[id]['weight'];
+        $(template).find('img').attr('src', img);
+        $(template).find('.js_basket-item__name').text(name);
+        $(template).find('.js_basket-item__weight').text(weight);
+        $(template).find('.js_basket-item__cost').text(cost);
+        $(template).find('.quantity input').val(count);
+        $(element).append($(template));
+      }
+
+      $('.js-basket_list__item').each(function (_, q) {
+        let iD = $(this).data('id');
+        updateCart(q, iD);
+      });
+    });
+  });
+  $('.basket__items').each((_, element) => {
+    $(window).on('cartUpdated', () => {
+      $(element).find('.js-basket_list__item').remove();
+
+      for (id in cart.items) {
+        let template = $(element).find('.js-basket_list__template').clone();
+        $(template).removeClass('js-basket_list__template');
+        $(template).addClass('js-basket_list__item');
+        $(template).attr('data-id', id);
+        $(template).attr('style', '');
+        let img = cart.items[id]['image'],
+            name = cart.items[id]['name'],
+            cost = cart.items[id]['cost'],
+            count = cart.items[id]['count'],
+            weight = cart.items[id]['weight'];
+        $(template).find('img').attr('src', img);
+        $(template).find('.js_basket-item__name').text(name);
+        $(template).find('.js_basket-item__weight').text(weight);
+        $(template).find('.js_basket-item__cost').text(cost);
+        $(template).find('.quantity input').val(count);
+        $(element).append($(template));
+      }
+
+      $('.js-basket_list__item').each(function (_, q) {
+        let iD = $(this).data('id');
+        updateCart(q, iD);
+      });
+    });
+  }); // Order page
+
+  $('.js-order_list').each((_, element) => {
+    $(window).on('cartUpdated', () => {
+      $(element).find('.js-order_list__item').remove();
+
+      for (id in cart.items) {
+        console.log(id);
+        let template = $(element).find('.js-order_list__template').clone();
+        $(template).removeClass('js-order_list__template');
+        $(template).addClass('js-order_list__item'); // $(template).attr('data-id', id);
+
+        $(template).attr('style', '');
+        let name = cart.items[id]['name'],
+            cost = cart.items[id]['cost'],
+            count = cart.items[id]['count'];
+        $(template).find('.js_order-item__name').text(name);
+        $(template).find('.js_order-item__cost').text(cost);
+        $(template).find('.js_order-item__count').text(`${count} шт`);
+        $(element).append($(template));
+        console.log($(template));
+      }
+    });
+  });
+  cart.refresh();
+
   if ($('.advice__slider').exists()) {
     try {
       let adviceSlider = new Swiper('.advice__slider', {
@@ -431,22 +679,16 @@ $(document).ready(function () {
     $('.popup-card__close').on('click', function (event) {
       event.stopPropagation();
       projectFunc.hideCard();
+      $('.dish').removeClass('dish--active');
     });
   }
 
   if ($('.set__item').exists()) {
     $('.set__item').each(function (index) {
       $(this).on('click', function (event) {
-        let target = event.target; //  let dataItem = $(this).children('.popup-card').data("item");
-        // let inputEl = $(this).children('.popup-card').find('input');
-        //console.log($(inputEl).val());
-        // dataItem.val = $(inputEl).val();
-        // window.storage.addItem(temp, dataItem);
-
-        if (!target.classList.contains('btn') && !target.classList.contains('quantity')) {
-          // projectFunc.showCard(parent, index);
-          projectFunc.showCard('.set__items', index);
-        }
+        let target = event.target;
+        if (target.tagName !== "use" && target.tagName !== "svg" && !target.classList.contains('quantity') && !target.classList.contains('btn')) projectFunc.showCard('.set__items', index);
+        return false;
       });
     });
   }
@@ -1303,57 +1545,52 @@ $(document).ready(function () {
     popupCard = $(parent).children('.popup-card').find('.btn-special'); //  console.log(parent);
 
     return parent;
-  }
-
-  if ($('.js-calc').exists()) {
-    let qBtn = '';
-    $('.js-calc').each(function (index, element) {
-      $(this).on('click', function () {
-        let inputEl = $(this).next().find('input');
-        let parentBtn = createSource($(this));
-        let calcBtn = $(this).next();
-        let temp = index / 2;
-        let dataItem = $(parentBtn).children('.popup-card').data("item");
-        dataItem.val = $(inputEl).val();
-        window.storage.addItem(temp, dataItem);
-
-        if (+$(inputEl).val() == 0) {
-          // qtyVal = +$(inputEl).val() + 1;
-          // $(inputEl).val(qtyVal);
-          // $(inputEl).attr('value', qtyVal);
-          plusCalc(calcBtn, temp);
-        }
-
-        projectFunc.addCart();
-        qBtn = $(this).next();
-        showCalcBtn($(this), qBtn);
-
-        if ($(this).parent().hasClass("btn-special")) {
-          parentBtn = createSource($(this));
-          jsBtn = $(parentBtn).find('.js-calc');
-          qtyBtn = $(parentBtn).find('.quantity');
-          showCalcBtn(jsBtn, qtyBtn); //Отображаем счётчик в popup
-        }
-      });
-    });
-  }
-
-  if ($('.quantity').exists()) {
-    $('.quantity').each(function (index) {
-      let btnPlus = $(this).find('.plus');
-      let btnMinus = $(this).find('.minus');
-      let calcBtn = $(this);
-      $(this).on('click', function (event) {
-        event.stopPropagation();
-      });
-      $(btnPlus).on('click', function () {
-        plusCalc(calcBtn, index / 2);
-      });
-      $(btnMinus).on('click', function () {
-        minusCalc(calcBtn, index / 2);
-      });
-    });
-  } // function bindVal(element) { //.quantity
+  } // if ($('.js-calc').exists()) {
+  //     let qBtn = '';
+  //     $('.js-calc').each(function (index, element) {
+  //         $(this).on('click', function () {
+  //             let inputEl = $(this).next().find('input');
+  //             let parentBtn = createSource($(this));
+  //             let calcBtn = $(this).next();
+  //             let temp = index / 2;
+  //             let dataItem = $(parentBtn).children('.popup-card').data("item");
+  //             dataItem.val = $(inputEl).val();
+  //             window.storage.addItem(temp, dataItem);
+  //             if (+$(inputEl).val() == 0) {
+  //                 // qtyVal = +$(inputEl).val() + 1;
+  //                 // $(inputEl).val(qtyVal);
+  //                 // $(inputEl).attr('value', qtyVal);
+  //                 plusCalc(calcBtn, temp);
+  //             }
+  //             projectFunc.addCart();
+  //             qBtn = $(this).next();
+  //             showCalcBtn($(this), qBtn);
+  //             if ($(this).parent().hasClass("btn-special")) {
+  //                 parentBtn = createSource($(this));
+  //                 jsBtn = $(parentBtn).find('.js-calc');
+  //                 qtyBtn = $(parentBtn).find('.quantity');
+  //                 showCalcBtn(jsBtn, qtyBtn); //Отображаем счётчик в popup
+  //             }
+  //         });
+  //     });
+  // }
+  // if ($('.quantity').exists()) {
+  //     $('.quantity').each(function (index) {
+  //         let btnPlus = $(this).find('.plus');
+  //         let btnMinus = $(this).find('.minus');
+  //         let calcBtn = $(this);
+  //         $(this).on('click', function (event) {
+  //             event.stopPropagation();
+  //         });
+  //         $(btnPlus).on('click', function () {
+  //             plusCalc(calcBtn, index / 2);
+  //         });
+  //         $(btnMinus).on('click', function () {
+  //             minusCalc(calcBtn, index / 2);
+  //         });
+  //     });
+  // }
+  // function bindVal(element) { //.quantity
   //     if ($(element).parent().hasClass("btn-special")) {
   //         let parentBtn = createSource($(element));
   //         let qtyBtn = $(parentBtn).find('.quantity');
@@ -1380,39 +1617,37 @@ $(document).ready(function () {
   //         }
   //     }
   // }
-
-
-  function minusCalc(element, index) {
-    let btnBasic = $(element).siblings('.js-calc');
-    let inputEl = $(element).find('input');
-    let minVal = inputEl.data('min');
-    let inputVal = +$(inputEl).val();
-    let qtyVal = +inputEl.data('min');
-    projectFunc.removeCart();
-
-    if (inputVal >= minVal) {
-      qtyVal = inputVal - 1;
-      $(inputEl).val(qtyVal);
-      $(inputEl).attr('value', qtyVal);
-      window.storage.updateItem(index, $(inputEl).val()); //  bindVal(element);
-    }
-  }
-
-  function plusCalc(element, index) {
-    let inputEl = $(element).find('input');
-    let maxVal = inputEl.data('max');
-    let inputVal = +$(inputEl).val();
-    let qtyVal = +inputEl.data('min');
-    console.log(index);
-
-    if (inputVal < maxVal) {
-      qtyVal = inputVal + 1;
-      $(inputEl).val(qtyVal);
-      $(inputEl).attr('value', qtyVal);
-      window.storage.updateItem(index, $(inputEl).val());
-      projectFunc.addCart(); //    bindVal(element);
-    }
-  } // if ($('.dish__article').exists()) {
+  // function minusCalc(element, index) {
+  //     let btnBasic = $(element).siblings('.js-calc');
+  //     let inputEl = $(element).find('input');
+  //     let minVal = inputEl.data('min');
+  //     let inputVal = +$(inputEl).val();
+  //     let qtyVal = +inputEl.data('min');
+  //     projectFunc.removeCart();
+  //     if (inputVal >= minVal) {
+  //         qtyVal = inputVal - 1;
+  //         $(inputEl).val(qtyVal);
+  //         $(inputEl).attr('value', qtyVal);
+  //         window.storage.updateItem(index, $(inputEl).val());
+  //         //  bindVal(element);
+  //     }
+  // }
+  // function plusCalc(element, index) {
+  //     let inputEl = $(element).find('input');
+  //     let maxVal = inputEl.data('max');
+  //     let inputVal = +$(inputEl).val();
+  //     let qtyVal = +inputEl.data('min');
+  //     console.log(index);
+  //     if (inputVal < maxVal) {
+  //         qtyVal = inputVal + 1;
+  //         $(inputEl).val(qtyVal);
+  //         $(inputEl).attr('value', qtyVal);
+  //         window.storage.updateItem(index, $(inputEl).val());
+  //         projectFunc.addCart();
+  //         //    bindVal(element);
+  //     }
+  // }
+  // if ($('.dish__article').exists()) {
   //     $('.dish__article').each(function (index) {
   //         $(this).on('click', function (event) {
   //             // let parent = createSource($(this));
@@ -1425,29 +1660,104 @@ $(document).ready(function () {
 });
 
 (function () {
-  let stateChanged = new Event('StateChanged');
-  let state = {};
-  window.storage = new class {
-    addItem(id, data) {
-      let setItem = {};
-      setItem['val'] = data.val;
-      state[id] = setItem;
-      window.dispatchEvent(stateChanged);
+  // Загрузка сохраненного значения
+  var storage = JSON.parse(window.localStorage.getItem('cart') || "{}"); // Публичный интерфейс
+
+  window.cart = new class {
+    /**
+     * Сохраняет значение и оповещает наблюдателей
+     */
+    refresh() {
+      window.localStorage.setItem('cart', JSON.stringify(storage));
+      window.dispatchEvent(new Event('cartUpdated'));
+      console.log(1);
+    }
+    /**
+     * Устанавливает параметры элемента корзины
+     */
+
+
+    setItem(id, count, name, image, weight, text, cost) {
+      if (!id) throw "Товару нужен id!";
+
+      if (count <= 0) {
+        delete storage[id];
+      } else {
+        let current = this.getItem(id); // console.log(current['image']);
+
+        console.log('set item');
+        storage[id] = {
+          name: name || current['name'],
+          image: image || current['image'],
+          text: text || current['text'],
+          weight: weight || current['weight'],
+          cost: cost || current['cost'],
+          count: count || current['count']
+        };
+      }
+
+      this.refresh();
     }
 
-    updateItem(id, data) {
-      state[id].val = data; //console.log(state);
-
-      window.dispatchEvent(stateChanged);
+    deleteItem(id) {
+      delete storage[id];
+      this.refresh();
     }
+    /**
+     * То же, что и setItem, только count - это разница.
+     * Нужно, чтобы не заморачиваться с получением.
+     */
 
-    showItem() {
-      window.dispatchEvent(stateChanged);
+
+    addItem(id, count, name, image, weight, text, cost) {
+      count = this.getItem(id)['count'] + count;
+      this.setItem(id, count, name, image, weight, text, cost);
     }
+    /**
+     * Возвращает элемент корзины или дефолтное значение.
+     * Нужно, чтобы не заморачиваться с проверками
+     */
+
+
+    getItem(id) {
+      return id && storage[id] || {
+        name: '',
+        imgage: '',
+        text: '',
+        weight: 0,
+        cost: 0,
+        count: 0
+      };
+    }
+    /**
+     * Возвращает массив элементов корзины.
+     */
+
 
     get items() {
-      return state;
+      return storage;
     }
 
-  }();
+    get total() {
+      let cost = 0;
+      let count = 0;
+
+      for (let id in storage) {
+        cost = cost + parseInt(storage[id]['cost']) * parseInt(storage[id]['count']);
+        count++;
+      }
+
+      return {
+        'cost': cost,
+        'count': count
+      };
+    }
+
+  }(); // Реакция на сохранение данных из другого окна.
+  // Событие НЕ срабатывает при сохранении из текущего окна.
+
+  window.addEventListener('storage', function () {
+    storage = JSON.parse(window.localStorage.getItem('cart') || "{}");
+    window.dispatchEvent(new Event('cartUpdated'));
+  });
 })();

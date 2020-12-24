@@ -1,6 +1,21 @@
 .dish {
     position: relative;
     margin-top: 157px;
+    // z-index: -1;
+
+    &--active {
+        z-index: 100;
+        .dish__box {
+                &:after{
+                    opacity: 1;
+                    z-index: 1;
+                    height: 1000vh;
+                    transition: 'opacity'.3s;
+                }
+        }
+    }
+
+    
 
     @media(max-width: 1024px) {
         margin-top: 24px;
@@ -331,6 +346,21 @@
         align-items: flex-end;
         max-width: 625px;
 
+        &:after {
+            position: absolute;
+            content: "";
+            width: calc(100% + 1300px);
+            height: 0;
+            background: rgba(0,0,0,.5);
+            top: -1000%;
+            bottom: 0;
+            left: -103%;
+            right: 0;
+            opacity: 0;
+            z-index: -1;
+            transition: 'opacity'.3s;
+        }
+
         @media(max-width: 1023px) {
             max-width: 100%;
         }
@@ -338,6 +368,8 @@
         @media(max-width: 640px) {
             flex-direction: column;
         }
+
+       
     }
 
     &__article {
@@ -345,9 +377,9 @@
         font-size: 25px;
         line-height: 146%;
 
-        &:hover {
-            color: $orange;
-        }
+        // &:hover {
+        //     color: $orange;
+        // }
 
         @media(max-width: 1024px) {
             font-size: 20px;
