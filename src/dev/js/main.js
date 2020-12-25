@@ -1516,7 +1516,6 @@ $(document).ready(function () {
 
                 myMap.geoObjects.add(myPlacemark);
                 myMap.behaviors.disable('scrollZoom');
-                //myMap.behaviors.disable('drag');
 
                 var position = myMap.getGlobalPixelCenter();
                 myMap.setGlobalPixelCenter([position[0] + 400, position[1]]);
@@ -1540,23 +1539,6 @@ $(document).ready(function () {
                     myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 250]);
                     myMap.container.fitToViewport();
                 }
-                // else if ($(this).width() <= 600) {
-                //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]]);
-                //     myMap.container.fitToViewport();
-                // }
-                // else if ($(this).width() <= 600) {
-                //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]]);
-                //     myMap.container.fitToViewport();
-                // }
-                // else if ($(this).width() == 500) {
-                //     alert(1);
-                //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]] + 200);
-                //     myMap.container.fitToViewport();
-                // }
-                // else {
-                //     myMap.setGlobalPixelCenter([position[0] + 400, position[1]]);
-                //     myMap.container.fitToViewport();
-                // }
             }
         }
     });
@@ -1615,9 +1597,6 @@ $(document).ready(function () {
                         }
                         )
                 }
-
-
-
             }
         }
 
@@ -1659,10 +1638,6 @@ $(document).ready(function () {
                         }
                         )
                 }
-
-
-
-
             }
         }
 
@@ -1793,19 +1768,6 @@ $(document).ready(function () {
                     autoAlpha: 1,
                     stagger: 5,
                 });
-            // .from('.js-content-wrapper', {
-            //     delay: 15,
-            //     autoAlpha: 0,
-            // })
-            ;
-            // .from(
-            //         '.about-advantage__item', {
-            //         // duration: 10,
-            //         autoAlpha: 0,
-            //         // stagger: 5,
-            //         x: '-30'
-            //     }
-            //     );
         } catch (err) {
             console.log(err);
         }
@@ -1864,159 +1826,6 @@ $(document).ready(function () {
         }
 
         popupCard = $(parent).children('.popup-card').find('.btn-special');
-        //  console.log(parent);
-
         return parent;
     }
-
-
-
-
-
-    // if ($('.js-calc').exists()) {
-    //     let qBtn = '';
-
-    //     $('.js-calc').each(function (index, element) {
-
-    //         $(this).on('click', function () {
-    //             let inputEl = $(this).next().find('input');
-    //             let parentBtn = createSource($(this));
-    //             let calcBtn = $(this).next();
-    //             let temp = index / 2;
-
-    //             let dataItem = $(parentBtn).children('.popup-card').data("item");
-    //             dataItem.val = $(inputEl).val();
-
-
-    //             window.storage.addItem(temp, dataItem);
-
-
-
-    //             if (+$(inputEl).val() == 0) {
-    //                 // qtyVal = +$(inputEl).val() + 1;
-    //                 // $(inputEl).val(qtyVal);
-    //                 // $(inputEl).attr('value', qtyVal);
-
-    //                 plusCalc(calcBtn, temp);
-    //             }
-
-    //             projectFunc.addCart();
-    //             qBtn = $(this).next();
-
-    //             showCalcBtn($(this), qBtn);
-
-    //             if ($(this).parent().hasClass("btn-special")) {
-    //                 parentBtn = createSource($(this));
-    //                 jsBtn = $(parentBtn).find('.js-calc');
-    //                 qtyBtn = $(parentBtn).find('.quantity');
-    //                 showCalcBtn(jsBtn, qtyBtn); //Отображаем счётчик в popup
-    //             }
-    //         });
-    //     });
-    // }
-
-
-    // if ($('.quantity').exists()) {
-    //     $('.quantity').each(function (index) {
-    //         let btnPlus = $(this).find('.plus');
-    //         let btnMinus = $(this).find('.minus');
-    //         let calcBtn = $(this);
-
-    //         $(this).on('click', function (event) {
-    //             event.stopPropagation();
-    //         });
-
-    //         $(btnPlus).on('click', function () {
-    //             plusCalc(calcBtn, index / 2);
-    //         });
-
-    //         $(btnMinus).on('click', function () {
-    //             minusCalc(calcBtn, index / 2);
-    //         });
-    //     });
-    // }
-
-    // function bindVal(element) { //.quantity
-    //     if ($(element).parent().hasClass("btn-special")) {
-    //         let parentBtn = createSource($(element));
-    //         let qtyBtn = $(parentBtn).find('.quantity');
-
-    //         if ($(parentBtn).find('input').length > 0) {
-    //             let temp = $(parentBtn).find('input');
-    //             let trigger = 0;
-
-    //             for (let i = 0; i < temp.length; i++) {
-    //                 $(temp[i]).val($(element).find('input').val());
-    //                 $(temp[i]).attr('value', $(element).find('input').val());
-
-    //                 if (temp[i].value == 0) {
-    //                     trigger = 1;
-    //                 } else {
-    //                     trigger = 0;
-    //                 }
-    //             }
-
-    //             if (trigger) {
-    //                 if ($(parentBtn).find('.js-calc').exists()) {
-    //                     let calcBtn = $(parentBtn).find('.js-calc');
-    //                     for (let i = 0; i < calcBtn.length; i++) {
-    //                         hideCalcBtn(calcBtn[i], qtyBtn[i]);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-    // function minusCalc(element, index) {
-    //     let btnBasic = $(element).siblings('.js-calc');
-    //     let inputEl = $(element).find('input');
-    //     let minVal = inputEl.data('min');
-    //     let inputVal = +$(inputEl).val();
-    //     let qtyVal = +inputEl.data('min');
-
-    //     projectFunc.removeCart();
-
-    //     if (inputVal >= minVal) {
-    //         qtyVal = inputVal - 1;
-    //         $(inputEl).val(qtyVal);
-    //         $(inputEl).attr('value', qtyVal);
-
-    //         window.storage.updateItem(index, $(inputEl).val());
-
-    //         //  bindVal(element);
-    //     }
-    // }
-
-    // function plusCalc(element, index) {
-    //     let inputEl = $(element).find('input');
-    //     let maxVal = inputEl.data('max');
-    //     let inputVal = +$(inputEl).val();
-    //     let qtyVal = +inputEl.data('min');
-
-    //     console.log(index);
-
-    //     if (inputVal < maxVal) {
-    //         qtyVal = inputVal + 1;
-    //         $(inputEl).val(qtyVal);
-    //         $(inputEl).attr('value', qtyVal);
-
-    //         window.storage.updateItem(index, $(inputEl).val());
-    //         projectFunc.addCart();
-
-    //         //    bindVal(element);
-    //     }
-    // }
-
-
-
-    // if ($('.dish__article').exists()) {
-    //     $('.dish__article').each(function (index) {
-    //         $(this).on('click', function (event) {
-    //             // let parent = createSource($(this));
-    //             // console.log(parent);
-    //             projectFunc.showCard('.dish__box', index);
-    //         });
-    //     })
-    // }
 });
