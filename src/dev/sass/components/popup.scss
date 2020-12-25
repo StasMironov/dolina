@@ -106,6 +106,10 @@
         &:not(:first-child) {
             margin-top: 20px;
         }
+
+        &:nth-child(2) {
+            margin-top: 0px;
+        }
     }
 
     &__weight {
@@ -248,6 +252,12 @@
         span {
             font-weight: normal;
         }
+
+        .js_cart-total__cost {
+            font-weight: 900;
+        }
+
+        
     }
 
     .quantity {
@@ -269,7 +279,7 @@
     right: 0;
     //  opacity: 0;
     //visibility: hidden;
-    width: 100%;
+    width: 100vh;
     max-width: 857px;
     min-height: 454px;
     height: 1px;
@@ -280,6 +290,9 @@
     transform: translate(-50%, -50%) scale(0);
     z-index: 101;
     border-radius: 4px;
+    
+
+   
 
     @media(max-width: 1024px) {
         max-width: 645px;

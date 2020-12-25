@@ -66,30 +66,14 @@ block content
 				.order-form__right
 					.order-form__unit.order-form__unit--heading
 						.order-form__title Ваш заказ:
-					.order-form__unit.order-form__unit--list
-						.order-form__item
-							.order-form__name Хачапури по-мегрельски
-							.order-form__qty 1 шт.
-							.order-form__price 450 ₽
-						.order-form__item
-							.order-form__name Хачапури по-мегрельски
-							.order-form__qty 1 шт.
-							.order-form__price 450 ₽
-						.order-form__item
-							.order-form__name Хачапури по-мегрельски
-							.order-form__qty 1 шт.
-							.order-form__price 450 ₽
-						.order-form__item
-							.order-form__name Хачапури по-мегрельски
-							.order-form__qty 1 шт.
-							.order-form__price 450 ₽
-						.order-form__item
-							.order-form__name Доставка
-							.order-form__qty 1 шт.
-							.order-form__price 250 ₽
+					.order-form__unit.order-form__unit--list.js-order_list
+						.order-form__item.js-order_list__template(style="display:none")
+							.order-form__name.js_order-item__name Хачапури по-мегрельски
+							.order-form__qty.js_order-item__count 1 шт.
+							.order-form__price.js_order-item__cost 450 ₽
 					.order-form__unit.order-form__unit--sum 
 						.order-form__txt Общая сумма заказа:
-						.order-form__sum 1800 ₽
+						.order-form__sum <span class="js_cart-total__cost">1800</span><span class="symbol"> ₽</span>
 					.order-form__unit.order-form__unit--payment 
 						<div class="order-form__radio">
 							<input id="radio-3" type="radio" name="radio2" value="1" checked>

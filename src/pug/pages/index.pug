@@ -59,32 +59,32 @@ block content
 					.dish__cover
 						.dish-slider
 							.swiper-wrapper
-								.dish__box.swiper-slide
+								.dish__box.swiper-slide.js_cart-item(data-cart-id="77")
 									.dish__image
-										img(src="./img/index/dish.png" alt="")
+										img.js_cart-item__image(src="./img/index/dish.png" alt="")
 									.dish__note
 										.dish__top
-											a(href="javascript:void(0);").dish__article Садж из индейки
-											.dish__weight 450г
-										.dish__text.dish__text--word Таким образом начало повседневной работы по формированию позиции позволяет оценить.
+											.dish__article.js_cart-item__name Садж из индейки
+											.dish__weight.js_cart-item__weight 450г
+										.dish__text.dish__text--word.js_cart-item__text Таким образом начало повседневной работы по формированию позиции позволяет оценить.
 										.dish__info
-											.dish__price 1,301 ₽
+											.dish__price.js_cart-item__cost 1301 ₽
 											include ../modules/add-cart
-									include ../modules/popup-card
+									//- include ../modules/popup-card
+							
 								
-								
-								.dish__box.swiper-slide
+								.dish__box.swiper-slide.js_cart-item(data-cart-id="88")
 									.dish__image
-										img(src="./img/index/dish.png" alt="")
+										img.js_cart-item__image(src="./img/index/dish.png" alt="")
 									.dish__note
 										.dish__top
-											a(href="javascript:void(0);").dish__article Садж из индейки
-											.dish__weight 450г
-										.dish__text.dish__text--word  Таким образом начало повседневной работы по формированию позиции позволяет оценить.
+											.dish__article.js_cart-item__name Садж из индейки 2
+											.dish__weight.js_cart-item__weight 450г
+										.dish__text.dish__text--word.js_cart-item__text Таким образом начало повседневной работы по формированию позиции позволяет оценить.
 										.dish__info
-											.dish__price 1,300 ₽
+											.dish__price.js_cart-item__cost 1301 ₽
 											include ../modules/add-cart
-									include ../modules/popup-card
+									//- include ../modules/popup-card
 							
 							.dish__arrow
 								.arr.arr--prev
