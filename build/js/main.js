@@ -8,6 +8,7 @@ let timelineNav = new TimelineMax();
 let status = 0;
 var lastClick = 0;
 const projectFunc = {
+  'statusGoods': '',
   objAd: function (element, place) {
     if ($(element).exists()) {
       $(element).each(function (index) {
@@ -32,17 +33,20 @@ const projectFunc = {
       });
     }
   },
-  removeNotice: function (parent, element) {
-    setTimeout(function () {
-      gsap.to(element, {
-        autoAlpha: 0,
-        height: 0,
-        duration: 1,
-        onComplete: function () {
-          parent.removeChild(element);
-        }
-      });
-    }, 1000);
+  removeNotice: function () {
+    console.log('remove');
+    $('.notice__bloc').each(function () {
+      let element = $(this);
+      setTimeout(function () {
+        gsap.to(element, {
+          autoAlpha: 0,
+          duration: 1,
+          onComplete: function () {
+            $(element).remove();
+          }
+        });
+      }, 1500);
+    });
   },
   showNotice: function (name, status, count) {
     let parentEl = document.querySelector('.notice__container');
@@ -58,8 +62,7 @@ const projectFunc = {
         numBloc.textContent = `+${count}`;
       } else {
         numBloc.textContent = `-${count}`;
-      } // numBloc.textContent = '+1';
-
+      }
 
       textBloc.textContent = name;
       element.appendChild(numBloc);
@@ -74,11 +77,10 @@ const projectFunc = {
     setTimeout(function () {
       timeline.to(element, {
         autoAlpha: 0,
-        duration: 1,
         y: -35,
-        onComplete: projectFunc.removeNotice(parentEl, element)
+        onComplete: projectFunc.removeNotice()
       });
-    }, 2000);
+    }, 1500);
   },
   addCart: function () {
     projectFunc.showNotice();
@@ -219,33 +221,9 @@ $(document).ready(function () {
     e.parentNode.replaceChild(e.cloneNode(true), e);
     e.remove();
   });
-  var count = 0;
-  var lastInterval, firstInterval;
 
-  function processingAction(name, status) {
-    count++;
-
-    if (count === 1) {
-      firstInterval = new Date().getTime() / 1000;
-      projectFunc.showNotice(name, status, count);
-      count = 0;
-    }
-
-    if (count > 1) {
-      lastInterval = new Date().getTime() / 1000;
-
-      if (lastInterval > 2) {
-        console.log(lastInterval - firstInterval);
-
-        if (lastInterval - firstInterval > 5) {
-          projectFunc.showNotice(name, status, count);
-        } else {
-          projectFunc.showNotice(name, status, count);
-        }
-
-        count = 0;
-      }
-    }
+  function processingAction(name, status, count) {
+    projectFunc.showNotice(name, status, count);
   }
 
   function initCard(e) {
@@ -256,6 +234,18 @@ $(document).ready(function () {
     let image = $(e).find('.js_cart-item__image').attr('src');
     let weight = $(e).find('.js_cart-item__weight').text();
     let cost = $(e).find('.js_cart-item__cost').text();
+    let running = false,
+        count = 0,
+        run_for = 2000;
+
+    function end_counter() {
+      if (running) {
+        running = false;
+        processingAction(name, projectFunc['statusGoods'], count);
+        started_at = 0;
+      }
+    }
+
     $(e).find('.js_cart-item__delete').click(() => {
       //?
       cart.setItem(id, 0);
@@ -269,13 +259,30 @@ $(document).ready(function () {
       cart.addItem(id, -1);
     };
 
-    var lastClick = 0;
     $(e).find('.js_cart-item__inputs').each((_, q) => {
       $(q).find('.plus, .js-calc').on('click', function () {
-        addItem(); // processingAction(name, 'add'); 
+        if (running) {
+          count++;
+        } else {
+          running = true;
+          count = 1;
+          projectFunc['statusGoods'] = 'add';
+          setTimeout(end_counter, run_for);
+        }
+
+        addItem();
       });
       $(q).find('.minus').on('click', function () {
-        removeItem(); // processingAction(name, 'remove');
+        if (running) {
+          count++;
+        } else {
+          running = true;
+          count = 1;
+          projectFunc['statusGoods'] = 'remove';
+          setTimeout(end_counter, run_for);
+        }
+
+        removeItem();
       });
       $(window).on('cartUpdated', () => {
         let count = cart.getItem(id)['count'];
@@ -303,10 +310,12 @@ $(document).ready(function () {
   }
 
   function updateCart(elem, id) {
-    // let img = elem
+    let running = false,
+        count = 0,
+        run_for = 2000; // let img = elem
+
     let addItem = () => {
       cart.addItem(id, 1);
-      console.log(cart.items);
     };
 
     let removeItem = () => {
@@ -319,6 +328,15 @@ $(document).ready(function () {
 
     $(elem).find('.quantity').each(function (_, q) {
       $(q).find('.plus').on('click', function () {
+        if (running) {
+          count++;
+        } else {
+          running = true;
+          count = 1;
+          projectFunc['statusGoods'] = 'add';
+          setTimeout(end_counter, run_for);
+        }
+
         addItem();
       });
       $(q).find('.minus').on('click', removeItem);
@@ -435,11 +453,9 @@ $(document).ready(function () {
       $(element).find('.js-order_list__item').remove();
 
       for (id in cart.items) {
-        console.log(id);
         let template = $(element).find('.js-order_list__template').clone();
         $(template).removeClass('js-order_list__template');
-        $(template).addClass('js-order_list__item'); // $(template).attr('data-id', id);
-
+        $(template).addClass('js-order_list__item');
         $(template).attr('style', '');
         let name = cart.items[id]['name'],
             cost = cart.items[id]['cost'],
@@ -448,7 +464,6 @@ $(document).ready(function () {
         $(template).find('.js_order-item__cost').text(cost);
         $(template).find('.js_order-item__count').text(`${count} шт`);
         $(element).append($(template));
-        console.log($(template));
       }
     });
   });
@@ -1226,8 +1241,7 @@ $(document).ready(function () {
           cursor: 'INHERIT'
         });
         myMap.geoObjects.add(myPlacemark);
-        myMap.behaviors.disable('scrollZoom'); //myMap.behaviors.disable('drag');
-
+        myMap.behaviors.disable('scrollZoom');
         var position = myMap.getGlobalPixelCenter();
         myMap.setGlobalPixelCenter([position[0] + 400, position[1]]);
 
@@ -1249,24 +1263,7 @@ $(document).ready(function () {
         } else if ($(this).width() > 319 && $(this).width() <= 400) {
           myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 250]);
           myMap.container.fitToViewport();
-        } // else if ($(this).width() <= 600) {
-        //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]]);
-        //     myMap.container.fitToViewport();
-        // }
-        // else if ($(this).width() <= 600) {
-        //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]]);
-        //     myMap.container.fitToViewport();
-        // }
-        // else if ($(this).width() == 500) {
-        //     alert(1);
-        //     myMap.setGlobalPixelCenter([position[0] + 270, position[1]] + 200);
-        //     myMap.container.fitToViewport();
-        // }
-        // else {
-        //     myMap.setGlobalPixelCenter([position[0] + 400, position[1]]);
-        //     myMap.container.fitToViewport();
-        // }
-
+        }
       }
     }
   });
@@ -1328,7 +1325,6 @@ $(document).ready(function () {
         tab[b].classList.add('tab__info--active');
 
         if ($(window).width() >= 881) {
-          console.log('201');
           timeline.fromTo(tabContent[b], {
             autoAlpha: 0,
             display: 'none',
@@ -1479,19 +1475,7 @@ $(document).ready(function () {
         x: 0,
         autoAlpha: 1,
         stagger: 5
-      }); // .from('.js-content-wrapper', {
-      //     delay: 15,
-      //     autoAlpha: 0,
-      // })
-
-      ; // .from(
-      //         '.about-advantage__item', {
-      //         // duration: 10,
-      //         autoAlpha: 0,
-      //         // stagger: 5,
-      //         x: '-30'
-      //     }
-      //     );
+      });
     } catch (err) {
       console.log(err);
     }
@@ -1542,121 +1526,9 @@ $(document).ready(function () {
       parent = $(parent).parent();
     }
 
-    popupCard = $(parent).children('.popup-card').find('.btn-special'); //  console.log(parent);
-
+    popupCard = $(parent).children('.popup-card').find('.btn-special');
     return parent;
-  } // if ($('.js-calc').exists()) {
-  //     let qBtn = '';
-  //     $('.js-calc').each(function (index, element) {
-  //         $(this).on('click', function () {
-  //             let inputEl = $(this).next().find('input');
-  //             let parentBtn = createSource($(this));
-  //             let calcBtn = $(this).next();
-  //             let temp = index / 2;
-  //             let dataItem = $(parentBtn).children('.popup-card').data("item");
-  //             dataItem.val = $(inputEl).val();
-  //             window.storage.addItem(temp, dataItem);
-  //             if (+$(inputEl).val() == 0) {
-  //                 // qtyVal = +$(inputEl).val() + 1;
-  //                 // $(inputEl).val(qtyVal);
-  //                 // $(inputEl).attr('value', qtyVal);
-  //                 plusCalc(calcBtn, temp);
-  //             }
-  //             projectFunc.addCart();
-  //             qBtn = $(this).next();
-  //             showCalcBtn($(this), qBtn);
-  //             if ($(this).parent().hasClass("btn-special")) {
-  //                 parentBtn = createSource($(this));
-  //                 jsBtn = $(parentBtn).find('.js-calc');
-  //                 qtyBtn = $(parentBtn).find('.quantity');
-  //                 showCalcBtn(jsBtn, qtyBtn); //Отображаем счётчик в popup
-  //             }
-  //         });
-  //     });
-  // }
-  // if ($('.quantity').exists()) {
-  //     $('.quantity').each(function (index) {
-  //         let btnPlus = $(this).find('.plus');
-  //         let btnMinus = $(this).find('.minus');
-  //         let calcBtn = $(this);
-  //         $(this).on('click', function (event) {
-  //             event.stopPropagation();
-  //         });
-  //         $(btnPlus).on('click', function () {
-  //             plusCalc(calcBtn, index / 2);
-  //         });
-  //         $(btnMinus).on('click', function () {
-  //             minusCalc(calcBtn, index / 2);
-  //         });
-  //     });
-  // }
-  // function bindVal(element) { //.quantity
-  //     if ($(element).parent().hasClass("btn-special")) {
-  //         let parentBtn = createSource($(element));
-  //         let qtyBtn = $(parentBtn).find('.quantity');
-  //         if ($(parentBtn).find('input').length > 0) {
-  //             let temp = $(parentBtn).find('input');
-  //             let trigger = 0;
-  //             for (let i = 0; i < temp.length; i++) {
-  //                 $(temp[i]).val($(element).find('input').val());
-  //                 $(temp[i]).attr('value', $(element).find('input').val());
-  //                 if (temp[i].value == 0) {
-  //                     trigger = 1;
-  //                 } else {
-  //                     trigger = 0;
-  //                 }
-  //             }
-  //             if (trigger) {
-  //                 if ($(parentBtn).find('.js-calc').exists()) {
-  //                     let calcBtn = $(parentBtn).find('.js-calc');
-  //                     for (let i = 0; i < calcBtn.length; i++) {
-  //                         hideCalcBtn(calcBtn[i], qtyBtn[i]);
-  //                     }
-  //                 }
-  //             }
-  //         }
-  //     }
-  // }
-  // function minusCalc(element, index) {
-  //     let btnBasic = $(element).siblings('.js-calc');
-  //     let inputEl = $(element).find('input');
-  //     let minVal = inputEl.data('min');
-  //     let inputVal = +$(inputEl).val();
-  //     let qtyVal = +inputEl.data('min');
-  //     projectFunc.removeCart();
-  //     if (inputVal >= minVal) {
-  //         qtyVal = inputVal - 1;
-  //         $(inputEl).val(qtyVal);
-  //         $(inputEl).attr('value', qtyVal);
-  //         window.storage.updateItem(index, $(inputEl).val());
-  //         //  bindVal(element);
-  //     }
-  // }
-  // function plusCalc(element, index) {
-  //     let inputEl = $(element).find('input');
-  //     let maxVal = inputEl.data('max');
-  //     let inputVal = +$(inputEl).val();
-  //     let qtyVal = +inputEl.data('min');
-  //     console.log(index);
-  //     if (inputVal < maxVal) {
-  //         qtyVal = inputVal + 1;
-  //         $(inputEl).val(qtyVal);
-  //         $(inputEl).attr('value', qtyVal);
-  //         window.storage.updateItem(index, $(inputEl).val());
-  //         projectFunc.addCart();
-  //         //    bindVal(element);
-  //     }
-  // }
-  // if ($('.dish__article').exists()) {
-  //     $('.dish__article').each(function (index) {
-  //         $(this).on('click', function (event) {
-  //             // let parent = createSource($(this));
-  //             // console.log(parent);
-  //             projectFunc.showCard('.dish__box', index);
-  //         });
-  //     })
-  // }
-
+  }
 });
 
 (function () {

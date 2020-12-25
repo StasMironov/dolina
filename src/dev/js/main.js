@@ -12,6 +12,7 @@ var lastClick = 0;
 
 
 const projectFunc = {
+    'statusGoods': '',
     objAd: function (element, place) {
         if ($(element).exists()) {
             $(element).each(function (index) {
@@ -41,27 +42,30 @@ const projectFunc = {
         }
     },
 
-    removeNotice: function (parent, element) {
-        setTimeout(function () {
-            gsap.to(
-                element,
-                {
-                    autoAlpha: 0,
-                    height: 0,
-                    duration: 1,
-                    onComplete: function () {
-                        parent.removeChild(element);
+    removeNotice: function () {
+
+        console.log('remove');
+
+        $('.notice__bloc').each(function () {
+            let element = $(this);
+
+            setTimeout(function () {
+                gsap.to(
+                    element,
+                    {
+                        autoAlpha: 0,
+                        duration: 1,
+                        onComplete: function () {
+                            $(element).remove();
+                        }
                     }
-                }
-            );
-        }, 1000);
+                );
+            }, 1500);
+        });
+
     },
 
     showNotice: function (name, status, count) {
-
-
-
-
         let parentEl = document.querySelector('.notice__container');
         let element = document.createElement('div');
         let numBloc = document.createElement('div');
@@ -79,7 +83,6 @@ const projectFunc = {
                 numBloc.textContent = `-${count}`;
             }
 
-            // numBloc.textContent = '+1';
             textBloc.textContent = name;
 
             element.appendChild(numBloc);
@@ -103,12 +106,11 @@ const projectFunc = {
                     element,
                     {
                         autoAlpha: 0,
-                        duration: 1,
                         y: -35,
-                        onComplete: projectFunc.removeNotice(parentEl, element)
+                        onComplete: projectFunc.removeNotice()
                     }
                 );
-        }, 2000);
+        }, 1500);
     },
 
     addCart: function () {
@@ -323,35 +325,9 @@ $(document).ready(function () {
         e.remove();
     });
 
-    var count = 0;
-    var lastInterval, firstInterval;
-
-    function processingAction(name, status) {
-        count++;
-        if (count === 1) {
-            firstInterval = new Date().getTime() / 1000;
-            projectFunc.showNotice(name, status, count)
-            count = 0;
-        }
-        if (count > 1) {
-            lastInterval = new Date().getTime() / 1000;
-
-            if (lastInterval > 2) {
-                console.log(lastInterval - firstInterval);
-                if (lastInterval - firstInterval > 5) {
-                    projectFunc.showNotice(name, status, count)
-
-                } else {
-
-                    projectFunc.showNotice(name, status, count);
-
-                }
-
-                count = 0;
-            }
-        }
+    function processingAction(name, status, count) {
+        projectFunc.showNotice(name, status, count);
     }
-
 
     function initCard(e) {
 
@@ -364,37 +340,55 @@ $(document).ready(function () {
         let weight = $(e).find('.js_cart-item__weight').text();
         let cost = $(e).find('.js_cart-item__cost').text();
 
+        let running = false,
+            count = 0,
+            run_for = 2000;
+
+
+        function end_counter() {
+            if (running) {
+                running = false;
+                processingAction(name, projectFunc['statusGoods'], count);
+                started_at = 0;
+            }
+        }
+
         $(e).find('.js_cart-item__delete').click(() => { //?
             cart.setItem(id, 0);
         });
 
+        let addItem = () => { cart.addItem(id, 1, name, image, weight, text, cost); };
 
-
-        let addItem = () => {
-            cart.addItem(id, 1, name, image, weight, text, cost);
-
-
-
-
-
-
-        };
         let removeItem = () => { cart.addItem(id, -1); }
 
-        var lastClick = 0;
         $(e).find('.js_cart-item__inputs').each((_, q) => {
 
             $(q).find('.plus, .js-calc').on('click',
                 function () {
+                    if (running) {
+                        count++;
+                    } else {
+                        running = true;
+                        count = 1;
+                        projectFunc['statusGoods'] = 'add';
+                        setTimeout(end_counter, run_for);
+                    }
                     addItem();
-                    // processingAction(name, 'add'); 
                 }
             );
 
-            $(q).find('.minus').on('click', function () {
-                removeItem();
-                // processingAction(name, 'remove');
-            });
+            $(q).find('.minus').on('click',
+                function () {
+                    if (running) {
+                        count++;
+                    } else {
+                        running = true;
+                        count = 1;
+                        projectFunc['statusGoods'] = 'remove';
+                        setTimeout(end_counter, run_for);
+                    }
+                    removeItem();
+                });
 
             $(window).on('cartUpdated', () => {
 
@@ -428,6 +422,10 @@ $(document).ready(function () {
 
     function updateCart(elem, id) {
 
+        let running = false,
+            count = 0,
+            run_for = 2000;
+
         // let img = elem
 
         let addItem = () => { cart.addItem(id, 1); };
@@ -438,7 +436,17 @@ $(document).ready(function () {
 
         $(elem).find('.quantity').each(function (_, q) {
             $(q).find('.plus').on('click', function () {
+
+                if (running) {
+                    count++;
+                } else {
+                    running = true;
+                    count = 1;
+                    projectFunc['statusGoods'] = 'add';
+                    setTimeout(end_counter, run_for);
+                }
                 addItem();
+
             });
             $(q).find('.minus').on('click', removeItem);
         });
