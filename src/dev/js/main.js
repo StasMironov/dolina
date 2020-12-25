@@ -59,7 +59,7 @@ const projectFunc = {
 
     showNotice: function (name, status, count) {
 
-        
+
 
 
         let parentEl = document.querySelector('.notice__container');
@@ -72,11 +72,11 @@ const projectFunc = {
             numBloc.classList.add('notice__qty');
             textBloc.classList.add('notice__text');
 
-            if(status == 'add'){
-                numBloc.textContent = `+${count}`; 
-            } 
+            if (status == 'add') {
+                numBloc.textContent = `+${count}`;
+            }
             else {
-                numBloc.textContent = `-${count}`; 
+                numBloc.textContent = `-${count}`;
             }
 
             // numBloc.textContent = '+1';
@@ -316,17 +316,17 @@ const projectFunc = {
 $(document).ready(function () {
 
 
-     // отключение предыдущих обработчиков, чтобы не мешали
+    // отключение предыдущих обработчиков, чтобы не мешали
 
-     $('.plus, .minus, .js-calc').each((_,e)=>{
+    $('.plus, .minus, .js-calc').each((_, e) => {
         e.parentNode.replaceChild(e.cloneNode(true), e);
         e.remove();
     });
 
     var count = 0;
-        var lastInterval, firstInterval;
+    var lastInterval, firstInterval;
 
-        function processingAction(name, status) {
+    function processingAction(name, status) {
         count++;
         if (count === 1) {
             firstInterval = new Date().getTime() / 1000;
@@ -336,14 +336,14 @@ $(document).ready(function () {
         if (count > 1) {
             lastInterval = new Date().getTime() / 1000;
 
-            if(lastInterval > 2) {
+            if (lastInterval > 2) {
                 console.log(lastInterval - firstInterval);
                 if (lastInterval - firstInterval > 5) {
                     projectFunc.showNotice(name, status, count)
-              
+
                 } else {
-               
-                projectFunc.showNotice(name, status, count);
+
+                    projectFunc.showNotice(name, status, count);
 
                 }
 
@@ -353,7 +353,7 @@ $(document).ready(function () {
     }
 
 
-    function initCard (e) {
+    function initCard(e) {
 
         let id = $(e).attr('data-cart-id');
         if (!id) return;
@@ -362,45 +362,46 @@ $(document).ready(function () {
         let text = $(e).find('.js_cart-item__text').text();
         let image = $(e).find('.js_cart-item__image').attr('src');
         let weight = $(e).find('.js_cart-item__weight').text();
-        let cost =  $(e).find('.js_cart-item__cost').text();
+        let cost = $(e).find('.js_cart-item__cost').text();
 
-        $(e).find('.js_cart-item__delete').click(()=>{ //?
-            cart.setItem(id, 0);                 
-        });   
+        $(e).find('.js_cart-item__delete').click(() => { //?
+            cart.setItem(id, 0);
+        });
 
-           
 
-        let addItem = () =>{ cart.addItem(id, 1, name, image, weight, text, cost); 
 
-         
+        let addItem = () => {
+            cart.addItem(id, 1, name, image, weight, text, cost);
 
-           
 
-            
+
+
+
+
         };
-        let removeItem = () =>{ cart.addItem(id, -1);}
-        
+        let removeItem = () => { cart.addItem(id, -1); }
+
         var lastClick = 0;
-        $(e).find('.js_cart-item__inputs').each((_,q)=>{
+        $(e).find('.js_cart-item__inputs').each((_, q) => {
 
-            $(q).find('.plus, .js-calc').on('click', 
-                function(){
+            $(q).find('.plus, .js-calc').on('click',
+                function () {
                     addItem();
-                   // processingAction(name, 'add'); 
+                    // processingAction(name, 'add'); 
                 }
-            );   
+            );
 
-            $(q).find('.minus').on('click', function(){
+            $(q).find('.minus').on('click', function () {
                 removeItem();
-               // processingAction(name, 'remove');
-            } );    
+                // processingAction(name, 'remove');
+            });
 
-            $(window).on('cartUpdated', ()=>{
+            $(window).on('cartUpdated', () => {
 
                 let count = cart.getItem(id)['count'];
-               
+
                 $(q).find('.quantity__field').val(count);
-                
+
                 if (count > 0) {
                     $(q).find('.js-calc').hide();
                     $(q).find('.quantity').css({
@@ -411,13 +412,13 @@ $(document).ready(function () {
 
                 } else {
                     $(q).find('.quantity').hide();
-                    $(q).find('.js-calc').show(); 
+                    $(q).find('.js-calc').show();
                 }
-            });  
+            });
         });
 
 
-        $(e).find('.popup-card').each(function(_, element){
+        $(e).find('.popup-card').each(function (_, element) {
             $(element).find('img').attr('src', image);
             $(element).find('.js_popup-card_title').text(name);
             $(element).find('.js_popup-card_weight').text(weight);
@@ -425,49 +426,47 @@ $(document).ready(function () {
         });
     }
 
-    function updateCart(elem, id){
+    function updateCart(elem, id) {
 
-       // let img = elem
+        // let img = elem
 
-        let addItem = () =>{ cart.addItem(id, 1);
-            console.log(cart.items);
-        };
-        let removeItem = () =>{ cart.addItem(id, -1);}
-        let deleteItem = () =>{ cart.deleteItem(id);}
+        let addItem = () => { cart.addItem(id, 1); };
+        let removeItem = () => { cart.addItem(id, -1); };
+        let deleteItem = () => { cart.deleteItem(id); };
 
-       
 
-        $(elem).find('.quantity').each(function(_,q){
-            $(q).find('.plus').on('click', function(){
+
+        $(elem).find('.quantity').each(function (_, q) {
+            $(q).find('.plus').on('click', function () {
                 addItem();
-            });     
-            $(q).find('.minus').on('click', removeItem);    
+            });
+            $(q).find('.minus').on('click', removeItem);
         });
 
 
-        $(elem).each(function(){
-            $(this).find('.js_cart-item__remove').on('click', function(){
+        $(elem).each(function () {
+            $(this).find('.js_cart-item__remove').on('click', function () {
                 deleteItem();
                 return false;
             });
         });
     }
 
-    $(window).on('cartUpdated', ()=>{
-            $('.js_cart-total__count').text(cart.total.count);
-            $('.js_cart-total__cost').text(`${cart.total.cost}`);
+    $(window).on('cartUpdated', () => {
+        $('.js_cart-total__count').text(cart.total.count);
+        $('.js_cart-total__cost').text(`${cart.total.cost}`);
     });
 
-    $('.js_cart-item').each((_,e)=>{ 
+    $('.js_cart-item').each((_, e) => {
         initCard(e)
     });
 
-    $('.js-cart_list').each((_,e)=>{ 
+    $('.js-cart_list').each((_, e) => {
 
-        $(window).on('cartUpdated', ()=>{
+        $(window).on('cartUpdated', () => {
 
             $(e).find('.js-cart_list__item').remove();
-            
+
             for (id in cart.items) {
 
                 let template = $(e).find('.js-cart_list__template').clone();
@@ -483,12 +482,12 @@ $(document).ready(function () {
                     count = cart.items[id]['count'],
                     weight = cart.items[id]['weight'];
 
-                    $(template).find('img').attr('src', img);
-                    $(template).find('.js_cart-item__name').text(name);
-                    $(template).find('.js_cart-item__weight').text(weight);
-                    $(template).find('.js_cart-item__cost').text(cost);
-                    $(template).find('.quantity.js_cart-item__quantity input').val(count);
-                    
+                $(template).find('img').attr('src', img);
+                $(template).find('.js_cart-item__name').text(name);
+                $(template).find('.js_cart-item__weight').text(weight);
+                $(template).find('.js_cart-item__cost').text(cost);
+                $(template).find('.quantity.js_cart-item__quantity input').val(count);
+
                 $(e).append($(template));
                 $('.popup-basket__items').mCustomScrollbar('destroy');
 
@@ -496,21 +495,21 @@ $(document).ready(function () {
                     theme: 'minimal-dark',
                 });
 
-               
+
             }
 
-            $('.js-cart_list__item').each(function(_, q){
+            $('.js-cart_list__item').each(function (_, q) {
                 let iD = $(this).data('id');
                 updateCart(q, iD);
             });
-            
+
         });
     });
 
 
-    $('.basket__items').each((_, element)=>{
-        $(window).on('cartUpdated', ()=>{
-        $(element).find('.js-basket_list__item').remove();
+    $('.basket__items').each((_, element) => {
+        $(window).on('cartUpdated', () => {
+            $(element).find('.js-basket_list__item').remove();
 
             for (id in cart.items) {
                 let template = $(element).find('.js-basket_list__template').clone();
@@ -521,21 +520,21 @@ $(document).ready(function () {
                 $(template).attr('style', '');
 
                 let img = cart.items[id]['image'],
-                        name = cart.items[id]['name'],
-                        cost = cart.items[id]['cost'],
-                        count = cart.items[id]['count'],
-                        weight = cart.items[id]['weight'];
+                    name = cart.items[id]['name'],
+                    cost = cart.items[id]['cost'],
+                    count = cart.items[id]['count'],
+                    weight = cart.items[id]['weight'];
 
-                        $(template).find('img').attr('src', img);
-                        $(template).find('.js_basket-item__name').text(name);
-                        $(template).find('.js_basket-item__weight').text(weight);
-                        $(template).find('.js_basket-item__cost').text(cost);
-                        $(template).find('.quantity input').val(count);
+                $(template).find('img').attr('src', img);
+                $(template).find('.js_basket-item__name').text(name);
+                $(template).find('.js_basket-item__weight').text(weight);
+                $(template).find('.js_basket-item__cost').text(cost);
+                $(template).find('.quantity input').val(count);
 
                 $(element).append($(template));
             }
 
-            $('.js-basket_list__item').each(function(_, q){
+            $('.js-basket_list__item').each(function (_, q) {
                 let iD = $(this).data('id');
                 updateCart(q, iD);
             });
@@ -543,9 +542,9 @@ $(document).ready(function () {
         });
     });
 
-    $('.basket__items').each((_, element)=>{
-        $(window).on('cartUpdated', ()=>{
-        $(element).find('.js-basket_list__item').remove();
+    $('.basket__items').each((_, element) => {
+        $(window).on('cartUpdated', () => {
+            $(element).find('.js-basket_list__item').remove();
 
             for (id in cart.items) {
                 let template = $(element).find('.js-basket_list__template').clone();
@@ -556,21 +555,21 @@ $(document).ready(function () {
                 $(template).attr('style', '');
 
                 let img = cart.items[id]['image'],
-                        name = cart.items[id]['name'],
-                        cost = cart.items[id]['cost'],
-                        count = cart.items[id]['count'],
-                        weight = cart.items[id]['weight'];
+                    name = cart.items[id]['name'],
+                    cost = cart.items[id]['cost'],
+                    count = cart.items[id]['count'],
+                    weight = cart.items[id]['weight'];
 
-                        $(template).find('img').attr('src', img);
-                        $(template).find('.js_basket-item__name').text(name);
-                        $(template).find('.js_basket-item__weight').text(weight);
-                        $(template).find('.js_basket-item__cost').text(cost);
-                        $(template).find('.quantity input').val(count);
+                $(template).find('img').attr('src', img);
+                $(template).find('.js_basket-item__name').text(name);
+                $(template).find('.js_basket-item__weight').text(weight);
+                $(template).find('.js_basket-item__cost').text(cost);
+                $(template).find('.quantity input').val(count);
 
                 $(element).append($(template));
             }
 
-            $('.js-basket_list__item').each(function(_, q){
+            $('.js-basket_list__item').each(function (_, q) {
                 let iD = $(this).data('id');
                 updateCart(q, iD);
             });
@@ -579,33 +578,29 @@ $(document).ready(function () {
 
     });
 
-// Order page
+    // Order page
 
-    $('.js-order_list').each((_, element)=>{
-        $(window).on('cartUpdated', ()=>{
-        $(element).find('.js-order_list__item').remove();
+    $('.js-order_list').each((_, element) => {
+        $(window).on('cartUpdated', () => {
+            $(element).find('.js-order_list__item').remove();
 
             for (id in cart.items) {
 
-                console.log(id);
                 let template = $(element).find('.js-order_list__template').clone();
 
                 $(template).removeClass('js-order_list__template');
                 $(template).addClass('js-order_list__item');
-                // $(template).attr('data-id', id);
                 $(template).attr('style', '');
 
-                let     name = cart.items[id]['name'],
-                        cost = cart.items[id]['cost'],
-                        count = cart.items[id]['count'];
+                let name = cart.items[id]['name'],
+                    cost = cart.items[id]['cost'],
+                    count = cart.items[id]['count'];
 
-                        $(template).find('.js_order-item__name').text(name);
-                        $(template).find('.js_order-item__cost').text(cost);
-                        $(template).find('.js_order-item__count').text(`${count} шт`);
+                $(template).find('.js_order-item__name').text(name);
+                $(template).find('.js_order-item__cost').text(cost);
+                $(template).find('.js_order-item__count').text(`${count} шт`);
 
-                 $(element).append($(template));
-
-                console.log($(template));
+                $(element).append($(template));
             }
         });
 
@@ -614,7 +609,7 @@ $(document).ready(function () {
 
     cart.refresh();
 
-        
+
     if ($('.advice__slider').exists()) {
         try {
             let adviceSlider = new Swiper('.advice__slider', {
@@ -1636,7 +1631,6 @@ $(document).ready(function () {
 
 
                 if ($(window).width() >= 881) {
-                    console.log('201');
                     timeline
                         .fromTo(
                             tabContent[b], {
