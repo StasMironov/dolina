@@ -8,8 +8,6 @@ let timeline = gsap.timeline();
 let timelineNav = new TimelineMax();
 let status = 0;
 
-
-
 const projectFunc = {
     objAd: function (element, place) {
         if ($(element).exists()) {
