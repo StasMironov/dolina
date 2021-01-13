@@ -93,6 +93,7 @@
         margin-right: 7px;
         font-size: 20px;
         line-height: 20px;
+        text-transform: uppercase;
 
         @media(max-width: 600px) {
             font-size: 18px;
@@ -188,6 +189,7 @@
     &__link {
         font-size: 15px;
         font-weight: 500;
+        text-transform: uppercase;
 
         @media(max-width: 1024px) {
             display: block;
