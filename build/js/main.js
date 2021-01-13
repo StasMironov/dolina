@@ -312,7 +312,7 @@ $(document).ready(function () {
   function updateCart(elem, id) {
     let running = false,
         count = 0,
-        run_for = 2000; // let img = elem
+        run_for = 2000;
 
     let addItem = () => {
       cart.addItem(id, 1);

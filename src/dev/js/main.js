@@ -426,13 +426,9 @@ $(document).ready(function () {
             count = 0,
             run_for = 2000;
 
-        // let img = elem
-
         let addItem = () => { cart.addItem(id, 1); };
         let removeItem = () => { cart.addItem(id, -1); };
         let deleteItem = () => { cart.deleteItem(id); };
-
-
 
         $(elem).find('.quantity').each(function (_, q) {
             $(q).find('.plus').on('click', function () {
@@ -502,8 +498,6 @@ $(document).ready(function () {
                 $('.popup-basket__items').mCustomScrollbar({
                     theme: 'minimal-dark',
                 });
-
-
             }
 
             $('.js-cart_list__item').each(function (_, q) {
