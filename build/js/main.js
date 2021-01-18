@@ -637,10 +637,18 @@ $(document).ready(function () {
         scrub: true
       }
     });
-    gsap.set('.gallery__item', {
-      x: -30,
-      autoAlpha: 0
-    });
+
+    if ($('.gallery__item').exists()) {
+      $('.gallery__item').each(function (index, element) {
+        if (index != 0 && index != 1 && index != 2) {
+          gsap.set(element, {
+            x: -30,
+            autoAlpha: 0
+          });
+        }
+      });
+    }
+
     parallaxT.to('.gallery__item', {
       autoAlpha: 1,
       x: 0,
