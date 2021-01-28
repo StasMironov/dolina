@@ -117,36 +117,37 @@ block content
 			.category__title.title-3 Популярные категории
 			.category__quote С другой стороны постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание существенных финансовых и административных условий.
 			.category__cover
-				.category__items
-					a(href="menu.html").category__item.btn.btn--big.btn--white 
-						.btn__ic
-							+svg("ic1")
-						.btn__txt Холодные закуски
-					a(href="menu.html").category__item.btn.btn--big.btn--white 
-						.btn__ic
-							+svg("ic2")
-						.btn__txt Шаурма на углях
-					a(href="menu.html").category__item.btn.btn--big.btn--white 
-						.btn__ic
-							+svg("ic3")
-						.btn__txt Маринованное мясо
-					a(href="menu.html").category__item.btn.btn--big.btn--white 
-						.btn__ic
-							+svg("ic4")
-						.btn__txt Хинкали и пасты
-					
-					a(href="menu.html").category__item.btn.btn--big.btn--white 
-						.btn__ic
-							+svg("ic5")
-						.btn__txt Садж
-					a(href="menu.html").category__item.btn.btn--big.btn--white 
-						.btn__ic
-							+svg("ic6")
-						.btn__txt Десерты
-					a(href="menu.html").category__item.btn.btn--big.btn--white 
-						.btn__ic
-							+svg("ic7")
-						.btn__txt Горячие блюда
+				scrollbar(id="inner-scrollbar")
+					.category__items.scroll-content
+						a(href="menu.html").category__item.btn.btn--big.btn--white 
+							.btn__ic
+								+svg("ic1")
+							.btn__txt Холодные закуски
+						a(href="menu.html").category__item.btn.btn--big.btn--white 
+							.btn__ic
+								+svg("ic2")
+							.btn__txt Шаурма на углях
+						a(href="menu.html").category__item.btn.btn--big.btn--white 
+							.btn__ic
+								+svg("ic3")
+							.btn__txt Маринованное мясо
+						a(href="menu.html").category__item.btn.btn--big.btn--white 
+							.btn__ic
+								+svg("ic4")
+							.btn__txt Хинкали и пасты
+						
+						a(href="menu.html").category__item.btn.btn--big.btn--white 
+							.btn__ic
+								+svg("ic5")
+							.btn__txt Садж
+						a(href="menu.html").category__item.btn.btn--big.btn--white 
+							.btn__ic
+								+svg("ic6")
+							.btn__txt Десерты
+						a(href="menu.html").category__item.btn.btn--big.btn--white 
+							.btn__ic
+								+svg("ic7")
+							.btn__txt Горячие блюда
 	include ../modules/comment
 	include ../modules/map
 

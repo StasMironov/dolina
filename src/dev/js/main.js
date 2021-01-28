@@ -2,6 +2,10 @@ jQuery.fn.exists = function () {
     return $(this).length;
 }
 
+var Scrollbar = window.Scrollbar;
+
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 let timeline = gsap.timeline();
@@ -37,7 +41,7 @@ const projectFunc = {
                     y: 0,
                     autoAlpha: 1,
                     stagger: 0.3,
-                    ease: "power1.out"
+                    //  ease: "power1.out"
                 });
         }
     },
@@ -894,12 +898,12 @@ $(document).ready(function () {
         }
     }
 
-    if ($('.menu').exists()) {
-        $(window).on('resize load', function () {
-            let heightEl = setHeight('.menu__item');
-            showMenu('.menu__cover', heightEl);
-        });
-    }
+    // if ($('.menu').exists()) {
+    //     $(window).on('load', function () {
+    //         let heightEl = setHeight('.menu__item');
+    //         showMenu('.menu__cover', heightEl);
+    //     });
+    // }
 
     if ($('.js-basket').exists()) {
         try {
@@ -1111,9 +1115,8 @@ $(document).ready(function () {
     $(window).on('resize load', function () {
         if ($(this).width() <= 1235) {
             if ($('.category__cover').exists()) {
-                $('.category__cover').mCustomScrollbar({
-                    theme: 'minimal-dark',
-                    axis: "x"
+                Scrollbar.init(document.querySelector('#inner-scrollbar'), {
+                    damping: 0.3
                 });
             }
         }
@@ -1490,6 +1493,81 @@ $(document).ready(function () {
         });
     }
 
+    //#map-contacts
+
+    $(window).on('load', function () {
+        if ($('#map-contacts').exists()) {
+            ymaps.ready(init);
+
+            function init() {
+
+                // Создание карты.
+                var myMap = new ymaps.Map("map-contacts", {
+                    // Координаты центра карты.
+                    // Порядок по умолчанию: «широта, долгота».
+                    center: [57.098137, 65.613029],
+                    zoom: 16,
+                    controls: []
+                }),
+                    myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
+                        // Необходимо указать данный тип макета.
+                        iconLayout: 'default#image',
+                        // Своё изображение иконки метки.
+                        iconImageHref: '/img/icon/marker.png',
+                        // Размеры метки.
+                        iconImageSize: [90, 90],
+                        // Смещение левого верхнего угла иконки относительно
+                        // её "ножки" (точки привязки).
+                        iconImageOffset: [-5, -38],
+                        openBalloonOnClick: false,
+                        hasHint: false,
+                        hasBalloon: false,
+                        cursor: 'INHERIT'
+
+                    });
+
+
+                myMap.geoObjects.add(myPlacemark);
+                myMap.behaviors.disable('scrollZoom');
+
+                var position = myMap.getGlobalPixelCenter();
+                myMap.setGlobalPixelCenter([position[0] + 0, position[1]]);
+
+
+
+                if (($(this).width() > 1024 && $(this).width() <= 1300)) {
+                    myMap.setGlobalPixelCenter([position[0] + 300, position[1]]);
+                    myMap.container.fitToViewport();
+                }
+                if (($(this).width() > 880 && $(this).width() <= 1024)) {
+                    myMap.setGlobalPixelCenter([position[0] + 300, position[1]]);
+                    myMap.container.fitToViewport();
+                } else if ($(this).width() > 768 && $(this).width() <= 880) {
+                    myMap.setGlobalPixelCenter([position[0] + 200, position[1] - 0]);
+                    myMap.container.fitToViewport();
+                } else if ($(this).width() > 600 && $(this).width() <= 768) {
+                    myMap.setGlobalPixelCenter([position[0] + 240, position[1] - 0]);
+                    myMap.container.fitToViewport();
+                } else if ($(this).width() > 500 && $(this).width() <= 600) {
+                    myPlacemark.options.set('iconImageSize', [50, 50]);
+                    myMap.setGlobalPixelCenter([position[0] + 30, position[1] - 0]);
+                    console.log(myPlacemark);
+                    myMap.container.fitToViewport();
+                } else if ($(this).width() > 400 && $(this).width() <= 500) {
+                    myPlacemark.options.set('iconImageSize', [50, 50]);
+                    myMap.setGlobalPixelCenter([position[0] + 30, position[1] - 0]);
+                    myMap.container.fitToViewport();
+                } else if ($(this).width() > 319 && $(this).width() <= 400) {
+                    myPlacemark.options.set('iconImageSize', [50, 50]);
+                    myMap.setGlobalPixelCenter([position[0] + 30, position[1] - 0]);
+                    myMap.container.fitToViewport();
+                }
+            }
+        }
+    });
+
+
+
     $(window).on('load', function () {
         if ($('#map').exists()) {
             ymaps.ready(init);
@@ -1501,7 +1579,7 @@ $(document).ready(function () {
                     // Координаты центра карты.
                     // Порядок по умолчанию: «широта, долгота».
                     center: [57.098137, 65.613029],
-                    zoom: 17,
+                    zoom: 16,
                     controls: []
                 }),
                     myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, {
@@ -1538,13 +1616,18 @@ $(document).ready(function () {
                     myMap.setGlobalPixelCenter([position[0] + 200, position[1] - 200]);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 500 && $(this).width() <= 600) {
+                    myPlacemark.options.set('iconImageSize', [50, 50]);
                     myMap.setGlobalPixelCenter([position[0] + 230, position[1] - 200]);
+                    myPlacemark.options.set('iconImageSize:', [60, 60]);
+                    console.log(myPlacemark);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 400 && $(this).width() <= 500) {
-                    myMap.setGlobalPixelCenter([position[0] + 290, position[1] - 250]);
+                    myPlacemark.options.set('iconImageSize', [50, 50]);
+                    myMap.setGlobalPixelCenter([position[0] + 290, position[1] - 300]);
                     myMap.container.fitToViewport();
                 } else if ($(this).width() > 319 && $(this).width() <= 400) {
-                    myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 250]);
+                    myPlacemark.options.set('iconImageSize', [50, 50]);
+                    myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 300]);
                     myMap.container.fitToViewport();
                 }
             }
@@ -1835,5 +1918,12 @@ $(document).ready(function () {
 
         popupCard = $(parent).children('.popup-card').find('.btn-special');
         return parent;
+    }
+
+
+    if ($('.tab__field--phone').exists()) {
+        $('.tab__field--phone').each(function () {
+            $(this).mask("+7(999) 999-9999");
+        });
     }
 });

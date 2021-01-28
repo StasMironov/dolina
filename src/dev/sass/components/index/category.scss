@@ -68,6 +68,14 @@
         @media(max-width: 600px) {
             margin-top: 15px;
         }
+
+        scrollbar {
+            overflow: initial !important;
+        }
+
+        .scrollbar-track {
+            opacity: 0 !important;
+        }
     }
 
     &__quote {

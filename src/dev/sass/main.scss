@@ -236,6 +236,7 @@ input::-ms-clear {
 .swiper-pagination-bullet {
   background-color: $orange;
   opacity: .4;
+  transition: all 0.4s ease 0s;
 
   &:not(:last-child) {
     margin-right: 18px;
@@ -243,6 +244,10 @@ input::-ms-clear {
     @media(max-width: 600px) {
       margin-right: 14px;
     }
+  }
+
+  &:hover {
+    opacity: 1;
   }
 }
 
