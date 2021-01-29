@@ -137,6 +137,12 @@
                 margin-top: 18px;
             }
         }
+
+        a {
+            &:hover {
+                color: $orange;
+            }
+        }
     }
 
     &__items {
@@ -173,6 +179,7 @@
     }
 
     &__par {
+        display: block;
         font-size: 16px;
         line-height: 30px;
 
@@ -196,7 +203,18 @@
         height: 100%;
         margin-top: initial;
 
-        #map {
+        #map-contacts {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            width: calc(100% + 1052px);
+            height: 100%;
+            background-color: $gray;
+            z-index: 1;
+            right: 0;
+            left: -320px;
             width: calc(100% + 555px);
             right: -564px;
             left: 0;

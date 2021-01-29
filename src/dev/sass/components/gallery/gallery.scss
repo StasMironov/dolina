@@ -89,6 +89,12 @@
             opacity: .4;
         }
 
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+            opacity: 1;
+        }
+
         &:nth-child(13n),
         &:nth-child(1) {
             //grid-column: 567px;

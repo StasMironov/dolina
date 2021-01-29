@@ -31,34 +31,34 @@ block content
 							.order-form__group
 								.order-form__box
 									.order-form__label Имя*
-									input(type="text" name="name" required).order-form__field
+									input(type="text" name="name" placeholder="Введите имя" required).order-form__field
 								.order-form__box
 									.order-form__label Фамилия*
-									input(type="text"  name="secondname" required).order-form__field
+									input(type="text" name="secondname" placeholder="Введите фамилию" required).order-form__field
 							.order-form__group
 								.order-form__box
 									.order-form__label Адрес электронной почты*
-									input(type="text" name="email" required).order-form__field
+									input(type="text" name="email" placeholder="Email" required).order-form__field
 								.order-form__box
 									.order-form__label Контактный телефон*
-									input(type="text"  name="phone" required).order-form__field
+									input(type="text" name="phone" placeholder="+7 (___) ___-__-__" required).order-form__field.js-mask-phone
 					.order-form__module.order-form__module--detail
 						.order-form__article Детали бронирования
 						.order-form__cover
 							.order-form__group
 								.order-form__box.order-form__box--long
 									.order-form__label Адрес*
-									input(type="text" name="adrea" required).order-form__field
+									input(type="text" name="adrea" placeholder="ул.Гагарина 39" required).order-form__field
 							.order-form__group
 								.order-form__box
 									.order-form__label Подъезд*
-									input(type="text" name="corpus" required).order-form__field
+									input(type="number" min="1" name="corpus" placeholder="2" required).order-form__field
 								.order-form__box
 									.order-form__label Квартира*
-									input(type="text" name="flat" required).order-form__field
+									input(type="number" min="1" name="flat" placeholder="25" required).order-form__field
 								.order-form__box
 									.order-form__label Этаж
-									input(type="text" name="floor" required).order-form__field
+									input(type="number" min="1" name="floor" placeholder="2" required).order-form__field
 							.order-form__group
 								.order-form__box.order-form__box--long
 									.order-form__label Комментарий к заказу

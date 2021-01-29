@@ -16,6 +16,10 @@
         padding-bottom: 268px;
         color: white;
 
+        @media(max-width: 1300px) {
+            padding-bottom: 60px
+        }
+
         @media(max-width: 1024px) {
             padding-top: 72px;
             padding-bottom: 0px;
@@ -130,6 +134,7 @@
             margin: 0 10px !important;
             background-color: $gray;
             opacity: .4;
+            transition: all 0.4s ease 0s;
 
             @media(max-width: 1024px) {
                 width: 8px;
@@ -141,6 +146,10 @@
                 width: 7px;
                 height: 7px;
                 margin: 0 7px !important;
+            }
+
+            &:hover {
+                opacity: 1;
             }
         }
 
