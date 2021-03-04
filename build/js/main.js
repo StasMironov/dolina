@@ -1618,6 +1618,156 @@ $(document).ready(function () {
       $(this).mask("+7(999) 999-9999");
     });
   }
+
+  if ($('.order-form').exists()) {
+    try {
+      let form = document.querySelector('.order-form'),
+          validateBtn = form.querySelector('.order-form button'),
+          name = form.querySelector('.order-form__field--name'),
+          lastName = form.querySelector('.order-form__field--lastname'),
+          email = form.querySelector('.order-form__field--email'),
+          phone = form.querySelector('.order-form__field--phone'),
+          adres = form.querySelector('.order-form__field--adres'),
+          corpus = form.querySelector('.order-form__field--corpus'),
+          flat = form.querySelector('.order-form__field--flat'),
+          floor = form.querySelector('.order-form__field--floor'),
+          fields = form.querySelectorAll('.order-form__field');
+
+      let checkForm = () => {
+        let status = true;
+
+        for (let i = 0; i < fields.length; i++) {
+          if (fields[i].value && !$(fields[i]).parent().find('.error').exists()) {
+            status = true;
+          } else {
+            status = false;
+          }
+        }
+
+        return status;
+      };
+
+      let generateError = text => {
+        var error = document.createElement('div');
+        error.className = 'error';
+        error.style.color = 'red';
+        error.innerHTML = text;
+        setTimeout(() => {
+          error.style.opacity = '1';
+        }, 0.001);
+        return error;
+      };
+
+      let removeValidation = () => {
+        let errors = form.querySelectorAll('.error');
+
+        for (let i = 0; i < errors.length; i++) {
+          errors[i].remove();
+        }
+      };
+
+      let checkFieldsPresence = () => {
+        for (let i = 0; i < fields.length; i++) {
+          if (!fields[i].value && !$(fields[i]).is('textarea')) {
+            let error = generateError('Поле обязательно для заполнения');
+            fields[i].classList.add('warning');
+
+            if ($(fields[i]).parent().find('.error').exists()) {
+              $(fields[i]).parent().find('.error').replaceWith(error);
+            } else {
+              $(error).insertAfter(fields[i]);
+            }
+          } else {
+            fields[i].classList.remove('warning');
+          }
+        }
+      };
+
+      let checkNameMatch = () => {
+        const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u;
+
+        if (!re.test(name.value)) {
+          let error = generateError('Некорректное значение имени');
+          name.classList.add('warning');
+
+          if ($(name).parent().find('.error').exists()) {
+            $(name).parent().find('.error').replaceWith(error);
+          } else {
+            $(error).insertAfter(name);
+          }
+        } else {
+          name.classList.remove('warning');
+        }
+      };
+
+      let checkLastnameMatch = () => {
+        const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u;
+
+        if (!re.test(lastName.value)) {
+          let error = generateError('Некорректное значение фамилии');
+          lastName.classList.add('warning');
+
+          if ($(lastName).parent().find('.error').exists()) {
+            $(lastName).parent().find('.error').replaceWith(error);
+          } else {
+            $(error).insertAfter(lastName);
+          }
+        } else {
+          lastName.classList.remove('warning');
+        }
+      };
+
+      let checkEmailMatch = () => {
+        const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if (!re.test(email.value)) {
+          let error = generateError('Некорректный email');
+          email.classList.add('warning');
+
+          if ($(email).parent().find('.error').exists()) {
+            $(email).parent().find('.error').replaceWith(error);
+          } else {
+            $(error).insertAfter(email);
+          }
+        } else {
+          email.classList.remove('warning');
+        }
+      };
+
+      let checkPhoneMatch = () => {
+        const re = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+
+        if (!re.test(phone.value)) {
+          let error = generateError('Некорректный номер телефона');
+          phone.classList.add('warning');
+
+          if ($(phone).parent().find('.error').exists()) {
+            $(phone).parent().find('.error').replaceWith(error);
+          } else {
+            $(error).insertAfter(phone);
+          }
+        } else {
+          phone.classList.remove('warning');
+        }
+      };
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        removeValidation();
+        checkFieldsPresence();
+        checkPhoneMatch();
+        checkEmailMatch();
+        checkNameMatch();
+        checkLastnameMatch();
+
+        if (checkForm()) {
+          this.submit();
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 });
 
 (function () {

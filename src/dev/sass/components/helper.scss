@@ -17,6 +17,16 @@
     @media(max-width: 600px) {
         margin-top: 20px;
     }
+}
 
+.error {
+    position: absolute;
+    font-size: 10px;
+    transition: .4s ease;
+    opacity: 0;
+    bottom: 0;
+}
 
+.warning {
+    border-color: red;
 }

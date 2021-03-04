@@ -1,0 +1,101 @@
+.thank {
+
+    &__quote {
+        max-width: 352px;
+        margin: 20px auto 0;
+        font-size: 16px;
+        line-height: 21px;
+
+        @media(max-width: 600px) {
+            max-width: 255px;
+            margin: 16px auto 0;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    &__container {
+        padding-top: 112px;
+        padding-bottom: 71px;
+
+        @media(max-width: 1024px) {
+            padding-top: 110px;
+            padding-bottom: 109px;
+        }
+
+        @media(max-width: 600px) {
+            padding-top: 78px;
+            padding-bottom: 77px;
+        }
+    }
+
+    &__title {
+        font-size: 35px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        margin-top: 26px;
+        line-height: 49px;
+
+        @media(max-width: 600px) {
+            font-size: 25px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            line-height: 35px;
+        }
+    }
+
+    &__wrapper {
+        max-width: 427px;
+        width: 100%;
+        text-align: center;
+        margin:  0 auto;
+    }
+
+    &__pic {
+        width: 92px;
+        min-width: 92px;
+        height: 92px;
+        margin: 0 auto;
+
+        @media(max-width: 1024px) {
+            width: 83px;
+            min-width: 83px;
+            height: 83px;
+        }
+
+        @media(max-width: 600px) {
+            width: 66px;
+            min-width: 66px;
+            height: 66px;
+        }
+
+        .b-svg {
+            width: 100%;
+            height: 100%;
+            fill: $orange;
+        }
+    }
+
+    .btn {
+        margin-top: 51px;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 23px 27px;
+
+        @media(max-width: 1024px) {
+            font-size: 16px;
+            font-weight: 700;
+            padding: 28px 34px;
+            margin-top: 64px;
+        }
+
+        @media(max-width:600px) {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 17px 20px;
+            margin-top: 37px;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index-page';
+
+block content
+	.thank
+		.thank__container.container 
+			.thank__wrapper
+				.thank__pic 
+					+svg('ok')
+				.thank__title Спасибо, ваш&nbsp;заказ&nbsp;принят!
+				.thank__quote Идейные соображения высшего порядка, также сложившаяся структура организации.
+				a(href="/").btn.btn--big.btn--white Вернуться на главную
+
+			
+				
+block script
