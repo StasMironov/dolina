@@ -12,7 +12,7 @@
             margin-top: 50px;
 
             @media(max-width: 500px) {
-                margin-top: 27px;
+                margin-top: 15px;
             }
         }
     }
@@ -55,11 +55,11 @@
         }
 
         &:not(:first-child) {
-            margin-top: 30px;
+            // margin-top: 30px;
 
-            @media(max-width: 500px) {
-                margin-top: 13px;
-            }
+            // @media(max-width: 500px) {
+            //     margin-top: 13px;
+            // }
         }
 
         &--detail {
@@ -74,8 +74,10 @@
     }
 
     &__unit {
+        position: relative;
         width: 50%;
         max-width: 286px;
+        padding-bottom: 22px;
 
         @media(max-width: 880px) {
             max-width: initial;
@@ -100,11 +102,9 @@
 
         &:not(:first-child) {
             @media(max-width: 500px) {
-                margin-top: 13px;
+                margin-top: 0px;
             }
         }
-
-        ;
     }
 
     &__field {
@@ -323,7 +323,7 @@
         border-radius: 5px;
 
         @media(max-width: 500px) {
-            height: calc(100% + 10px);
+            height: calc(100% + 100px);
         }
 
         &:after {

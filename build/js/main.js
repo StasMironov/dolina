@@ -1338,11 +1338,11 @@ $(document).ready(function () {
           myMap.container.fitToViewport();
         } else if ($(this).width() > 400 && $(this).width() <= 500) {
           myPlacemark.options.set('iconImageSize', [50, 50]);
-          myMap.setGlobalPixelCenter([position[0] + 290, position[1] - 300]);
+          myMap.setGlobalPixelCenter([position[0] + 290, position[1] - 350]);
           myMap.container.fitToViewport();
         } else if ($(this).width() > 319 && $(this).width() <= 400) {
           myPlacemark.options.set('iconImageSize', [50, 50]);
-          myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 300]);
+          myMap.setGlobalPixelCenter([position[0] + 380, position[1] - 350]);
           myMap.container.fitToViewport();
         }
       }
@@ -1619,21 +1619,60 @@ $(document).ready(function () {
     });
   }
 
-  if ($('.order-form').exists()) {
+  if ($('.js-form').exists()) {
     try {
-      let form = document.querySelector('.order-form'),
-          validateBtn = form.querySelector('.order-form button'),
-          name = form.querySelector('.order-form__field--name'),
-          lastName = form.querySelector('.order-form__field--lastname'),
-          email = form.querySelector('.order-form__field--email'),
-          phone = form.querySelector('.order-form__field--phone'),
-          adres = form.querySelector('.order-form__field--adres'),
-          corpus = form.querySelector('.order-form__field--corpus'),
-          flat = form.querySelector('.order-form__field--flat'),
-          floor = form.querySelector('.order-form__field--floor'),
-          fields = form.querySelectorAll('.order-form__field');
+      let form = document.querySelectorAll('.js-form');
 
-      let checkForm = () => {
+      for (let i = 0; i < form.length; i++) {
+        let validateBtn = form[i].querySelector('.js-form button'),
+            name = form[i].querySelector('.field--name'),
+            lastName = form[i].querySelector('.field--lastname'),
+            email = form[i].querySelector('.field--email'),
+            phone = form[i].querySelector('.field--phone'),
+            adres = form[i].querySelector('.field--adres'),
+            corpus = form[i].querySelector('.field--corpus'),
+            flat = form[i].querySelector('.field--flat'),
+            floor = form[i].querySelector('.field--floor'),
+            fields = form[i].querySelectorAll('.field'),
+            date = form[i].querySelector('.field--date'),
+            time = form[i].querySelector('.field--time');
+        form[i].addEventListener('submit', function (event) {
+          event.preventDefault();
+          removeValidation(form[i]);
+          checkFieldsPresence(fields);
+
+          if (phone) {
+            checkPhoneMatch(phone);
+          }
+
+          if (email) {
+            checkEmailMatch(email);
+          }
+
+          if (name) {
+            checkNameMatch(name);
+          }
+
+          if (lastName) {
+            checkLastnameMatch(lastName);
+          }
+
+          if (date) {
+            checkDateMatch(date);
+          }
+
+          if (time) {
+            checkTimeMatch(time);
+          }
+
+          if (checkForm(fields)) {
+            console.log(true);
+            this.submit();
+          }
+        });
+      }
+
+      let checkForm = fields => {
         let status = true;
 
         for (let i = 0; i < fields.length; i++) {
@@ -1658,7 +1697,7 @@ $(document).ready(function () {
         return error;
       };
 
-      let removeValidation = () => {
+      let removeValidation = form => {
         let errors = form.querySelectorAll('.error');
 
         for (let i = 0; i < errors.length; i++) {
@@ -1666,7 +1705,7 @@ $(document).ready(function () {
         }
       };
 
-      let checkFieldsPresence = () => {
+      let checkFieldsPresence = fields => {
         for (let i = 0; i < fields.length; i++) {
           if (!fields[i].value && !$(fields[i]).is('textarea')) {
             let error = generateError('Поле обязательно для заполнения');
@@ -1683,7 +1722,41 @@ $(document).ready(function () {
         }
       };
 
-      let checkNameMatch = () => {
+      let checkTimeMatch = time => {
+        const re = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/g;
+
+        if (!re.test(time.value)) {
+          let error = generateError('Некорректное значение времени');
+          time.classList.add('warning');
+
+          if ($(time).parent().find('.error').exists()) {
+            $(time).parent().find('.error').replaceWith(error);
+          } else {
+            $(error).insertAfter(time);
+          }
+        } else {
+          time.classList.remove('warning');
+        }
+      };
+
+      let checkDateMatch = date => {
+        const re = /^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/g;
+
+        if (!re.test(date.value)) {
+          let error = generateError('Некорректное значение даты');
+          date.classList.add('warning');
+
+          if ($(date).parent().find('.error').exists()) {
+            $(date).parent().find('.error').replaceWith(error);
+          } else {
+            $(error).insertAfter(date);
+          }
+        } else {
+          date.classList.remove('warning');
+        }
+      };
+
+      let checkNameMatch = name => {
         const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u;
 
         if (!re.test(name.value)) {
@@ -1700,7 +1773,7 @@ $(document).ready(function () {
         }
       };
 
-      let checkLastnameMatch = () => {
+      let checkLastnameMatch = lastName => {
         const re = /^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/u;
 
         if (!re.test(lastName.value)) {
@@ -1717,7 +1790,7 @@ $(document).ready(function () {
         }
       };
 
-      let checkEmailMatch = () => {
+      let checkEmailMatch = email => {
         const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         if (!re.test(email.value)) {
@@ -1734,7 +1807,7 @@ $(document).ready(function () {
         }
       };
 
-      let checkPhoneMatch = () => {
+      let checkPhoneMatch = phone => {
         const re = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
 
         if (!re.test(phone.value)) {
@@ -1750,20 +1823,6 @@ $(document).ready(function () {
           phone.classList.remove('warning');
         }
       };
-
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        removeValidation();
-        checkFieldsPresence();
-        checkPhoneMatch();
-        checkEmailMatch();
-        checkNameMatch();
-        checkLastnameMatch();
-
-        if (checkForm()) {
-          this.submit();
-        }
-      });
     } catch (err) {
       console.log(err);
     }

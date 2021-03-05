@@ -10,7 +10,7 @@ block content
 		.order__container.container 
 			.order__title.title-1 Оформление заказа
 			.order__quote Идейные соображения высшего порядка, а также сложившаяся структура организации играет важную роль в формировании систем массового участия.
-	form.order-form
+	form.order-form.js-form
 		.order-form__container.container
 			.order-form__bloc
 				.order-form__wrapper
@@ -31,34 +31,34 @@ block content
 							.order-form__group
 								.order-form__box
 									.order-form__label Имя*
-									input(type="text" name="name" placeholder="Введите имя" ).order-form__field.order-form__field--name
+									input(type="text" name="name" placeholder="Введите имя" ).order-form__field.field.field--name
 								.order-form__box
 									.order-form__label Фамилия*
-									input(type="text" name="secondname" placeholder="Введите фамилию" ).order-form__field.order-form__field--lastname
+									input(type="text" name="secondname" placeholder="Введите фамилию" ).order-form__field.field.field--lastname
 							.order-form__group
 								.order-form__box
 									.order-form__label Адрес электронной почты*
-									input(type="text" name="email" placeholder="Email" ).order-form__field.order-form__field--email
+									input(type="text" name="email" placeholder="Email" ).order-form__field.field.field--email
 								.order-form__box
 									.order-form__label Контактный телефон*
-									input(type="text" name="phone" placeholder="+7 (___) ___-__-__" ).order-form__field.order-form__field--phone.js-mask-phone
+									input(type="text" name="phone" placeholder="+7 (___) ___-__-__" ).order-form__field.field.field--phone.js-mask-phone
 					.order-form__module.order-form__module--detail
 						.order-form__article Детали бронирования
 						.order-form__cover
 							.order-form__group
 								.order-form__box.order-form__box--long
 									.order-form__label Адрес*
-									input(type="text" name="adrea" placeholder="ул.Гагарина 39" ).order-form__field.order-form__field--adres
+									input(type="text" name="adrea" placeholder="ул.Гагарина 39" ).order-form__field.field.field--adres
 							.order-form__group
 								.order-form__box
 									.order-form__label Подъезд*
-									input(type="number" min="1" name="corpus" placeholder="2" ).order-form__field.order-form__field--corpus
+									input(type="number" min="1" name="corpus" placeholder="2" ).order-form__field.field.field--corpus
 								.order-form__box
 									.order-form__label Квартира*
-									input(type="number" min="1" name="flat" placeholder="25" ).order-form__field.order-form__field--flat
+									input(type="number" min="1" name="flat" placeholder="25" ).order-form__field.field.field--flat
 								.order-form__box
 									.order-form__label Этаж
-									input(type="number" min="1" name="floor" placeholder="2" ).order-form__field.order-form__field--floor
+									input(type="number" min="1" name="floor" placeholder="2" ).order-form__field.field.field--floor
 							.order-form__group
 								.order-form__box.order-form__box--long.order-form__box--comment
 									.order-form__label Комментарий к заказу
