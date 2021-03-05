@@ -1,0 +1,16 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index-page';
+
+block content
+	.empty
+		.empty__container.container 
+			.empty__wrapper
+				.empty__title.title-1 Ваша корзина&nbsp;пуста
+				a(href="/").btn.btn--big.btn--orange Перейти в меню
+
+			
+				
+block script
