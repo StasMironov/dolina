@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title>Главная страница</title><!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE = edge"><![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="css/main.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="js/parallax.js"></script><script src="https://api-maps.yandex.ru/2.1/?apikey=4bfbb167-f91d-442d-b16f-ac0eec2ddff8&lang=ru_RU" type="text/javascript"></script>
+    <!--script(src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js")-->
+  </head>
+  <body>
+    <div class="b-page">
+      <div class="header">
+        <div class="header__inner">
+          <div class="header__container container">
+            <div class="header__wrapper"><a class="header__logo" href="/">
+                      <svg class="b-svg svg-logo ">
+                        <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                      </svg></a>
+              <div class="header__menu"><a class="header__link header__link--active" href="menu.html">МЕНЮ</a><a class="header__link" href="#goTab">БРОНЬ</a><a class="header__link" href="about.html">О НАС</a><a class="header__link" href="gallery.html">ГАЛЕРЕЯ</a><a class="header__link" href="contacts.html">КОНТАКТЫ</a></div>
+              <div class="header__bloc">
+                <div class="header__info"><a class="header__phono" href="tel:+7 (958) 758-85-78">+7 (958) 758-85-78</a><a class="header__adres" href="javascript:void(0);">Вс-Чт: 10:00-23:00, Пт-Сб: 10:00-24:00</a></div><a class="cart js-basket" href="basket.html">
+                        <svg class="b-svg svg-basket ">
+                          <use xlink:href="svg/symbol/sprite.svg#basket"></use>
+                        </svg>
+                  <div class="qty"><span class="js_cart-total__count">1</span></div></a>
+              </div>
+              <div class="notice notice-js">
+                <div class="notice__container"></div>
+              </div>
+              <div class="burger"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="header__menu--tablet">
+          <div class="header__box">
+            <div class="header__btn header__item js-list">
+              <div class="header__txt">МЕНЮ</div>
+              <div class="header__ic"><svg width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.5 4L0.468911 0.25L6.53109 0.25L3.5 4Z" fill="#2F2C2C"></path>
+</svg>
+              </div>
+            </div>
+            <div class="header__list">
+              <div class="header__in"><a class="header__ref header__ref--active" href="javascript:void(0);">Хит продаж</a><a class="header__ref" href="javascript:void(0);">Комбо</a><a class="header__ref" href="javascript:void(0);">Акции</a><a class="header__ref" href="javascript:void(0);">Хит продаж</a><a class="header__ref" href="javascript:void(0);">Комбо</a><a class="header__ref" href="javascript:void(0);">Акции</a><a class="header__ref" href="javascript:void(0);">Хит продаж</a><a class="header__ref" href="javascript:void(0);">Комбо</a><a class="header__ref" href="javascript:void(0);">Акции</a><a class="header__ref" href="javascript:void(0);">Хит продаж</a><a class="header__ref" href="javascript:void(0);">Комбо</a><a class="header__ref" href="javascript:void(0);">Акции</a><a class="header__ref" href="javascript:void(0);">Хит продаж</a><a class="header__ref" href="javascript:void(0);">Комбо</a><a class="header__ref" href="javascript:void(0);">Акции</a></div>
+            </div>
+          </div>
+          <div class="header__cover"><a class="header__item header__item--active" href="javascript:void(0);">БРОНЬ</a><a class="header__item" href="javascript:void(0);">О НАС</a><a class="header__item" href="javascript:void(0);">ГАЛЕРЕЯ</a><a class="header__item" href="javascript:void(0);">КОНТАКТЫ</a></div>
+        </div>
+      </div>
+      <div class="showcase mf-margin">
+        <div class="showcase__container container">
+          <div class="showcase__wrapper">
+            <div class="showcase__left">
+              <div class="menu">
+                <div class="menu__btn mf-show">
+                  <div class="menu__word">Меню</div><i></i>
+                </div>
+                <div class="menu__cover mf-show">
+                  <div class="menu__items"><a class="menu__item menu__item--active" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-union ">
+                                <use xlink:href="svg/symbol/sprite.svg#union"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Хит продаж</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-heart ">
+                                <use xlink:href="svg/symbol/sprite.svg#heart"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Комбо</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-rupor ">
+                                <use xlink:href="svg/symbol/sprite.svg#rupor"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Акции</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-meat ">
+                                <use xlink:href="svg/symbol/sprite.svg#meat"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Шашлыки</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-hleb ">
+                                <use xlink:href="svg/symbol/sprite.svg#hleb"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Выпечка</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-pica ">
+                                <use xlink:href="svg/symbol/sprite.svg#pica"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Пицца</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-shaurma ">
+                                <use xlink:href="svg/symbol/sprite.svg#shaurma"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Шаурма на углях</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-ic1 ">
+                                <use xlink:href="svg/symbol/sprite.svg#ic1"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Холодные закуски</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-salat ">
+                                <use xlink:href="svg/symbol/sprite.svg#salat"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Салаты</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-soup ">
+                                <use xlink:href="svg/symbol/sprite.svg#soup"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Супы</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-ic4 ">
+                                <use xlink:href="svg/symbol/sprite.svg#ic4"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Хинкали и пасты</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-ic5 ">
+                                <use xlink:href="svg/symbol/sprite.svg#ic5"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Садж</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-ic7 ">
+                                <use xlink:href="svg/symbol/sprite.svg#ic7"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Горячие блюда</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-sous ">
+                                <use xlink:href="svg/symbol/sprite.svg#sous"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Соусы</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-garnir ">
+                                <use xlink:href="svg/symbol/sprite.svg#garnir"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Гарниры</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-ic6 ">
+                                <use xlink:href="svg/symbol/sprite.svg#ic6"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Десерты</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-napitok ">
+                                <use xlink:href="svg/symbol/sprite.svg#napitok"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Напитки</div></a><a class="menu__item" href="javascript:void(0);">
+                      <div class="menu__pic">
+                              <svg class="b-svg svg-ic3 ">
+                                <use xlink:href="svg/symbol/sprite.svg#ic3"></use>
+                              </svg>
+                      </div>
+                      <div class="menu__txt">Маринованное мясо</div></a></div>
+                </div>
+              </div>
+            </div>
+            <div class="showcase__right">
+              <div class="set">
+                <div class="set__container container">
+                  <div class="set__title title-1">Пицца</div>
+                  <div class="set__cover">
+                    <div class="set__items">
+                      <div class="set__item js_cart-item" data-cart-id="11">
+                        <div class="set__pic"><img class="js_cart-item__image" src="/img/set/set1.jpg" alt=""></div>
+                        <div class="set__box">
+                          <div class="set__top">
+                            <div class="set__article js_cart-item__name">Комбо-набор 8</div>
+                            <div class="set__weight js_cart-item__weight">400г</div>
+                          </div>
+                          <div class="set__content js_cart-item__text">Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие</div>
+                          <div class="set__bottom"> 
+                            <div class="set__price js_cart-item__cost">450 <span>₽</span></div>
+                            <div class="btn-special js_cart-item__inputs">
+                              <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                              <div class="quantity">
+                                <button class="minus">
+                                        <svg class="b-svg svg-icon-minus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                        </svg>
+                                </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                <button class="plus">
+                                        <svg class="b-svg svg-icon-plus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                        </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="popup-card">
+                          <div class="popup-card__header">
+                            <div class="popup-card__logo">
+                                    <svg class="b-svg svg-logo ">
+                                      <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                                    </svg>
+                            </div>
+                          </div>
+                          <div class="popup-card__close"></div>
+                          <div class="popup-card__wrapper">
+                            <div class="popup-card__img"><img class="js_popup-card_img" src="./img/set/set2.jpg" alt=""></div>
+                            <div class="popup-card__left">
+                              <div class="popup-card__heading">
+                                <div class="popup-card__title js_popup-card_title">Пицца «Test»</div>
+                                <div class="popup-card__weight js_popup-card_weight">450г</div>
+                              </div>
+                              <div class="popup-card__content js_popup-card_content">Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности играет важную роль.</div>
+                              <div class="btn-special js_cart-item__inputs">
+                                <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                                <div class="quantity">
+                                  <button class="minus">
+                                          <svg class="b-svg svg-icon-minus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                          </svg>
+                                  </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                  <button class="plus">
+                                          <svg class="b-svg svg-icon-plus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                          </svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="set__item js_cart-item" data-cart-id="1">
+                        <div class="set__pic"><img class="js_cart-item__image" src="/img/set/set1.jpg" alt=""></div>
+                        <div class="set__box">
+                          <div class="set__top">
+                            <div class="set__article js_cart-item__name">Комбо-набор 1</div>
+                            <div class="set__weight js_cart-item__weight">400г</div>
+                          </div>
+                          <div class="set__content js_cart-item__text">Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие</div>
+                          <div class="set__bottom"> 
+                            <div class="set__price js_cart-item__cost">450 <span>₽</span></div>
+                            <div class="btn-special js_cart-item__inputs">
+                              <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                              <div class="quantity">
+                                <button class="minus">
+                                        <svg class="b-svg svg-icon-minus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                        </svg>
+                                </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                <button class="plus">
+                                        <svg class="b-svg svg-icon-plus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                        </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="popup-card">
+                          <div class="popup-card__header">
+                            <div class="popup-card__logo">
+                                    <svg class="b-svg svg-logo ">
+                                      <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                                    </svg>
+                            </div>
+                          </div>
+                          <div class="popup-card__close"></div>
+                          <div class="popup-card__wrapper">
+                            <div class="popup-card__img"><img class="js_popup-card_img" src="./img/set/set2.jpg" alt=""></div>
+                            <div class="popup-card__left">
+                              <div class="popup-card__heading">
+                                <div class="popup-card__title js_popup-card_title">Пицца «Test»</div>
+                                <div class="popup-card__weight js_popup-card_weight">450г</div>
+                              </div>
+                              <div class="popup-card__content js_popup-card_content">Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности играет важную роль.</div>
+                              <div class="btn-special js_cart-item__inputs">
+                                <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                                <div class="quantity">
+                                  <button class="minus">
+                                          <svg class="b-svg svg-icon-minus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                          </svg>
+                                  </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                  <button class="plus">
+                                          <svg class="b-svg svg-icon-plus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                          </svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="set__item js_cart-item" data-cart-id="7">
+                        <div class="set__pic"><img class="js_cart-item__image" src="/img/set/set1.jpg" alt=""></div>
+                        <div class="set__box">
+                          <div class="set__top">
+                            <div class="set__article js_cart-item__name">Комбо-набор 1</div>
+                            <div class="set__weight js_cart-item__weight">400г</div>
+                          </div>
+                          <div class="set__content js_cart-item__text">Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие</div>
+                          <div class="set__bottom"> 
+                            <div class="set__price js_cart-item__cost">450 <span>₽</span></div>
+                            <div class="btn-special js_cart-item__inputs">
+                              <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                              <div class="quantity">
+                                <button class="minus">
+                                        <svg class="b-svg svg-icon-minus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                        </svg>
+                                </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                <button class="plus">
+                                        <svg class="b-svg svg-icon-plus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                        </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="popup-card">
+                          <div class="popup-card__header">
+                            <div class="popup-card__logo">
+                                    <svg class="b-svg svg-logo ">
+                                      <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                                    </svg>
+                            </div>
+                          </div>
+                          <div class="popup-card__close"></div>
+                          <div class="popup-card__wrapper">
+                            <div class="popup-card__img"><img class="js_popup-card_img" src="./img/set/set2.jpg" alt=""></div>
+                            <div class="popup-card__left">
+                              <div class="popup-card__heading">
+                                <div class="popup-card__title js_popup-card_title">Пицца «Test»</div>
+                                <div class="popup-card__weight js_popup-card_weight">450г</div>
+                              </div>
+                              <div class="popup-card__content js_popup-card_content">Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности играет важную роль.</div>
+                              <div class="btn-special js_cart-item__inputs">
+                                <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                                <div class="quantity">
+                                  <button class="minus">
+                                          <svg class="b-svg svg-icon-minus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                          </svg>
+                                  </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                  <button class="plus">
+                                          <svg class="b-svg svg-icon-plus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                          </svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="set__item js_cart-item" data-cart-id="5">
+                        <div class="set__pic"><img class="js_cart-item__image" src="/img/set/set1.jpg" alt=""></div>
+                        <div class="set__box">
+                          <div class="set__top">
+                            <div class="set__article js_cart-item__name">Комбо-набор 1</div>
+                            <div class="set__weight js_cart-item__weight">400г</div>
+                          </div>
+                          <div class="set__content js_cart-item__text">Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие</div>
+                          <div class="set__bottom"> 
+                            <div class="set__price js_cart-item__cost">450 <span>₽</span></div>
+                            <div class="btn-special js_cart-item__inputs">
+                              <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                              <div class="quantity">
+                                <button class="minus">
+                                        <svg class="b-svg svg-icon-minus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                        </svg>
+                                </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                <button class="plus">
+                                        <svg class="b-svg svg-icon-plus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                        </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="popup-card">
+                          <div class="popup-card__header">
+                            <div class="popup-card__logo">
+                                    <svg class="b-svg svg-logo ">
+                                      <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                                    </svg>
+                            </div>
+                          </div>
+                          <div class="popup-card__close"></div>
+                          <div class="popup-card__wrapper">
+                            <div class="popup-card__img"><img class="js_popup-card_img" src="./img/set/set2.jpg" alt=""></div>
+                            <div class="popup-card__left">
+                              <div class="popup-card__heading">
+                                <div class="popup-card__title js_popup-card_title">Пицца «Test»</div>
+                                <div class="popup-card__weight js_popup-card_weight">450г</div>
+                              </div>
+                              <div class="popup-card__content js_popup-card_content">Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности играет важную роль.</div>
+                              <div class="btn-special js_cart-item__inputs">
+                                <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                                <div class="quantity">
+                                  <button class="minus">
+                                          <svg class="b-svg svg-icon-minus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                          </svg>
+                                  </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                  <button class="plus">
+                                          <svg class="b-svg svg-icon-plus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                          </svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="set__item js_cart-item" data-cart-id="2">
+                        <div class="set__pic"><img class="js_cart-item__image" src="/img/set/set1.jpg" alt=""></div>
+                        <div class="set__box">
+                          <div class="set__top">
+                            <div class="set__article js_cart-item__name">Комбо-набор 1</div>
+                            <div class="set__weight js_cart-item__weight">400г</div>
+                          </div>
+                          <div class="set__content js_cart-item__text">Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие</div>
+                          <div class="set__bottom"> 
+                            <div class="set__price js_cart-item__cost">450 <span>₽</span></div>
+                            <div class="btn-special js_cart-item__inputs">
+                              <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                              <div class="quantity">
+                                <button class="minus">
+                                        <svg class="b-svg svg-icon-minus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                        </svg>
+                                </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                <button class="plus">
+                                        <svg class="b-svg svg-icon-plus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                        </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="popup-card">
+                          <div class="popup-card__header">
+                            <div class="popup-card__logo">
+                                    <svg class="b-svg svg-logo ">
+                                      <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                                    </svg>
+                            </div>
+                          </div>
+                          <div class="popup-card__close"></div>
+                          <div class="popup-card__wrapper">
+                            <div class="popup-card__img"><img class="js_popup-card_img" src="./img/set/set2.jpg" alt=""></div>
+                            <div class="popup-card__left">
+                              <div class="popup-card__heading">
+                                <div class="popup-card__title js_popup-card_title">Пицца «Test»</div>
+                                <div class="popup-card__weight js_popup-card_weight">450г</div>
+                              </div>
+                              <div class="popup-card__content js_popup-card_content">Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности играет важную роль.</div>
+                              <div class="btn-special js_cart-item__inputs">
+                                <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                                <div class="quantity">
+                                  <button class="minus">
+                                          <svg class="b-svg svg-icon-minus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                          </svg>
+                                  </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                  <button class="plus">
+                                          <svg class="b-svg svg-icon-plus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                          </svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="set__item js_cart-item" data-cart-id="3">
+                        <div class="set__pic"><img class="js_cart-item__image" src="/img/set/set1.jpg" alt=""></div>
+                        <div class="set__box">
+                          <div class="set__top">
+                            <div class="set__article js_cart-item__name">Комбо-набор 1</div>
+                            <div class="set__weight js_cart-item__weight">400г</div>
+                          </div>
+                          <div class="set__content js_cart-item__text">Повседневная практика показывает, что сложившаяся структура данной организации обеспечивает широкому кругу участие</div>
+                          <div class="set__bottom"> 
+                            <div class="set__price js_cart-item__cost">450 <span>₽</span></div>
+                            <div class="btn-special js_cart-item__inputs">
+                              <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                              <div class="quantity">
+                                <button class="minus">
+                                        <svg class="b-svg svg-icon-minus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                        </svg>
+                                </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                <button class="plus">
+                                        <svg class="b-svg svg-icon-plus ">
+                                          <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                        </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="popup-card">
+                          <div class="popup-card__header">
+                            <div class="popup-card__logo">
+                                    <svg class="b-svg svg-logo ">
+                                      <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                                    </svg>
+                            </div>
+                          </div>
+                          <div class="popup-card__close"></div>
+                          <div class="popup-card__wrapper">
+                            <div class="popup-card__img"><img class="js_popup-card_img" src="./img/set/set2.jpg" alt=""></div>
+                            <div class="popup-card__left">
+                              <div class="popup-card__heading">
+                                <div class="popup-card__title js_popup-card_title">Пицца «Test»</div>
+                                <div class="popup-card__weight js_popup-card_weight">450г</div>
+                              </div>
+                              <div class="popup-card__content js_popup-card_content">Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности играет важную роль.</div>
+                              <div class="btn-special js_cart-item__inputs">
+                                <div class="btn btn--small btn--orange js-calc">В корзину</div>
+                                <div class="quantity">
+                                  <button class="minus">
+                                          <svg class="b-svg svg-icon-minus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                                          </svg>
+                                  </button><input type="text" class="quantity__field" name="" value="0" data-step="1" data-id="123" data-min="1" data-max="20">
+                                  <button class="plus">
+                                          <svg class="b-svg svg-icon-plus ">
+                                            <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                                          </svg>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer"><a class="basket-btn" href="basket.html">
+                <svg class="b-svg svg-basket ">
+                  <use xlink:href="svg/symbol/sprite.svg#basket"></use>
+                </svg><span>4</span></a>
+        <div class="footer__top">
+          <div class="footer__container container">
+            <div class="footer__grid">
+              <div class="footer__bloc"><a class="footer__logo" href="/">
+                        <svg class="b-svg svg-logo ">
+                          <use xlink:href="svg/symbol/sprite.svg#logo"></use>
+                        </svg></a>
+                <div class="footer__box">
+                  <div class="footer__txt">Следите за нами в социальных сетях:</div><a class="footer__soc" href="javascript:void(0);">
+                          <svg class="b-svg svg-inst ">
+                            <use xlink:href="svg/symbol/sprite.svg#inst"></use>
+                          </svg></a>
+                </div>
+              </div>
+              <div class="footer__nav">
+                <div class="footer__items"><a class="footer__unit footer__unit--active" href="menu.html">Меню</a><a class="footer__unit" href="menu.html">Акции</a><a class="footer__unit" href="javascript:void(0);">Бронь</a><a class="footer__unit" href="about.html">О нас</a><a class="footer__unit" href="gallery.html">Галерея</a><a class="footer__unit" href="contacts.html">Контакты</a></div>
+              </div>
+              <div class="footer__info">
+                <div class="footer__module">
+                  <div class="footer__article">Время работы:</div>
+                  <div class="footer__cover">
+                    <div class="footer__par">Вс-Чт:10:00-23:00</div>
+                    <div class="footer__par">Пт-Сб: 10:00-24:00</div>
+                  </div>
+                </div>
+                <div class="footer__module">
+                  <div class="footer__article">Доставка, вынос:</div>
+                  <div class="footer__cover"><a class="footer__par" href="tel:+7 (3452) 57-61-09">+7 (3452) 57-61-09</a><a class="footer__par" href="tel:+7 (3452) 90-90-00">+7 (3452) 90-90-00</a><a class="footer__par" href="tel:+7 (3452) 68-77-68">+7 (3452) 68-77-68</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="footer__container container">
+            <div class="footer__grid">
+              <div class="footer__copyright">© Восточная Долина 2010-2020</div>
+              <div class="footer__site">Сайт разработан компанией <a href="#">Uralmedias</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="overlay-basket">
+          <div class="popup-basket">
+            <div class="popup-basket__hide">
+              <div class="close"></div>
+            </div>
+            <div class="popup-basket__inner">
+              <div class="popup-basket__items js-cart_list">
+                <div class="popup-basket__item js-cart_list__template" style="display:none">
+                  <div class="popup-basket__pic"><img src="./img/basket/order.jpg" alt=""></div>
+                  <div class="popup-basket__box">
+                    <div class="popup-basket__article js_cart-item__name">Шашлык из свиных ребрышек</div>
+                    <div class="popup-basket__weight js_cart-item__weight">450г</div>
+                    <div class="quantity js_cart-item__quantity">
+                      <button class="minus">
+                              <svg class="b-svg svg-icon-minus ">
+                                <use xlink:href="svg/symbol/sprite.svg#icon-minus"></use>
+                              </svg>
+                      </button><input type="text" class="quantity__field js_cart-item__count" name="" value="1" data-step="1" data-id="123" data-min="1" data-max="20">
+                      <button class="plus">
+                              <svg class="b-svg svg-icon-plus ">
+                                <use xlink:href="svg/symbol/sprite.svg#icon-plus"></use>
+                              </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="popup-basket__outcome">
+                    <div class="popup-basket__close js_cart-item__remove"> </div>
+                    <div class="popup-basket__price js_cart-item__cost">450 <span>₽</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="popup-basket__bottom">
+                <div class="popup-basket__text">Общая сумма заказа:</div>
+                <div class="popup-basket__sum"><span class="js_cart-total__cost"></span><span class="symbol"> ₽</span></div>
+              </div><a class="btn btn--big btn--orange" href="order.html">Оформить заказ</a>
+            </div>
+          </div>
+        </div>
+        <div class="overlay-card"></div>
+      </footer>
+    </div>
+    <script src="js/libs.min.js"></script>
+    <script src="js/lightgallery.js"></script>
+    <script src="js/jquery.maskedinput.js"></script>
+    <script src="js/smooth-scrollbar.js"></script>
+    <script src="js/main-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js"></script>
+  </body>
+</html>
